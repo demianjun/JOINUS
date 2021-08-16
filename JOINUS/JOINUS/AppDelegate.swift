@@ -6,6 +6,10 @@
 //
 
 import UIKit
+import SnapKit
+import Then
+import GoogleSignIn
+import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,13 +18,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
-    let launchVC = ViewController()
+    let launchVC = LaunchViewController()
     
     self.window = UIWindow(frame: UIScreen.main.bounds)
     self.window?.rootViewController = launchVC
     self.window?.makeKeyAndVisible()
+    
+    GIDSignIn.sharedInstance.restorePreviousSignIn { user, err in
+      
+      if err != nil || user == nil {
+        
+      } else {
+        
+      }
+    }
     // Override point for customization after application launch.
     return true
+  }
+  
+  func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
+    -> Bool {
+    
+    return GIDSignIn.sharedInstance.handle(url)
   }
 }
 
