@@ -12,9 +12,13 @@
 		AD9E9B3E26CA99D500FCFC51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD9E9B3C26CA99D500FCFC51 /* Main.storyboard */; };
 		AD9E9B4026CA99D600FCFC51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD9E9B3F26CA99D600FCFC51 /* Assets.xcassets */; };
 		AD9E9B4326CA99D600FCFC51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD9E9B4126CA99D600FCFC51 /* LaunchScreen.storyboard */; };
+		E0B720128F4D38A1DEA38EB7 /* Pods_JOINUS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30BE6E46A8AFB1B50E834BF2 /* Pods_JOINUS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30BE6E46A8AFB1B50E834BF2 /* Pods_JOINUS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JOINUS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5579130D27B6E0FF7BD3622B /* Pods-JOINUS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JOINUS.debug.xcconfig"; path = "Target Support Files/Pods-JOINUS/Pods-JOINUS.debug.xcconfig"; sourceTree = "<group>"; };
+		8BC6ECE2F9A8A8212F14BC17 /* Pods-JOINUS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JOINUS.release.xcconfig"; path = "Target Support Files/Pods-JOINUS/Pods-JOINUS.release.xcconfig"; sourceTree = "<group>"; };
 		AD9E9B3326CA99D500FCFC51 /* JOINUS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JOINUS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD9E9B3626CA99D500FCFC51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD9E9B3A26CA99D500FCFC51 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +33,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0B720128F4D38A1DEA38EB7 /* Pods_JOINUS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		59576853366E5FF6A359E324 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5579130D27B6E0FF7BD3622B /* Pods-JOINUS.debug.xcconfig */,
+				8BC6ECE2F9A8A8212F14BC17 /* Pods-JOINUS.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		61CBD4601A975980F37D575C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				30BE6E46A8AFB1B50E834BF2 /* Pods_JOINUS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AD9E9B2A26CA99D500FCFC51 = {
 			isa = PBXGroup;
 			children = (
 				AD9E9B3526CA99D500FCFC51 /* JOINUS */,
 				AD9E9B3426CA99D500FCFC51 /* Products */,
+				59576853366E5FF6A359E324 /* Pods */,
+				61CBD4601A975980F37D575C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +96,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AD9E9B4726CA99D600FCFC51 /* Build configuration list for PBXNativeTarget "JOINUS" */;
 			buildPhases = (
+				D5BD922B32B1740BD5E68DDA /* [CP] Check Pods Manifest.lock */,
 				AD9E9B2F26CA99D500FCFC51 /* Sources */,
 				AD9E9B3026CA99D500FCFC51 /* Frameworks */,
 				AD9E9B3126CA99D500FCFC51 /* Resources */,
+				AB6986F4C949E10438807AA0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -128,6 +155,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AB6986F4C949E10438807AA0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JOINUS/Pods-JOINUS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JOINUS/Pods-JOINUS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JOINUS/Pods-JOINUS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D5BD922B32B1740BD5E68DDA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JOINUS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AD9E9B2F26CA99D500FCFC51 /* Sources */ = {
@@ -279,6 +348,7 @@
 		};
 		AD9E9B4826CA99D600FCFC51 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5579130D27B6E0FF7BD3622B /* Pods-JOINUS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -298,6 +368,7 @@
 		};
 		AD9E9B4926CA99D600FCFC51 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BC6ECE2F9A8A8212F14BC17 /* Pods-JOINUS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

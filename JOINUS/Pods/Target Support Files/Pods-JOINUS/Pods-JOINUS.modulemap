@@ -1,0 +1,6 @@
+framework module Pods_JOINUS {
+  umbrella header "Pods-JOINUS-umbrella.h"
+
+  export *
+  module * { export * }
+}
