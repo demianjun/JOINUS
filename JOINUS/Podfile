@@ -1,0 +1,15 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'JOINUS' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for JOINUS
+
+pod 'Alamofire', '~> 5.2'
+pod 'Then'
+pod 'SnapKit', '~> 5.0.0'
+pod 'RxSwift', '~> 5'
+
+end
