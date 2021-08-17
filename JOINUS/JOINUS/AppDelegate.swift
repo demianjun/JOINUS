@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       
       if err != nil || user == nil {
         
+        print("log in user: \(user)")
+        
       } else {
         
       }
@@ -39,7 +41,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
     -> Bool {
     
-    return GIDSignIn.sharedInstance.handle(url)
+    var handled: Bool
+    
+    handled = GIDSignIn.sharedInstance.handle(url)
+    
+    if handled {
+      
+      return true
+      
+    } else {
+      
+      return false
+      
+    }
   }
 }
 
