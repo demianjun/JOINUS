@@ -17,7 +17,7 @@ class LaunchViewController: UIViewController {
   
   private let logoLable = UILabel().then {
     $0.text = "JOINUS"
-    $0.font = UIFont.joinFont.bold(size: 50)
+    $0.font = UIFont.joinuns.font(size: 50)
   }
   
   private let backGroundView = UIView().then {
@@ -43,7 +43,9 @@ class LaunchViewController: UIViewController {
       $0.center.equalToSuperview()
     }
   }
+  
   let changeVC = ChangeViewController()
+  
   private func changeLoginVC() {
     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
       let loginVC = LoginViewController()

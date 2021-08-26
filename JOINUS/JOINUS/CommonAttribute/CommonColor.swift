@@ -17,7 +17,14 @@ struct CommonColor {
 }
 
 extension UIColor {
+  
   struct joinusColor {
-    static let joinBlue = CommonColor.shared.customColor(r: 52, g: 120, b: 246)
+    static let joinBlue = CommonColor.shared.customColor(r: 52, g: 120, b: 246),
+               genderSelectedBlue = joinBlue,
+               genderDeselectedGray = CommonColor.shared.customColor(r: 112, g: 112, b: 112)
+    
+    let temp = #colorLiteral(red: 0.4391763508, green: 0.4392417669, blue: 0.4391556382, alpha: 1)
   }
 }
+
+

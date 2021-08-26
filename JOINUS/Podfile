@@ -11,6 +11,7 @@ pod 'Alamofire', '~> 5.2'
 pod 'Then'
 pod 'SnapKit', '~> 5.0.0'
 pod 'RxSwift', '~> 5'
+pod 'RxCocoa', '~> 5'
 pod 'GoogleSignIn'
 pod 'Firebase/Auth'
 

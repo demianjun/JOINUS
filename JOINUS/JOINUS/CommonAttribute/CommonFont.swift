@@ -25,16 +25,10 @@ struct CommonFont {
 
 extension UIFont {
   
-  struct joinFont {
-    
-    static func regular(size: CGFloat) -> UIFont {
-      guard let font = UIFont(name: "AppleSDGothicNeo-Regular",
-                              size: CommonLength.shared.width(size)) else { return UIFont() }
-      return font
-    }
-    
-    static func bold(size: CGFloat) -> UIFont {
-      guard let font = UIFont(name: "AppleSDGothicNeo-Bold",
+  struct joinuns {
+    /// font : Noto Sans KR - Bold
+    static func font(size: CGFloat) -> UIFont {
+      guard let font = UIFont(name: "NotoSansKR-Bold",
                               size: CommonLength.shared.width(size)) else { return UIFont() }
       return font
     }
