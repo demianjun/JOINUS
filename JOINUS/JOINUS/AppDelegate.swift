@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 import SnapKit
 import Then
 import GoogleSignIn
@@ -18,15 +20,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
-    let launchVC = LaunchViewController()
+    let launchVC = LaunchViewController(),
+        naviVC = UINavigationController.init(rootViewController: launchVC)
     
     self.window = UIWindow(frame: UIScreen.main.bounds)
-    self.window?.rootViewController = launchVC
+    
+    self.window?.rootViewController = naviVC
     self.window?.makeKeyAndVisible()
     
     GIDSignIn.sharedInstance.restorePreviousSignIn { user, err in
       
       if err != nil || user == nil {
+        
+        print("log in user: \(user)")
         
       } else {
         
@@ -39,7 +45,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
     -> Bool {
     
-    return GIDSignIn.sharedInstance.handle(url)
+    var handled: Bool
+    
+    handled = GIDSignIn.sharedInstance.handle(url)
+    
+    if handled {
+      
+      return true
+      
+    } else {
+      
+      return false
+      
+    }
   }
 }
 

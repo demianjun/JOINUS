@@ -17,7 +17,7 @@ class LaunchViewController: UIViewController {
   
   private let logoLable = UILabel().then {
     $0.text = "JOINUS"
-    $0.font = UIFont.joinFont.bold(size: 50)
+    $0.font = UIFont.joinuns.font(size: 50)
   }
   
   private let backGroundView = UIView().then {
@@ -26,6 +26,7 @@ class LaunchViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.navigationController?.navigationBar.isHidden = true
     self.view.backgroundColor = UIColor.joinusColor.joinBlue
     self.setupUI()
     self.changeLoginVC()
@@ -43,15 +44,19 @@ class LaunchViewController: UIViewController {
       $0.center.equalToSuperview()
     }
   }
+  
   let changeVC = ChangeViewController()
+  
   private func changeLoginVC() {
+    
     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-      let loginVC = LoginViewController()
+      let loginVC = LoginViewController(),
+          loginNaviVC = UINavigationController(rootViewController: loginVC)
       
       self.changeVC
         .dismissAndPresentViewController(dismissVC: self,
                                          dismissAnimate: false,
-                                         presentVC: loginVC,
+                                         presentVC: loginNaviVC,
                                          presentAnimate: false)
     }
   }

@@ -57,6 +57,11 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (2.0.0)
+  - RxCocoa (5.1.3):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.3):
+    - RxSwift (~> 5)
   - RxSwift (5.1.3)
   - SnapKit (5.0.1)
   - Then (2.7.0)
@@ -65,6 +70,7 @@ DEPENDENCIES:
   - Alamofire (~> 5.2)
   - Firebase/Auth
   - GoogleSignIn
+  - RxCocoa (~> 5)
   - RxSwift (~> 5)
   - SnapKit (~> 5.0.0)
   - Then
@@ -84,6 +90,8 @@ SPEC REPOS:
     - GTMSessionFetcher
     - nanopb
     - PromisesObjC
+    - RxCocoa
+    - RxRelay
     - RxSwift
     - SnapKit
     - Then
@@ -102,10 +110,12 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 36689134877faeb055b27dfa4ccc9ceaa42e029e
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
+  RxCocoa: e2ed092d5432e4296aa818021d27de4090ac0354
+  RxRelay: 5a18c2eb2d68326ebaf0112f80d837ae41b92b97
   RxSwift: 915abbdfb62214aa89ccd0b194d44fb478019b27
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
 
-PODFILE CHECKSUM: 4a13b4ea0a05379b805c24fd2cadbd407a6eeb7a
+PODFILE CHECKSUM: 5b8ea9c3be62c5fa1d791b2d1540d1cddfcba731
 
 COCOAPODS: 1.10.2

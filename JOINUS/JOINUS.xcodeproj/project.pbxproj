@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD4A6E8A26D526460083D9A6 /* OnboardingStep1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4A6E8926D526460083D9A6 /* OnboardingStep1ViewController.swift */; };
+		AD4A6E9226D7E41E0083D9A6 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD4A6E8C26D7E41E0083D9A6 /* NotoSansKR-Bold.otf */; };
+		AD4A6E9326D7E41E0083D9A6 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD4A6E8D26D7E41E0083D9A6 /* NotoSansKR-Medium.otf */; };
+		AD4A6E9426D7E41E0083D9A6 /* NotoSansKR-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD4A6E8E26D7E41E0083D9A6 /* NotoSansKR-Thin.otf */; };
+		AD4A6E9526D7E41E0083D9A6 /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD4A6E8F26D7E41E0083D9A6 /* NotoSansKR-Black.otf */; };
+		AD4A6E9626D7E41E0083D9A6 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD4A6E9026D7E41E0083D9A6 /* NotoSansKR-Regular.otf */; };
+		AD4A6E9726D7E41E0083D9A6 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD4A6E9126D7E41E0083D9A6 /* NotoSansKR-Light.otf */; };
+		AD54C51026D7E8A20023FA99 /* CommonAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD54C50F26D7E8A20023FA99 /* CommonAction.swift */; };
+		AD54C51426D7F3930023FA99 /* AgePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD54C51326D7F3930023FA99 /* AgePickerView.swift */; };
 		AD67E7BE26CABACE006B1FD4 /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD67E7BD26CABACE006B1FD4 /* credentials.plist */; };
 		AD982F8C26CAB5ED000AEAA2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD982F8B26CAB5ED000AEAA2 /* LoginViewController.swift */; };
 		AD9E9B3726CA99D500FCFC51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9E9B3626CA99D500FCFC51 /* AppDelegate.swift */; };
@@ -14,6 +23,11 @@
 		AD9E9B3E26CA99D500FCFC51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD9E9B3C26CA99D500FCFC51 /* Main.storyboard */; };
 		AD9E9B4026CA99D600FCFC51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD9E9B3F26CA99D600FCFC51 /* Assets.xcassets */; };
 		AD9E9B4326CA99D600FCFC51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD9E9B4126CA99D600FCFC51 /* LaunchScreen.storyboard */; };
+		ADCCCF5826DD4D2B002C5C8C /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCCCF5726DD4D2B002C5C8C /* OnboardingModel.swift */; };
+		ADCCCF5B26DD638D002C5C8C /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCCCF5A26DD638D002C5C8C /* OnboardingViewModel.swift */; };
+		ADCCCF5D26DD6C8F002C5C8C /* OnboardingStep2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCCCF5C26DD6C8F002C5C8C /* OnboardingStep2ViewController.swift */; };
+		ADCCCF5F26DD70A3002C5C8C /* SelectGameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCCCF5E26DD70A3002C5C8C /* SelectGameButton.swift */; };
+		ADCCCF6126DD7D40002C5C8C /* NextButtonStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCCCF6026DD7D40002C5C8C /* NextButtonStatus.swift */; };
 		ADCF011D26CAAEBC00F1BCF8 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCF011C26CAAEBC00F1BCF8 /* Extension.swift */; };
 		ADCF012226CAB01100F1BCF8 /* CommonLength.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCF012126CAB01100F1BCF8 /* CommonLength.swift */; };
 		ADCF012426CAB06600F1BCF8 /* CommonColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCF012326CAB06600F1BCF8 /* CommonColor.swift */; };
@@ -28,6 +42,15 @@
 		30BE6E46A8AFB1B50E834BF2 /* Pods_JOINUS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JOINUS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5579130D27B6E0FF7BD3622B /* Pods-JOINUS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JOINUS.debug.xcconfig"; path = "Target Support Files/Pods-JOINUS/Pods-JOINUS.debug.xcconfig"; sourceTree = "<group>"; };
 		8BC6ECE2F9A8A8212F14BC17 /* Pods-JOINUS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JOINUS.release.xcconfig"; path = "Target Support Files/Pods-JOINUS/Pods-JOINUS.release.xcconfig"; sourceTree = "<group>"; };
+		AD4A6E8926D526460083D9A6 /* OnboardingStep1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep1ViewController.swift; sourceTree = "<group>"; };
+		AD4A6E8C26D7E41E0083D9A6 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
+		AD4A6E8D26D7E41E0083D9A6 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
+		AD4A6E8E26D7E41E0083D9A6 /* NotoSansKR-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Thin.otf"; sourceTree = "<group>"; };
+		AD4A6E8F26D7E41E0083D9A6 /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.otf"; sourceTree = "<group>"; };
+		AD4A6E9026D7E41E0083D9A6 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
+		AD4A6E9126D7E41E0083D9A6 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
+		AD54C50F26D7E8A20023FA99 /* CommonAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAction.swift; sourceTree = "<group>"; };
+		AD54C51326D7F3930023FA99 /* AgePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgePickerView.swift; sourceTree = "<group>"; };
 		AD67E7BD26CABACE006B1FD4 /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
 		AD982F8B26CAB5ED000AEAA2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AD9E9B3326CA99D500FCFC51 /* JOINUS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JOINUS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,6 +60,11 @@
 		AD9E9B3F26CA99D600FCFC51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD9E9B4226CA99D600FCFC51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD9E9B4426CA99D600FCFC51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADCCCF5726DD4D2B002C5C8C /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
+		ADCCCF5A26DD638D002C5C8C /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		ADCCCF5C26DD6C8F002C5C8C /* OnboardingStep2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep2ViewController.swift; sourceTree = "<group>"; };
+		ADCCCF5E26DD70A3002C5C8C /* SelectGameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGameButton.swift; sourceTree = "<group>"; };
+		ADCCCF6026DD7D40002C5C8C /* NextButtonStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButtonStatus.swift; sourceTree = "<group>"; };
 		ADCF011C26CAAEBC00F1BCF8 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		ADCF012126CAB01100F1BCF8 /* CommonLength.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonLength.swift; sourceTree = "<group>"; };
 		ADCF012326CAB06600F1BCF8 /* CommonColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonColor.swift; sourceTree = "<group>"; };
@@ -75,6 +103,40 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AD4A6E8B26D7E4090083D9A6 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				AD4A6E8F26D7E41E0083D9A6 /* NotoSansKR-Black.otf */,
+				AD4A6E8C26D7E41E0083D9A6 /* NotoSansKR-Bold.otf */,
+				AD4A6E9126D7E41E0083D9A6 /* NotoSansKR-Light.otf */,
+				AD4A6E8D26D7E41E0083D9A6 /* NotoSansKR-Medium.otf */,
+				AD4A6E9026D7E41E0083D9A6 /* NotoSansKR-Regular.otf */,
+				AD4A6E8E26D7E41E0083D9A6 /* NotoSansKR-Thin.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		AD54C51126D7F36A0023FA99 /* OnboardingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ADCCCF5926DD637A002C5C8C /* OnboardingViewModel */,
+				ADCCCF5626DD4D18002C5C8C /* OnboardingModel */,
+				AD54C51226D7F37B0023FA99 /* OnboardingView */,
+				AD4A6E8926D526460083D9A6 /* OnboardingStep1ViewController.swift */,
+				ADCCCF5C26DD6C8F002C5C8C /* OnboardingStep2ViewController.swift */,
+			);
+			path = OnboardingViewController;
+			sourceTree = "<group>";
+		};
+		AD54C51226D7F37B0023FA99 /* OnboardingView */ = {
+			isa = PBXGroup;
+			children = (
+				AD54C51326D7F3930023FA99 /* AgePickerView.swift */,
+				ADCCCF5E26DD70A3002C5C8C /* SelectGameButton.swift */,
+			);
+			path = OnboardingView;
+			sourceTree = "<group>";
+		};
 		AD74446326CAD2C500F90BF2 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +147,7 @@
 		AD982F8926CAB36F000AEAA2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				AD54C51126D7F36A0023FA99 /* OnboardingViewController */,
 				AD982F8A26CAB375000AEAA2 /* LaunchViewController */,
 			);
 			path = ViewControllers;
@@ -120,6 +183,7 @@
 		AD9E9B3526CA99D500FCFC51 /* JOINUS */ = {
 			isa = PBXGroup;
 			children = (
+				AD4A6E8B26D7E4090083D9A6 /* Font */,
 				AD74446326CAD2C500F90BF2 /* Service */,
 				AD982F8926CAB36F000AEAA2 /* ViewControllers */,
 				ADCF012026CAAF5600F1BCF8 /* Extension */,
@@ -134,6 +198,23 @@
 			path = JOINUS;
 			sourceTree = "<group>";
 		};
+		ADCCCF5626DD4D18002C5C8C /* OnboardingModel */ = {
+			isa = PBXGroup;
+			children = (
+				ADCCCF5726DD4D2B002C5C8C /* OnboardingModel.swift */,
+			);
+			path = OnboardingModel;
+			sourceTree = "<group>";
+		};
+		ADCCCF5926DD637A002C5C8C /* OnboardingViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				ADCCCF5A26DD638D002C5C8C /* OnboardingViewModel.swift */,
+				ADCCCF6026DD7D40002C5C8C /* NextButtonStatus.swift */,
+			);
+			path = OnboardingViewModel;
+			sourceTree = "<group>";
+		};
 		ADCF011E26CAAEF800F1BCF8 /* CommonAttribute */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +224,7 @@
 				ADCF012526CAB11700F1BCF8 /* ChangeWindow.swift */,
 				ADCF012726CAB13D00F1BCF8 /* ChangeViewController.swift */,
 				ADCF012926CAB15900F1BCF8 /* InternetAvailable.swift */,
+				AD54C50F26D7E8A20023FA99 /* CommonAction.swift */,
 			);
 			path = CommonAttribute;
 			sourceTree = "<group>";
@@ -214,10 +296,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD4A6E9326D7E41E0083D9A6 /* NotoSansKR-Medium.otf in Resources */,
+				AD4A6E9626D7E41E0083D9A6 /* NotoSansKR-Regular.otf in Resources */,
+				AD4A6E9426D7E41E0083D9A6 /* NotoSansKR-Thin.otf in Resources */,
 				AD9E9B4326CA99D600FCFC51 /* LaunchScreen.storyboard in Resources */,
 				AD67E7BE26CABACE006B1FD4 /* credentials.plist in Resources */,
 				AD9E9B4026CA99D600FCFC51 /* Assets.xcassets in Resources */,
+				AD4A6E9726D7E41E0083D9A6 /* NotoSansKR-Light.otf in Resources */,
 				AD9E9B3E26CA99D500FCFC51 /* Main.storyboard in Resources */,
+				AD4A6E9226D7E41E0083D9A6 /* NotoSansKR-Bold.otf in Resources */,
+				AD4A6E9526D7E41E0083D9A6 /* NotoSansKR-Black.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,11 +362,19 @@
 				ADCF012226CAB01100F1BCF8 /* CommonLength.swift in Sources */,
 				ADCF011D26CAAEBC00F1BCF8 /* Extension.swift in Sources */,
 				AD9E9B3B26CA99D500FCFC51 /* LaunchViewController.swift in Sources */,
+				ADCCCF5826DD4D2B002C5C8C /* OnboardingModel.swift in Sources */,
+				AD54C51026D7E8A20023FA99 /* CommonAction.swift in Sources */,
 				ADCF012A26CAB15900F1BCF8 /* InternetAvailable.swift in Sources */,
 				ADCF012426CAB06600F1BCF8 /* CommonColor.swift in Sources */,
+				ADCCCF6126DD7D40002C5C8C /* NextButtonStatus.swift in Sources */,
 				AD9E9B3726CA99D500FCFC51 /* AppDelegate.swift in Sources */,
 				ADCF012C26CAB19F00F1BCF8 /* CommonFont.swift in Sources */,
+				ADCCCF5B26DD638D002C5C8C /* OnboardingViewModel.swift in Sources */,
 				AD982F8C26CAB5ED000AEAA2 /* LoginViewController.swift in Sources */,
+				ADCCCF5F26DD70A3002C5C8C /* SelectGameButton.swift in Sources */,
+				AD54C51426D7F3930023FA99 /* AgePickerView.swift in Sources */,
+				AD4A6E8A26D526460083D9A6 /* OnboardingStep1ViewController.swift in Sources */,
+				ADCCCF5D26DD6C8F002C5C8C /* OnboardingStep2ViewController.swift in Sources */,
 				ADCF012626CAB11700F1BCF8 /* ChangeWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

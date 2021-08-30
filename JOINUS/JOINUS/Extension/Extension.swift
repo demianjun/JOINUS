@@ -172,8 +172,10 @@ extension UIControl {
                                objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
   }
   
-  @objc func closureAction() { guard let targetClosure = targetClosure else { return }
-    targetClosure(self) }
+  @objc func closureAction() {
+    guard let targetClosure = targetClosure else { return }
+    targetClosure(self)
+  }
   
   public func addAction(for event: UIControl.Event,
                         closure: @escaping UIControlTargetClosure) {
