@@ -20,10 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
-    let launchVC = LaunchViewController()
+    let launchVC = LaunchViewController(),
+        naviVC = UINavigationController.init(rootViewController: launchVC)
     
     self.window = UIWindow(frame: UIScreen.main.bounds)
-    self.window?.rootViewController = launchVC
+    
+    self.window?.rootViewController = naviVC
     self.window?.makeKeyAndVisible()
     
     GIDSignIn.sharedInstance.restorePreviousSignIn { user, err in

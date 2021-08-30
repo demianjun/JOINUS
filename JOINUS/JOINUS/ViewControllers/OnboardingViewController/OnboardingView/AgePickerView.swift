@@ -8,6 +8,7 @@
 import UIKit
 
 class AgePickerButton: UIButton {
+  
   // MARK: View
   private let buttonLabel = UILabel().then {
     $0.text = "나이를 선택해 주세요."
@@ -19,7 +20,7 @@ class AgePickerButton: UIButton {
   private let accessoryImageView = UIImageView().then {
     $0.image = UIImage(systemName: "chevron.down")
     $0.tintColor = UIColor.joinusColor.joinBlue
-    $0.backgroundColor = .yellow
+    $0.contentMode = .scaleAspectFill
   }
   
   override init(frame: CGRect) {
@@ -42,8 +43,17 @@ class AgePickerButton: UIButton {
     accessoryImageView.snp.makeConstraints {
       $0.centerY.equalToSuperview()
       $0.trailing.equalToSuperview().offset(-CommonLength.shared.width(15))
-      $0.width.height.equalTo(CommonLength.shared.width(30))
+      $0.width.equalTo(CommonLength.shared.width(15))
+      $0.height.equalTo(CommonLength.shared.height(13))
     }
+  }
+  
+  func useButtonLabel() -> UILabel {
+    return self.buttonLabel
+  }
+  
+  func useAccessoryImageView() -> UIImageView {
+    return self.accessoryImageView
   }
   
   required init?(coder: NSCoder) {

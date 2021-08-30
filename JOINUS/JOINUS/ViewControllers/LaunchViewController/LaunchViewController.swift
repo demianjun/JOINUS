@@ -26,6 +26,7 @@ class LaunchViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.navigationController?.navigationBar.isHidden = true
     self.view.backgroundColor = UIColor.joinusColor.joinBlue
     self.setupUI()
     self.changeLoginVC()
@@ -47,13 +48,15 @@ class LaunchViewController: UIViewController {
   let changeVC = ChangeViewController()
   
   private func changeLoginVC() {
+    
     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-      let loginVC = LoginViewController()
+      let loginVC = LoginViewController(),
+          loginNaviVC = UINavigationController(rootViewController: loginVC)
       
       self.changeVC
         .dismissAndPresentViewController(dismissVC: self,
                                          dismissAnimate: false,
-                                         presentVC: loginVC,
+                                         presentVC: loginNaviVC,
                                          presentAnimate: false)
     }
   }

@@ -36,11 +36,13 @@ class LoginViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.navigationController?.navigationBar.isHidden = true
     self.view.backgroundColor = UIColor.joinusColor.joinBlue
     self.setupUI()
-    self.googleLoginButton.addTarget(self,
-                                     action: #selector(buttonAction(_:)),
-                                     for: .touchUpInside)
+    self.didTapButtonAction()
+//    self.googleLoginButton.addTarget(self,
+//                                     action: #selector(buttonAction(_:)),
+//                                     for: .touchUpInside)
   }
   
   private func setupUI() {
@@ -62,11 +64,12 @@ class LoginViewController: UIViewController {
   
   func didTapButtonAction() {
     
-    let onBoardingVC = OnboardingViewController()
+    let onBoardingVC = OnboardingViewController(),
+        onBoardingNaviVC = UINavigationController(rootViewController: onBoardingVC)
     
     CommonAction.shared.touchActionEffect(self.loginButton) {
       
-      self.changeWindow.change(change: onBoardingVC)
+      self.changeWindow.change(change: onBoardingNaviVC)
     }
   }
   
@@ -121,6 +124,7 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController {
+  
   struct Get: Decodable {
     var age = Int(),
         firebaseToken = String(),
