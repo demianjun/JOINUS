@@ -23,6 +23,7 @@
 		AD9E9B3E26CA99D500FCFC51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD9E9B3C26CA99D500FCFC51 /* Main.storyboard */; };
 		AD9E9B4026CA99D600FCFC51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD9E9B3F26CA99D600FCFC51 /* Assets.xcassets */; };
 		AD9E9B4326CA99D600FCFC51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD9E9B4126CA99D600FCFC51 /* LaunchScreen.storyboard */; };
+		ADCCCF5826DD4D2B002C5C8C /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCCCF5726DD4D2B002C5C8C /* OnboardingModel.swift */; };
 		ADCF011D26CAAEBC00F1BCF8 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCF011C26CAAEBC00F1BCF8 /* Extension.swift */; };
 		ADCF012226CAB01100F1BCF8 /* CommonLength.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCF012126CAB01100F1BCF8 /* CommonLength.swift */; };
 		ADCF012426CAB06600F1BCF8 /* CommonColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCF012326CAB06600F1BCF8 /* CommonColor.swift */; };
@@ -55,6 +56,7 @@
 		AD9E9B3F26CA99D600FCFC51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD9E9B4226CA99D600FCFC51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD9E9B4426CA99D600FCFC51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADCCCF5726DD4D2B002C5C8C /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		ADCF011C26CAAEBC00F1BCF8 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		ADCF012126CAB01100F1BCF8 /* CommonLength.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonLength.swift; sourceTree = "<group>"; };
 		ADCF012326CAB06600F1BCF8 /* CommonColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonColor.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		AD54C51126D7F36A0023FA99 /* OnboardingViewController */ = {
 			isa = PBXGroup;
 			children = (
+				ADCCCF5626DD4D18002C5C8C /* OnboardingModel */,
 				AD54C51226D7F37B0023FA99 /* OnboardingView */,
 				AD4A6E8926D526460083D9A6 /* OnboardingViewController.swift */,
 			);
@@ -182,6 +185,14 @@
 				AD9E9B4426CA99D600FCFC51 /* Info.plist */,
 			);
 			path = JOINUS;
+			sourceTree = "<group>";
+		};
+		ADCCCF5626DD4D18002C5C8C /* OnboardingModel */ = {
+			isa = PBXGroup;
+			children = (
+				ADCCCF5726DD4D2B002C5C8C /* OnboardingModel.swift */,
+			);
+			path = OnboardingModel;
 			sourceTree = "<group>";
 		};
 		ADCF011E26CAAEF800F1BCF8 /* CommonAttribute */ = {
@@ -331,6 +342,7 @@
 				ADCF012226CAB01100F1BCF8 /* CommonLength.swift in Sources */,
 				ADCF011D26CAAEBC00F1BCF8 /* Extension.swift in Sources */,
 				AD9E9B3B26CA99D500FCFC51 /* LaunchViewController.swift in Sources */,
+				ADCCCF5826DD4D2B002C5C8C /* OnboardingModel.swift in Sources */,
 				AD54C51026D7E8A20023FA99 /* CommonAction.swift in Sources */,
 				ADCF012A26CAB15900F1BCF8 /* InternetAvailable.swift in Sources */,
 				ADCF012426CAB06600F1BCF8 /* CommonColor.swift in Sources */,

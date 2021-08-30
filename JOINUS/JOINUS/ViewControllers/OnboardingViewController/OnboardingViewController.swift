@@ -8,10 +8,14 @@
 import UIKit
 import RxSwift
 
-class OnboardingViewController: UIViewController {
+class OnboardingViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+  
   private let bag = DisposeBag()
   
   private let changeWindow = ChangeWindow()
+  
+  // MARK: Model
+  private let onboardingModel = OnboardingModel.shared
   
   // MARK: View
   private let titleLabel = UILabel().then {
@@ -47,7 +51,16 @@ class OnboardingViewController: UIViewController {
     $0.layer.cornerRadius = CommonLength.shared.height(35) / 2
   }
   
-  private let agePickerButton = AgePickerButton()
+  private let agePickerTextField = AgePickerTextField()
+  
+  private let pickerView = UIPickerView().then {
+    $0.backgroundColor = .white
+    $0.setValue(UIColor.black,
+                forKey: "textColor")
+    $0.frame = CGRect(x: 0, y: 0,
+                      width: CommonLength.shared.width(375),
+                      height: CommonLength.shared.width(300))
+  }
   
   private let nextButton = UIButton().then {
     $0.setTitle("확인",
@@ -64,6 +77,26 @@ class OnboardingViewController: UIViewController {
                                                target: nil,
                                                action: nil)
   
+  private let toolBarView = UIView().then {
+    $0.backgroundColor = .yellow
+  }
+  
+  private let customOkBarButtonItem = UIButton().then {
+    $0.setTitle("확인",
+                for: .normal)
+    $0.setTitleColor(UIColor.joinusColor.joinBlue,
+                     for: .normal)
+    $0.titleLabel?.font = UIFont.joinuns.font(size: 17)
+  }
+  
+  private let customCancelBarButtonItem = UIButton().then {
+    $0.setTitle("닫기",
+                for: .normal)
+    $0.setTitleColor(UIColor.black,
+                     for: .normal)
+    $0.titleLabel?.font = UIFont.joinuns.font(size: 17)
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view.backgroundColor = .white
@@ -71,12 +104,18 @@ class OnboardingViewController: UIViewController {
     self.setupUI()
     self.popViewController()
     self.didTapSelectGenderButton()
+    self.agePickerTextField.inputView = self.pickerView
+    self.agePickerTextField.inputView?.tintColor = .white
+    self.pickerView.delegate = self
+    self.pickerView.dataSource = self
+    self.inputBarButton()
+    self.tapDoneButton()
   }
   
   func setupUI() {
     [titleLabel,
      maleButton, femaleButton,
-     agePickerButton,
+     agePickerTextField,
      nextButton].forEach { self.view.addSubview($0) }
     
     titleLabel.snp.makeConstraints {
@@ -99,7 +138,7 @@ class OnboardingViewController: UIViewController {
       $0.height.equalTo(CommonLength.shared.height(35))
     }
     
-    agePickerButton.snp.makeConstraints {
+    agePickerTextField.snp.makeConstraints {
       $0.top.equalTo(maleButton.snp.bottom).offset(CommonLength.shared.height(25))
       $0.leading.equalTo(titleLabel)
       $0.width.equalTo(CommonLength.shared.width(225))
@@ -107,7 +146,7 @@ class OnboardingViewController: UIViewController {
     }
     
     nextButton.snp.makeConstraints {
-      $0.top.equalTo(agePickerButton.snp.bottom).offset(CommonLength.shared.height(60))
+      $0.top.equalTo(agePickerTextField.snp.bottom).offset(CommonLength.shared.height(60))
       $0.centerX.equalToSuperview()
       $0.width.equalToSuperview().multipliedBy(0.9)
       $0.height.equalTo(CommonLength.shared.height(50))
@@ -146,6 +185,59 @@ class OnboardingViewController: UIViewController {
     self.navigationItem.leftBarButtonItem = self.leftButtonItem
   }
   
+  private func inputBarButton() {
+ 
+    self.toolBarView.addSubview(customOkBarButtonItem)
+    self.toolBarView.addSubview(customCancelBarButtonItem)
+    
+    self.toolBarView.frame = CGRect(x: 0, y:0,
+                                    width: CommonLength.shared.width(375),
+                                    height: CommonLength.shared.height(35))
+    
+    customCancelBarButtonItem.snp.makeConstraints {
+      $0.centerY.equalToSuperview()
+      $0.leading.equalToSuperview().offset(CommonLength.shared.width(17))
+      $0.width.equalTo(CommonLength.shared.width(50))
+      $0.height.equalTo(CommonLength.shared.height(30))
+    }
+    
+    customOkBarButtonItem.snp.makeConstraints {
+      $0.centerY.equalToSuperview()
+      $0.trailing.equalToSuperview().offset(-CommonLength.shared.width(17))
+      $0.width.equalTo(CommonLength.shared.width(50))
+      $0.height.equalTo(CommonLength.shared.height(30))
+    }
+    
+    self.agePickerTextField.inputAccessoryView = self.toolBarView
+  }
+  
+  private func tapDoneButton() {
+    
+    customCancelBarButtonItem
+      .rx
+      .tap
+      .asDriver()
+      .drive(onNext: {
+        
+        self.view.endEditing(true)
+        
+      }).disposed(by: self.bag)
+    
+    customOkBarButtonItem
+      .rx
+      .tap
+      .asDriver()
+      .drive(onNext: {
+        
+        self.agePickerTextField
+          .useButtonLabel()
+          .text = String(self.onboardingModel.myAge).appending("세")
+        
+        self.view.endEditing(true)
+        
+      }).disposed(by: self.bag)
+  }
+  
   private func popViewController() {
     self.leftButtonItem
       .rx
@@ -154,6 +246,9 @@ class OnboardingViewController: UIViewController {
       .drive(onNext: {
         
         let loginVC = LoginViewController()
+        
+        self.maleButton.isSelected = false
+        self.femaleButton.isSelected = false
         
         self.changeWindow
           .change(change: loginVC)
@@ -190,5 +285,36 @@ class OnboardingViewController: UIViewController {
         self.setFemaleButtonStatus()
         
       }).disposed(by: self.bag)
+  }
+  
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 1
+  }
+  
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    return self.onboardingModel.ages.count
+  }
+  
+  func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+    return CommonLength.shared.height(42)
+  }
+
+  func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+    
+    let label = (view as? UILabel) ?? UILabel()
+    
+    
+    label.font = UIFont.joinuns.font(size: 15)
+    label.textColor = .black
+    label.textAlignment = .center
+    label.text = self.onboardingModel.ages[row]
+    
+    return label
+  }
+  
+  func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    let selectAge = row + 20
+    
+    self.onboardingModel.myAge = selectAge
   }
 }

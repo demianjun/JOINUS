@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AgePickerButton: UIButton {
+class AgePickerTextField: UITextField {//UIButton {
   
   // MARK: View
   private let buttonLabel = UILabel().then {
@@ -55,6 +55,10 @@ class AgePickerButton: UIButton {
   func useAccessoryImageView() -> UIImageView {
     return self.accessoryImageView
   }
+  
+//  func usePickerView() -> UIPickerView {
+//    return self.pickerView
+//  }
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
