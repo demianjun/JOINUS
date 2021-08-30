@@ -10,8 +10,12 @@ import Foundation
 class OnboardingModel {
   static let shared = OnboardingModel()
   
+  enum myGame: String {
+    case lol, sudden, overWatch, battelGround, mapleStory
+  }
+  
   var ages: [String] {
-   var temp = [String]()
+    var temp = [String]()
     
     for i in 20...70 {
       temp.append(String(i).appending("세"))
@@ -20,5 +24,7 @@ class OnboardingModel {
     return temp
   }
   
-  var myAge = Int()
+  var myAge = Int(),
+      myGender = Int(),
+      myGames = [String]()
 }

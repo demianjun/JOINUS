@@ -64,7 +64,7 @@ class LoginViewController: UIViewController {
   
   func didTapButtonAction() {
     
-    let onBoardingVC = OnboardingViewController(),
+    let onBoardingVC = OnboardingStep1ViewController(),
         onBoardingNaviVC = UINavigationController(rootViewController: onBoardingVC)
     
     CommonAction.shared.touchActionEffect(self.loginButton) {

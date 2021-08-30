@@ -8,14 +8,18 @@
 import UIKit
 import RxSwift
 
-class OnboardingViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class OnboardingStep1ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
   
   private let bag = DisposeBag()
   
-  private let changeWindow = ChangeWindow()
+  private let changeWindow = ChangeWindow(),
+              setNext = NextButtonStatus()
   
   // MARK: Model
   private let onboardingModel = OnboardingModel.shared
+  
+  // MARK: ViewModel
+  public let onboardingViewModel = OnboardingViewModel()
   
   // MARK: View
   private let titleLabel = UILabel().then {
@@ -62,13 +66,10 @@ class OnboardingViewController: UIViewController, UIPickerViewDataSource, UIPick
                       height: CommonLength.shared.width(300))
   }
   
-  private let nextButton = UIButton().then {
+  private var nextButton = UIButton().then {
     $0.setTitle("확인",
                 for: .normal)
-    $0.setTitleColor(UIColor.lightGray,
-                     for: .normal)
-    $0.backgroundColor = UIColor.joinusColor.genderDeselectedGray
-    $0.titleLabel?.font = UIFont.joinuns.font(size: 13)
+    $0.titleLabel?.font = UIFont.joinuns.font(size: 15)
     $0.layer.cornerRadius = 2
   }
   
@@ -78,7 +79,7 @@ class OnboardingViewController: UIViewController, UIPickerViewDataSource, UIPick
                                                action: nil)
   
   private let toolBarView = UIView().then {
-    $0.backgroundColor = .yellow
+    $0.backgroundColor = .white
   }
   
   private let customOkBarButtonItem = UIButton().then {
@@ -97,6 +98,18 @@ class OnboardingViewController: UIViewController, UIPickerViewDataSource, UIPick
     $0.titleLabel?.font = UIFont.joinuns.font(size: 17)
   }
   
+  override func loadView() {
+    super.loadView()
+    self.onboardingViewModel
+      .bindCheckNextStep()
+    self.onboardingViewModel
+      .enableStep2outputSubject
+      .bind(onNext: { isEnable in
+        self.nextButton.isEnabled = isEnable
+        self.setNext.buttonStatus(nextButton: self.nextButton)
+      }).disposed(by: bag)
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view.backgroundColor = .white
@@ -110,9 +123,10 @@ class OnboardingViewController: UIViewController, UIPickerViewDataSource, UIPick
     self.pickerView.dataSource = self
     self.inputBarButton()
     self.tapDoneButton()
+    self.didTapNextButton()
   }
   
-  func setupUI() {
+  private func setupUI() {
     [titleLabel,
      maleButton, femaleButton,
      agePickerTextField,
@@ -146,14 +160,14 @@ class OnboardingViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     nextButton.snp.makeConstraints {
-      $0.top.equalTo(agePickerTextField.snp.bottom).offset(CommonLength.shared.height(60))
+      $0.bottom.equalToSuperview().offset(-CommonLength.shared.height(200))
       $0.centerX.equalToSuperview()
       $0.width.equalToSuperview().multipliedBy(0.9)
       $0.height.equalTo(CommonLength.shared.height(50))
     }
   }
   
-  func setMaleButtonStatus() {
+  private func setMaleButtonStatus() {
     
     if self.maleButton.isSelected {
       
@@ -165,7 +179,7 @@ class OnboardingViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
   }
   
-  func setFemaleButtonStatus() {
+  private func setFemaleButtonStatus() {
     
     if self.femaleButton.isSelected {
       
@@ -186,7 +200,7 @@ class OnboardingViewController: UIViewController, UIPickerViewDataSource, UIPick
   }
   
   private func inputBarButton() {
- 
+    
     self.toolBarView.addSubview(customOkBarButtonItem)
     self.toolBarView.addSubview(customCancelBarButtonItem)
     
@@ -235,6 +249,10 @@ class OnboardingViewController: UIViewController, UIPickerViewDataSource, UIPick
         
         self.view.endEditing(true)
         
+        self.onboardingViewModel
+          .selectAgeInputSubject
+          .onNext(self.onboardingModel.myAge)
+        
       }).disposed(by: self.bag)
   }
   
@@ -257,34 +275,64 @@ class OnboardingViewController: UIViewController, UIPickerViewDataSource, UIPick
   }
   
   private func didTapSelectGenderButton() {
+    enum gender {
+      case male, female
+    }
     
-    self.maleButton
-      .rx
-      .tap
-      .asDriver()
-      .drive(onNext: {
-      
-        self.maleButton.isSelected = true
-        self.femaleButton.isSelected = false
+    Observable
+      .of(self.maleButton.rx.tap.map { gender.male },
+          self.femaleButton.rx.tap.map { gender.female })
+      .merge()
+      .asObservable()
+      .bind { selectGender in
+        
+        var maleSelect = Bool(),
+            myGender = Int()
+        
+        switch selectGender {
+          
+          case .male:
+            
+            maleSelect = true
+            myGender = 0
+            
+          case .female:
+            
+            maleSelect = false
+            myGender = 1
+        }
+        
+        self.maleButton.isSelected = maleSelect
+        self.femaleButton.isSelected = !maleSelect
         
         self.setMaleButtonStatus()
         self.setFemaleButtonStatus()
         
-      }).disposed(by: self.bag)
+        self.onboardingModel.myGender = myGender
+        self.onboardingViewModel
+          .selectGenderInputSubject
+          .onNext(myGender)
+        
+      }.disposed(by: self.bag)
+  }
+  
+  private func didTapNextButton() {
     
-    self.femaleButton
-      .rx
-      .tap
-      .asDriver()
-      .drive(onNext: {
+    let onboardingStept2VC = OnboardingStep2ViewController()
+    
+    CommonAction.shared.touchActionEffect(self.nextButton) {
       
-        self.maleButton.isSelected = false
-        self.femaleButton.isSelected = true
+      if self.nextButton.isEnabled {
         
-        self.setMaleButtonStatus()
-        self.setFemaleButtonStatus()
+        self.onboardingModel
+          .myGames
+          .removeAll()
         
-      }).disposed(by: self.bag)
+        self.navigationController?
+          .pushViewController(onboardingStept2VC,
+                              animated: true)
+      }
+    }
   }
   
   func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -298,7 +346,7 @@ class OnboardingViewController: UIViewController, UIPickerViewDataSource, UIPick
   func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
     return CommonLength.shared.height(42)
   }
-
+  
   func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
     
     let label = (view as? UILabel) ?? UILabel()
