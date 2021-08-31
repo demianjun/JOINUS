@@ -9,15 +9,18 @@ import UIKit
 
 class LaunchViewController: UIViewController {
   
-  // MARK: CommonAttributte
+  private let changeVC = ChangeViewController()
   
   
   // MARK: View
-  private let symbolImage = UIImageView()
+  private let symbolImageView = UIImageView().then {
+    $0.image = UIImage(named: "invalidName")
+    $0.contentMode = .scaleAspectFit
+  }
   
-  private let logoLable = UILabel().then {
-    $0.text = "JOINUS"
-    $0.font = UIFont.joinuns.font(size: 50)
+  private let logoImageView = UIImageView().then {
+    $0.image = UIImage(named: "invalidName-1")
+    $0.contentMode = .scaleAspectFit
   }
   
   private let backGroundView = UIView().then {
@@ -34,22 +37,30 @@ class LaunchViewController: UIViewController {
   
   private func setupUI() {
     
-    [backGroundView, logoLable].forEach { self.view.addSubview($0) }
+    [backGroundView, symbolImageView, logoImageView].forEach { self.view.addSubview($0) }
     
     backGroundView.snp.makeConstraints {
       $0.edges.equalToSuperview()
     }
     
-    logoLable.snp.makeConstraints {
-      $0.center.equalToSuperview()
+    symbolImageView.snp.makeConstraints {
+      $0.centerX.equalToSuperview()
+      $0.bottom.equalTo(self.view.snp.centerY)
+      $0.width.equalTo(CommonLength.shared.width(100))
+      $0.height.equalTo(CommonLength.shared.height(62))
+    }
+    
+    logoImageView.snp.makeConstraints {
+      $0.top.equalTo(symbolImageView.snp.bottom).offset(CommonLength.shared.height(10))
+      $0.centerX.equalToSuperview()
+      $0.width.equalTo(CommonLength.shared.width(100))
+      $0.height.equalTo(CommonLength.shared.height(20))
     }
   }
   
-  let changeVC = ChangeViewController()
-  
   private func changeLoginVC() {
     
-    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
       let loginVC = LoginViewController(),
           loginNaviVC = UINavigationController(rootViewController: loginVC)
       

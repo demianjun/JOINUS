@@ -82,6 +82,10 @@ class OnboardingStep1ViewController: UIViewController, UIPickerViewDataSource, U
     $0.backgroundColor = .white
   }
   
+  private let partitionView = UIView().then {
+    $0.backgroundColor = CommonColor.shared.customColor(r: 17, g: 17, b: 17, alpha: 0.6)//gray
+  }
+  
   private let customOkBarButtonItem = UIButton().then {
     $0.setTitle("확인",
                 for: .normal)
@@ -102,6 +106,7 @@ class OnboardingStep1ViewController: UIViewController, UIPickerViewDataSource, U
     super.loadView()
     self.onboardingViewModel
       .bindCheckNextStep()
+    
     self.onboardingViewModel
       .enableStep2outputSubject
       .bind(onNext: { isEnable in
@@ -203,6 +208,7 @@ class OnboardingStep1ViewController: UIViewController, UIPickerViewDataSource, U
     
     self.toolBarView.addSubview(customOkBarButtonItem)
     self.toolBarView.addSubview(customCancelBarButtonItem)
+    self.toolBarView.addSubview(partitionView)
     
     self.toolBarView.frame = CGRect(x: 0, y:0,
                                     width: CommonLength.shared.width(375),
@@ -210,16 +216,22 @@ class OnboardingStep1ViewController: UIViewController, UIPickerViewDataSource, U
     
     customCancelBarButtonItem.snp.makeConstraints {
       $0.centerY.equalToSuperview()
-      $0.leading.equalToSuperview().offset(CommonLength.shared.width(17))
+      $0.leading.equalToSuperview().offset(CommonLength.shared.width(15))
       $0.width.equalTo(CommonLength.shared.width(50))
       $0.height.equalTo(CommonLength.shared.height(30))
     }
     
     customOkBarButtonItem.snp.makeConstraints {
       $0.centerY.equalToSuperview()
-      $0.trailing.equalToSuperview().offset(-CommonLength.shared.width(17))
+      $0.trailing.equalToSuperview().offset(-CommonLength.shared.width(15))
       $0.width.equalTo(CommonLength.shared.width(50))
       $0.height.equalTo(CommonLength.shared.height(30))
+    }
+    
+    partitionView.snp.makeConstraints {
+      $0.bottom.equalTo(self.toolBarView.snp.top)
+      $0.height.equalTo(1)
+      $0.width.centerX.equalToSuperview()
     }
     
     self.agePickerTextField.inputAccessoryView = self.toolBarView
@@ -323,10 +335,6 @@ class OnboardingStep1ViewController: UIViewController, UIPickerViewDataSource, U
     CommonAction.shared.touchActionEffect(self.nextButton) {
       
       if self.nextButton.isEnabled {
-        
-        self.onboardingModel
-          .myGames
-          .removeAll()
         
         self.navigationController?
           .pushViewController(onboardingStept2VC,

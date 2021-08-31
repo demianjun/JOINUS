@@ -11,7 +11,7 @@ class OnboardingModel {
   static let shared = OnboardingModel()
   
   enum myGame: String {
-    case lol, sudden, overWatch, battelGround, mapleStory
+    case lol, sudden, overWatch, battleGround, mapleStory
   }
   
   var ages: [String] {
@@ -26,5 +26,6 @@ class OnboardingModel {
   
   var myAge = Int(),
       myGender = Int(),
-      myGames = [String]()
+      myGameID = String()
+      
 }

@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
+//    let launchVC = OnboardingStep3ViewController(),
     let launchVC = LaunchViewController(),
         naviVC = UINavigationController.init(rootViewController: launchVC)
     

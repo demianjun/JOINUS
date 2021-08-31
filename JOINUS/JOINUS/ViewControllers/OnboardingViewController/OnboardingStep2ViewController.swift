@@ -31,15 +31,25 @@ class OnboardingStep2ViewController: UIViewController {
                    alignment: .left)
   }
   
-  private let lolButton = GameSelectButton(title: "LOL")
+  private let lolButton = GameSelectButton(game: .lol).then {
+    $0.backgroundColor = .red
+  }
   
-  private let ovchButton = GameSelectButton(title: "O.W")
+  private let ovchButton = GameSelectButton(game: .overWatch).then {
+    $0.backgroundColor = .blue
+  }
   
-  private let suddenButton = GameSelectButton(title: "S.A")
+  private let suddenButton = GameSelectButton(game: .sudden).then {
+    $0.backgroundColor = .yellow
+  }
   
-  private let bagButton = GameSelectButton(title: "B.G")
+  private let bagButton = GameSelectButton(game: .battleGround).then {
+    $0.backgroundColor = .darkGray
+  }
   
-  private let mapleButton = GameSelectButton(title: "Maple")
+  private let mapleButton = GameSelectButton(game: .mapleStory).then {
+    $0.backgroundColor = .cyan
+  }
   
   
   private let gudieLabel = UILabel().then {
@@ -64,15 +74,14 @@ class OnboardingStep2ViewController: UIViewController {
     super.loadView()
     self.onboardingViewModel
       .bindCheckMyGame()
+    
     self.onboardingViewModel
       .enalbeStep3outputSubject
       .asObservable()
       .bind(onNext: { isEnable in
-        
         self.nextButton.isEnabled = isEnable
         self.setNext.buttonStatus(nextButton: self.nextButton)
-        
-      }).disposed(by: self.bag)
+      }).disposed(by: bag)
   }
   
   override func viewDidLoad() {
@@ -82,6 +91,7 @@ class OnboardingStep2ViewController: UIViewController {
     self.setNavigationBar()
     self.popViewController()
     self.didTapGameButton()
+    self.didTapNextButton()
   }
   
   private func setupUI() {
@@ -93,7 +103,7 @@ class OnboardingStep2ViewController: UIViewController {
     
     titleLabel.snp.makeConstraints {
       $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(CommonLength.shared.height(40))
-      $0.centerX.equalToSuperview()
+      $0.leading.equalToSuperview().offset(CommonLength.shared.width(15))
       $0.width.equalToSuperview().multipliedBy(0.9)
     }
     
@@ -162,12 +172,11 @@ class OnboardingStep2ViewController: UIViewController {
          self.mapleButton].forEach {
           
           $0.isSelected = false
-          self.setButtonStatus(sender: $0)
         }
          
         self.onboardingViewModel
-          .selectMyGamesInputSubject
-          .onNext([String]())
+          .selectMyGameInputSubject
+          .onNext(String())
         
         self.navigationController?
           .popViewController(animated: true)
@@ -175,27 +184,14 @@ class OnboardingStep2ViewController: UIViewController {
       }).disposed(by: self.bag)
   }
   
-  private func setButtonStatus(sender: GameSelectButton) {
-    
-    sender.useGameImageView().isHidden = !sender.isSelected
-    
-    if sender.isSelected {
-      
-      sender.useGameImageView().image = UIImage(systemName: "heart")
-      
-    } else {
-      
-      sender.useGameImageView().image = UIImage()
-    }
-  }
-  
   private func didTapGameButton() {
     
-    let game = OnboardingModel.myGame.self
+    let game = OnboardingModel.myGame.self,
+        isSelect = true
     
     Observable
       .of(self.lolButton.rx.tap.map { game.lol },
-          self.bagButton.rx.tap.map { game.battelGround },
+          self.bagButton.rx.tap.map { game.battleGround },
           self.suddenButton.rx.tap.map { game.sudden },
           self.ovchButton.rx.tap.map { game.overWatch },
           self.mapleButton.rx.tap.map { game.mapleStory })
@@ -203,61 +199,68 @@ class OnboardingStep2ViewController: UIViewController {
       .asDriver(onErrorJustReturn: .lol)
       .drive { myGame in
         
-        var button = UIButton(),
-            isSelect = Bool()
-        
         switch myGame {
-          
+        
           case .lol:
             
-            button = self.lolButton
-            isSelect = true
+            self.lolButton.isSelected = isSelect
+            self.bagButton.isSelected = !isSelect
+            self.suddenButton.isSelected = !isSelect
+            self.ovchButton.isSelected = !isSelect
+            self.mapleButton.isSelected = !isSelect
             
           case .sudden:
             
-            button = self.suddenButton
-            isSelect = true
+            self.lolButton.isSelected = !isSelect
+            self.suddenButton.isSelected = isSelect
+            self.ovchButton.isSelected = !isSelect
+            self.bagButton.isSelected = !isSelect
+            self.mapleButton.isSelected = !isSelect
             
           case .overWatch:
             
-            button = self.ovchButton
-            isSelect = true
+            self.lolButton.isSelected = !isSelect
+            self.suddenButton.isSelected = !isSelect
+            self.ovchButton.isSelected = isSelect
+            self.bagButton.isSelected = !isSelect
+            self.mapleButton.isSelected = !isSelect
             
-          case .battelGround:
+          case .battleGround:
             
-            button = self.bagButton
-            isSelect = true
+            self.lolButton.isSelected = !isSelect
+            self.suddenButton.isSelected = !isSelect
+            self.ovchButton.isSelected = !isSelect
+            self.bagButton.isSelected = isSelect
+            self.mapleButton.isSelected = !isSelect
             
           case .mapleStory:
             
-            button = self.mapleButton
-            isSelect = true
+            self.lolButton.isSelected = !isSelect
+            self.suddenButton.isSelected = !isSelect
+            self.ovchButton.isSelected = !isSelect
+            self.bagButton.isSelected = !isSelect
+            self.mapleButton.isSelected = isSelect
         }
-        
-        if button.isSelected {
-          
-          button.isSelected = !isSelect
-          
-          if let idx = self.onboardingModel.myGames.firstIndex(of: myGame.rawValue) {
-           
-            self.onboardingModel
-              .myGames
-              .remove(at: idx)
-          }
-        } else {
-          
-          button.isSelected = isSelect
-          
-          self.onboardingModel.myGames
-            .append(myGame.rawValue)
-        }
-        
-        self.setButtonStatus(sender: button as! GameSelectButton)
         
         self.onboardingViewModel
-          .selectMyGamesInputSubject
-          .onNext(self.onboardingModel.myGames)
-        
+          .selectMyGameInputSubject
+          .onNext(myGame.rawValue)
+          
       }.disposed(by: self.bag)
+  }
+  
+  private func didTapNextButton() {
+    
+    let onboardingStept3VC = OnboardingStep3ViewController()
+    
+    CommonAction.shared.touchActionEffect(self.nextButton) {
+      
+      if self.nextButton.isEnabled {
+        
+        self.navigationController?
+          .pushViewController(onboardingStept3VC,
+                              animated: true)
+      }
+    }
   }
 }

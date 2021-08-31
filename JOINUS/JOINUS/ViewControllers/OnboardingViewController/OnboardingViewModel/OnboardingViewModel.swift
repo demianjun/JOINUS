@@ -13,7 +13,8 @@ class OnboardingViewModel {
   // MARK: Input
   let selectGenderInputSubject = PublishSubject<Int>(),
       selectAgeInputSubject = PublishSubject<Int>(),
-      selectMyGamesInputSubject = PublishSubject<[String]>()
+      selectMyGameInputSubject = PublishSubject<String>(),
+      inputGameID = PublishSubject<String>()
   
   // MARK: Output
   let enableStep2outputSubject = BehaviorSubject(value: false),
@@ -35,10 +36,18 @@ class OnboardingViewModel {
   
   func bindCheckMyGame() {
     
-    _ = self.selectMyGamesInputSubject
+    _ = self.selectMyGameInputSubject
       .asObserver()
-      .map(self.checkMyFavoriteGames(games:))
+      .map(self.checkMyFavoriteGames(game:))
       .bind(to: self.enalbeStep3outputSubject)   
+  }
+  
+  func bindInputGameID() {
+    
+    _ = self.inputGameID
+      .asObserver()
+      .map(self.inputGameID(id:))
+      .bind(to: self.enalbeStep4outputSubject)
   }
   
   // MARK: Method
@@ -63,17 +72,33 @@ class OnboardingViewModel {
     return result
   }
   
-  func checkMyFavoriteGames(games: [String]) -> Bool {
+  func checkMyFavoriteGames(game: String) -> Bool {
     
     var result = Bool()
     
-    if games.count != 0 {
+    if game.isEmpty {
       
-      result = true
+      result = false
       
     } else {
       
+      result = true
+    }
+    
+    return result
+  }
+  
+  func inputGameID(id: String) -> Bool {
+    
+    var result = Bool()
+    
+    if id.isEmpty {
+      
       result = false
+      
+    } else {
+      
+      result = true
     }
     
     return result
