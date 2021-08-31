@@ -16,23 +16,22 @@ class LoginViewController: UIViewController {
   
   private let changeWindow = ChangeWindow()
   
-  private let signInConfig = GIDConfiguration.init(clientID: "1012388240225-lmalqape8ejnija8rab1g5rde2f2g2p2.apps.googleusercontent.com")
+//  private let signInConfig = GIDConfiguration.init(clientID: "1012388240225-lmalqape8ejnija8rab1g5rde2f2g2p2.apps.googleusercontent.com")
   
   // MARK: View
-  private let googleLoginButton = GIDSignInButton().then {
-    $0.colorScheme = .light
-    $0.style = .wide
+  private let symbolImageView = UIImageView().then {
+    $0.image = UIImage(named: "invalidName")
+    $0.contentMode = .scaleAspectFit
   }
   
-  private let loginButton = UIButton().then {
-    $0.setTitle("구글로 시작하기",
-                for: .normal)
-    $0.setTitleColor(.black,
-                     for: .normal)
-    $0.titleLabel?.font = UIFont.joinuns.font(size: 17)
-    $0.backgroundColor = .white
-    $0.layer.cornerRadius = 4
-  }
+  private let loginLogoView = LoginLogoView()
+  
+  private let googleLoginButton = GoogleLoginButton()
+  
+//  private let googleLoginButton = GIDSignInButton().then {
+//    $0.colorScheme = .light
+//    $0.style = .wide
+//  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -43,6 +42,7 @@ class LoginViewController: UIViewController {
 //    self.googleLoginButton.addTarget(self,
 //                                     action: #selector(buttonAction(_:)),
 //                                     for: .touchUpInside)
+    
   }
   
   private func setupUI() {
@@ -53,12 +53,26 @@ class LoginViewController: UIViewController {
 //      $0.center.equalToSuperview()
 //    }
     
-    [loginButton].forEach { self.view.addSubview($0) }
+    [symbolImageView, loginLogoView, googleLoginButton].forEach { self.view.addSubview($0) }
+
+    symbolImageView.snp.makeConstraints {
+      $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(CommonLength.shared.height(100))
+      $0.leading.equalToSuperview().offset(CommonLength.shared.width(21))
+      $0.width.equalTo(CommonLength.shared.width(100))
+      $0.height.equalTo(CommonLength.shared.height(62))
+    }
     
-    loginButton.snp.makeConstraints {
-      $0.width.equalToSuperview().multipliedBy(0.7)
-      $0.height.equalTo(CommonLength.shared.height(35))
-      $0.center.equalToSuperview()
+    loginLogoView.snp.makeConstraints {
+      $0.top.equalTo(symbolImageView.snp.bottom).offset(CommonLength.shared.height(55))
+      $0.leading.equalToSuperview().offset(CommonLength.shared.width(21))
+      $0.width.equalTo(CommonLength.shared.width(170))
+    }
+    
+    googleLoginButton.snp.makeConstraints {
+      $0.top.equalTo(loginLogoView.snp.bottom).offset(CommonLength.shared.height(105))
+      $0.width.equalToSuperview().multipliedBy(0.9)
+      $0.centerX.equalToSuperview()
+      $0.height.equalTo(CommonLength.shared.height(50))
     }
   }
   
@@ -67,36 +81,41 @@ class LoginViewController: UIViewController {
     let onBoardingVC = OnboardingStep1ViewController(),
         onBoardingNaviVC = UINavigationController(rootViewController: onBoardingVC)
     
-    CommonAction.shared.touchActionEffect(self.loginButton) {
+    CommonAction.shared.touchActionEffect(self.googleLoginButton) {
       
-      self.changeWindow.change(change: onBoardingNaviVC)
+      self.signUp(token: "")
+      
+      self.changeWindow
+        .change(change: onBoardingNaviVC)
     }
   }
   
-  @objc private func buttonAction(_ sender: UIButton) {
-   
-    GIDSignIn.sharedInstance.signIn(with: self.signInConfig,
-                                    presenting: self) { user, err in
-      
-      if let err = err {
-        
-        print("login" + err.localizedDescription)
-        
-      } else {
-        
+//  @objc private func buttonAction(_ sender: UIButton) {
+//
+//    GIDSignIn.sharedInstance.signIn(with: self.signInConfig,
+//                                    presenting: self) { user, err in
+//
+//      if let err = err {
+//
+//        print("login" + err.localizedDescription)
+//
+//      } else {
+//
 //        guard let token = user?.authentication.accessToken else { return }
-        guard let token = user?.authentication.idToken else { return }
-        print("-> user: \(user?.authentication.clientID)")
-        print("-> user token: \(token)")
-        self.signUp(token: token)
-      }
-    }
-  }
+////        guard let token = user?.authentication.idToken else { return }
+//        print("-> user: \(user?.authentication.clientID)")
+//        print("-> user token: \(token)")
+//        self.signUp(token: token)
+//      }
+//    }
+//  }
   
   func signUp(token: String) {
-    let url = "http://ec2-3-128-67-103.us-east-2.compute.amazonaws.com:80/api/login?" + "code=" + token
+    
+    let url = "https://accounts.google.com/o/oauth2/v2/auth?scope=profile&response_type=code&client_id=139499651998-5mhlkgtpjgmlfbu4evd6i6a7oarrisdu.apps.googleusercontent.com&redirect_uri=http://ec2-3-128-67-103.us-east-2.compute.amazonaws.com:8080/api/login/"
+    
+//    let url = "http://ec2-3-128-67-103.us-east-2.compute.amazonaws.com:80/api/login?" + "code=" + token
 
-    print("-> url: \(url)")
     AF.request(url,
                method: .get)
       .validate(statusCode: 150..<800)
@@ -107,11 +126,11 @@ class LoginViewController: UIViewController {
             do {
               let temp = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted),
                   data = try JSONDecoder().decode(Get.self, from: temp)
-              
+
               print(data)
               
             } catch(let err) {
-              
+
               print(err.localizedDescription + "-> 1")
             }
             
@@ -125,44 +144,67 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController {
   
-  struct Get: Decodable {
-    var age = Int(),
-        firebaseToken = String(),
-        gender = Int(),
-        imageAddress = String(),
-        nickName = String(),
-        pk = Int(),
-        token = String()
+  struct Get: Codable {
+    
+    var age: Int?,
+        gender: Int?,
+        pk: Int?,
+        firebaseToken: String?,
+        imageAddress: String?,
+        nickName: String?,
+        token: String?,
+        login: Bool?
     
     enum CodingKeys: String, CodingKey {
-      case age, gender, pk, token
+      case age, gender, pk, token, login
       case firebaseToken = "firebase_token", imageAddress = "image_address", nickName = "nickname"
     }
-    
-    init(from decoder: Decoder) throws {
-      let container = try decoder.container(keyedBy: CodingKeys.self)
-      
-      age = try container.decode(Int.self,
-                                 forKey: .age)
-      
-      firebaseToken = try container.decode(String.self,
-                                           forKey: .firebaseToken)
-      
-      gender = try container.decode(Int.self,
-                                    forKey: .gender)
-      
-      imageAddress = try container.decode(String.self,
-                                          forKey: .imageAddress)
-      
-      nickName = try container.decode(String.self,
-                                      forKey: .nickName)
-      
-      pk = try container.decode(Int.self,
-                                forKey: .pk)
-      
-      token = try container.decode(String.self,
-                                   forKey: .token)
-    }
   }
+  
+//  struct Get: Decodable {
+//
+//    var age: Int?,
+//        gender: Int?,
+//        pk: Int?,
+//        firebaseToken: String?,
+//        imageAddress: String?,
+//        nickName: String?,
+//        token: String?,
+//        login: Bool?
+//
+//    enum CodingKeys: String, CodingKey {
+//      case age, gender, pk, token, login
+//      case firebaseToken = "firebase_token", imageAddress = "image_address", nickName = "nickname"
+//    }
+//
+//
+//    init(from decoder: Decoder) throws {
+//      let container = try decoder.container(keyedBy: CodingKeys.self)
+//
+//      age = try container.decode(Int.self,
+//                                 forKey: .age)
+//
+//      firebaseToken = try container.decode(String.self,
+//                                           forKey: .firebaseToken)
+//
+//      gender = try container.decode(Int.self,
+//                                    forKey: .gender)
+//
+//      imageAddress = try container.decode(String.self,
+//                                          forKey: .imageAddress)
+//
+//      nickName = try container.decode(String.self,
+//                                      forKey: .nickName)
+//
+//      pk = try container.decode(Int.self,
+//                                forKey: .pk)
+//
+//      token = try container.decode(String.self,
+//                                   forKey: .token)
+//
+//      login = try container.decode(Bool.self,
+//                                   forKey: .login)
+//    }
+//  }
 }
 

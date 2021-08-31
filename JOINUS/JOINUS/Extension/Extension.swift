@@ -83,6 +83,24 @@ extension UILabel {
   }
 }
 
+extension UITextField {
+  func addLeftPadding(width: CGFloat) {
+    let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: self.frame.height))
+    self.leftView = paddingView
+    self.leftViewMode = ViewMode.always
+  }
+  
+  func addPadding(width: CGFloat) {
+    let leftPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: self.frame.height)),
+        rightPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: self.frame.height))
+    
+    self.leftView = leftPaddingView
+    self.rightView = rightPaddingView
+    self.leftViewMode = ViewMode.always
+    self.rightViewMode = ViewMode.whileEditing
+  }
+}
+
 extension String {
   var localized: String {
     return NSLocalizedString(self,
