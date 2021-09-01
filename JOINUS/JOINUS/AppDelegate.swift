@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
-//    let launchVC = OnboardingStep3ViewController(),
-    let launchVC = LaunchViewController(),
+    let launchVC = ProfileViewControllerViewController(),
+//    let launchVC = LaunchViewController(),
         naviVC = UINavigationController.init(rootViewController: launchVC)
     
     self.window = UIWindow(frame: UIScreen.main.bounds)
@@ -29,16 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     self.window?.rootViewController = naviVC
     self.window?.makeKeyAndVisible()
     
-    GIDSignIn.sharedInstance.restorePreviousSignIn { user, err in
-      
-      if err != nil || user == nil {
-        
-        print("log in user: \(user)")
-        
-      } else {
-        
-      }
-    }
+    FirebaseApp.configure()
+    
     // Override point for customization after application launch.
     return true
   }
@@ -46,19 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
     -> Bool {
     
-    var handled: Bool
-    
-    handled = GIDSignIn.sharedInstance.handle(url)
-    
-    if handled {
-      
-      return true
-      
-    } else {
-      
-      return false
-      
-    }
+    return GIDSignIn.sharedInstance.handle(url)
   }
 }
 

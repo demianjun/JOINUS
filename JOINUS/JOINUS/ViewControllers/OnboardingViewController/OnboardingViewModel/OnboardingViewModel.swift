@@ -14,14 +14,16 @@ class OnboardingViewModel {
   let selectGenderInputSubject = PublishSubject<Int>(),
       selectAgeInputSubject = PublishSubject<Int>(),
       selectMyGameInputSubject = PublishSubject<String>(),
-      inputGameID = PublishSubject<String>()
+      inputGameID = PublishSubject<String>(),
+      inputMyTier = PublishSubject<String>()
   
   // MARK: Output
   let enableStep2outputSubject = BehaviorSubject(value: false),
-      enalbeStep3outputSubject = BehaviorSubject(value: false),
-      enalbeStep4outputSubject = BehaviorSubject(value: false),
-      enalbeStep5outputSubject = BehaviorSubject(value: false)
-  
+      enableStep3outputSubject = BehaviorSubject(value: false),
+      enableStep4outputSubject = BehaviorSubject(value: false),
+      enableStep5outputSubject = BehaviorSubject(value: false),
+      enableProfileVCoutputSubject = BehaviorSubject(value: false)
+      
   // MARK: Bind
   
   func bindCheckNextStep() {
@@ -39,7 +41,7 @@ class OnboardingViewModel {
     _ = self.selectMyGameInputSubject
       .asObserver()
       .map(self.checkMyFavoriteGames(game:))
-      .bind(to: self.enalbeStep3outputSubject)   
+      .bind(to: self.enableStep3outputSubject)   
   }
   
   func bindInputGameID() {
@@ -47,7 +49,15 @@ class OnboardingViewModel {
     _ = self.inputGameID
       .asObserver()
       .map(self.inputGameID(id:))
-      .bind(to: self.enalbeStep4outputSubject)
+      .bind(to: self.enableStep4outputSubject)
+  }
+  
+  func bindInputMyTier() {
+    
+    _ = self.inputMyTier
+      .asObserver()
+      .map(self.inputGameID(id:))
+      .bind(to: self.enableProfileVCoutputSubject)
   }
   
   // MARK: Method
@@ -93,6 +103,22 @@ class OnboardingViewModel {
     var result = Bool()
     
     if id.isEmpty {
+      
+      result = false
+      
+    } else {
+      
+      result = true
+    }
+    
+    return result
+  }
+  
+  func inputMyTier(tier: String) -> Bool {
+    
+    var result = Bool()
+    
+    if tier.isEmpty {
       
       result = false
       

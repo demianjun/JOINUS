@@ -24,7 +24,12 @@ extension UIColor {
                genderDeselectedGray = CommonColor.shared.customColor(r: 112, g: 112, b: 112),
                gameSelectGreen = CommonColor.shared.customColor(r: 0, g: 253, b: 127, alpha: 0.6),
                gameIdTextFieldBgGray = CommonColor.shared.customColor(r: 17, g: 17, b: 17, alpha: 0.13),
-               gameIdTextFieldPlaceholderGray = CommonColor.shared.customColor(r: 17, g: 17, b: 17, alpha: 0.3)
+               gameIdTextFieldPlaceholderGray = CommonColor.shared.customColor(r: 17, g: 17, b: 17, alpha: 0.3),
+               tierGray = gameIdTextFieldPlaceholderGray,
+               defaultPhotoGray = CommonColor.shared.customColor(r: 17, g: 17, b: 17, alpha: 0.6),
+               defaultPhotoButtonGray = gameIdTextFieldBgGray,
+               defaultImagePink = CommonColor.shared.customColor(r: 255, g: 0, b: 140),
+               actionSheetGray = CommonColor.shared.customColor(r: 255, g: 255, b: 255, alpha: 0.6)
     
     let temp = #colorLiteral(red: 0.4391763508, green: 0.4392417669, blue: 0.4391556382, alpha: 1)
   }
