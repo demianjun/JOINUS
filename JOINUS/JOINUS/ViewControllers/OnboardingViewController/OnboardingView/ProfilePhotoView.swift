@@ -10,8 +10,7 @@ import UIKit
 class ProfilePhotoView: UIView {
   // MARK: View
   private let profileImageView = UIImageView().then {
-    $0.image = UIImage(named: "profile_60x60")
-    $0.contentMode = .scaleAspectFill
+    $0.contentMode = .scaleAspectFit
   }
   
   private let plusImageView = UIImageView().then {

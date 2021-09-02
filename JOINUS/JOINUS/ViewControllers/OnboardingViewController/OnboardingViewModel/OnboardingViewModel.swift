@@ -15,14 +15,16 @@ class OnboardingViewModel {
       selectAgeInputSubject = PublishSubject<Int>(),
       selectMyGameInputSubject = PublishSubject<String>(),
       inputGameID = PublishSubject<String>(),
-      inputMyTier = PublishSubject<String>()
+      inputMyTier = PublishSubject<String>(),
+      selectProfileImageInputSubject = PublishSubject<UIImage>()
   
   // MARK: Output
   let enableStep2outputSubject = BehaviorSubject(value: false),
       enableStep3outputSubject = BehaviorSubject(value: false),
       enableStep4outputSubject = BehaviorSubject(value: false),
       enableStep5outputSubject = BehaviorSubject(value: false),
-      enableProfileVCoutputSubject = BehaviorSubject(value: false)
+      enableProfileVCoutputSubject = BehaviorSubject(value: false),
+      myProfileImageOutputSubject = BehaviorSubject(value: UIImage(named: "profile"))
       
   // MARK: Bind
   
@@ -58,6 +60,13 @@ class OnboardingViewModel {
       .asObserver()
       .map(self.inputGameID(id:))
       .bind(to: self.enableProfileVCoutputSubject)
+  }
+  
+  func bindSelectProfileImage() {
+    
+    _ = self.selectProfileImageInputSubject
+      .asObserver()
+      .bind(to: self.myProfileImageOutputSubject)
   }
   
   // MARK: Method
@@ -129,4 +138,5 @@ class OnboardingViewModel {
     
     return result
   }
+  
 }

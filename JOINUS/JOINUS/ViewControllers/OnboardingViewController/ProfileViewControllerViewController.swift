@@ -23,6 +23,8 @@ class ProfileViewControllerViewController: UIViewController {
   // MARK: ViewModel
   public let onboardingViewModel = OnboardingViewModel()
   
+  private let joinusAlertVC = JoinusAlertViewController()
+  
   // MARK: View
   private let titleLabel = UILabel().then {
     $0.numberOfLines = 0
@@ -70,7 +72,15 @@ class ProfileViewControllerViewController: UIViewController {
   
   override func loadView() {
     super.loadView()
+    self.joinusAlertVC
+      .onboardingViewModel
+      .bindSelectProfileImage()
     
+    self.joinusAlertVC
+      .onboardingViewModel
+      .myProfileImageOutputSubject
+      .bind(to: self.profilePhotoView.useProfileImageView().rx.image)
+      .disposed(by: self.bag)
   }
   
   override func viewDidLoad() {
@@ -167,10 +177,9 @@ class ProfileViewControllerViewController: UIViewController {
       .asDriver()
       .drive(onNext: { tap in
         
-        let joinusAlertVC = JoinusAlertViewController()
-        joinusAlertVC.modalPresentationStyle = .overFullScreen
+        self.joinusAlertVC.modalPresentationStyle = .overFullScreen
         
-        self.present(joinusAlertVC,
+        self.present(self.joinusAlertVC,
                      animated: false)
         
       }).disposed(by: self.bag)

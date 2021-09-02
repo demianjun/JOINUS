@@ -9,8 +9,8 @@ import UIKit
 import RxSwift
 import Photos
 
-class JoinusAlertViewController: UIViewController {
-
+class JoinusAlertViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CircleCropViewControllerDelegate {
+  
   private let bag = DisposeBag(),
               changeVC = ChangeViewController()
   
@@ -20,6 +20,7 @@ class JoinusAlertViewController: UIViewController {
   // MARK: Model
   
   // MARK: ViewModel
+  public let onboardingViewModel = OnboardingViewModel()
   
   // MARK: View
   private let backGroundView = UIView().then {
@@ -32,6 +33,8 @@ class JoinusAlertViewController: UIViewController {
   private let joinusActionSheetView = JoinusActionSheetView().then {
     $0.alpha = 1.0
   }
+  
+  private let picker = UIImagePickerController()
   
   // MARK: initialized
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -48,8 +51,9 @@ class JoinusAlertViewController: UIViewController {
     self.view.backgroundColor = .clear
     self.setupView()
     self.methods()
-    self.didTapCancelButton()
     self.didTapSelectAlbumButton()
+    self.didTapChangeDefaultImageButton()
+    self.didTapCancelButton()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -81,7 +85,7 @@ class JoinusAlertViewController: UIViewController {
   
   // MARK: Method
   func methods() {
-    
+    self.picker.delegate = self
   }
   
   private func didTapCancelButton() {
@@ -106,7 +110,6 @@ class JoinusAlertViewController: UIViewController {
         self.dismissAnimation()
         
       }).disposed(by: self.bag)
-    
   }
   
   private func didTapSelectAlbumButton() {
@@ -117,11 +120,31 @@ class JoinusAlertViewController: UIViewController {
       .asDriver()
       .drive(onNext: {
         
-        
         self.requestPhotosPermission()
         
       }).disposed(by: self.bag)
-    
+  }
+  
+  private func didTapChangeDefaultImageButton() {
+    self.joinusActionSheetView
+      .useChangeDefaultImageButton()
+      .rx
+      .tap
+      .asDriver()
+      .drive(onNext: {
+        
+        let defaultImage = UIImage(named: "profile")!
+        
+        self.onboardingViewModel
+          .selectProfileImageInputSubject
+          .onNext(defaultImage)
+        
+        self.view
+          .window?
+          .rootViewController?
+          .dismiss(animated: true)
+        
+      }).disposed(by: self.bag)
   }
   
   private func presentAnimation() {
@@ -186,9 +209,45 @@ class JoinusAlertViewController: UIViewController {
   }
   
   private func requestCollection() {
+    self.picker.sourceType = .photoLibrary
     
+    self.present(self.picker,
+                 animated: true)
   }
   
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    
+    if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+      
+      let circleCropVC = CircleCropViewController(withImage: image)
+      circleCropVC.modalPresentationStyle = .overFullScreen
+      circleCropVC.delegate = self
+
+      picker.dismiss(animated: true) {
+        
+        self.present(circleCropVC, animated: false)
+        
+      }
+    }
+  }
+  
+  func circleCropDidCancel() {
+    
+    self.dismiss(animated: true)
+  }
+  
+  func circleCropDidCropImage(_ image: UIImage) {
+    
+    self.onboardingViewModel
+      .selectProfileImageInputSubject
+      .onNext(image)
+    
+    self.view
+      .window?
+      .rootViewController?
+      .dismiss(animated: true)
+  }
+
   func useJoinusActionSheetView() -> JoinusActionSheetView {
     return self.joinusActionSheetView
   }

@@ -16,7 +16,8 @@ class OnboardingStep3ViewController: UIViewController {
               setNext = NextButtonStatus()
   
   // MARK: Model
-  private let onboardingModel = OnboardingModel.shared
+  private let onboardingModel = OnboardingModel.shared,
+              myInfoModel = MyInfoModel.shared
   
   // MARK: ViewModel
   private let onboardingViewModel = OnboardingViewModel()
@@ -252,7 +253,7 @@ class OnboardingStep3ViewController: UIViewController {
         
         guard let text = self.gameIdInputtextField.text else { return print("text field text return") }
         
-        self.onboardingModel
+        self.myInfoModel
           .myGameID = text
         
         self.view.endEditing(true)

@@ -16,7 +16,8 @@ class OnboardingStep4ViewController: UIViewController {
               setNext = NextButtonStatus()
   
   // MARK: Model
-  private let onboardingModel = OnboardingModel.shared
+  private let onboardingModel = OnboardingModel.shared,
+              myInfoModel = MyInfoModel.shared
   
   // MARK: ViewModel
   private let onboardingViewModel = OnboardingViewModel()
@@ -369,7 +370,7 @@ class OnboardingStep4ViewController: UIViewController {
             
         }
         
-        self.onboardingModel
+        self.myInfoModel
           .myTier = selectTier
         
         self.onboardingViewModel

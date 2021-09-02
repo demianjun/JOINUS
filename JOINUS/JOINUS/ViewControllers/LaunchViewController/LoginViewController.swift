@@ -38,9 +38,9 @@ class LoginViewController: UIViewController {
   }
   
   private func setupUI() {
-
+    
     [symbolImageView, loginLogoView, googleLoginButton].forEach { self.view.addSubview($0) }
-
+    
     symbolImageView.snp.makeConstraints {
       $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(CommonLength.shared.height(100))
       $0.leading.equalToSuperview().offset(CommonLength.shared.width(21))
@@ -84,7 +84,7 @@ class LoginViewController: UIViewController {
 //
 //        print("access token: \(authentication.accessToken)")
 //        print("id token: \(idToken)")
-//
+//        self.signUp(token: idToken)
 //        let credential = GoogleAuthProvider.credential(withIDToken: idToken,
 //                                                       accessToken: authentication.accessToken)
 //
@@ -118,10 +118,10 @@ class LoginViewController: UIViewController {
   
   func signUp(token: String) {
     
-    let url = "http://ec2-3-128-67-103.us-east-2.compute.amazonaws.com/notification/data"
+    //    let url = "http://ec2-3-128-67-103.us-east-2.compute.amazonaws.com/notification/data"
     
-//    let url = "http://ec2-3-128-67-103.us-east-2.compute.amazonaws.com:80/api/login?" + "code=" + token
-
+    let url = "http://ec2-3-128-67-103.us-east-2.compute.amazonaws.com:80/api/login?" + "code=" + token
+    
     AF.request(url,
                method: .get)
       .validate(statusCode: 150..<800)
@@ -132,11 +132,11 @@ class LoginViewController: UIViewController {
             do {
               let temp = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted),
                   data = try JSONDecoder().decode(Get.self, from: temp)
-
+              
               print(data)
               
             } catch(let err) {
-
+              
               print(err.localizedDescription + "-> 1")
             }
             
@@ -146,8 +146,19 @@ class LoginViewController: UIViewController {
         }
       }
   }
+  
+  //  func finishedWithAuth(auth: GTMOAuth2Authentication!, error: NSError!) {
+  //    if error != nil {
+  //      print(error.localizedDescription)
+  //    }
+  //    else {
+  //      let idToken = auth.parameters.objectForKey("id_token")
+  //      credentialsProvider.logins = [AWSCognitoLoginProviderKey.Google.rawValue: idToken!]
+  //    }
+  //  }
+  //}
 }
-
+  
 extension LoginViewController {
   
   struct Get: Codable {
@@ -166,7 +177,7 @@ extension LoginViewController {
       case firebaseToken = "firebase_token", imageAddress = "image_address", nickName = "nickname"
     }
   }
-  
+}
 //  struct Get: Decodable {
 //
 //    var age: Int?,
@@ -212,5 +223,5 @@ extension LoginViewController {
 //                                   forKey: .login)
 //    }
 //  }
-}
+//}
 

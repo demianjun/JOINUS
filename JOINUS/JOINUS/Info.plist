@@ -23,7 +23,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.603643292964-6u4ps9sn9o5lh473nmtlfe77v4o4v3t4</string>
+				<string>com.googleusercontent.apps.1012388240225-lmalqape8ejnija8rab1g5rde2f2g2p2</string>
 			</array>
 		</dict>
 		<dict>
@@ -46,8 +46,6 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>프로필 촬영을 위해 카메라 접근을 허용합니다.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>프로필에 사용할 사진을 위해 접근을 허용합니다.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>NotoSansKR-Bold.otf</string>

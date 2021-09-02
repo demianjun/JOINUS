@@ -27,6 +27,11 @@
 		AD9E9B4326CA99D600FCFC51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD9E9B4126CA99D600FCFC51 /* LaunchScreen.storyboard */; };
 		ADB9338326E007D20016BC7F /* JoinusAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9338226E007D20016BC7F /* JoinusAlertViewController.swift */; };
 		ADB9338926E009250016BC7F /* JoinusActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9338826E009250016BC7F /* JoinusActionSheetView.swift */; };
+		ADB9338B26E117130016BC7F /* client_1012388240225-lmalqape8ejnija8rab1g5rde2f2g2p2.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADB9338A26E117130016BC7F /* client_1012388240225-lmalqape8ejnija8rab1g5rde2f2g2p2.apps.googleusercontent.com.plist */; };
+		ADB9339026E138C60016BC7F /* CircleCropScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9338D26E138C50016BC7F /* CircleCropScrollView.swift */; };
+		ADB9339126E138C60016BC7F /* CircleCropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9338E26E138C60016BC7F /* CircleCropViewController.swift */; };
+		ADB9339226E138C60016BC7F /* CircleCropCutterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9338F26E138C60016BC7F /* CircleCropCutterView.swift */; };
+		ADB9339626E14BF40016BC7F /* MyInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9339526E14BF40016BC7F /* MyInfoModel.swift */; };
 		ADCCCF5826DD4D2B002C5C8C /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCCCF5726DD4D2B002C5C8C /* OnboardingModel.swift */; };
 		ADCCCF5B26DD638D002C5C8C /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCCCF5A26DD638D002C5C8C /* OnboardingViewModel.swift */; };
 		ADCCCF5D26DD6C8F002C5C8C /* OnboardingStep2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCCCF5C26DD6C8F002C5C8C /* OnboardingStep2ViewController.swift */; };
@@ -74,6 +79,11 @@
 		AD9E9B4426CA99D600FCFC51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADB9338226E007D20016BC7F /* JoinusAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinusAlertViewController.swift; sourceTree = "<group>"; };
 		ADB9338826E009250016BC7F /* JoinusActionSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinusActionSheetView.swift; sourceTree = "<group>"; };
+		ADB9338A26E117130016BC7F /* client_1012388240225-lmalqape8ejnija8rab1g5rde2f2g2p2.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_1012388240225-lmalqape8ejnija8rab1g5rde2f2g2p2.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
+		ADB9338D26E138C50016BC7F /* CircleCropScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleCropScrollView.swift; sourceTree = "<group>"; };
+		ADB9338E26E138C60016BC7F /* CircleCropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleCropViewController.swift; sourceTree = "<group>"; };
+		ADB9338F26E138C60016BC7F /* CircleCropCutterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleCropCutterView.swift; sourceTree = "<group>"; };
+		ADB9339526E14BF40016BC7F /* MyInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoModel.swift; sourceTree = "<group>"; };
 		ADCCCF5726DD4D2B002C5C8C /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		ADCCCF5A26DD638D002C5C8C /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		ADCCCF5C26DD6C8F002C5C8C /* OnboardingStep2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep2ViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +182,8 @@
 		AD982F8926CAB36F000AEAA2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				ADB9339326E14BC60016BC7F /* MyInfoViewController */,
+				ADB9338C26E138A50016BC7F /* CropViewController */,
 				ADB9338126E007AA0016BC7F /* JoinusAlertViewController */,
 				AD54C51126D7F36A0023FA99 /* OnboardingViewController */,
 				AD982F8A26CAB375000AEAA2 /* LaunchViewController */,
@@ -220,6 +232,7 @@
 				AD9E9B3F26CA99D600FCFC51 /* Assets.xcassets */,
 				AD9E9B4126CA99D600FCFC51 /* LaunchScreen.storyboard */,
 				AD67E7BD26CABACE006B1FD4 /* credentials.plist */,
+				ADB9338A26E117130016BC7F /* client_1012388240225-lmalqape8ejnija8rab1g5rde2f2g2p2.apps.googleusercontent.com.plist */,
 				AD02EFC726DFDF67000A7F6B /* GoogleService-Info.plist */,
 				AD9E9B4426CA99D600FCFC51 /* Info.plist */,
 			);
@@ -241,6 +254,32 @@
 				ADB9338826E009250016BC7F /* JoinusActionSheetView.swift */,
 			);
 			path = JoinusAlertView;
+			sourceTree = "<group>";
+		};
+		ADB9338C26E138A50016BC7F /* CropViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ADB9338F26E138C60016BC7F /* CircleCropCutterView.swift */,
+				ADB9338D26E138C50016BC7F /* CircleCropScrollView.swift */,
+				ADB9338E26E138C60016BC7F /* CircleCropViewController.swift */,
+			);
+			path = CropViewController;
+			sourceTree = "<group>";
+		};
+		ADB9339326E14BC60016BC7F /* MyInfoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ADB9339426E14BDC0016BC7F /* MyInfoModel */,
+			);
+			path = MyInfoViewController;
+			sourceTree = "<group>";
+		};
+		ADB9339426E14BDC0016BC7F /* MyInfoModel */ = {
+			isa = PBXGroup;
+			children = (
+				ADB9339526E14BF40016BC7F /* MyInfoModel.swift */,
+			);
+			path = MyInfoModel;
 			sourceTree = "<group>";
 		};
 		ADCCCF5626DD4D18002C5C8C /* OnboardingModel */ = {
@@ -359,6 +398,7 @@
 				AD4A6E9726D7E41E0083D9A6 /* NotoSansKR-Light.otf in Resources */,
 				AD9E9B3E26CA99D500FCFC51 /* Main.storyboard in Resources */,
 				AD02EFC826DFDF67000A7F6B /* GoogleService-Info.plist in Resources */,
+				ADB9338B26E117130016BC7F /* client_1012388240225-lmalqape8ejnija8rab1g5rde2f2g2p2.apps.googleusercontent.com.plist in Resources */,
 				AD4A6E9226D7E41E0083D9A6 /* NotoSansKR-Bold.otf in Resources */,
 				AD4A6E9526D7E41E0083D9A6 /* NotoSansKR-Black.otf in Resources */,
 			);
@@ -425,6 +465,7 @@
 				ADCF012A26CAB15900F1BCF8 /* InternetAvailable.swift in Sources */,
 				ADCF012426CAB06600F1BCF8 /* CommonColor.swift in Sources */,
 				ADCCCF6526DE6CEA002C5C8C /* SelectTierButton.swift in Sources */,
+				ADB9339626E14BF40016BC7F /* MyInfoModel.swift in Sources */,
 				ADCCCF6126DD7D40002C5C8C /* NextButtonStatus.swift in Sources */,
 				AD02EFCA26DFF20A000A7F6B /* ProfilePhotoView.swift in Sources */,
 				AD9E9B3726CA99D500FCFC51 /* AppDelegate.swift in Sources */,
@@ -432,6 +473,8 @@
 				ADCF012C26CAB19F00F1BCF8 /* CommonFont.swift in Sources */,
 				ADCCCF5B26DD638D002C5C8C /* OnboardingViewModel.swift in Sources */,
 				AD982F8C26CAB5ED000AEAA2 /* LoginViewController.swift in Sources */,
+				ADB9339126E138C60016BC7F /* CircleCropViewController.swift in Sources */,
+				ADB9339026E138C60016BC7F /* CircleCropScrollView.swift in Sources */,
 				ADCCCF5F26DD70A3002C5C8C /* SelectGameButton.swift in Sources */,
 				AD54C51426D7F3930023FA99 /* AgePickerView.swift in Sources */,
 				ADCCCF7026DFD74E002C5C8C /* ProfileViewControllerViewController.swift in Sources */,
@@ -440,6 +483,7 @@
 				ADB9338326E007D20016BC7F /* JoinusAlertViewController.swift in Sources */,
 				ADCF012626CAB11700F1BCF8 /* ChangeWindow.swift in Sources */,
 				ADCCCF6E26DFCFFF002C5C8C /* OnboardingStep4ViewController.swift in Sources */,
+				ADB9339226E138C60016BC7F /* CircleCropCutterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
