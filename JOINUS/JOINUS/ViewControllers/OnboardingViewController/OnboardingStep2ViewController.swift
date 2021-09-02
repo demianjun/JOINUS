@@ -76,7 +76,7 @@ class OnboardingStep2ViewController: UIViewController {
       .bindCheckMyGame()
     
     self.onboardingViewModel
-      .enalbeStep3outputSubject
+      .enableStep3outputSubject
       .asObservable()
       .bind(onNext: { isEnable in
         self.nextButton.isEnabled = isEnable
@@ -103,7 +103,7 @@ class OnboardingStep2ViewController: UIViewController {
     
     titleLabel.snp.makeConstraints {
       $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(CommonLength.shared.height(40))
-      $0.leading.equalToSuperview().offset(CommonLength.shared.width(15))
+      $0.leading.equalToSuperview().offset(CommonLength.shared.width(17))
       $0.width.equalToSuperview().multipliedBy(0.9)
     }
     

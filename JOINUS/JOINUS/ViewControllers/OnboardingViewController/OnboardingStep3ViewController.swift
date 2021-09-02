@@ -16,7 +16,8 @@ class OnboardingStep3ViewController: UIViewController {
               setNext = NextButtonStatus()
   
   // MARK: Model
-  private let onboardingModel = OnboardingModel.shared
+  private let onboardingModel = OnboardingModel.shared,
+              myInfoModel = MyInfoModel.shared
   
   // MARK: ViewModel
   private let onboardingViewModel = OnboardingViewModel()
@@ -104,7 +105,7 @@ class OnboardingStep3ViewController: UIViewController {
       .bindInputGameID()
     
     self.onboardingViewModel
-      .enalbeStep4outputSubject
+      .      enableStep4outputSubject
       .asObservable()
       .bind(onNext: { isEnable in
         
@@ -124,6 +125,7 @@ class OnboardingStep3ViewController: UIViewController {
     self.inputBarButton()
     self.tapDoneButton()
     self.popViewController()
+    self.didTapNextButton()
   }
   
   private func setupUI() {
@@ -133,7 +135,7 @@ class OnboardingStep3ViewController: UIViewController {
     
     gameMarkImageView.snp.makeConstraints {
       $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(CommonLength.shared.height(40))
-      $0.leading.equalToSuperview().offset(CommonLength.shared.width(15))
+      $0.leading.equalToSuperview().offset(CommonLength.shared.width(17))
       $0.width.height.equalTo(CommonLength.shared.width(37))
     }
     
@@ -250,8 +252,8 @@ class OnboardingStep3ViewController: UIViewController {
       .drive(onNext: {
         
         guard let text = self.gameIdInputtextField.text else { return print("text field text return") }
-        print("text: \(text.isEmpty)")
-        self.onboardingModel
+        
+        self.myInfoModel
           .myGameID = text
         
         self.view.endEditing(true)
@@ -272,5 +274,20 @@ class OnboardingStep3ViewController: UIViewController {
           .popViewController(animated: true)
         
       }).disposed(by: self.bag)
+  }
+  
+  private func didTapNextButton() {
+    
+    let onboardingStep4VC = OnboardingStep4ViewController()
+    
+    CommonAction.shared.touchActionEffect(self.nextButton) {
+      
+      if self.nextButton.isEnabled {
+        
+        self.navigationController?
+          .pushViewController(onboardingStep4VC,
+                              animated: true)
+      }
+    }
   }
 }

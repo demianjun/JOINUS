@@ -14,6 +14,17 @@ class OnboardingModel {
     case lol, sudden, overWatch, battleGround, mapleStory
   }
   
+  enum myTier: String {
+    case iron = "아이언",
+         bronze = "브론즈",
+         silver = "실버",
+         gold = "골드",
+         platinum = "플래티넘",
+         diamond = "다이아",
+         master = "마스터",
+         challenger = "챌린저"
+  }
+  
   var ages: [String] {
     var temp = [String]()
     
@@ -23,9 +34,4 @@ class OnboardingModel {
     
     return temp
   }
-  
-  var myAge = Int(),
-      myGender = Int(),
-      myGameID = String()
-      
 }

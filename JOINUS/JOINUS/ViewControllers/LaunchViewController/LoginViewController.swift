@@ -16,7 +16,7 @@ class LoginViewController: UIViewController {
   
   private let changeWindow = ChangeWindow()
   
-//  private let signInConfig = GIDConfiguration.init(clientID: "1012388240225-lmalqape8ejnija8rab1g5rde2f2g2p2.apps.googleusercontent.com")
+  private let googleConnction = GIDSignIn.sharedInstance
   
   // MARK: View
   private let symbolImageView = UIImageView().then {
@@ -28,33 +28,19 @@ class LoginViewController: UIViewController {
   
   private let googleLoginButton = GoogleLoginButton()
   
-//  private let googleLoginButton = GIDSignInButton().then {
-//    $0.colorScheme = .light
-//    $0.style = .wide
-//  }
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.navigationController?.navigationBar.isHidden = true
     self.view.backgroundColor = UIColor.joinusColor.joinBlue
+    
     self.setupUI()
     self.didTapButtonAction()
-//    self.googleLoginButton.addTarget(self,
-//                                     action: #selector(buttonAction(_:)),
-//                                     for: .touchUpInside)
-    
   }
   
   private func setupUI() {
-   
-//    [googleLoginButton].forEach { self.view.addSubview($0) }
-//
-//    googleLoginButton.snp.makeConstraints {
-//      $0.center.equalToSuperview()
-//    }
     
     [symbolImageView, loginLogoView, googleLoginButton].forEach { self.view.addSubview($0) }
-
+    
     symbolImageView.snp.makeConstraints {
       $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(CommonLength.shared.height(100))
       $0.leading.equalToSuperview().offset(CommonLength.shared.width(21))
@@ -78,44 +64,64 @@ class LoginViewController: UIViewController {
   
   func didTapButtonAction() {
     
+//    guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+//
+//    let config = GIDConfiguration(clientID: clientID)
+//
+//    CommonAction.shared.touchActionEffect(self.googleLoginButton) {
+//
+//      GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { user, error in
+//
+//        if let error = error {
+//
+//          print(error.localizedDescription + "google login error")
+//
+//          return
+//        }
+//
+//        guard let authentication = user?.authentication,
+//              let idToken = authentication.idToken else { return print("token return") }
+//
+//        print("access token: \(authentication.accessToken)")
+//        print("id token: \(idToken)")
+//        self.signUp(token: idToken)
+//        let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+//                                                       accessToken: authentication.accessToken)
+//
+//        Auth.auth().signIn(with: credential) { res, err in
+//
+//          if let err = err {
+//            print(err.localizedDescription + "login err")
+//            return
+//
+//          } else {
+//
+//            let uid = (res?.user.uid) ?? ""
+//            let email = (res?.user.email) ?? ""
+//
+//          }
+//        }
+//      }
+//    }
+    
     let onBoardingVC = OnboardingStep1ViewController(),
         onBoardingNaviVC = UINavigationController(rootViewController: onBoardingVC)
-    
+
     CommonAction.shared.touchActionEffect(self.googleLoginButton) {
-      
+
       self.signUp(token: "")
-      
+
       self.changeWindow
         .change(change: onBoardingNaviVC)
     }
   }
   
-//  @objc private func buttonAction(_ sender: UIButton) {
-//
-//    GIDSignIn.sharedInstance.signIn(with: self.signInConfig,
-//                                    presenting: self) { user, err in
-//
-//      if let err = err {
-//
-//        print("login" + err.localizedDescription)
-//
-//      } else {
-//
-//        guard let token = user?.authentication.accessToken else { return }
-////        guard let token = user?.authentication.idToken else { return }
-//        print("-> user: \(user?.authentication.clientID)")
-//        print("-> user token: \(token)")
-//        self.signUp(token: token)
-//      }
-//    }
-//  }
-  
   func signUp(token: String) {
     
-    let url = "https://accounts.google.com/o/oauth2/v2/auth?scope=profile&response_type=code&client_id=139499651998-5mhlkgtpjgmlfbu4evd6i6a7oarrisdu.apps.googleusercontent.com&redirect_uri=http://ec2-3-128-67-103.us-east-2.compute.amazonaws.com:8080/api/login/"
+    //    let url = "http://ec2-3-128-67-103.us-east-2.compute.amazonaws.com/notification/data"
     
-//    let url = "http://ec2-3-128-67-103.us-east-2.compute.amazonaws.com:80/api/login?" + "code=" + token
-
+    let url = "http://ec2-3-128-67-103.us-east-2.compute.amazonaws.com:80/api/login?" + "code=" + token
+    
     AF.request(url,
                method: .get)
       .validate(statusCode: 150..<800)
@@ -126,11 +132,11 @@ class LoginViewController: UIViewController {
             do {
               let temp = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted),
                   data = try JSONDecoder().decode(Get.self, from: temp)
-
+              
               print(data)
               
             } catch(let err) {
-
+              
               print(err.localizedDescription + "-> 1")
             }
             
@@ -140,8 +146,19 @@ class LoginViewController: UIViewController {
         }
       }
   }
+  
+  //  func finishedWithAuth(auth: GTMOAuth2Authentication!, error: NSError!) {
+  //    if error != nil {
+  //      print(error.localizedDescription)
+  //    }
+  //    else {
+  //      let idToken = auth.parameters.objectForKey("id_token")
+  //      credentialsProvider.logins = [AWSCognitoLoginProviderKey.Google.rawValue: idToken!]
+  //    }
+  //  }
+  //}
 }
-
+  
 extension LoginViewController {
   
   struct Get: Codable {
@@ -160,7 +177,7 @@ extension LoginViewController {
       case firebaseToken = "firebase_token", imageAddress = "image_address", nickName = "nickname"
     }
   }
-  
+}
 //  struct Get: Decodable {
 //
 //    var age: Int?,
@@ -206,5 +223,5 @@ extension LoginViewController {
 //                                   forKey: .login)
 //    }
 //  }
-}
+//}
 

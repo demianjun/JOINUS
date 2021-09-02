@@ -16,7 +16,8 @@ class OnboardingStep1ViewController: UIViewController, UIPickerViewDataSource, U
               setNext = NextButtonStatus()
   
   // MARK: Model
-  private let onboardingModel = OnboardingModel.shared
+  private let onboardingModel = OnboardingModel.shared,
+              myInfoModel = MyInfoModel.shared
   
   // MARK: ViewModel
   public let onboardingViewModel = OnboardingViewModel()
@@ -257,13 +258,13 @@ class OnboardingStep1ViewController: UIViewController, UIPickerViewDataSource, U
         
         self.agePickerTextField
           .useButtonLabel()
-          .text = String(self.onboardingModel.myAge).appending("세")
+          .text = String(self.myInfoModel.myAge).appending("세")
         
         self.view.endEditing(true)
         
         self.onboardingViewModel
           .selectAgeInputSubject
-          .onNext(self.onboardingModel.myAge)
+          .onNext(self.myInfoModel.myAge)
         
       }).disposed(by: self.bag)
   }
@@ -320,7 +321,7 @@ class OnboardingStep1ViewController: UIViewController, UIPickerViewDataSource, U
         self.setMaleButtonStatus()
         self.setFemaleButtonStatus()
         
-        self.onboardingModel.myGender = myGender
+        self.myInfoModel.myGender = myGender
         self.onboardingViewModel
           .selectGenderInputSubject
           .onNext(myGender)
@@ -371,6 +372,6 @@ class OnboardingStep1ViewController: UIViewController, UIPickerViewDataSource, U
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
     let selectAge = row + 20
     
-    self.onboardingModel.myAge = selectAge
+    self.myInfoModel.myAge = selectAge
   }
 }
