@@ -16,5 +16,5 @@ class MyInfoModel {
       myGender = Int(),
       myGameID = String(),
       myTier = Int(),
-      myProfile = UIImage()
+      myProfileImg = UIImage()
 }

@@ -27,7 +27,6 @@ class OnboardingStep3ViewController: UIViewController {
   private let gameMarkImageView = UIImageView().then {
     $0.image = UIImage(named: OnboardingModel.myGame.lol.rawValue)
     $0.layer.cornerRadius = CommonLength.shared.width(37) / 2
-    $0.backgroundColor = .blue
   }
   
   private let topLabel = UILabel().then {

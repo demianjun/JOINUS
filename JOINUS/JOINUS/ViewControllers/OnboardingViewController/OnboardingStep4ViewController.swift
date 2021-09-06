@@ -26,7 +26,6 @@ class OnboardingStep4ViewController: UIViewController {
   private let gameMarkImageView = UIImageView().then {
     $0.image = UIImage(named: OnboardingModel.myGame.lol.rawValue)
     $0.layer.cornerRadius = CommonLength.shared.width(37) / 2
-    $0.backgroundColor = .blue
   }
   
   private let topLabel = UILabel().then {
@@ -41,37 +40,21 @@ class OnboardingStep4ViewController: UIViewController {
     $0.font = UIFont.joinuns.font(size: 34)
   }
   
-  private let ironButton = SelectTierButton(tier: .iron).then {
-    $0.useTierImageView().backgroundColor = .blue
-  }
+  private let ironButton = SelectTierButton(tier: .iron)
   
-  private let bronzeButton = SelectTierButton(tier: .bronze).then {
-    $0.useTierImageView().backgroundColor = .red
-  }
+  private let bronzeButton = SelectTierButton(tier: .bronze)
   
-  private let silverButton = SelectTierButton(tier: .silver).then {
-    $0.useTierImageView().backgroundColor = .cyan
-  }
+  private let silverButton = SelectTierButton(tier: .silver)
   
-  private let goldButton = SelectTierButton(tier: .gold).then {
-    $0.useTierImageView().backgroundColor = .yellow
-  }
+  private let goldButton = SelectTierButton(tier: .gold)
   
-  private let platinumButton = SelectTierButton(tier: .platinum).then {
-    $0.useTierImageView().backgroundColor = .darkGray
-  }
+  private let platinumButton = SelectTierButton(tier: .platinum)
   
-  private let diamondButton = SelectTierButton(tier: .diamond).then {
-    $0.useTierImageView().backgroundColor = .brown
-  }
+  private let diamondButton = SelectTierButton(tier: .diamond)
   
-  private let masterButton = SelectTierButton(tier: .master).then {
-    $0.useTierImageView().backgroundColor = .orange
-  }
+  private let masterButton = SelectTierButton(tier: .master)
   
-  private let challengerButton = SelectTierButton(tier: .challenger).then {
-    $0.useTierImageView().backgroundColor = .magenta
-  }
+  private let challengerButton = SelectTierButton(tier: .challenger)
   
   private let gudieLabel = UILabel().then {
     $0.text = "\u{2A} 적합한 매칭을 위해 정확한 정보를 입력해 주세요."

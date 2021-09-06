@@ -153,7 +153,8 @@ class JoinusAlertViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     UIView.animate(withDuration: self.duration) {
-      self.joinusActionSheetView.transform = .identity
+      self.joinusActionSheetView
+        .transform = .identity
     }
   }
   
@@ -177,6 +178,7 @@ class JoinusAlertViewController: UIViewController, UIImagePickerControllerDelega
     let photoAuthorizationStatusStatus = PHPhotoLibrary.authorizationStatus()
     
     switch photoAuthorizationStatusStatus {
+      
       case .authorized:
         print("Photo Authorization status is authorized.")
         self.requestCollection()
@@ -186,12 +188,13 @@ class JoinusAlertViewController: UIViewController, UIImagePickerControllerDelega
         
       case .notDetermined:
         print("Photo Authorization status is not determined.")
-        PHPhotoLibrary.requestAuthorization() {
-          (status) in
+        PHPhotoLibrary.requestAuthorization() { status in
           switch status {
+            
             case .authorized:
               print("User permiited.")
               self.requestCollection()
+              
             case .denied:
               print("User denied.")
               break
@@ -203,6 +206,7 @@ class JoinusAlertViewController: UIViewController, UIImagePickerControllerDelega
         
       case .restricted:
         print("Photo Authorization status is restricted.")
+        
       default:
         break
     }

@@ -8,7 +8,6 @@
 import UIKit
 
 class GameSelectButton: UIButton {
-  
   override var isSelected: Bool {
     didSet {
       self.greenView.isHidden = !self.isSelected
@@ -18,7 +17,7 @@ class GameSelectButton: UIButton {
   
   // MARK: View
   private let gameImageView = UIImageView().then {
-    $0.isHidden = true
+//    $0.isHidden = true
     $0.contentMode = .scaleAspectFill
   }
   
