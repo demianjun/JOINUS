@@ -18,9 +18,9 @@ class SelectTierButton: UIButton {
   
   // MARK: View
   private let tierImageView = UIImageView().then {
-    $0.isHidden = true
+//    $0.isHidden = true
     $0.contentMode = .scaleAspectFill
-    $0.backgroundColor = .blue
+//    $0.backgroundColor = .blue
   }
   
   private let selectImageView = UIImageView().then {
@@ -43,8 +43,8 @@ class SelectTierButton: UIButton {
   init(tier: OnboardingModel.myTier) {
     super.init(frame: .zero)
     self.setupView()
-    self.tierLabel.text = tier.rawValue
     self.setTierButtonImage(tier: tier)
+    self.setTierTitle(tier: tier)
   }
   
   private func setupView() {
@@ -74,6 +74,31 @@ class SelectTierButton: UIButton {
   
   func setTierButtonImage(tier: OnboardingModel.myTier) {
     self.tierImageView.image = UIImage(named: tier.rawValue)
+  }
+  
+  func setTierTitle(tier: OnboardingModel.myTier) {
+    var title = String()
+    
+    switch tier {
+      case .iron:
+        title = "아이언"
+      case .bronze:
+        title = "브론즈"
+      case .silver:
+        title = "실버"
+      case .gold:
+        title = "골드"
+      case .platinum:
+        title = "플래티넘"
+      case .diamond:
+        title = "다이아"
+      case .master:
+        title = "마스터"
+      case .challenger:
+        title = "챌린저"
+    }
+    
+    self.tierLabel.text = title
   }
   
   func useTierImageView() -> UIImageView {

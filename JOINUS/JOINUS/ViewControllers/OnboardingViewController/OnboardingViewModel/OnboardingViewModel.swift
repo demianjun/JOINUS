@@ -10,6 +10,9 @@ import RxSwift
 
 class OnboardingViewModel {
   
+  // MARK: Model
+  let myInfoModel = MyInfoModel.shared
+  
   // MARK: Input
   let selectGenderInputSubject = PublishSubject<Int>(),
       selectAgeInputSubject = PublishSubject<Int>(),
@@ -24,7 +27,7 @@ class OnboardingViewModel {
       enableStep4outputSubject = BehaviorSubject(value: false),
       enableStep5outputSubject = BehaviorSubject(value: false),
       enableProfileVCoutputSubject = BehaviorSubject(value: false),
-      myProfileImageOutputSubject = BehaviorSubject(value: UIImage(named: "profile"))
+      myProfileImageOutputSubject = BehaviorSubject(value: UIImage(named: "defaultProfile_60x60"))
       
   // MARK: Bind
   
@@ -66,6 +69,7 @@ class OnboardingViewModel {
     
     _ = self.selectProfileImageInputSubject
       .asObserver()
+      .map(saveMyProfileImage(image:))
       .bind(to: self.myProfileImageOutputSubject)
   }
   
@@ -139,4 +143,10 @@ class OnboardingViewModel {
     return result
   }
   
+  func saveMyProfileImage(image: UIImage) -> UIImage {
+    
+    self.myInfoModel.myProfileImg = image
+    
+    return image
+  }
 }

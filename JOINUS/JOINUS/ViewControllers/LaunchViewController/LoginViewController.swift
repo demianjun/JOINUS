@@ -117,7 +117,7 @@ class LoginViewController: UIViewController {
   }
   
   func signUp(token: String) {
-    
+    //client_id : 139499651998-5mhlkgtpjgmlfbu4evd6i6a7oarrisdu.apps.googleusercontent.com
     //    let url = "http://ec2-3-128-67-103.us-east-2.compute.amazonaws.com/notification/data"
     
     let url = "http://ec2-3-128-67-103.us-east-2.compute.amazonaws.com:80/api/login?" + "code=" + token

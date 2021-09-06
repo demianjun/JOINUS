@@ -11,18 +11,18 @@ class OnboardingModel {
   static let shared = OnboardingModel()
   
   enum myGame: String {
-    case lol, sudden, overWatch, battleGround, mapleStory
+    case lol, suddenAttack, overwatch, battleGround, mapleStory
   }
   
   enum myTier: String {
-    case iron = "아이언",
-         bronze = "브론즈",
-         silver = "실버",
-         gold = "골드",
-         platinum = "플래티넘",
-         diamond = "다이아",
-         master = "마스터",
-         challenger = "챌린저"
+    case iron = "iron",
+         bronze = "bronze",
+         silver = "silver",
+         gold = "gold",
+         platinum = "platinum",
+         diamond = "diamond",
+         master = "master",
+         challenger = "challenger"
   }
   
   var ages: [String] {

@@ -31,26 +31,15 @@ class OnboardingStep2ViewController: UIViewController {
                    alignment: .left)
   }
   
-  private let lolButton = GameSelectButton(game: .lol).then {
-    $0.backgroundColor = .red
-  }
+  private let lolButton = GameSelectButton(game: .lol)
   
-  private let ovchButton = GameSelectButton(game: .overWatch).then {
-    $0.backgroundColor = .blue
-  }
+  private let ovchButton = GameSelectButton(game: .overwatch)
   
-  private let suddenButton = GameSelectButton(game: .sudden).then {
-    $0.backgroundColor = .yellow
-  }
+  private let suddenButton = GameSelectButton(game: .suddenAttack)
   
-  private let bagButton = GameSelectButton(game: .battleGround).then {
-    $0.backgroundColor = .darkGray
-  }
+  private let bagButton = GameSelectButton(game: .battleGround)
   
-  private let mapleButton = GameSelectButton(game: .mapleStory).then {
-    $0.backgroundColor = .cyan
-  }
-  
+  private let mapleButton = GameSelectButton(game: .mapleStory)
   
   private let gudieLabel = UILabel().then {
     $0.text = "\u{2A} 나중에 마이페이지에서 게임을 추가할 수 있어요!"
@@ -192,8 +181,8 @@ class OnboardingStep2ViewController: UIViewController {
     Observable
       .of(self.lolButton.rx.tap.map { game.lol },
           self.bagButton.rx.tap.map { game.battleGround },
-          self.suddenButton.rx.tap.map { game.sudden },
-          self.ovchButton.rx.tap.map { game.overWatch },
+          self.suddenButton.rx.tap.map { game.suddenAttack },
+          self.ovchButton.rx.tap.map { game.overwatch },
           self.mapleButton.rx.tap.map { game.mapleStory })
       .merge()
       .asDriver(onErrorJustReturn: .lol)
@@ -209,7 +198,7 @@ class OnboardingStep2ViewController: UIViewController {
             self.ovchButton.isSelected = !isSelect
             self.mapleButton.isSelected = !isSelect
             
-          case .sudden:
+          case .suddenAttack:
             
             self.lolButton.isSelected = !isSelect
             self.suddenButton.isSelected = isSelect
@@ -217,7 +206,7 @@ class OnboardingStep2ViewController: UIViewController {
             self.bagButton.isSelected = !isSelect
             self.mapleButton.isSelected = !isSelect
             
-          case .overWatch:
+          case .overwatch:
             
             self.lolButton.isSelected = !isSelect
             self.suddenButton.isSelected = !isSelect

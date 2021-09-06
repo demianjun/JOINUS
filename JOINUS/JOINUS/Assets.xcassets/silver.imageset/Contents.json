@@ -1,12 +1,12 @@
 {
   "images" : [
     {
-      "filename" : "battleGround.png",
+      "filename" : "silver.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "battleGround@2x.png",
+      "filename" : "silver@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

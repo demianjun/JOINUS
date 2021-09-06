@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
-    let launchVC = ProfileViewControllerViewController(),
-//    let launchVC = LaunchViewController(),
+//    let launchVC = ProfileViewControllerViewController(),
+    let launchVC = LaunchViewController(),
         naviVC = UINavigationController.init(rootViewController: launchVC)
     
     self.window = UIWindow(frame: UIScreen.main.bounds)

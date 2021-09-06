@@ -32,6 +32,7 @@
 		ADB9339126E138C60016BC7F /* CircleCropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9338E26E138C60016BC7F /* CircleCropViewController.swift */; };
 		ADB9339226E138C60016BC7F /* CircleCropCutterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9338F26E138C60016BC7F /* CircleCropCutterView.swift */; };
 		ADB9339626E14BF40016BC7F /* MyInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9339526E14BF40016BC7F /* MyInfoModel.swift */; };
+		ADB9339826E1FC5D0016BC7F /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9339726E1FC5D0016BC7F /* Service.swift */; };
 		ADCCCF5826DD4D2B002C5C8C /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCCCF5726DD4D2B002C5C8C /* OnboardingModel.swift */; };
 		ADCCCF5B26DD638D002C5C8C /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCCCF5A26DD638D002C5C8C /* OnboardingViewModel.swift */; };
 		ADCCCF5D26DD6C8F002C5C8C /* OnboardingStep2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCCCF5C26DD6C8F002C5C8C /* OnboardingStep2ViewController.swift */; };
@@ -84,6 +85,7 @@
 		ADB9338E26E138C60016BC7F /* CircleCropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleCropViewController.swift; sourceTree = "<group>"; };
 		ADB9338F26E138C60016BC7F /* CircleCropCutterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleCropCutterView.swift; sourceTree = "<group>"; };
 		ADB9339526E14BF40016BC7F /* MyInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoModel.swift; sourceTree = "<group>"; };
+		ADB9339726E1FC5D0016BC7F /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		ADCCCF5726DD4D2B002C5C8C /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		ADCCCF5A26DD638D002C5C8C /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		ADCCCF5C26DD6C8F002C5C8C /* OnboardingStep2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep2ViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 		AD74446326CAD2C500F90BF2 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				ADB9339726E1FC5D0016BC7F /* Service.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 		AD982F8926CAB36F000AEAA2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				ADFDD09626E67336007883BE /* GameListViewController */,
 				ADB9339326E14BC60016BC7F /* MyInfoViewController */,
 				ADB9338C26E138A50016BC7F /* CropViewController */,
 				ADB9338126E007AA0016BC7F /* JoinusAlertViewController */,
@@ -328,6 +332,13 @@
 				ADCF011C26CAAEBC00F1BCF8 /* Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		ADFDD09626E67336007883BE /* GameListViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GameListViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -478,6 +489,7 @@
 				ADCCCF5F26DD70A3002C5C8C /* SelectGameButton.swift in Sources */,
 				AD54C51426D7F3930023FA99 /* AgePickerView.swift in Sources */,
 				ADCCCF7026DFD74E002C5C8C /* ProfileViewControllerViewController.swift in Sources */,
+				ADB9339826E1FC5D0016BC7F /* Service.swift in Sources */,
 				AD4A6E8A26D526460083D9A6 /* OnboardingStep1ViewController.swift in Sources */,
 				ADCCCF5D26DD6C8F002C5C8C /* OnboardingStep2ViewController.swift in Sources */,
 				ADB9338326E007D20016BC7F /* JoinusAlertViewController.swift in Sources */,

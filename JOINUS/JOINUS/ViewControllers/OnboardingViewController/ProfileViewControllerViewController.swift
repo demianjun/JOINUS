@@ -13,6 +13,7 @@ class ProfileViewControllerViewController: UIViewController {
   private let bag = DisposeBag()
   
   private let changeWindow = ChangeWindow(),
+              chnageVC = ChangeViewController(),
               setNext = NextButtonStatus()
   
   private let tapGesture = UITapGestureRecognizer()
@@ -45,15 +46,15 @@ class ProfileViewControllerViewController: UIViewController {
     $0.font = UIFont.joinuns.font(size: 11)
   }
   
-  private let defaultProfileButton = UIButton().then {
-    $0.setTitle("기본 사진으로",
-                for: .normal)
-    $0.setTitleColor(UIColor.joinusColor.defaultPhotoGray,
-                     for: .normal)
-    $0.titleLabel?.font = UIFont.joinuns.font(size: 15)
-    $0.layer.cornerRadius = 2
-    $0.backgroundColor = UIColor.joinusColor.defaultPhotoButtonGray
-  }
+//  private let defaultProfileButton = UIButton().then {
+//    $0.setTitle("기본 사진으로",
+//                for: .normal)
+//    $0.setTitleColor(UIColor.joinusColor.defaultPhotoGray,
+//                     for: .normal)
+//    $0.titleLabel?.font = UIFont.joinuns.font(size: 15)
+//    $0.layer.cornerRadius = 2
+//    $0.backgroundColor = UIColor.joinusColor.defaultPhotoButtonGray
+//  }
   
   private let nextButton = UIButton().then {
     $0.setTitle("확인",
@@ -97,7 +98,7 @@ class ProfileViewControllerViewController: UIViewController {
     [titleLabel,
      profilePhotoView,
      gudieLabel,
-     defaultProfileButton, nextButton].forEach { self.view.addSubview($0) }
+    nextButton].forEach { self.view.addSubview($0) }
     
     titleLabel.snp.makeConstraints {
       $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(CommonLength.shared.height(40))
@@ -116,17 +117,18 @@ class ProfileViewControllerViewController: UIViewController {
       $0.bottom.equalTo(nextButton.snp.top).offset(-CommonLength.shared.height(10))
     }
     
-    defaultProfileButton.snp.makeConstraints {
-      $0.bottom.equalToSuperview().offset(-CommonLength.shared.height(200))
-      $0.leading.equalToSuperview().offset(CommonLength.shared.width(17))
-      $0.width.equalTo(CommonLength.shared.width(165))
-      $0.height.equalTo(CommonLength.shared.height(50))
-    }
+//    defaultProfileButton.snp.makeConstraints {
+//      $0.bottom.equalToSuperview().offset(-CommonLength.shared.height(200))
+//      $0.leading.equalToSuperview().offset(CommonLength.shared.width(17))
+//      $0.width.equalTo(CommonLength.shared.width(165))
+//      $0.height.equalTo(CommonLength.shared.height(50))
+//    }
     
     nextButton.snp.makeConstraints {
       $0.bottom.equalToSuperview().offset(-CommonLength.shared.height(200))
       $0.trailing.equalToSuperview().offset(-CommonLength.shared.width(17))
-      $0.width.equalTo(CommonLength.shared.width(165))
+//      $0.width.equalTo(CommonLength.shared.width(165))
+      $0.width.equalToSuperview().multipliedBy(0.9)
       $0.height.equalTo(CommonLength.shared.height(50))
     }
     
@@ -141,17 +143,8 @@ class ProfileViewControllerViewController: UIViewController {
     self.navigationItem.leftBarButtonItem = self.leftButtonItem
   }
   
-  private func popViewController() {
-    self.leftButtonItem
-      .rx
-      .tap
-      .asDriver()
-      .drive(onNext: {
-        
-        self.navigationController?
-          .popViewController(animated: true)
-        
-      }).disposed(by: self.bag)
+  private func didTapNextButtonAtDefalut() {
+    
   }
   
   private func didTapNextButton() {
@@ -181,6 +174,19 @@ class ProfileViewControllerViewController: UIViewController {
         
         self.present(self.joinusAlertVC,
                      animated: false)
+        
+      }).disposed(by: self.bag)
+  }
+  
+  private func popViewController() {
+    self.leftButtonItem
+      .rx
+      .tap
+      .asDriver()
+      .drive(onNext: {
+        
+        self.navigationController?
+          .popViewController(animated: true)
         
       }).disposed(by: self.bag)
   }
