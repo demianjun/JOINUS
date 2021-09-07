@@ -14,7 +14,8 @@ class MyInfoModel {
   ///tier 0 - iron, 1 - bronze, 2 - silver, 3 - gold, 4 - platinum, 5 - diamond, 6 - master, 7 - challenger
   var myAge = Int(),
       myGender = Int(),
-      myGameID = String(),
+      myGameID = String(), // nick name
       myTier = Int(),
-      myProfileImg = UIImage()
+      myProfileImg = UIImage(), // url
+      subToken = String()
 }

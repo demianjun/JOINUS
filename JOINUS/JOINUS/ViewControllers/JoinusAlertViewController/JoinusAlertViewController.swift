@@ -133,7 +133,7 @@ class JoinusAlertViewController: UIViewController, UIImagePickerControllerDelega
       .asDriver()
       .drive(onNext: {
         
-        let defaultImage = UIImage(named: "profile")!
+        let defaultImage = UIImage(named: "defaultProfile_60x60")!
         
         self.onboardingViewModel
           .selectProfileImageInputSubject

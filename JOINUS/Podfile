@@ -15,5 +15,6 @@ pod 'RxCocoa', '~> 5'
 pod 'GoogleSignIn'
 pod 'Firebase/Auth'
 pod 'Firebase/Analytics'
+pod 'Firebase/Messaging'
 
 end
