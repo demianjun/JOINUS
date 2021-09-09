@@ -21,6 +21,7 @@ class SetTabbarController {
     
     let tabbarController = UITabBarController(),
         tabbarItems = tabbarController.tabBar
+    
     tabbarController.viewControllers = [gameNaviVC, myMatchingNaviVC, myInfoNaviVC]
     
     tabbarItems.items?[0].image = UIImage(named: "home_deselect")
@@ -33,7 +34,7 @@ class SetTabbarController {
     tabbarItems.items?[2].selectedImage = UIImage(named: "myInfo_select")
     
     tabbarItems.items?.forEach {
-      $0.imageInsets = UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 0)
+      $0.imageInsets = UIEdgeInsets(top: 12, left: -3, bottom: -12, right: -3)
     }
     
     tabbarItems.layer.shadowOffset = CGSize(width: 0, height: 1)

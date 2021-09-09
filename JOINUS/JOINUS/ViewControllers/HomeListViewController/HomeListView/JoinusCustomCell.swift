@@ -8,28 +8,29 @@
 import UIKit
 
 class JoinusCustomCell: UITableViewCell {
+  
   static let ID = "JoinusCustomCell"
   
   private let gameImageView = UIImageView().then {
     $0.image = UIImage(named: "lol")
   }
   
-  private let startLabel = UILabel().then {
+  private var startLabel = UILabel().then {
     $0.backgroundColor = UIColor.joinusColor.defaultPhotoGray
     $0.layer.cornerRadius = CommonLength.shared.height(20) / 2
     $0.clipsToBounds = true
     $0.font = UIFont.joinuns.font(size: 11)
     $0.textColor = .white
     $0.textAlignment = .center
-  }
+  } 
   
   private let titleLabel = UILabel().then {
-    $0.font = UIFont.joinuns.font(size: 13)
+    $0.font = UIFont.joinuns.font(size: 15)
     $0.textColor = UIColor.joinusColor.customBlack
   }
   
   private let joinJangLabel = UILabel().then {
-    $0.font = UIFont.joinuns.font(size: 11)
+    $0.font = UIFont.joinuns.font(size: 13)
     $0.textColor = UIColor.joinusColor.gameIdTextFieldPlaceholderGray
   }
   
@@ -38,7 +39,7 @@ class JoinusCustomCell: UITableViewCell {
   }
   
   private let createdTimeLabel = UILabel().then {
-    $0.font = UIFont.joinuns.font(size: 11)
+    $0.font = UIFont.joinuns.font(size: 13)
     $0.textColor = UIColor.joinusColor.gameIdTextFieldPlaceholderGray
   }
   
@@ -67,20 +68,20 @@ class JoinusCustomCell: UITableViewCell {
   
   private func setupView() {
     [gameImageView, startLabel,
-    titleLabel, newLabel,
-    joinJangLabel, partitionView, createdTimeLabel,
-    personCountLabel, peopleImageView].forEach { self.addSubview($0) }
+     titleLabel, newLabel,
+     joinJangLabel, partitionView, createdTimeLabel,
+     personCountLabel, peopleImageView].forEach { self.addSubview($0) }
     
     gameImageView.snp.makeConstraints {
       $0.top.equalToSuperview().offset(CommonLength.shared.height(15))
       $0.leading.equalToSuperview().offset(CommonLength.shared.width(15))
-      $0.width.height.equalTo(CommonLength.shared.width(25))
+      $0.width.height.equalTo(CommonLength.shared.width(32))
     }
     
     startLabel.snp.makeConstraints {
       $0.centerY.equalTo(gameImageView)
       $0.leading.equalTo(gameImageView.snp.trailing).offset(CommonLength.shared.width(10))
-      $0.width.equalTo(CommonLength.shared.width(68))
+      $0.width.equalTo(CommonLength.shared.width(75))
       $0.height.equalTo(CommonLength.shared.height(20))
     }
     

@@ -76,7 +76,7 @@ class Service {
               
               let temp = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted)
               let data = try JSONDecoder().decode([RoomInfo].self, from: temp)
-              print("-> home list: \(data)")
+              
               self.homeListModel.gameList = data
               completion()
               
