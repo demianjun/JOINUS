@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		AD02EFC826DFDF67000A7F6B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD02EFC726DFDF67000A7F6B /* GoogleService-Info.plist */; };
 		AD02EFCA26DFF20A000A7F6B /* ProfilePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD02EFC926DFF20A000A7F6B /* ProfilePhotoView.swift */; };
+		AD44B0EA26EA79D40045CBEB /* JoinGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD44B0E926EA79D40045CBEB /* JoinGameViewController.swift */; };
+		AD44B0EC26EA7F290045CBEB /* SelectJoinGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD44B0EB26EA7F290045CBEB /* SelectJoinGameViewController.swift */; };
+		AD44B0EE26EA808B0045CBEB /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD44B0ED26EA808B0045CBEB /* CustomNavigationView.swift */; };
 		AD4A6E8A26D526460083D9A6 /* OnboardingStep1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4A6E8926D526460083D9A6 /* OnboardingStep1ViewController.swift */; };
 		AD4A6E9226D7E41E0083D9A6 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD4A6E8C26D7E41E0083D9A6 /* NotoSansKR-Bold.otf */; };
 		AD4A6E9326D7E41E0083D9A6 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD4A6E8D26D7E41E0083D9A6 /* NotoSansKR-Medium.otf */; };
@@ -57,7 +60,6 @@
 		ADF93D2526EA236A00B8A1E9 /* JoinGameListLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF93D2426EA236A00B8A1E9 /* JoinGameListLabel.swift */; };
 		ADF93D2726EA299000B8A1E9 /* JoinPeopleProfileCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF93D2626EA299000B8A1E9 /* JoinPeopleProfileCollectionView.swift */; };
 		ADF93D2926EA2D7600B8A1E9 /* JoinProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF93D2826EA2D7600B8A1E9 /* JoinProfileCell.swift */; };
-		ADF93D2B26EA30FC00B8A1E9 /* JoinGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF93D2A26EA30FC00B8A1E9 /* JoinGameViewController.swift */; };
 		ADF93D2F26EA34C900B8A1E9 /* JoinusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF93D2E26EA34C900B8A1E9 /* JoinusButton.swift */; };
 		ADF93D3126EA370F00B8A1E9 /* JoinGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF93D3026EA370F00B8A1E9 /* JoinGameViewModel.swift */; };
 		ADFDD09A26E67C97007883BE /* HomeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFDD09926E67C97007883BE /* HomeListViewController.swift */; };
@@ -83,6 +85,9 @@
 		AD02EFC726DFDF67000A7F6B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AD02EFC926DFF20A000A7F6B /* ProfilePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhotoView.swift; sourceTree = "<group>"; };
 		AD2BDA7C26E8136B0055F027 /* JOINUS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = JOINUS.entitlements; path = "../../../../../Downloads/OPGG_모바일D/KeyChain/JOINUS.entitlements"; sourceTree = "<group>"; };
+		AD44B0E926EA79D40045CBEB /* JoinGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameViewController.swift; sourceTree = "<group>"; };
+		AD44B0EB26EA7F290045CBEB /* SelectJoinGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectJoinGameViewController.swift; sourceTree = "<group>"; };
+		AD44B0ED26EA808B0045CBEB /* CustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
 		AD4A6E8926D526460083D9A6 /* OnboardingStep1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep1ViewController.swift; sourceTree = "<group>"; };
 		AD4A6E8C26D7E41E0083D9A6 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
 		AD4A6E8D26D7E41E0083D9A6 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
@@ -133,7 +138,6 @@
 		ADF93D2426EA236A00B8A1E9 /* JoinGameListLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameListLabel.swift; sourceTree = "<group>"; };
 		ADF93D2626EA299000B8A1E9 /* JoinPeopleProfileCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinPeopleProfileCollectionView.swift; sourceTree = "<group>"; };
 		ADF93D2826EA2D7600B8A1E9 /* JoinProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinProfileCell.swift; sourceTree = "<group>"; };
-		ADF93D2A26EA30FC00B8A1E9 /* JoinGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameViewController.swift; sourceTree = "<group>"; };
 		ADF93D2E26EA34C900B8A1E9 /* JoinusButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinusButton.swift; sourceTree = "<group>"; };
 		ADF93D3026EA370F00B8A1E9 /* JoinGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameViewModel.swift; sourceTree = "<group>"; };
 		ADFDD09926E67C97007883BE /* HomeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListViewController.swift; sourceTree = "<group>"; };
@@ -395,9 +399,10 @@
 		ADF93D1F26E9110600B8A1E9 /* JoinGameViewController */ = {
 			isa = PBXGroup;
 			children = (
-				ADF93D2A26EA30FC00B8A1E9 /* JoinGameViewController.swift */,
 				ADF93D2126E9112100B8A1E9 /* JoinGameView */,
 				ADF93D2026E9111700B8A1E9 /* JoinGameViewModel */,
+				AD44B0E926EA79D40045CBEB /* JoinGameViewController.swift */,
+				AD44B0EB26EA7F290045CBEB /* SelectJoinGameViewController.swift */,
 			);
 			path = JoinGameViewController;
 			sourceTree = "<group>";
@@ -425,6 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				ADF93D2E26EA34C900B8A1E9 /* JoinusButton.swift */,
+				AD44B0ED26EA808B0045CBEB /* CustomNavigationView.swift */,
 			);
 			path = CommonView;
 			sourceTree = "<group>";
@@ -625,6 +631,7 @@
 				ADF93D3126EA370F00B8A1E9 /* JoinGameViewModel.swift in Sources */,
 				ADF93D2526EA236A00B8A1E9 /* JoinGameListLabel.swift in Sources */,
 				ADCCCF6326DE6525002C5C8C /* OnboardingStep3ViewController.swift in Sources */,
+				AD44B0EE26EA808B0045CBEB /* CustomNavigationView.swift in Sources */,
 				ADFDD09E26E67CAF007883BE /* HomeListModel.swift in Sources */,
 				ADFDD0B026E7E949007883BE /* CustomLeftBarButton.swift in Sources */,
 				ADCF012826CAB13D00F1BCF8 /* ChangeViewController.swift in Sources */,
@@ -642,11 +649,12 @@
 				ADCF012A26CAB15900F1BCF8 /* InternetAvailable.swift in Sources */,
 				ADCF012426CAB06600F1BCF8 /* CommonColor.swift in Sources */,
 				ADCCCF6526DE6CEA002C5C8C /* SelectTierButton.swift in Sources */,
+				AD44B0EA26EA79D40045CBEB /* JoinGameViewController.swift in Sources */,
 				ADFDD0A726E67D4D007883BE /* MyMatchingViewController.swift in Sources */,
-				ADF93D2B26EA30FC00B8A1E9 /* JoinGameViewController.swift in Sources */,
 				ADFDD0AE26E7BD39007883BE /* Model.swift in Sources */,
 				ADFDD0B226E7EAC2007883BE /* CustomRightBarButton.swift in Sources */,
 				ADB9339626E14BF40016BC7F /* MyInfoModel.swift in Sources */,
+				AD44B0EC26EA7F290045CBEB /* SelectJoinGameViewController.swift in Sources */,
 				ADCCCF6126DD7D40002C5C8C /* NextButtonStatus.swift in Sources */,
 				AD02EFCA26DFF20A000A7F6B /* ProfilePhotoView.swift in Sources */,
 				ADF93D2F26EA34C900B8A1E9 /* JoinusButton.swift in Sources */,

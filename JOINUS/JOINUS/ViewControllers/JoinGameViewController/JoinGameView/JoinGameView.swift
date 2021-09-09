@@ -86,15 +86,13 @@ class JoinGameView: UIView {
       $0.leading.equalToSuperview().offset(CommonLength.shared.width(17))
     }
     
-    joinPeopleProfileCollectionView.snp.makeConstraints {
-      $0.top.equalTo(voiceChatCheck.snp.bottom).offset(CommonLength.shared.height(22))
-      $0.height.equalTo(CommonLength.shared.height(70))
-      $0.width.equalTo(CommonLength.shared.width(170))
-      $0.centerX.equalToSuperview()
-      $0.bottom.equalToSuperview().offset(-CommonLength.shared.height(22))
-    }
-    
-  print("collection view load")
+//    joinPeopleProfileCollectionView.snp.makeConstraints {
+//      $0.top.equalTo(voiceChatCheck.snp.bottom).offset(CommonLength.shared.height(22))
+//      $0.height.equalTo(CommonLength.shared.height(70))
+//      $0.width.equalTo(CommonLength.shared.width(170))
+//      $0.centerX.equalToSuperview()
+//      $0.bottom.equalToSuperview().offset(-CommonLength.shared.height(22))
+//    }
   }
   
   func useTitleLabel() -> UILabel {

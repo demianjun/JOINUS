@@ -36,7 +36,7 @@ class JoinPeopleProfileCollectionView: UIView {
   
   private func flowLayout() {
     layout.minimumLineSpacing = 10
-    layout.minimumInteritemSpacing = 20
+    layout.minimumInteritemSpacing = 10
     layout.sectionInset = UIEdgeInsets(top: 0,
                                        left: 0,
                                        bottom: 0,

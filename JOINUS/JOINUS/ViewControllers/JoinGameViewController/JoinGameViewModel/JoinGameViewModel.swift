@@ -21,7 +21,6 @@ class JoinGameViewModel {
     
     _ = self.inputRoomInfo
       .asObserver()
-      .debug()
       .bind(to: self.outputRoomInfo)
   }
   

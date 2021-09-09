@@ -15,6 +15,7 @@ class JoinusButton: UIButton {
                   for: .normal)
     self.setTitleColor(titleColor,
                        for: .normal)
+    self.titleLabel?.font = UIFont.joinuns.font(size: 17)
     self.backgroundColor = backGroundColor
     self.layer.cornerRadius = 2
   }

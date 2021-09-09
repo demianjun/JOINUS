@@ -21,6 +21,8 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
   private let homeListModel = HomeListModel.shared
   
   // MARK: View
+  private let navigationView = CustomNavigationView()
+  
   private let customLeftBarButton = CustomLeftBarButton()
 
   private let customRightBarButton = CustomRightBarButton()
@@ -44,19 +46,15 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
     $0.textColor = .white
     $0.textAlignment = .center
     $0.font = UIFont.joinuns.font(size: 15)
-    
-  }
-  
-  override func loadView() {
-    super.loadView()
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = .white
+    self.view.backgroundColor = .clear
     
-    self.service
-      .getHomeListInfo() {
+    if !self.homeListModel.gameList.isEmpty {
+//    self.service
+//      .getHomeListInfo() {
         
         self.setupUI()
         self.setNavigationBar()
@@ -66,15 +64,26 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
                                           forCellReuseIdentifier: JoinusCustomCell.ID)
         
         self.joinusListTableView.reloadData()
-      }
+//      }
+    }
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
   }
   
   private func setupUI() {
-    [joinusListTableView, creatMatchingRoomButton, tooltipImageView].forEach { self.view.addSubview($0) }
+    [navigationView, joinusListTableView, creatMatchingRoomButton, tooltipImageView].forEach { self.view.addSubview($0) }
     self.tooltipImageView.addSubview(self.tooltipLabel)
     
+    navigationView.snp.makeConstraints {
+      $0.top.width.centerX.equalToSuperview()
+      $0.height.equalTo(CommonLength.shared.height(100))
+    }
+    
     joinusListTableView.snp.makeConstraints {
-      $0.edges.equalTo(self.view.safeAreaLayoutGuide)
+      $0.top.equalTo(navigationView.snp.bottom)
+      $0.leading.trailing.bottom.equalToSuperview()
     }
     
     creatMatchingRoomButton.snp.makeConstraints {
@@ -103,18 +112,19 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
   }
   
   private func setNavigationBar() {
-    let customLeftBarButton = UIBarButtonItem(customView: self.customLeftBarButton),
-        customRightBarButton = UIBarButtonItem(customView: self.customRightBarButton)
+    [customLeftBarButton, customRightBarButton].forEach { self.navigationView.addSubview($0) }
     
-    self.navigationController?.navigationBar.isHidden = false
-    self.navigationController?.navigationBar.barTintColor = .white
-    self.navigationController?.navigationBar.tintColor = .black
-    self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 1)
-    self.navigationController?.navigationBar.layer.shadowColor = #colorLiteral(red: 0.4509803922, green: 0.4509803922, blue: 0.4509803922, alpha: 1)
-    self.navigationController?.navigationBar.layer.shadowOpacity = 0.5
-    self.navigationController?.navigationBar.topItem?.title = ""
-    self.navigationItem.leftBarButtonItem = customLeftBarButton
-    self.navigationItem.rightBarButtonItem = customRightBarButton
+    customLeftBarButton.snp.makeConstraints {
+      $0.leading.equalTo(CommonLength.shared.width(17))
+      $0.bottom.equalToSuperview().offset(-CommonLength.shared.width(20))
+    }
+    
+    customRightBarButton.snp.makeConstraints {
+      $0.trailing.equalTo(-CommonLength.shared.width(17))
+      $0.bottom.equalToSuperview().offset(-CommonLength.shared.width(20))
+    }
+    
+    self.navigationController?.navigationBar.isHidden = true
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -175,15 +185,28 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    print("tap tap tap tap")
-    let joinGameVC = JoinGameViewController(roomInfo: self.homeListModel.gameList[indexPath.row]),
-//        joinGameViewModel = joinGameVC.joinGameViewModel,
-        joinGameNaviVC = UINavigationController(rootViewController: joinGameVC)
-
-    joinGameNaviVC.modalPresentationStyle = .fullScreen
     
-    self.present(joinGameNaviVC,
-                 animated: true)
+    let roomInfo = self.homeListModel.gameList[indexPath.row],
+        joinPeopleNum = roomInfo.userList.count
+    
+    let selectJoinGameVC = SelectJoinGameViewController(roomInfo: roomInfo),
+        joinGameViewModel = selectJoinGameVC.joinGameViewModel
+
+    let joinGameView = selectJoinGameVC.useJoinGameView(),
+        voiceChatCheck = joinGameView.useVoiceChatCheck(),
+        joinGameCollectionView = joinGameView.useJoinPeopleProfileCollectionView()
+   
+    joinGameCollectionView.snp.makeConstraints {
+      $0.top.equalTo(voiceChatCheck.snp.bottom).offset(CommonLength.shared.height(22))
+      $0.height.equalTo(CommonLength.shared.height(70))
+      $0.width.equalTo(CommonLength.shared.width(70) * CGFloat(joinPeopleNum) + 10)
+      $0.centerX.equalToSuperview()
+      $0.bottom.equalToSuperview().offset(-CommonLength.shared.height(22))
+    }
+    
+    let naviVC = self.tabBarController?.customizableViewControllers?[0] as? UINavigationController
+      
+    naviVC?.pushViewController(selectJoinGameVC, animated: true)
   }
   
   // MARK: Methods
