@@ -51,7 +51,7 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view.backgroundColor = .clear
-    
+    self.didTapMakeMatchingButton()
     if !self.homeListModel.gameList.isEmpty {
 //    self.service
 //      .getHomeListInfo() {
@@ -126,6 +126,20 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     self.navigationController?.navigationBar.isHidden = true
   }
+
+  private func didTapMakeMatchingButton() {
+    self.creatMatchingRoomButton
+      .rx
+      .tap
+      .asDriver()
+      .drive(onNext: {
+        
+        let makeMatchingVC = MakeMatchingViewController()
+        
+        self.navigationController?.pushViewController(makeMatchingVC, animated: true)
+        
+      }).disposed(by: self.bag)
+  }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     print("-> count: \(self.homeListModel.gameList.count)")
@@ -189,8 +203,7 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
     let roomInfo = self.homeListModel.gameList[indexPath.row],
         joinPeopleNum = roomInfo.userList.count
     
-    let selectJoinGameVC = SelectJoinGameViewController(roomInfo: roomInfo),
-        joinGameViewModel = selectJoinGameVC.joinGameViewModel
+    let selectJoinGameVC = SelectJoinGameViewController(roomInfo: roomInfo)
 
     let joinGameView = selectJoinGameVC.useJoinGameView(),
         voiceChatCheck = joinGameView.useVoiceChatCheck(),
@@ -204,9 +217,9 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
       $0.bottom.equalToSuperview().offset(-CommonLength.shared.height(22))
     }
     
-    let naviVC = self.tabBarController?.customizableViewControllers?[0] as? UINavigationController
-      
-    naviVC?.pushViewController(selectJoinGameVC, animated: true)
+    self.navigationController?.pushViewController(selectJoinGameVC, animated: true)
+//    let naviVC = self.tabBarController?.customizableViewControllers?[0] as? UINavigationController
+//    naviVC?.pushViewController(selectJoinGameVC, animated: true)
   }
   
   // MARK: Methods
