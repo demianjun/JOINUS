@@ -28,7 +28,6 @@ class SelectTierOfJoinPeopleViewModel {
     _ = Observable.combineLatest(inputSmallestTierRange,
                                  inputLargestTierRange)
       .asObservable()
-      .debug()
       .map { range in
         
         self.selectTierRange(smallest: range.0,

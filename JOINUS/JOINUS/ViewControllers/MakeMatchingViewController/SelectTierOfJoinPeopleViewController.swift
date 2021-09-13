@@ -139,6 +139,8 @@ class SelectTierOfJoinPeopleViewController: UIViewController {
           
           case .allTier:
             
+            self.makeMatchingModel.smallestTier = 0
+            
             allTierButton.isSelected = isSelect
             ironButton.isSelected = !isSelect
             bronzeButton.isSelected = !isSelect
@@ -285,6 +287,8 @@ class SelectTierOfJoinPeopleViewController: UIViewController {
         switch rangeTier {
           
           case .allTier:
+            
+            self.makeMatchingModel.largestTier = 7
             
             allTierButton.isSelected = isSelect
             ironButton.isSelected = !isSelect

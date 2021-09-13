@@ -60,12 +60,22 @@ class MakeMatchingViewController: UIViewController {
               .rx.text)
       .disposed(by: self.bag)
     
+    self.makeMatchingViewModel
+      .bindSetGameStartDate()
+    
+    self.makeMatchingViewModel
+      .outputSetGameStartDate
+      .bind(to: self.makeMatchingScrollView
+              .useStartDateSetView()
+              .useShowSettingDateLabel()
+              .rx.text)
+      .disposed(by: self.bag)
+    
     selectTierOfJoinPeopleViewModel
       .bindSelectTierRagne()
     
     selectTierOfJoinPeopleViewModel
       .outputTierRange
-      .debug()
       .bind {
         var range = String()
         if $0.count == 2 {
@@ -78,6 +88,7 @@ class MakeMatchingViewController: UIViewController {
           .useSetJoinPeopleTierView()
           .useShowSettingTierLabel()
           .text = range
+        
       }.disposed(by: self.bag)
   }
   
@@ -88,6 +99,7 @@ class MakeMatchingViewController: UIViewController {
     self.setNavigationBar()
     self.popViewController()
     self.didTapCountButton()
+    self.didTapChangeGameStartDate()
     self.didTapGameButton()
     self.didTapVoiceChatButton()
     self.didTapChangeTierRangeButton()
@@ -162,6 +174,82 @@ class MakeMatchingViewController: UIViewController {
           .popViewController(animated: true)
         
         self.tabBarController?.tabBar.isHidden = false
+        
+      }).disposed(by: self.bag)
+  }
+  
+  private let okButton = JoinusButton(title: "설정",
+                                      titleColor: .white,
+                                      backGroundColor: UIColor.joinusColor.joinBlue),
+    cancelButton = JoinusButton(title: "취소",
+                                titleColor: UIColor.joinusColor.defaultPhotoGray,
+                                backGroundColor: #colorLiteral(red: 0.8783445954, green: 0.8784921765, blue: 0.8783251643, alpha: 1))
+  let datePicker = UIDatePicker()
+  private func didTapChangeGameStartDate() {
+    
+    let changeDateButton = self.makeMatchingScrollView.useStartDateSetView().useChangeDateButton()
+    
+    changeDateButton
+      .rx
+      .tap
+      .asDriver()
+      .drive(onNext: {
+        
+//        let datePicker = UIDatePicker()
+        
+        if #available(iOS 13.4, *) {
+//          datePicker.preferredDatePickerStyle = .wheels
+        } else {
+          
+        }
+        self.datePicker.datePickerMode = .date
+        self.datePicker.locale = Locale(identifier: "KO_kr")
+        
+        let joinusAlertVC = JoinusAlertController(title: .top,
+                                                  title: "시작 날짜를 설정하세요.",
+                                                  explain: "",
+                                                  add: self.datePicker)
+          
+        joinusAlertVC.addAction(self.okButton)
+        joinusAlertVC.addAction(self.cancelButton)
+        
+        self.present(joinusAlertVC,
+                     animated: false)
+        
+      }).disposed(by: self.bag)
+    self.didTapSetGameStartDateButton()
+    self.didTapCancelButton()
+  }
+  
+  private func didTapSetGameStartDateButton() {
+    
+    self.okButton
+      .rx
+      .tap
+      .asDriver()
+      .drive(onNext: {
+        
+        self.makeMatchingViewModel
+          .inputGameStartDate
+          .onNext(self.datePicker.date)
+        
+        self.makeMatchingModel
+          .startGameDate = self.datePicker.date.toString()
+        
+        self.dismiss(animated: false)
+        
+      }).disposed(by: self.bag)
+  }
+  
+  private func didTapCancelButton() {
+    
+    self.cancelButton
+      .rx
+      .tap
+      .asDriver()
+      .drive(onNext: {
+        
+        self.dismiss(animated: false)
         
       }).disposed(by: self.bag)
   }

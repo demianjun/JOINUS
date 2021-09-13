@@ -135,7 +135,7 @@ extension Date {
   
   func toString() -> String {
     let dateFormatter = DateFormatter().then {
-      $0.dateFormat = "yyyy-MM-dd-HH:mm:ss"
+      $0.dateFormat = "yyyy-MM-dd HH:mm:ss"
       $0.timeZone = TimeZone(identifier: "Ko_kr")
     }
 

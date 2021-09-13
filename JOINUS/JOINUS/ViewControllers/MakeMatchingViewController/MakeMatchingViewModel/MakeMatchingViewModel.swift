@@ -13,10 +13,12 @@ class MakeMatchingViewModel {
   private let makeMatchingModel = MakeMatchingModel.shared
   
   // MARK: Input
-  let inputCountUpJoinPeople = PublishSubject<MakeMatchingModel.countType>()
+  let inputCountUpJoinPeople = PublishSubject<MakeMatchingModel.countType>(),
+      inputGameStartDate = BehaviorSubject(value: Date())
   
   // MARK: Output
-  let outputCountJoinPeople = BehaviorSubject(value: "1")
+  let outputCountJoinPeople = BehaviorSubject(value: "1"),
+      outputSetGameStartDate = BehaviorSubject(value: "")
   
   // MARK: Bind
   func bindCountJoinPeople() {
@@ -26,8 +28,15 @@ class MakeMatchingViewModel {
       .bind(to: self.outputCountJoinPeople)
   }
   
+  func bindSetGameStartDate() {
+    _ = self.inputGameStartDate
+      .asObserver()
+      .map(startDateToString(_:))
+      .bind(to: self.outputSetGameStartDate)
+  }
+  
   // MARK: Method
-  func countJoinPeople(_ type: MakeMatchingModel.countType) -> String {
+  private func countJoinPeople(_ type: MakeMatchingModel.countType) -> String {
     
     switch type {
       case .up:
@@ -55,4 +64,15 @@ class MakeMatchingViewModel {
     return String(self.makeMatchingModel.countJoinPeople)
   }
   
+  private func startDateToString(_ date: Date) -> String {
+    let dateFormatter = DateFormatter().then {
+      $0.locale = Locale(identifier: "Ko_kr")
+      $0.dateFormat = "yyyy년 M월 dd일"
+    }
+    var setDate = String()
+    
+    setDate = dateFormatter.string(from: date)
+    
+    return setDate
+  }
 }
