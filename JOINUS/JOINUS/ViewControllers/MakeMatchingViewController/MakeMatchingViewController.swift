@@ -43,8 +43,12 @@ class MakeMatchingViewController: UIViewController {
     $0.textAlignment = .center
   }
   
+  private let selectTierOfJoinPeopleVC = SelectTierOfJoinPeopleViewController()
+  
   override func loadView() {
     super.loadView()
+    let selectTierOfJoinPeopleViewModel = self.selectTierOfJoinPeopleVC.selectTierOfJoinPeopleViewModel
+    
     self.makeMatchingViewModel
       .bindCountJoinPeople()
     
@@ -55,6 +59,26 @@ class MakeMatchingViewController: UIViewController {
               .useCountLabel()
               .rx.text)
       .disposed(by: self.bag)
+    
+    selectTierOfJoinPeopleViewModel
+      .bindSelectTierRagne()
+    
+    selectTierOfJoinPeopleViewModel
+      .outputTierRange
+      .debug()
+      .bind {
+        var range = String()
+        if $0.count == 2 {
+          range = "\($0[0]) > \($0[1])"
+        } else {
+          range = "\($0[0])"
+        }
+        
+        self.makeMatchingScrollView
+          .useSetJoinPeopleTierView()
+          .useShowSettingTierLabel()
+          .text = range
+      }.disposed(by: self.bag)
   }
   
   override func viewDidLoad() {
@@ -66,6 +90,7 @@ class MakeMatchingViewController: UIViewController {
     self.didTapCountButton()
     self.didTapGameButton()
     self.didTapVoiceChatButton()
+    self.didTapChangeTierRangeButton()
   }
   
   private func setupView() {
@@ -243,5 +268,23 @@ class MakeMatchingViewController: UIViewController {
         self.makeMatchingModel.isVoiceChat = possibilityButton.isSelected
         
       }.disposed(by: self.bag)
+  }
+              
+  private func didTapChangeTierRangeButton() {
+  
+    let setJoniPeopleTierView = self.makeMatchingScrollView.useSetJoinPeopleTierView(),
+        changeTierButton = setJoniPeopleTierView.useChangeTierButton()
+    
+    changeTierButton
+      .rx
+      .tap
+      .asDriver()
+      .drive(onNext: {
+        
+        self.navigationController?
+          .pushViewController(self.selectTierOfJoinPeopleVC,
+                              animated: true)
+        
+      }).disposed(by: self.bag)
   }
 }

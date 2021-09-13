@@ -38,6 +38,7 @@
 		AD6ACFD326ED2613001BE9C5 /* MakeMatchingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6ACFD226ED2613001BE9C5 /* MakeMatchingViewModel.swift */; };
 		AD6ACFD526ED2D8C001BE9C5 /* SelectDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6ACFD426ED2D8C001BE9C5 /* SelectDateView.swift */; };
 		AD6ACFD726ED305C001BE9C5 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6ACFD626ED305C001BE9C5 /* ToggleButton.swift */; };
+		AD6ACFD926EE27B6001BE9C5 /* SelectTierOfJoinPeopleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6ACFD826EE27B6001BE9C5 /* SelectTierOfJoinPeopleViewModel.swift */; };
 		AD982F8C26CAB5ED000AEAA2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD982F8B26CAB5ED000AEAA2 /* LoginViewController.swift */; };
 		AD9E9B3726CA99D500FCFC51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9E9B3626CA99D500FCFC51 /* AppDelegate.swift */; };
 		AD9E9B3B26CA99D500FCFC51 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9E9B3A26CA99D500FCFC51 /* LaunchViewController.swift */; };
@@ -130,6 +131,7 @@
 		AD6ACFD226ED2613001BE9C5 /* MakeMatchingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeMatchingViewModel.swift; sourceTree = "<group>"; };
 		AD6ACFD426ED2D8C001BE9C5 /* SelectDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateView.swift; sourceTree = "<group>"; };
 		AD6ACFD626ED305C001BE9C5 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
+		AD6ACFD826EE27B6001BE9C5 /* SelectTierOfJoinPeopleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTierOfJoinPeopleViewModel.swift; sourceTree = "<group>"; };
 		AD982F8B26CAB5ED000AEAA2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AD9E9B3326CA99D500FCFC51 /* JOINUS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JOINUS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD9E9B3626CA99D500FCFC51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				AD6ACFD226ED2613001BE9C5 /* MakeMatchingViewModel.swift */,
+				AD6ACFD826EE27B6001BE9C5 /* SelectTierOfJoinPeopleViewModel.swift */,
 			);
 			path = MakeMatchingViewModel;
 			sourceTree = "<group>";
@@ -750,6 +753,7 @@
 				AD02EFCA26DFF20A000A7F6B /* ProfilePhotoView.swift in Sources */,
 				AD6ACFC826ED107C001BE9C5 /* SelectTierOfJoinPeopleViewController.swift in Sources */,
 				ADF93D2F26EA34C900B8A1E9 /* JoinusButton.swift in Sources */,
+				AD6ACFD926EE27B6001BE9C5 /* SelectTierOfJoinPeopleViewModel.swift in Sources */,
 				AD9E9B3726CA99D500FCFC51 /* AppDelegate.swift in Sources */,
 				AD6ACFC626ECBDB9001BE9C5 /* GameButtonScrollView.swift in Sources */,
 				ADB9338926E009250016BC7F /* JoinusActionSheetView.swift in Sources */,

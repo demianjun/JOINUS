@@ -10,8 +10,24 @@ import UIKit
 class RangeTierButton: UIButton {
   override var isSelected: Bool {
     didSet {
-      self.buttonTitleLabel.textColor = UIColor.joinusColor.joinBlue
-      self.selectedMarkImage.isHidden = false
+      
+      if self.isSelected {
+        
+        self.buttonTitleLabel.textColor = UIColor.joinusColor.joinBlue
+        self.selectedMarkImage.isHidden = false
+        
+      } else {
+        
+        self.buttonTitleLabel.textColor = .black
+        self.selectedMarkImage.isHidden = true
+      }
+    }
+  }
+  
+  override var isEnabled: Bool {
+    didSet {
+      self.buttonTitleLabel.alpha = 0.5
+      self.isSelected = false
     }
   }
   
@@ -41,6 +57,7 @@ class RangeTierButton: UIButton {
       $0.width.equalTo(CommonLength.shared.width(15))
       $0.height.equalTo(CommonLength.shared.height(10))
       $0.leading.equalTo(buttonTitleLabel.snp.trailing).offset(CommonLength.shared.width(18))
+      $0.centerY.equalTo(buttonTitleLabel)
       $0.trailing.equalToSuperview()
     }
   }

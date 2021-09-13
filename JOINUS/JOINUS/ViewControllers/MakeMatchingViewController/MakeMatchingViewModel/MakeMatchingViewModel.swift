@@ -54,4 +54,5 @@ class MakeMatchingViewModel {
     
     return String(self.makeMatchingModel.countJoinPeople)
   }
+  
 }
