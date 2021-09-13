@@ -11,6 +11,8 @@ import RxSwift
 class HomeListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
   private let bag = DisposeBag()
   
+  private let methods = CommonMethods()
+  
   // MARK: Manager
   private let service = Service.manager
   
@@ -50,7 +52,7 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
   
   private let refresh = UIRefreshControl().then {
     $0.tintColor = UIColor.joinusColor.joinBlue
-    $0.attributedTitle = NSAttributedString(string: "새로 생성된 방을 불러오 있습니다.",
+    $0.attributedTitle = NSAttributedString(string: "새로 생성된 방을 불러오고 있습니다.",
                                             attributes: [NSAttributedString.Key.foregroundColor: UIColor.joinusColor.joinBlue,
                                                          NSAttributedString.Key.font : UIFont.joinuns.font(size: 13)])
   }
@@ -185,8 +187,8 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
     let temp = self.homeListModel.gameList[indexPath.row],
         createdAt = temp.createdAt,
         startDate = temp.startDate,
-        createdInterval = self.calculateCreatedTime(created: createdAt),
-        startInterval = self.calculateStartTime(start: startDate),
+        createdInterval = self.methods.calculateCreatedTime(created: createdAt),
+        startInterval = self.methods.calculateStartTime(start: startDate),
         leaderPk = temp.leaderPk,
         peopleCount = temp.nowPeopleCnt,
         peopleNum = temp.peopleNumber
@@ -256,110 +258,5 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
     self.navigationController?.pushViewController(selectJoinGameVC, animated: true)
 //    let naviVC = self.tabBarController?.customizableViewControllers?[0] as? UINavigationController
 //    naviVC?.pushViewController(selectJoinGameVC, animated: true)
-  }
-  
-  // MARK: Methods
-  private func calculateStartTime(start time: String) -> String {
-    let dateFormat = DateFormatter()
-    dateFormat.locale = Locale(identifier: "Ko_kr")
-    dateFormat.dateFormat = "yyyy-MM-dd"// HH-mm-ss"
-    
-    let dateFormat1 = DateFormatter()
-    dateFormat1.locale = Locale(identifier: "Ko_kr")
-    dateFormat1.dateFormat = "yyyy-MM-dd HH-mm-ss"
-    
-    var second = Int()
-    
-    let currentDate = Date(),
-        currentDayString = dateFormat.string(from: currentDate).components(separatedBy: " ")[0],
-        currentDay = dateFormat.date(from: currentDayString)!
-    
-    let startDate = dateFormat1.date(from: time)!,
-        startDayString = time.components(separatedBy: " ")[0],
-        startDay = dateFormat.date(from: startDayString)!
-    
-    let dateInterval = startDate - currentDate,//currentDate.distance(to: dateFormat1.date(from: time)!),
-        dayInterval = startDay - currentDay//currentDay1.distance(to: startDay1)
-    
-    if dayInterval == 0 {
-      
-      second = Int(dateInterval)
-     
-    } else if (60 <= dayInterval), (dayInterval <= (60 * 60 * 24)) {
-      
-      second = Int(dayInterval)
-      
-    } else if (60 * 60 * 24) < dayInterval {
-      
-      second = Int(dayInterval)
-      
-    }
-    
-    return self.calculateStartTimeInterval(second: second)
-  }
-  
-  private func calculateStartTimeInterval(second: Int) -> String {
-    var day = String()
-    
-    if (60 <= second), (second < (60 * 60 * 24)) {
-      
-      day = "오늘 시작"
-      
-    } else if ((60 * 60 * 24) <= second), (second < (60 * 60 * 24 * 2)) {
-      
-      day = "내일 시작"
-      
-    } else if (60 * 60 * 24 * 2) <= second {
-      
-      day = "\(Int(second / (60 * 60 * 24)))일 뒤"
-      
-    } else if second <= 0 {
-      
-      day = "매칭 완료"
-      
-    }
-    
-    return day
-  }
-  
-  private func calculateCreatedTime(created time: String) -> String {
-    
-    let dateFormat = DateFormatter().then {
-      $0.locale = Locale(identifier: "Ko_kr")
-      $0.dateFormat = "yyyy-MM-dd HH-mm-ss"
-    },
-    currentDate = Date(),
-    createdDate = dateFormat.date(from: time) ?? Date()
-        
-    let temp = currentDate - createdDate
-    
-    return self.calculateCreatedTimeInterval(second: Int(temp))
-  }
-  
-  private func calculateCreatedTimeInterval(second: Int) -> String {
-    var timeInterval = String()
-    
-    if second == 0 {
-      
-      timeInterval = "방금 전"
-      
-    } else if (60 <= second), (second < 3600) {
-      
-      timeInterval = "\(Int(second / 60))분 전"
-      
-    } else if (360 <= second), (second < (60 * 60 * 24)) {
-      
-      timeInterval = "\(Int(second / 3600))시간 전"
-      
-    } else if ((60 * 60 * 24) <= second), (second < (60 * 60 * 24 * 2)) {
-      
-      timeInterval = "어제"
-      
-    } else if (60 * 60 * 24 * 2) <= second {
-      
-      timeInterval = "\(Int(second / (60 * 60 * 24)))일 전"
-    }
-    
-    return timeInterval
   }
 }

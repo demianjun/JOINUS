@@ -16,7 +16,8 @@ class Service {
   private let myInfoModel = MyInfoModel.shared,
               messagingModel = MessagingModel.shared,
               homeListModel = HomeListModel.shared,
-              makeMatchingModel = MakeMatchingModel.shared
+              makeMatchingModel = MakeMatchingModel.shared,
+              myMatchingModel = MyMatchingModel.shared
   
   let putOnboardingUrl = "http://ec2-3-128-67-103.us-east-2.compute.amazonaws.com:80/api/onboard",
       roomControllerUrl = "http://ec2-3-128-67-103.us-east-2.compute.amazonaws.com:80/api/room"
@@ -133,6 +134,73 @@ class Service {
             
           case .failure(let err):
             print(err.localizedDescription + "post roomInfo 2")
+        }
+      }
+  }
+  
+  func getJoinedMatching(completion: @escaping (()->())) {
+    self.myInfoModel.subToken = "109112693255361562533"
+    
+    AF.request(self.roomControllerUrl
+                .appending("/user/")
+                .appending(self.myInfoModel.subToken)
+                .appending("/0"))
+      .validate(statusCode: 150...500)
+      .responseJSON { response in
+        
+        switch response.result {
+          
+          case .success(let res):
+            
+            do {
+              
+              let temp = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted)
+              let data = try JSONDecoder().decode([GetRoomInfo].self, from: temp)
+              
+              self.myMatchingModel.matchingList = data
+
+              completion()
+              
+            } catch(let err) {
+              
+              print("get room info err  " + err.localizedDescription)
+            }
+            
+          case .failure(let err):
+            print("get home list err  " + err.localizedDescription)
+        }
+      }
+  }
+  
+  func getMadeMatching(completion: @escaping (()->())) {
+    
+    AF.request(self.roomControllerUrl
+                .appending("/user/")
+                .appending(self.myInfoModel.subToken)
+                .appending("/1"))
+      .validate(statusCode: 150...500)
+      .responseJSON { response in
+        
+        switch response.result {
+          
+          case .success(let res):
+            
+            do {
+              
+              let temp = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted)
+              let data = try JSONDecoder().decode([GetRoomInfo].self, from: temp)
+                
+              self.myMatchingModel.matchingList = data
+
+              completion()
+              
+            } catch(let err) {
+              
+              print("get room info err  " + err.localizedDescription)
+            }
+            
+          case .failure(let err):
+            print("get home list err  " + err.localizedDescription)
         }
       }
   }

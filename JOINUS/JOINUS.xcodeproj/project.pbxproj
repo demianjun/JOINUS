@@ -40,6 +40,10 @@
 		AD6ACFD726ED305C001BE9C5 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6ACFD626ED305C001BE9C5 /* ToggleButton.swift */; };
 		AD6ACFD926EE27B6001BE9C5 /* SelectTierOfJoinPeopleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6ACFD826EE27B6001BE9C5 /* SelectTierOfJoinPeopleViewModel.swift */; };
 		AD6ACFDB26EF467C001BE9C5 /* JoinusAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6ACFDA26EF467C001BE9C5 /* JoinusAlertController.swift */; };
+		AD70A3E426EFC10000BC4841 /* MatchingTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70A3E326EFC10000BC4841 /* MatchingTypeButton.swift */; };
+		AD70A3E626EFC79C00BC4841 /* MyMatchingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70A3E526EFC79C00BC4841 /* MyMatchingModel.swift */; };
+		AD70A3E826EFE0DB00BC4841 /* CommonMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70A3E726EFE0DB00BC4841 /* CommonMethods.swift */; };
+		AD70A3EA26EFE3CD00BC4841 /* NoCountImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70A3E926EFE3CD00BC4841 /* NoCountImageView.swift */; };
 		AD982F8C26CAB5ED000AEAA2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD982F8B26CAB5ED000AEAA2 /* LoginViewController.swift */; };
 		AD9E9B3726CA99D500FCFC51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9E9B3626CA99D500FCFC51 /* AppDelegate.swift */; };
 		AD9E9B3B26CA99D500FCFC51 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9E9B3A26CA99D500FCFC51 /* LaunchViewController.swift */; };
@@ -134,6 +138,10 @@
 		AD6ACFD626ED305C001BE9C5 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		AD6ACFD826EE27B6001BE9C5 /* SelectTierOfJoinPeopleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTierOfJoinPeopleViewModel.swift; sourceTree = "<group>"; };
 		AD6ACFDA26EF467C001BE9C5 /* JoinusAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinusAlertController.swift; sourceTree = "<group>"; };
+		AD70A3E326EFC10000BC4841 /* MatchingTypeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingTypeButton.swift; sourceTree = "<group>"; };
+		AD70A3E526EFC79C00BC4841 /* MyMatchingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMatchingModel.swift; sourceTree = "<group>"; };
+		AD70A3E726EFE0DB00BC4841 /* CommonMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMethods.swift; sourceTree = "<group>"; };
+		AD70A3E926EFE3CD00BC4841 /* NoCountImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCountImageView.swift; sourceTree = "<group>"; };
 		AD982F8B26CAB5ED000AEAA2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AD9E9B3326CA99D500FCFC51 /* JOINUS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JOINUS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD9E9B3626CA99D500FCFC51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -309,6 +317,15 @@
 				AD6ACFD026ED2604001BE9C5 /* MakeMatchingModel.swift */,
 			);
 			path = MakeMatchingModel;
+			sourceTree = "<group>";
+		};
+		AD70A3DF26EFC08B00BC4841 /* MyMatchingView */ = {
+			isa = PBXGroup;
+			children = (
+				AD70A3E326EFC10000BC4841 /* MatchingTypeButton.swift */,
+				AD70A3E926EFE3CD00BC4841 /* NoCountImageView.swift */,
+			);
+			path = MyMatchingView;
 			sourceTree = "<group>";
 		};
 		AD74446326CAD2C500F90BF2 /* Service */ = {
@@ -517,6 +534,7 @@
 				AD44B0ED26EA808B0045CBEB /* CustomNavigationView.swift */,
 				ADF93D2E26EA34C900B8A1E9 /* JoinusButton.swift */,
 				AD6ACFDA26EF467C001BE9C5 /* JoinusAlertController.swift */,
+				AD70A3E726EFE0DB00BC4841 /* CommonMethods.swift */,
 			);
 			path = CommonView;
 			sourceTree = "<group>";
@@ -551,6 +569,7 @@
 		ADFDD09F26E67CD8007883BE /* MyMatchingViewController */ = {
 			isa = PBXGroup;
 			children = (
+				AD70A3DF26EFC08B00BC4841 /* MyMatchingView */,
 				ADFDD0A526E67D3B007883BE /* MyMatchingModel */,
 				ADFDD0A426E67D18007883BE /* MyMatchingViewModel */,
 				ADFDD0A626E67D4D007883BE /* MyMatchingViewController.swift */,
@@ -575,6 +594,7 @@
 		ADFDD0A526E67D3B007883BE /* MyMatchingModel */ = {
 			isa = PBXGroup;
 			children = (
+				AD70A3E526EFC79C00BC4841 /* MyMatchingModel.swift */,
 			);
 			path = MyMatchingModel;
 			sourceTree = "<group>";
@@ -719,6 +739,7 @@
 				AD6ACFDB26EF467C001BE9C5 /* JoinusAlertController.swift in Sources */,
 				AD44B0FF26ECA2ED0045CBEB /* SetJoinPeopleTierView.swift in Sources */,
 				ADF93D2526EA236A00B8A1E9 /* JoinGameListLabel.swift in Sources */,
+				AD70A3EA26EFE3CD00BC4841 /* NoCountImageView.swift in Sources */,
 				AD6ACFD526ED2D8C001BE9C5 /* SelectDateView.swift in Sources */,
 				ADCCCF6326DE6525002C5C8C /* OnboardingStep3ViewController.swift in Sources */,
 				AD44B0EE26EA808B0045CBEB /* CustomNavigationView.swift in Sources */,
@@ -755,6 +776,7 @@
 				AD44B0EC26EA7F290045CBEB /* SelectJoinGameViewController.swift in Sources */,
 				ADCCCF6126DD7D40002C5C8C /* NextButtonStatus.swift in Sources */,
 				AD02EFCA26DFF20A000A7F6B /* ProfilePhotoView.swift in Sources */,
+				AD70A3E426EFC10000BC4841 /* MatchingTypeButton.swift in Sources */,
 				AD6ACFC826ED107C001BE9C5 /* SelectTierOfJoinPeopleViewController.swift in Sources */,
 				ADF93D2F26EA34C900B8A1E9 /* JoinusButton.swift in Sources */,
 				AD6ACFD926EE27B6001BE9C5 /* SelectTierOfJoinPeopleViewModel.swift in Sources */,
@@ -767,6 +789,7 @@
 				AD44B0F326EC755D0045CBEB /* MakeMatchingViewController.swift in Sources */,
 				AD44B0F926EC9D120045CBEB /* StartDateSetView.swift in Sources */,
 				ADFDD0AC26E7B7E3007883BE /* SetTabbarController.swift in Sources */,
+				AD70A3E826EFE0DB00BC4841 /* CommonMethods.swift in Sources */,
 				ADB9339126E138C60016BC7F /* CircleCropViewController.swift in Sources */,
 				ADB9339026E138C60016BC7F /* CircleCropScrollView.swift in Sources */,
 				ADCCCF5F26DD70A3002C5C8C /* SelectGameButton.swift in Sources */,
@@ -781,6 +804,7 @@
 				ADFDD09C26E67CA5007883BE /* HomeListViewModel.swift in Sources */,
 				ADFDD0B626E7F532007883BE /* JoinusListTableView.swift in Sources */,
 				ADCF012626CAB11700F1BCF8 /* ChangeWindow.swift in Sources */,
+				AD70A3E626EFC79C00BC4841 /* MyMatchingModel.swift in Sources */,
 				ADCCCF6E26DFCFFF002C5C8C /* OnboardingStep4ViewController.swift in Sources */,
 				ADFDD0A226E67D0B007883BE /* MyInfoViewController.swift in Sources */,
 				ADFDD0B826E7F8FE007883BE /* TimeUnits.swift in Sources */,

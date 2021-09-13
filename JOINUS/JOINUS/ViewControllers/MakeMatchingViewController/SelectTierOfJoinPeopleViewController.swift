@@ -20,6 +20,7 @@ class SelectTierOfJoinPeopleViewController: UIViewController {
          master = 6,
          challenger = 7
     }
+  
   private let bag = DisposeBag()
   
   // MARK: Model
@@ -54,6 +55,7 @@ class SelectTierOfJoinPeopleViewController: UIViewController {
     self.setupView()
     self.setNavigationBar()
     self.popViewController()
+    self.initTierRange()
     self.didTapSmallestTierRangeButton()
     self.didTapLargestTierRangeButton()
   }
@@ -100,6 +102,21 @@ class SelectTierOfJoinPeopleViewController: UIViewController {
           .popViewController(animated: true)
         
       }).disposed(by: self.bag)
+  }
+  
+  private func initTierRange() {
+    let smallestView = self.selectTierOfJoinPeopleScrollView.useSmallestTierRangeView(),
+        smallestAllTierButton = smallestView.useAllTierSelectButton(),
+        largestView = self.selectTierOfJoinPeopleScrollView.useLargestTierRangeView(),
+        largestAllTierButton = largestView.useAllTierSelectButton()
+    
+    if (self.makeMatchingModel.smallestTier == 0),
+       (self.makeMatchingModel.largestTier == 7) {
+      
+      smallestAllTierButton.isSelected = true
+      largestAllTierButton.isSelected = true
+      
+    }
   }
   
   private func didTapSmallestTierRangeButton() {
@@ -400,7 +417,3 @@ class SelectTierOfJoinPeopleViewController: UIViewController {
       }.disposed(by: self.bag)
   }
 }
-
-/*
- 
- }*/

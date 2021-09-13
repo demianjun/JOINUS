@@ -137,6 +137,10 @@ class SelectJoinGameViewController: UIViewController, UICollectionViewDelegate, 
     return self.joinGameView
   }
   
+  func useJoinButton() -> JoinusButton {
+    return self.joinButton
+  }
+  
   // MARK: Delegate
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return self.roomInfo.userList.count
