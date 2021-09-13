@@ -31,7 +31,6 @@ class GameButtonScrollView: UIScrollView {
     
     lolButton.snp.makeConstraints {
       $0.top.bottom.equalTo(self.safeAreaLayoutGuide)
-//      $0.top.bottom.equalToSuperview()
       $0.leading.equalToSuperview().offset(CommonLength.shared.width(17))
       $0.width.height.equalTo(buttonSize)
     }

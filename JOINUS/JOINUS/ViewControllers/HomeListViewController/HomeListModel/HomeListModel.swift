@@ -5,13 +5,19 @@
 //  Created by Demian on 2021/09/07.
 //
 
-import Foundation
+import UIKit
 
 class HomeListModel {
   
   static let shared = HomeListModel()
   
-  var gameList = [RoomInfo]()
+  var tableView = UITableView()
+  
+  var gameList = [GetRoomInfo]() {
+    didSet {
+      self.tableView.reloadData()
+    }
+  }
 
   
   let dummy =
@@ -56,7 +62,7 @@ class HomeListModel {
     
   func test() {
     let temp = try? JSONSerialization.data(withJSONObject: dummy, options: .prettyPrinted)
-    let test = try? JSONDecoder().decode([RoomInfo].self, from: temp!)
+    let test = try? JSONDecoder().decode([GetRoomInfo].self, from: temp!)
     
     self.gameList = test!
     

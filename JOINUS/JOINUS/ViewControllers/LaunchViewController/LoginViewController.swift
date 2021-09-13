@@ -107,7 +107,10 @@ class LoginViewController: UIViewController {
                   data = try JSONDecoder().decode(GetUserInfo.self, from: temp)
               
               print("data",data)
-              
+              self.myInfoModel.myAge = data.age
+              self.myInfoModel.myGameID = data.nickName ?? "noname"
+              self.myInfoModel.myGender = data.gender
+              self.myInfoModel.myPk = data.pk
               self.myInfoModel.subToken = data.subToken
               
               if !data.login {

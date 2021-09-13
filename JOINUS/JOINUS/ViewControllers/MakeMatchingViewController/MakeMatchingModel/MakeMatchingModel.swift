@@ -14,11 +14,23 @@ class MakeMatchingModel {
   
   static let shared = MakeMatchingModel()
   
-  var countJoinPeople = 1,
-      startGameDate = String(),
+  var roomTitle = String(),
+      countJoinPeople = 1,
       selectedGame = String(),
-      isVoiceChat = Bool(),
-      smallestTier = Int(),
-      largestTier = Int()
+      startGameDate = String(),
+      isVoiceChat = false,
+      smallestTier = 0,
+      largestTier = 7
+  
+  func initialized() {
+    self.roomTitle = ""
+    self.countJoinPeople = 1
+    self.selectedGame = ""
+    self.startGameDate = ""
+    self.isVoiceChat = Bool()
+    self.smallestTier = 0
+    self.largestTier = 7
+  }
   
 }
+

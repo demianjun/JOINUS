@@ -11,10 +11,10 @@ import RxSwift
 class JoinGameViewModel {
   
   // MARK: Input
-  let inputRoomInfo = PublishSubject<RoomInfo>()
+  let inputRoomInfo = PublishSubject<GetRoomInfo>()
   
   // MARK: Output
-  let outputRoomInfo = PublishSubject<RoomInfo>()
+  let outputRoomInfo = PublishSubject<GetRoomInfo>()
   
   // MARK: Bind
   func bindHandOverRoomInfo() {

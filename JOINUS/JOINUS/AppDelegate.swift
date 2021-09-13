@@ -22,9 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
 //    let homeListVC = HomeListViewController(),
-    let tempVC = MakeMatchingViewController(),
-        launchVC = UINavigationController.init(rootViewController: tempVC)
-//    let launchVC = LaunchViewController()
+//    let tempVC = MakeMatchingViewController(),
+//        launchVC = UINavigationController.init(rootViewController: tempVC)
+    let launchVC = LaunchViewController()
     
     self.window = UIWindow(frame: UIScreen.main.bounds)
     

@@ -8,6 +8,7 @@
 import UIKit
 
 class InputTitleView: UIView {
+  
   // MARK: View
   private let inputTitleTextField = UITextField().then {
     let placeHoler = "방 제목을 입력해 주세요.",
@@ -41,9 +42,26 @@ class InputTitleView: UIView {
     $0.backgroundColor = UIColor.joinusColor.gameIdTextFieldBgGray
   }
   
+  private let toolBarView = UIView().then {
+    $0.backgroundColor = .white
+  }
+  
+  private let toolBarPartitionView = UIView().then {
+    $0.backgroundColor = UIColor.joinusColor.gameIdTextFieldBgGray
+  }
+  
+  private let doneButtonItem = UIButton().then {
+    $0.setTitle("확인",
+                for: .normal)
+    $0.setTitleColor(UIColor.joinusColor.joinBlue,
+                     for: .normal)
+    $0.titleLabel?.font = UIFont.joinuns.font(size: 17)
+  }
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     self.setupView()
+    self.inputBarButton()
   }
   
   private func setupView() {
@@ -52,7 +70,6 @@ class InputTitleView: UIView {
     inputTitleTextField.snp.makeConstraints {
       $0.top.equalToSuperview().offset(CommonLength.shared.height(20))
       $0.width.centerX.equalToSuperview()
-//      $0.height.equalTo(CommonLength.shared.height(30))
       $0.bottom.equalToSuperview().offset(-CommonLength.shared.height(20))
     }
     
@@ -68,8 +85,41 @@ class InputTitleView: UIView {
     }
   }
   
+  private func inputBarButton() {
+    
+    self.toolBarView.addSubview(doneButtonItem)
+    self.toolBarView.addSubview(toolBarPartitionView)
+    
+    self.toolBarView.frame = CGRect(x: 0, y:0,
+                                    width: CommonLength.shared.width(375),
+                                    height: CommonLength.shared.height(35))
+    
+    doneButtonItem.snp.makeConstraints {
+      $0.centerY.equalToSuperview()
+      $0.trailing.equalToSuperview().offset(-CommonLength.shared.width(17))
+      $0.width.equalTo(CommonLength.shared.width(50))
+      $0.height.equalTo(CommonLength.shared.height(30))
+    }
+    
+    toolBarPartitionView.snp.makeConstraints {
+      $0.height.equalTo(1.3)
+      $0.width.centerX.equalToSuperview()
+      $0.bottom.equalTo(self.toolBarView.snp.top)
+    }
+    
+    self.inputTitleTextField.inputAccessoryView = self.toolBarView
+  }
+  
   func useInputTitleTextField() -> UITextField {
     return self.inputTitleTextField
+  }
+  
+  func useCleartButton() -> UIButton {
+    return self.clearButton
+  }
+  
+  func useDonButton() -> UIButton {
+    return doneButtonItem
   }
   
   required init?(coder: NSCoder) {

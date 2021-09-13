@@ -48,13 +48,25 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
     $0.font = UIFont.joinuns.font(size: 15)
   }
   
+  private let refresh = UIRefreshControl().then {
+    $0.tintColor = UIColor.joinusColor.joinBlue
+    $0.attributedTitle = NSAttributedString(string: "새로 생성된 방을 불러오 있습니다.",
+                                            attributes: [NSAttributedString.Key.foregroundColor: UIColor.joinusColor.joinBlue,
+                                                         NSAttributedString.Key.font : UIFont.joinuns.font(size: 13)])
+  }
+  
+  override func loadView() {
+    super.loadView()
+    self.homeListModel
+      .tableView = self.joinusListTableView
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = .clear
-    self.didTapMakeMatchingButton()
-    if !self.homeListModel.gameList.isEmpty {
-//    self.service
-//      .getHomeListInfo() {
+    self.view.backgroundColor = .white
+    self.joinusListTableView.refreshControl = self.refresh
+    self.service
+      .getHomeListInfo() {
         
         self.setupUI()
         self.setNavigationBar()
@@ -62,14 +74,15 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
         self.joinusListTableView.dataSource = self
         self.joinusListTableView.register(JoinusCustomCell.self,
                                           forCellReuseIdentifier: JoinusCustomCell.ID)
-        
-        self.joinusListTableView.reloadData()
-//      }
     }
+    
+    self.didTapMakeMatchingButton()
+    self.refreshTableView()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    
   }
   
   private func setupUI() {
@@ -126,6 +139,21 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     self.navigationController?.navigationBar.isHidden = true
   }
+  
+  private func refreshTableView() {
+    self.refresh
+      .rx
+      .controlEvent(.valueChanged)
+      .asDriver()
+      .drive(onNext: {
+        
+        self.service
+          .getHomeListInfo() {
+            
+            self.refresh.endRefreshing()
+          }
+      }).disposed(by: self.bag)
+  }
 
   private func didTapMakeMatchingButton() {
     self.creatMatchingRoomButton
@@ -136,7 +164,8 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let makeMatchingVC = MakeMatchingViewController()
         
-        self.navigationController?.pushViewController(makeMatchingVC, animated: true)
+        self.navigationController?
+          .pushViewController(makeMatchingVC, animated: true)
         
       }).disposed(by: self.bag)
   }
@@ -170,13 +199,20 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
             joinJangID = $0.nickName
           }
         }
-    
-    if startInterval == "매칭 완료" {
+
+    if startInterval.contains("완료") {
+      
       gameListCell.useStartLabel().backgroundColor = UIColor.joinusColor.gameIdTextFieldBgGray
       gameListCell.useStartLabel().textColor = UIColor.joinusColor.gameIdTextFieldPlaceholderGray
+      
+    } else {
+      
+      gameListCell.useStartLabel().backgroundColor = UIColor.joinusColor.defaultPhotoGray
+      gameListCell.useStartLabel().textColor = .white
     }
     
-    if (createdInterval == "1분 전") ||
+    if (createdInterval == "방금 전") ||
+       (createdInterval == "1분 전") ||
        (createdInterval == "2분 전") ||
        (createdInterval == "3분 전") ||
        (createdInterval == "4분 전") ||
@@ -301,25 +337,29 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
   }
   
   private func calculateCreatedTimeInterval(second: Int) -> String {
-    var day = String()
+    var timeInterval = String()
     
-    if (60 <= second), (second < 3600) {
+    if second == 0 {
       
-      day = "\(Int(second / 60))분 전"
+      timeInterval = "방금 전"
+      
+    } else if (60 <= second), (second < 3600) {
+      
+      timeInterval = "\(Int(second / 60))분 전"
       
     } else if (360 <= second), (second < (60 * 60 * 24)) {
       
-      day = "\(Int(second / 3600))시간 전"
+      timeInterval = "\(Int(second / 3600))시간 전"
       
     } else if ((60 * 60 * 24) <= second), (second < (60 * 60 * 24 * 2)) {
       
-      day = "어제"
+      timeInterval = "어제"
       
     } else if (60 * 60 * 24 * 2) <= second {
       
-      day = "\(Int(second / (60 * 60 * 24)))일 전"
+      timeInterval = "\(Int(second / (60 * 60 * 24)))일 전"
     }
     
-    return day
+    return timeInterval
   }
 }

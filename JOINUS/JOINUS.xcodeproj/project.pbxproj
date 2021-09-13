@@ -40,7 +40,6 @@
 		AD6ACFD726ED305C001BE9C5 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6ACFD626ED305C001BE9C5 /* ToggleButton.swift */; };
 		AD6ACFD926EE27B6001BE9C5 /* SelectTierOfJoinPeopleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6ACFD826EE27B6001BE9C5 /* SelectTierOfJoinPeopleViewModel.swift */; };
 		AD6ACFDB26EF467C001BE9C5 /* JoinusAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6ACFDA26EF467C001BE9C5 /* JoinusAlertController.swift */; };
-		AD6ACFDD26EF4EFD001BE9C5 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6ACFDC26EF4EFD001BE9C5 /* TestViewController.swift */; };
 		AD982F8C26CAB5ED000AEAA2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD982F8B26CAB5ED000AEAA2 /* LoginViewController.swift */; };
 		AD9E9B3726CA99D500FCFC51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9E9B3626CA99D500FCFC51 /* AppDelegate.swift */; };
 		AD9E9B3B26CA99D500FCFC51 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9E9B3A26CA99D500FCFC51 /* LaunchViewController.swift */; };
@@ -135,7 +134,6 @@
 		AD6ACFD626ED305C001BE9C5 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		AD6ACFD826EE27B6001BE9C5 /* SelectTierOfJoinPeopleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTierOfJoinPeopleViewModel.swift; sourceTree = "<group>"; };
 		AD6ACFDA26EF467C001BE9C5 /* JoinusAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinusAlertController.swift; sourceTree = "<group>"; };
-		AD6ACFDC26EF4EFD001BE9C5 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		AD982F8B26CAB5ED000AEAA2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AD9E9B3326CA99D500FCFC51 /* JOINUS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JOINUS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD9E9B3626CA99D500FCFC51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -233,7 +231,6 @@
 				AD44B0F126EC75460045CBEB /* MakeMatchingViewModel */,
 				AD44B0F026EC753E0045CBEB /* MakeMatchingView */,
 				AD44B0F226EC755D0045CBEB /* MakeMatchingViewController.swift */,
-				AD6ACFDC26EF4EFD001BE9C5 /* TestViewController.swift */,
 				AD6ACFC726ED107C001BE9C5 /* SelectTierOfJoinPeopleViewController.swift */,
 			);
 			path = MakeMatchingViewController;
@@ -726,7 +723,6 @@
 				ADCCCF6326DE6525002C5C8C /* OnboardingStep3ViewController.swift in Sources */,
 				AD44B0EE26EA808B0045CBEB /* CustomNavigationView.swift in Sources */,
 				ADFDD09E26E67CAF007883BE /* HomeListModel.swift in Sources */,
-				AD6ACFDD26EF4EFD001BE9C5 /* TestViewController.swift in Sources */,
 				ADFDD0B026E7E949007883BE /* CustomLeftBarButton.swift in Sources */,
 				ADCF012826CAB13D00F1BCF8 /* ChangeViewController.swift in Sources */,
 				AD6ACFD126ED2604001BE9C5 /* MakeMatchingModel.swift in Sources */,

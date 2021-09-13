@@ -48,8 +48,8 @@ struct putUserInfo: Codable {
   }
 }
 
-struct RoomInfo: Codable {
-  var pk: Int,
+struct GetRoomInfo: Codable {
+  var roomPk: Int,
       roomName: String,
       gameName: String,
       peopleNumber: Int,
@@ -64,7 +64,7 @@ struct RoomInfo: Codable {
       userList: [JoinUserInfo]
   
   enum CodingKeys: String, CodingKey {
-    case pk = "pk",
+    case roomPk = "pk",
          roomName = "room_name",
          gameName = "game_name",
          peopleNumber = "people_number",
@@ -100,5 +100,13 @@ struct JoinUserInfo: Codable {
          imageAddress = "image_address",
          nickName = "nickname",
          login = "login"
+  }
+}
+
+struct MakeRoom: Codable {
+  var result: Int
+
+  enum CodingKeys: String, CodingKey {
+    case result = " "
   }
 }

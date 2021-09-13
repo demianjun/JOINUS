@@ -15,10 +15,11 @@ class Service {
   
   private let myInfoModel = MyInfoModel.shared,
               messagingModel = MessagingModel.shared,
-              homeListModel = HomeListModel.shared
+              homeListModel = HomeListModel.shared,
+              makeMatchingModel = MakeMatchingModel.shared
   
   let putOnboardingUrl = "http://ec2-3-128-67-103.us-east-2.compute.amazonaws.com:80/api/onboard",
-      homeListUrl = "http://ec2-3-128-67-103.us-east-2.compute.amazonaws.com:80/api/room"
+      roomControllerUrl = "http://ec2-3-128-67-103.us-east-2.compute.amazonaws.com:80/api/room"
   
   func putMyInfo(completion: @escaping (()->())) {
     
@@ -64,7 +65,7 @@ class Service {
   
   func getHomeListInfo(completion: @escaping (()->())) {
     
-    AF.request(self.homeListUrl)
+    AF.request(self.roomControllerUrl)
       .validate(statusCode: 150...500)
       .responseJSON { response in
         
@@ -75,7 +76,7 @@ class Service {
             do {
               
               let temp = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted)
-              let data = try JSONDecoder().decode([RoomInfo].self, from: temp)
+              let data = try JSONDecoder().decode([GetRoomInfo].self, from: temp)
               
               self.homeListModel.gameList = data
               completion()
@@ -87,6 +88,51 @@ class Service {
             
           case .failure(let err):
             print("get home list err  " + err.localizedDescription)
+        }
+      }
+  }
+  
+  func postMakeMatchingRoomInfo(completion: @escaping (()->())) {
+    
+    let parameters: Parameters = ["game_name": "league of legends",//self.makeMatchingModel.selectedGame,
+                                  "highest_tier": self.makeMatchingModel.smallestTier,
+                                  "lowest_tier": self.makeMatchingModel.largestTier,
+                                  "people_number": self.makeMatchingModel.countJoinPeople,
+                                  "room_name": self.makeMatchingModel.roomTitle,
+                                  "start_date": self.makeMatchingModel.startGameDate,
+                                  "user_pk": self.myInfoModel.myPk,
+                                  "voice_chat": self.makeMatchingModel.isVoiceChat] as [String: Any]
+    
+    let headers: HTTPHeaders = [
+      "connection": "keep-alive ",
+      "Content-Type": "application/json "
+    ]
+    
+    AF.request(self.roomControllerUrl,
+               method: .post,
+               parameters: parameters,
+               encoding: JSONEncoding.prettyPrinted,
+               headers: headers)
+      .validate(statusCode: 150...500)
+      .responseJSON { response in
+        
+        switch response.result {
+          
+          case .success(let res):
+            do {
+              
+              if let roomPk = res as? Int {
+                
+                completion()
+                
+              }
+            } catch(let err) {
+              
+              print(err.localizedDescription + "post roomInfo 1")
+            }
+            
+          case .failure(let err):
+            print(err.localizedDescription + "post roomInfo 2")
         }
       }
   }

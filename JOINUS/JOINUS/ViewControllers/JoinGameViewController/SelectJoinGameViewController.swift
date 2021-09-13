@@ -12,7 +12,7 @@ import RxSwift
 class SelectJoinGameViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
   private let bag = DisposeBag()
   
-  private var roomInfo: RoomInfo
+  private var roomInfo: GetRoomInfo
   
   // MARK: ViewModel
   public let joinGameViewModel = JoinGameViewModel()
@@ -42,7 +42,7 @@ class SelectJoinGameViewController: UIViewController, UICollectionViewDelegate, 
     $0.textAlignment = .center
   }
   
-  init(roomInfo: RoomInfo) {
+  init(roomInfo: GetRoomInfo) {
     self.roomInfo = roomInfo
     super.init(nibName: nil, bundle: nil)
   }
@@ -60,7 +60,7 @@ class SelectJoinGameViewController: UIViewController, UICollectionViewDelegate, 
     self.popViewController()
   }
   
-  func inputRoomInfo(roomInfo: RoomInfo) {
+  func inputRoomInfo(roomInfo: GetRoomInfo) {
     self.roomInfo = roomInfo
   }
   

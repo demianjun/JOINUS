@@ -48,6 +48,7 @@ class GameSelectButton: UIButton {
     }
     
     greenView.snp.makeConstraints {
+      $0.width.height.equalTo(CommonLength.shared.width(60))
       $0.edges.equalToSuperview()
     }
     

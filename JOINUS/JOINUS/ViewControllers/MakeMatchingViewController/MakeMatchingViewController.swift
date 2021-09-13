@@ -8,8 +8,11 @@
 import UIKit
 import RxSwift
 
-class MakeMatchingViewController: UIViewController {
+class MakeMatchingViewController: UIViewController, UITextFieldDelegate {
   private let bag = DisposeBag()
+  
+  // MARK: Manager
+  private let service = Service.manager
   
   // MARK: ViewModel
   private let makeMatchingViewModel = MakeMatchingViewModel()
@@ -98,11 +101,17 @@ class MakeMatchingViewController: UIViewController {
     self.setupView()
     self.setNavigationBar()
     self.popViewController()
+    self.didTapMakeMatchingRoomButton()
+    self.editedRoomTitle()
     self.didTapCountButton()
     self.didTapChangeGameStartDate()
     self.didTapGameButton()
     self.didTapVoiceChatButton()
     self.didTapChangeTierRangeButton()
+  }
+  
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
   }
   
   private func setupView() {
@@ -142,6 +151,114 @@ class MakeMatchingViewController: UIViewController {
     
     self.tabBarController?.tabBar.isHidden = true
     self.navigationController?.navigationBar.isHidden = true
+  }
+  
+  func didTapMakeMatchingRoomButton() {
+    self.rightButtonItem
+      .rx
+      .tap
+      .asDriver()
+      .drive(onNext: {
+        
+        if (self.makeMatchingModel.roomTitle.isEmpty) ||
+            (self.makeMatchingModel.countJoinPeople == 1) ||
+            (self.makeMatchingModel.selectedGame.isEmpty) {
+          
+          let alertImageView = UIImageView().then {
+            $0.image = UIImage(named: "alertImage1")
+          }
+          
+           let joinusAlertVC = JoinusAlertController(title: .bottom,
+                                                    title: "제목을 입력하고 참가조건을 설정해주세요.",
+                                                    explain: "",
+                                                    add: alertImageView),
+            okButton = JoinusButton(title: "확인",
+                                    titleColor: .white,
+                                    backGroundColor: UIColor.joinusColor.joinBlue)
+          
+          joinusAlertVC.addAction(okButton)
+          
+          self.present(joinusAlertVC,
+                       animated: false) {
+            
+            CommonAction.shared.touchActionEffect(okButton, handler: {
+              self.dismiss(animated: false)
+            })
+          }
+        } else {
+          
+          self.service
+            .postMakeMatchingRoomInfo {
+              
+              self.service
+                .getHomeListInfo() {
+                  
+                  self.navigationController?
+                    .popViewController(animated: true)
+                  
+                  self.makeMatchingModel.initialized()
+                }
+            }
+        }
+      }).disposed(by: self.bag)
+  }
+  
+  func editedRoomTitle() {
+    
+    let inputTitleView = self.makeMatchingScrollView.useInputTitleView(),
+        titleTextField = inputTitleView.useInputTitleTextField(),
+        doneButton = inputTitleView.useDonButton(),
+        clearButton = inputTitleView.useCleartButton()
+    
+    titleTextField.delegate = self
+        
+    titleTextField
+      .rx
+      .controlEvent(.editingChanged)
+      .asObservable()
+      .subscribe(onNext: {
+        
+        if let title = titleTextField.text {
+          
+          if title.count != 0 {
+            
+            clearButton.isHidden = false
+            
+          } else {
+            
+            clearButton.isHidden = true
+          }
+          
+          self.makeMatchingModel.roomTitle = title
+        }
+      }).disposed(by: self.bag)
+    
+    clearButton
+      .rx
+      .tap
+      .asDriver()
+      .drive(onNext: {
+        
+        titleTextField.text?.removeAll()
+        clearButton.isHidden = true
+        
+      }).disposed(by: self.bag)
+    
+    doneButton
+      .rx
+      .tap
+      .asDriver()
+      .drive(onNext: {
+        
+        self.view.endEditing(true)
+        
+      }).disposed(by: self.bag)
+  }
+  
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    
+    textField.resignFirstResponder()
+    return true
   }
   
   func didTapCountButton() {
@@ -194,8 +311,6 @@ class MakeMatchingViewController: UIViewController {
       .tap
       .asDriver()
       .drive(onNext: {
-        
-//        let datePicker = UIDatePicker()
         
         if #available(iOS 13.4, *) {
 //          datePicker.preferredDatePickerStyle = .wheels
