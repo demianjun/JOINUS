@@ -9,6 +9,8 @@ import UIKit
 import RxSwift
 
 class MakeMatchingViewModel {
+  private let calculateAboutTime = CalculateAboutTime()
+  
   // MARK: Model
   private let makeMatchingModel = MakeMatchingModel.shared
   
@@ -31,7 +33,7 @@ class MakeMatchingViewModel {
   func bindSetGameStartDate() {
     _ = self.inputGameStartDate
       .asObserver()
-      .map(startDateToString(_:))
+      .map(self.calculateAboutTime.dateToString(_:))
       .bind(to: self.outputSetGameStartDate)
   }
   
@@ -64,15 +66,15 @@ class MakeMatchingViewModel {
     return String(self.makeMatchingModel.countJoinPeople)
   }
   
-  private func startDateToString(_ date: Date) -> String {
-    let dateFormatter = DateFormatter().then {
-      $0.locale = Locale(identifier: "Ko_kr")
-      $0.dateFormat = "yyyy년 M월 dd일"
-    }
-    var setDate = String()
-    
-    setDate = dateFormatter.string(from: date)
-    
-    return setDate
-  }
+//  private func startDateToString(_ date: Date) -> String {
+//    let dateFormatter = DateFormatter().then {
+//      $0.locale = Locale(identifier: "Ko_kr")
+//      $0.dateFormat = "yyyy년 M월 dd일"
+//    }
+//    var setDate = String()
+//
+//    setDate = dateFormatter.string(from: date)
+//
+//    return setDate
+//  }
 }

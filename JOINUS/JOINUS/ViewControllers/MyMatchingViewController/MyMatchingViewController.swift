@@ -11,7 +11,7 @@ import RxSwift
 class MyMatchingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
   private let bag = DisposeBag()
   
-  private let methods = CommonMethods()
+  private let methods = CalculateAboutTime()
   
   // MARK: Manager
   private let service = Service.manager

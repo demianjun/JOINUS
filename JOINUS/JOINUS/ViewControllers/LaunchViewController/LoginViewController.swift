@@ -18,6 +18,8 @@ class LoginViewController: UIViewController {
   
   private let googleConnction = GIDSignIn.sharedInstance
   
+  private let service = Service.manager
+  
   private let myInfoModel = MyInfoModel.shared,
               messagingModel = MessagingModel.shared
   
@@ -81,63 +83,19 @@ class LoginViewController: UIViewController {
 
         guard let authentication = user?.authentication else { return print("token return") }
 
-        print("access token: \(authentication.accessToken)")
+        print("-> access token: \(authentication.accessToken)")
         
-        self.signUp(token: authentication.accessToken)
-      }
-    }
-  }
-  
-  func signUp(token: String) {
-    
-    let url = "http://ec2-3-128-67-103.us-east-2.compute.amazonaws.com:80/api/login/access?" + "code=" + token
-    
-    AF.request(url,
-               method: .get)
-      .validate(statusCode: 150..<500)
-      .responseJSON {
-        
-        switch $0.result {
+        self.service
+          .signUp(accessToken: authentication.accessToken) {
           
-          case .success(let res):
-            
-            do {
-              
-              let temp = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted),
-                  data = try JSONDecoder().decode(GetUserInfo.self, from: temp)
-              
-              print("data",data)
-              self.myInfoModel.myAge = data.age
-              self.myInfoModel.myGameID = data.nickName ?? "noname"
-              self.myInfoModel.myGender = data.gender
-              self.myInfoModel.myPk = data.pk
-              self.myInfoModel.subToken = data.subToken
-              
-              if !data.login {
-              
-              let onBoardingVC = OnboardingStep1ViewController(),
-                  onBoardingNaviVC = UINavigationController(rootViewController: onBoardingVC)
-              
-                self.changeWindow
-                  .change(change: onBoardingNaviVC)
-                
-              } else {
-               
-                let setTabbarController = SetTabbarController()
-                
-                setTabbarController.settingRootViewController()
-                
-              }
-            } catch(let err) {
-              
-              print(err.localizedDescription + "-> 1")
-            }
-            
-          case .failure(let err):
-            
-            print(err.localizedDescription + "-> 2")
+          let onBoardingVC = OnboardingStep1ViewController(),
+              onBoardingNaviVC = UINavigationController(rootViewController: onBoardingVC)
+          
+            self.changeWindow
+              .change(change: onBoardingNaviVC)
         }
       }
+    }
   }
 }
   

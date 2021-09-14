@@ -17,6 +17,9 @@ class MyInfoModel {
       myGameID = String(), // nick name
       myTier = Int(),
       myProfileImg = UIImage(), // url
+      myProfileUrl = String(),
       subToken = String(),
-      myPk = Int()
+      myPk = Int(),
+      gameInfoPk = Int(),
+      myGameName = String()
 }

@@ -7,7 +7,8 @@
 
 import UIKit
 
-class CommonMethods {
+class CalculateAboutTime {
+  
   func calculateStartTime(start time: String) -> String {
     let dateFormat = DateFormatter()
     dateFormat.locale = Locale(identifier: "Ko_kr")
@@ -110,5 +111,32 @@ class CommonMethods {
     }
     
     return timeInterval
+  }
+  
+  func dateToString(_ date: Date) -> String {
+    let dateFormatter = DateFormatter().then {
+      $0.locale = Locale(identifier: "Ko_kr")
+      $0.dateFormat = "yyyy년 M월 dd일"
+    }
+    var setDate = String()
+    
+    setDate = dateFormatter.string(from: date)
+    
+    return setDate
+  }
+  
+  func strDateToString(_ date: String) -> String {
+    let dateFormatter = DateFormatter().then {
+      $0.locale = Locale(identifier: "Ko_kr")
+      $0.dateFormat = "yyyy년 M월 dd일"
+    }
+    
+    var setDate = String()
+    
+    let tempStr = date.components(separatedBy: " ")[0].toDate()
+    
+    setDate = dateFormatter.string(from: tempStr!)
+
+    return setDate
   }
 }

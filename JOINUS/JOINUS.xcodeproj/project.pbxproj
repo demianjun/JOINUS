@@ -40,10 +40,18 @@
 		AD6ACFD726ED305C001BE9C5 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6ACFD626ED305C001BE9C5 /* ToggleButton.swift */; };
 		AD6ACFD926EE27B6001BE9C5 /* SelectTierOfJoinPeopleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6ACFD826EE27B6001BE9C5 /* SelectTierOfJoinPeopleViewModel.swift */; };
 		AD6ACFDB26EF467C001BE9C5 /* JoinusAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6ACFDA26EF467C001BE9C5 /* JoinusAlertController.swift */; };
+		AD70214726F07EE400B2B0CC /* MyGameProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70214626F07EE400B2B0CC /* MyGameProfileView.swift */; };
+		AD70214926F081C100B2B0CC /* MyMannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70214826F081C100B2B0CC /* MyMannerView.swift */; };
+		AD70214B26F0846C00B2B0CC /* MyDetailProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70214A26F0846C00B2B0CC /* MyDetailProfileView.swift */; };
+		AD70214D26F084E800B2B0CC /* MannerGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70214C26F084E800B2B0CC /* MannerGuideView.swift */; };
+		AD70215026F0BA7400B2B0CC /* TierToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70214F26F0BA7400B2B0CC /* TierToString.swift */; };
+		AD70215226F0BCCD00B2B0CC /* MyProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70215126F0BCCD00B2B0CC /* MyProfileEditViewController.swift */; };
+		AD70215426F0F03100B2B0CC /* MyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70215326F0F03100B2B0CC /* MyInfoViewModel.swift */; };
 		AD70A3E426EFC10000BC4841 /* MatchingTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70A3E326EFC10000BC4841 /* MatchingTypeButton.swift */; };
 		AD70A3E626EFC79C00BC4841 /* MyMatchingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70A3E526EFC79C00BC4841 /* MyMatchingModel.swift */; };
-		AD70A3E826EFE0DB00BC4841 /* CommonMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70A3E726EFE0DB00BC4841 /* CommonMethods.swift */; };
+		AD70A3E826EFE0DB00BC4841 /* CalculateAboutTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70A3E726EFE0DB00BC4841 /* CalculateAboutTime.swift */; };
 		AD70A3EA26EFE3CD00BC4841 /* NoCountImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70A3E926EFE3CD00BC4841 /* NoCountImageView.swift */; };
+		AD70A3ED26F0702800BC4841 /* MyProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70A3EC26F0702800BC4841 /* MyProfileInfoView.swift */; };
 		AD982F8C26CAB5ED000AEAA2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD982F8B26CAB5ED000AEAA2 /* LoginViewController.swift */; };
 		AD9E9B3726CA99D500FCFC51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9E9B3626CA99D500FCFC51 /* AppDelegate.swift */; };
 		AD9E9B3B26CA99D500FCFC51 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9E9B3A26CA99D500FCFC51 /* LaunchViewController.swift */; };
@@ -138,10 +146,18 @@
 		AD6ACFD626ED305C001BE9C5 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		AD6ACFD826EE27B6001BE9C5 /* SelectTierOfJoinPeopleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTierOfJoinPeopleViewModel.swift; sourceTree = "<group>"; };
 		AD6ACFDA26EF467C001BE9C5 /* JoinusAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinusAlertController.swift; sourceTree = "<group>"; };
+		AD70214626F07EE400B2B0CC /* MyGameProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGameProfileView.swift; sourceTree = "<group>"; };
+		AD70214826F081C100B2B0CC /* MyMannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMannerView.swift; sourceTree = "<group>"; };
+		AD70214A26F0846C00B2B0CC /* MyDetailProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDetailProfileView.swift; sourceTree = "<group>"; };
+		AD70214C26F084E800B2B0CC /* MannerGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MannerGuideView.swift; sourceTree = "<group>"; };
+		AD70214F26F0BA7400B2B0CC /* TierToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TierToString.swift; sourceTree = "<group>"; };
+		AD70215126F0BCCD00B2B0CC /* MyProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileEditViewController.swift; sourceTree = "<group>"; };
+		AD70215326F0F03100B2B0CC /* MyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewModel.swift; sourceTree = "<group>"; };
 		AD70A3E326EFC10000BC4841 /* MatchingTypeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingTypeButton.swift; sourceTree = "<group>"; };
 		AD70A3E526EFC79C00BC4841 /* MyMatchingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMatchingModel.swift; sourceTree = "<group>"; };
-		AD70A3E726EFE0DB00BC4841 /* CommonMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMethods.swift; sourceTree = "<group>"; };
+		AD70A3E726EFE0DB00BC4841 /* CalculateAboutTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateAboutTime.swift; sourceTree = "<group>"; };
 		AD70A3E926EFE3CD00BC4841 /* NoCountImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCountImageView.swift; sourceTree = "<group>"; };
+		AD70A3EC26F0702800BC4841 /* MyProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileInfoView.swift; sourceTree = "<group>"; };
 		AD982F8B26CAB5ED000AEAA2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AD9E9B3326CA99D500FCFC51 /* JOINUS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JOINUS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD9E9B3626CA99D500FCFC51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -328,6 +344,18 @@
 			path = MyMatchingView;
 			sourceTree = "<group>";
 		};
+		AD70A3EB26F0701B00BC4841 /* MyInfoVIew */ = {
+			isa = PBXGroup;
+			children = (
+				AD70A3EC26F0702800BC4841 /* MyProfileInfoView.swift */,
+				AD70214626F07EE400B2B0CC /* MyGameProfileView.swift */,
+				AD70214826F081C100B2B0CC /* MyMannerView.swift */,
+				AD70214C26F084E800B2B0CC /* MannerGuideView.swift */,
+				AD70214A26F0846C00B2B0CC /* MyDetailProfileView.swift */,
+			);
+			path = MyInfoVIew;
+			sourceTree = "<group>";
+		};
 		AD74446326CAD2C500F90BF2 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,8 +419,8 @@
 				ADCF012026CAAF5600F1BCF8 /* Extension */,
 				ADCF011E26CAAEF800F1BCF8 /* CommonAttribute */,
 				ADF93D2C26EA349400B8A1E9 /* CommonView */,
-				AD9E9B3626CA99D500FCFC51 /* AppDelegate.swift */,
 				AD9E9B3C26CA99D500FCFC51 /* Main.storyboard */,
+				AD9E9B3626CA99D500FCFC51 /* AppDelegate.swift */,
 				AD9E9B3F26CA99D600FCFC51 /* Assets.xcassets */,
 				AD9E9B4126CA99D600FCFC51 /* LaunchScreen.storyboard */,
 				AD67E7BD26CABACE006B1FD4 /* credentials.plist */,
@@ -433,9 +461,11 @@
 		ADB9339326E14BC60016BC7F /* MyInfoViewController */ = {
 			isa = PBXGroup;
 			children = (
+				AD70A3EB26F0701B00BC4841 /* MyInfoVIew */,
 				ADFDD0A326E67D0F007883BE /* MyInfoViewModel */,
 				ADB9339426E14BDC0016BC7F /* MyInfoModel */,
 				ADFDD0A126E67D0B007883BE /* MyInfoViewController.swift */,
+				AD70215126F0BCCD00B2B0CC /* MyProfileEditViewController.swift */,
 			);
 			path = MyInfoViewController;
 			sourceTree = "<group>";
@@ -486,6 +516,8 @@
 				AD54C50F26D7E8A20023FA99 /* CommonAction.swift */,
 				ADFDD0AB26E7B7E3007883BE /* SetTabbarController.swift */,
 				ADFDD0B726E7F8FE007883BE /* TimeUnits.swift */,
+				AD70A3E726EFE0DB00BC4841 /* CalculateAboutTime.swift */,
+				AD70214F26F0BA7400B2B0CC /* TierToString.swift */,
 			);
 			path = CommonAttribute;
 			sourceTree = "<group>";
@@ -534,7 +566,6 @@
 				AD44B0ED26EA808B0045CBEB /* CustomNavigationView.swift */,
 				ADF93D2E26EA34C900B8A1E9 /* JoinusButton.swift */,
 				AD6ACFDA26EF467C001BE9C5 /* JoinusAlertController.swift */,
-				AD70A3E726EFE0DB00BC4841 /* CommonMethods.swift */,
 			);
 			path = CommonView;
 			sourceTree = "<group>";
@@ -580,6 +611,7 @@
 		ADFDD0A326E67D0F007883BE /* MyInfoViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				AD70215326F0F03100B2B0CC /* MyInfoViewModel.swift */,
 			);
 			path = MyInfoViewModel;
 			sourceTree = "<group>";
@@ -736,15 +768,18 @@
 			files = (
 				ADF93D3126EA370F00B8A1E9 /* JoinGameViewModel.swift in Sources */,
 				AD6ACFD326ED2613001BE9C5 /* MakeMatchingViewModel.swift in Sources */,
+				AD70215426F0F03100B2B0CC /* MyInfoViewModel.swift in Sources */,
 				AD6ACFDB26EF467C001BE9C5 /* JoinusAlertController.swift in Sources */,
 				AD44B0FF26ECA2ED0045CBEB /* SetJoinPeopleTierView.swift in Sources */,
 				ADF93D2526EA236A00B8A1E9 /* JoinGameListLabel.swift in Sources */,
 				AD70A3EA26EFE3CD00BC4841 /* NoCountImageView.swift in Sources */,
 				AD6ACFD526ED2D8C001BE9C5 /* SelectDateView.swift in Sources */,
+				AD70A3ED26F0702800BC4841 /* MyProfileInfoView.swift in Sources */,
 				ADCCCF6326DE6525002C5C8C /* OnboardingStep3ViewController.swift in Sources */,
 				AD44B0EE26EA808B0045CBEB /* CustomNavigationView.swift in Sources */,
 				ADFDD09E26E67CAF007883BE /* HomeListModel.swift in Sources */,
 				ADFDD0B026E7E949007883BE /* CustomLeftBarButton.swift in Sources */,
+				AD70214D26F084E800B2B0CC /* MannerGuideView.swift in Sources */,
 				ADCF012826CAB13D00F1BCF8 /* ChangeViewController.swift in Sources */,
 				AD6ACFD126ED2604001BE9C5 /* MakeMatchingModel.swift in Sources */,
 				ADCCCF6A26DE9484002C5C8C /* GoogleLoginButton.swift in Sources */,
@@ -777,25 +812,29 @@
 				ADCCCF6126DD7D40002C5C8C /* NextButtonStatus.swift in Sources */,
 				AD02EFCA26DFF20A000A7F6B /* ProfilePhotoView.swift in Sources */,
 				AD70A3E426EFC10000BC4841 /* MatchingTypeButton.swift in Sources */,
+				AD70214726F07EE400B2B0CC /* MyGameProfileView.swift in Sources */,
 				AD6ACFC826ED107C001BE9C5 /* SelectTierOfJoinPeopleViewController.swift in Sources */,
 				ADF93D2F26EA34C900B8A1E9 /* JoinusButton.swift in Sources */,
 				AD6ACFD926EE27B6001BE9C5 /* SelectTierOfJoinPeopleViewModel.swift in Sources */,
 				AD9E9B3726CA99D500FCFC51 /* AppDelegate.swift in Sources */,
 				AD6ACFC626ECBDB9001BE9C5 /* GameButtonScrollView.swift in Sources */,
+				AD70215026F0BA7400B2B0CC /* TierToString.swift in Sources */,
 				ADB9338926E009250016BC7F /* JoinusActionSheetView.swift in Sources */,
 				ADCF012C26CAB19F00F1BCF8 /* CommonFont.swift in Sources */,
 				ADCCCF5B26DD638D002C5C8C /* OnboardingViewModel.swift in Sources */,
 				AD982F8C26CAB5ED000AEAA2 /* LoginViewController.swift in Sources */,
 				AD44B0F326EC755D0045CBEB /* MakeMatchingViewController.swift in Sources */,
+				AD70214926F081C100B2B0CC /* MyMannerView.swift in Sources */,
 				AD44B0F926EC9D120045CBEB /* StartDateSetView.swift in Sources */,
 				ADFDD0AC26E7B7E3007883BE /* SetTabbarController.swift in Sources */,
-				AD70A3E826EFE0DB00BC4841 /* CommonMethods.swift in Sources */,
+				AD70A3E826EFE0DB00BC4841 /* CalculateAboutTime.swift in Sources */,
 				ADB9339126E138C60016BC7F /* CircleCropViewController.swift in Sources */,
 				ADB9339026E138C60016BC7F /* CircleCropScrollView.swift in Sources */,
 				ADCCCF5F26DD70A3002C5C8C /* SelectGameButton.swift in Sources */,
 				AD54C51426D7F3930023FA99 /* AgePickerView.swift in Sources */,
 				ADFDD0AA26E6840A007883BE /* JoinusListCell.swift in Sources */,
 				ADCCCF7026DFD74E002C5C8C /* ProfileViewControllerViewController.swift in Sources */,
+				AD70215226F0BCCD00B2B0CC /* MyProfileEditViewController.swift in Sources */,
 				ADB9339826E1FC5D0016BC7F /* Service.swift in Sources */,
 				AD4A6E8A26D526460083D9A6 /* OnboardingStep1ViewController.swift in Sources */,
 				ADCCCF5D26DD6C8F002C5C8C /* OnboardingStep2ViewController.swift in Sources */,
@@ -804,6 +843,7 @@
 				ADFDD09C26E67CA5007883BE /* HomeListViewModel.swift in Sources */,
 				ADFDD0B626E7F532007883BE /* JoinusListTableView.swift in Sources */,
 				ADCF012626CAB11700F1BCF8 /* ChangeWindow.swift in Sources */,
+				AD70214B26F0846C00B2B0CC /* MyDetailProfileView.swift in Sources */,
 				AD70A3E626EFC79C00BC4841 /* MyMatchingModel.swift in Sources */,
 				ADCCCF6E26DFCFFF002C5C8C /* OnboardingStep4ViewController.swift in Sources */,
 				ADFDD0A226E67D0B007883BE /* MyInfoViewController.swift in Sources */,

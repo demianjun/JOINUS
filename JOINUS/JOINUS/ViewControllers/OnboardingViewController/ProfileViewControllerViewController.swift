@@ -92,7 +92,7 @@ class ProfileViewControllerViewController: UIViewController {
     [titleLabel,
      profilePhotoView,
      gudieLabel,
-    nextButton].forEach { self.view.addSubview($0) }
+     nextButton].forEach { self.view.addSubview($0) }
     
     titleLabel.snp.makeConstraints {
       $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(CommonLength.shared.height(40))

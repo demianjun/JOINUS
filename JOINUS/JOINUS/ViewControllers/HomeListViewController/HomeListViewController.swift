@@ -11,7 +11,7 @@ import RxSwift
 class HomeListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
   private let bag = DisposeBag()
   
-  private let methods = CommonMethods()
+  private let calculateAboutTime = CalculateAboutTime()
   
   // MARK: Manager
   private let service = Service.manager
@@ -187,8 +187,8 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
     let temp = self.homeListModel.gameList[indexPath.row],
         createdAt = temp.createdAt,
         startDate = temp.startDate,
-        createdInterval = self.methods.calculateCreatedTime(created: createdAt),
-        startInterval = self.methods.calculateStartTime(start: startDate),
+        createdInterval = self.calculateAboutTime.calculateCreatedTime(created: createdAt),
+        startInterval = self.calculateAboutTime.calculateStartTime(start: startDate),
         leaderPk = temp.leaderPk,
         peopleCount = temp.nowPeopleCnt,
         peopleNum = temp.peopleNumber

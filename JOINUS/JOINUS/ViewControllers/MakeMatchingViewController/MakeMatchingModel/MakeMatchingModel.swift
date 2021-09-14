@@ -19,8 +19,8 @@ class MakeMatchingModel {
       selectedGame = String(),
       startGameDate = String(),
       isVoiceChat = false,
-      smallestTier = 0,
-      largestTier = 7
+      lowestTier = 0,
+      highestTier = 7
   
   func initialized() {
     self.roomTitle = ""
@@ -28,8 +28,8 @@ class MakeMatchingModel {
     self.selectedGame = ""
     self.startGameDate = ""
     self.isVoiceChat = Bool()
-    self.smallestTier = 0
-    self.largestTier = 7
+    self.lowestTier = 0
+    self.highestTier = 7
   }
   
 }

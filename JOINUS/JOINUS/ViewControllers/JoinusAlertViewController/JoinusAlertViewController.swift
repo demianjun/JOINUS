@@ -213,10 +213,12 @@ class JoinusAlertViewController: UIViewController, UIImagePickerControllerDelega
   }
   
   private func requestCollection() {
-    self.picker.sourceType = .photoLibrary
-    
-    self.present(self.picker,
-                 animated: true)
+    DispatchQueue.main.async {
+      self.picker.sourceType = .photoLibrary
+      
+      self.present(self.picker,
+                   animated: true)      
+    }
   }
   
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -241,7 +243,7 @@ class JoinusAlertViewController: UIViewController, UIImagePickerControllerDelega
   }
   
   func circleCropDidCropImage(_ image: UIImage) {
-    
+      
     self.onboardingViewModel
       .selectProfileImageInputSubject
       .onNext(image)

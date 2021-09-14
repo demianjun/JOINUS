@@ -14,6 +14,9 @@ class SelectJoinGameViewController: UIViewController, UICollectionViewDelegate, 
   
   private var roomInfo: GetRoomInfo
   
+  private let calculateAboutTime = CalculateAboutTime(),
+              tier = TierToString()
+  
   // MARK: ViewModel
   public let joinGameViewModel = JoinGameViewModel()
   
@@ -85,12 +88,21 @@ class SelectJoinGameViewController: UIViewController, UICollectionViewDelegate, 
       $0.centerX.equalToSuperview()
     }
     
-    let joinPeople = "\(self.roomInfo.userList.count)/\(self.roomInfo.peopleNumber)"
+    let joinPeople = "\(self.roomInfo.userList.count)/\(self.roomInfo.peopleNumber)",
+        tierRange = self.tier.selectTierRange(lowest: self.roomInfo.lowestTier,
+                                              highest: self.roomInfo.highestTier)
+    
+    var range = String()
+    if tierRange.count == 2 {
+      range = "\(tierRange[0]) > \(tierRange[1])"
+    } else {
+      range = "\(tierRange[0])"
+    }
     
     self.joinGameView.useTitleLabel().text = self.roomInfo.roomName
     self.joinGameView.useJoinPeople().useListContentLabel().text = joinPeople
-    self.joinGameView.useStartGameDate().useListContentLabel().text = self.roomInfo.startDate
-    self.joinGameView.useTierOfStandard().useListContentLabel().text = "\(self.roomInfo.lowestTier)"
+    self.joinGameView.useStartGameDate().useListContentLabel().text = self.calculateAboutTime.strDateToString(self.roomInfo.startDate)
+    self.joinGameView.useTierOfStandard().useListContentLabel().text = range
     self.joinGameView.useVoiceChatCheck().useListContentLabel().text = "\(self.roomInfo.voiceChat)"
   }
   

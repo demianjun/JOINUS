@@ -129,9 +129,7 @@ class OnboardingStep3ViewController: UIViewController {
   }
   
   private func setupUI() {
-    [gameMarkImageView, topLabel, bottomLabel, gameIdInputtextField, nextButton].forEach { self.view.addSubview($0) }
-    
-    self.view.addSubview(clearButton)
+    [gameMarkImageView, topLabel, bottomLabel, gameIdInputtextField, nextButton, clearButton].forEach { self.view.addSubview($0) }
     
     gameMarkImageView.snp.makeConstraints {
       $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(CommonLength.shared.height(40))

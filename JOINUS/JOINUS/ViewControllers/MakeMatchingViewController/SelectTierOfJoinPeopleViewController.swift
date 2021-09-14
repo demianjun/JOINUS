@@ -105,32 +105,32 @@ class SelectTierOfJoinPeopleViewController: UIViewController {
   }
   
   private func initTierRange() {
-    let smallestView = self.selectTierOfJoinPeopleScrollView.useSmallestTierRangeView(),
-        smallestAllTierButton = smallestView.useAllTierSelectButton(),
-        largestView = self.selectTierOfJoinPeopleScrollView.useLargestTierRangeView(),
-        largestAllTierButton = largestView.useAllTierSelectButton()
+    let lowestView = self.selectTierOfJoinPeopleScrollView.useSmallestTierRangeView(),
+        lowestAllTierButton = lowestView.useAllTierSelectButton(),
+        highetView = self.selectTierOfJoinPeopleScrollView.useLargestTierRangeView(),
+        highestAllTierButton = highetView.useAllTierSelectButton()
     
-    if (self.makeMatchingModel.smallestTier == 0),
-       (self.makeMatchingModel.largestTier == 7) {
+    if (self.makeMatchingModel.lowestTier == 0),
+       (self.makeMatchingModel.highestTier == 7) {
       
-      smallestAllTierButton.isSelected = true
-      largestAllTierButton.isSelected = true
+      lowestAllTierButton.isSelected = true
+      highestAllTierButton.isSelected = true
       
     }
   }
   
   private func didTapSmallestTierRangeButton() {
     
-    let smallestView = self.selectTierOfJoinPeopleScrollView.useSmallestTierRangeView(),
-        allTierButton = smallestView.useAllTierSelectButton(),
-        ironButton = smallestView.useTierRangeSelectButton(tier: .iron),
-        bronzeButton = smallestView.useTierRangeSelectButton(tier: .bronze),
-        silverButton = smallestView.useTierRangeSelectButton(tier: .silver),
-        goldButton = smallestView.useTierRangeSelectButton(tier: .gold),
-        platinumButton = smallestView.useTierRangeSelectButton(tier: .platinum),
-        diaButton = smallestView.useTierRangeSelectButton(tier: .diamond),
-        masterButton = smallestView.useTierRangeSelectButton(tier: .master),
-        challengerButton = smallestView.useTierRangeSelectButton(tier: .challenger),
+    let lowestView = self.selectTierOfJoinPeopleScrollView.useSmallestTierRangeView(),
+        allTierButton = lowestView.useAllTierSelectButton(),
+        ironButton = lowestView.useTierRangeSelectButton(tier: .iron),
+        bronzeButton = lowestView.useTierRangeSelectButton(tier: .bronze),
+        silverButton = lowestView.useTierRangeSelectButton(tier: .silver),
+        goldButton = lowestView.useTierRangeSelectButton(tier: .gold),
+        platinumButton = lowestView.useTierRangeSelectButton(tier: .platinum),
+        diaButton = lowestView.useTierRangeSelectButton(tier: .diamond),
+        masterButton = lowestView.useTierRangeSelectButton(tier: .master),
+        challengerButton = lowestView.useTierRangeSelectButton(tier: .challenger),
         isSelect = true
     
     Observable.of(allTierButton.rx.tap.map { tap.allTier },
@@ -150,13 +150,13 @@ class SelectTierOfJoinPeopleViewController: UIViewController {
           .inputSmallestTierRange
           .onNext(rangeTier.rawValue)
         
-        self.makeMatchingModel.smallestTier = rangeTier.rawValue
+        self.makeMatchingModel.lowestTier = rangeTier.rawValue
         
         switch rangeTier {
           
           case .allTier:
             
-            self.makeMatchingModel.smallestTier = 0
+            self.makeMatchingModel.lowestTier = 0
             
             allTierButton.isSelected = isSelect
             ironButton.isSelected = !isSelect
@@ -270,16 +270,16 @@ class SelectTierOfJoinPeopleViewController: UIViewController {
   
   private func didTapLargestTierRangeButton() {
     
-    let largestView = self.selectTierOfJoinPeopleScrollView.useLargestTierRangeView(),
-        allTierButton = largestView.useAllTierSelectButton(),
-        ironButton = largestView.useTierRangeSelectButton(tier: .iron),
-        bronzeButton = largestView.useTierRangeSelectButton(tier: .bronze),
-        silverButton = largestView.useTierRangeSelectButton(tier: .silver),
-        goldButton = largestView.useTierRangeSelectButton(tier: .gold),
-        platinumButton = largestView.useTierRangeSelectButton(tier: .platinum),
-        diaButton = largestView.useTierRangeSelectButton(tier: .diamond),
-        masterButton = largestView.useTierRangeSelectButton(tier: .master),
-        challengerButton = largestView.useTierRangeSelectButton(tier: .challenger),
+    let highestView = self.selectTierOfJoinPeopleScrollView.useLargestTierRangeView(),
+        allTierButton = highestView.useAllTierSelectButton(),
+        ironButton = highestView.useTierRangeSelectButton(tier: .iron),
+        bronzeButton = highestView.useTierRangeSelectButton(tier: .bronze),
+        silverButton = highestView.useTierRangeSelectButton(tier: .silver),
+        goldButton = highestView.useTierRangeSelectButton(tier: .gold),
+        platinumButton = highestView.useTierRangeSelectButton(tier: .platinum),
+        diaButton = highestView.useTierRangeSelectButton(tier: .diamond),
+        masterButton = highestView.useTierRangeSelectButton(tier: .master),
+        challengerButton = highestView.useTierRangeSelectButton(tier: .challenger),
         isSelect = true
     
     Observable.of(allTierButton.rx.tap.map { tap.allTier },
@@ -299,13 +299,13 @@ class SelectTierOfJoinPeopleViewController: UIViewController {
           .inputLargestTierRange
           .onNext(rangeTier.rawValue)
         
-        self.makeMatchingModel.largestTier = rangeTier.rawValue
+        self.makeMatchingModel.highestTier = rangeTier.rawValue
         
         switch rangeTier {
           
           case .allTier:
             
-            self.makeMatchingModel.largestTier = 7
+            self.makeMatchingModel.highestTier = 7
             
             allTierButton.isSelected = isSelect
             ironButton.isSelected = !isSelect

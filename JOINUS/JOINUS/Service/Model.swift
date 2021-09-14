@@ -38,6 +38,20 @@ struct GetUserInfo: Codable {
   }
 }
 
+struct GetUserGameInfo: Codable {
+  var gameInfoPk = Int(),
+      userPk = Int(),
+      gameName = String(),
+      gameID = String(),
+      tier = Int()
+  
+  enum CodingKeys: String, CodingKey {
+    case tier,
+         gameInfoPk = "pk", userPk = "user_pk",
+         gameID = "game_id", gameName = "name"
+  }
+}
+
 struct putUserInfo: Codable {
   
   var status: Int,
