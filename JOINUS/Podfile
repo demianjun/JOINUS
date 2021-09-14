@@ -16,5 +16,6 @@ pod 'GoogleSignIn'
 pod 'Firebase/Auth'
 pod 'Firebase/Analytics'
 pod 'Firebase/Messaging'
+pod 'SwiftSocket'
 
 end

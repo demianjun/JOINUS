@@ -12,10 +12,18 @@ import RxSwift
 class SelectJoinGameViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
   private let bag = DisposeBag()
   
-  private var roomInfo: GetRoomInfo
+  private var roomInfo: GetRoomInfo,
+              joinJangPk: Int
   
   private let calculateAboutTime = CalculateAboutTime(),
-              tier = TierToString()
+              tier = TierToString(),
+              downLoad = DownLoad()
+  
+  // MARK: Manager
+  private let roomUser = RoomUserService.manager
+  
+  // MARK: Model
+  private let joinChattingModel = JoinChattingModel.shared
   
   // MARK: ViewModel
   public let joinGameViewModel = JoinGameViewModel()
@@ -45,8 +53,9 @@ class SelectJoinGameViewController: UIViewController, UICollectionViewDelegate, 
     $0.textAlignment = .center
   }
   
-  init(roomInfo: GetRoomInfo) {
+  init(roomInfo: GetRoomInfo, joinJangPk: Int) {
     self.roomInfo = roomInfo
+    self.joinJangPk = joinJangPk
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -57,14 +66,13 @@ class SelectJoinGameViewController: UIViewController, UICollectionViewDelegate, 
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view.backgroundColor = #colorLiteral(red: 0.8783445954, green: 0.8784921765, blue: 0.8783251643, alpha: 1)
+    self.joinChattingModel.selectedRoomPk = self.roomInfo.roomPk
+    self.joinChattingModel.selectedRoomManner = 7//self.roomInfo.roomManner
     self.setupView()
-    self.setNavigationBar()
     self.aboutCollectionView()
+    self.setNavigationBar()
     self.popViewController()
-  }
-  
-  func inputRoomInfo(roomInfo: GetRoomInfo) {
-    self.roomInfo = roomInfo
+    self.didTapJoinButton()
   }
   
   private func setupView() {
@@ -104,6 +112,42 @@ class SelectJoinGameViewController: UIViewController, UICollectionViewDelegate, 
     self.joinGameView.useStartGameDate().useListContentLabel().text = self.calculateAboutTime.strDateToString(self.roomInfo.startDate)
     self.joinGameView.useTierOfStandard().useListContentLabel().text = range
     self.joinGameView.useVoiceChatCheck().useListContentLabel().text = "\(self.roomInfo.voiceChat)"
+  }
+  
+  private func didTapJoinButton() {
+    let joinChattingVC = JoinChattingViewController()
+    
+    CommonAction.shared.touchActionEffect(self.joinButton) {
+      self.navigationController?
+        .pushViewController(joinChattingVC,
+                            animated: true)
+
+//      self.roomUser.postRoomUser { res in
+//
+//        if res == 1 {
+//
+//          self.navigationController?
+//            .pushViewController(joinChattingVC,
+//                                animated: true)
+//
+//        } else {
+//
+//          let joinusAlertVC = JoinusAlertController(title: .top,
+//                                                    title: "참여 할 수 없습니다ㅠ",
+//                                                    explain: "사람이 꽉 찼거나 게임이 시작되었습니다.\n다른 방에 조인해보세요"),
+//            okButton = JoinusButton(title: "확인",
+//                                    titleColor: .white,
+//                                    backGroundColor: UIColor.joinusColor.joinBlue)
+//
+//          joinusAlertVC.addAction(okButton)
+//
+//          self.present(joinusAlertVC,
+//                       animated: false) {
+//            okButton.rx.tap.asDriver().drive { self.dismiss(animated: false) }.disposed(by: self.bag)
+//          }
+//        }
+//      }
+    }
   }
   
   private func setNavigationBar() {
@@ -165,10 +209,24 @@ class SelectJoinGameViewController: UIViewController, UICollectionViewDelegate, 
                                  for: indexPath) as? JoinProfileCell else { fatalError("join profile cell return") }
     
     let userInfo = self.roomInfo.userList[indexPath.row]
+
+    let joinJangMarkLabel = UILabel().then {
+      $0.text = "조 인 장"
+      $0.font = UIFont.joinuns.font(size: 10)
+      $0.textColor = UIColor.joinusColor.joinBlue
+    }
+    joinProfileCell.addSubview(joinJangMarkLabel)
     
-    //    joinProfileCell.useProfileImageView().image = UIImage(named: userInfo.imageAddress ?? "defaultProfile_60x60")
-    joinProfileCell.useProfileImageView().image = UIImage(named: "defaultProfile_60x60")
+    
+    joinProfileCell.useProfileImageView().image = self.downLoad.imageURL(image: userInfo.imageAddress)
     joinProfileCell.useUserNameLabel().text = userInfo.nickName
+    
+    if self.joinJangPk == userInfo.joinUserPk {
+      joinJangMarkLabel.snp.makeConstraints {
+        $0.bottom.equalTo(joinProfileCell.useUserNameLabel().snp.bottom).offset(2)
+        $0.centerX.equalTo(joinProfileCell.useUserNameLabel())
+      }
+    }
     
     return joinProfileCell
   }

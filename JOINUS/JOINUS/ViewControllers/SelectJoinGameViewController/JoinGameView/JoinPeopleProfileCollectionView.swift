@@ -22,6 +22,7 @@ class JoinPeopleProfileCollectionView: UIView {
     self.backgroundColor = .clear
     self.collectionView.register(JoinProfileCell.self,
                                  forCellWithReuseIdentifier: JoinProfileCell.ID)
+    self.collectionView.isScrollEnabled = false
     self.setupView()
   }
   
@@ -41,10 +42,8 @@ class JoinPeopleProfileCollectionView: UIView {
                                        left: 0,
                                        bottom: 0,
                                        right: 0)
-//    layout.itemSize = CGSize(width: ((UIScreen.main.bounds.width * 0.75) - 40) * 0.3,
-//                             height: ((UIScreen.main.bounds.width * 0.1) - 15) * 0.5)
     layout.itemSize = CGSize(width: CommonLength.shared.width(70),
-                             height: CommonLength.shared.height(70))
+                             height: CommonLength.shared.height(80))
   }
   
   func useSelectedCollectionView() -> UICollectionView {

@@ -47,6 +47,20 @@
 		AD70215026F0BA7400B2B0CC /* TierToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70214F26F0BA7400B2B0CC /* TierToString.swift */; };
 		AD70215226F0BCCD00B2B0CC /* MyProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70215126F0BCCD00B2B0CC /* MyProfileEditViewController.swift */; };
 		AD70215426F0F03100B2B0CC /* MyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70215326F0F03100B2B0CC /* MyInfoViewModel.swift */; };
+		AD70215926F10D6C00B2B0CC /* JointChattingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70215826F10D6C00B2B0CC /* JointChattingViewController.swift */; };
+		AD70215B26F10DC400B2B0CC /* AdministrateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70215A26F10DC400B2B0CC /* AdministrateTableViewCell.swift */; };
+		AD70216326F11D5400B2B0CC /* ConnetionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70216226F11D5400B2B0CC /* ConnetionService.swift */; };
+		AD70216526F11D5E00B2B0CC /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70216426F11D5E00B2B0CC /* GameService.swift */; };
+		AD70216726F11D6B00B2B0CC /* RoomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70216626F11D6B00B2B0CC /* RoomService.swift */; };
+		AD70216926F11D7500B2B0CC /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70216826F11D7500B2B0CC /* LoginService.swift */; };
+		AD70216B26F11D8000B2B0CC /* OnboardingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70216A26F11D8000B2B0CC /* OnboardingService.swift */; };
+		AD70216D26F11D8600B2B0CC /* MannerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70216C26F11D8600B2B0CC /* MannerService.swift */; };
+		AD70216F26F129A500B2B0CC /* MyFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70216E26F129A500B2B0CC /* MyFriendViewController.swift */; };
+		AD70217126F12A4F00B2B0CC /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70217026F12A4F00B2B0CC /* FriendTableViewCell.swift */; };
+		AD70217326F1348C00B2B0CC /* MyBlackListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70217226F1348B00B2B0CC /* MyBlackListViewController.swift */; };
+		AD70217526F138C600B2B0CC /* ImageDownLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70217426F138C600B2B0CC /* ImageDownLoad.swift */; };
+		AD70217726F13A8000B2B0CC /* RoomUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70217626F13A8000B2B0CC /* RoomUserService.swift */; };
+		AD70217A26F13B9900B2B0CC /* JoinChattingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70217926F13B9900B2B0CC /* JoinChattingModel.swift */; };
 		AD70A3E426EFC10000BC4841 /* MatchingTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70A3E326EFC10000BC4841 /* MatchingTypeButton.swift */; };
 		AD70A3E626EFC79C00BC4841 /* MyMatchingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70A3E526EFC79C00BC4841 /* MyMatchingModel.swift */; };
 		AD70A3E826EFE0DB00BC4841 /* CalculateAboutTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70A3E726EFE0DB00BC4841 /* CalculateAboutTime.swift */; };
@@ -65,7 +79,6 @@
 		ADB9339126E138C60016BC7F /* CircleCropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9338E26E138C60016BC7F /* CircleCropViewController.swift */; };
 		ADB9339226E138C60016BC7F /* CircleCropCutterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9338F26E138C60016BC7F /* CircleCropCutterView.swift */; };
 		ADB9339626E14BF40016BC7F /* MyInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9339526E14BF40016BC7F /* MyInfoModel.swift */; };
-		ADB9339826E1FC5D0016BC7F /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9339726E1FC5D0016BC7F /* Service.swift */; };
 		ADCCCF5826DD4D2B002C5C8C /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCCCF5726DD4D2B002C5C8C /* OnboardingModel.swift */; };
 		ADCCCF5B26DD638D002C5C8C /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCCCF5A26DD638D002C5C8C /* OnboardingViewModel.swift */; };
 		ADCCCF5D26DD6C8F002C5C8C /* OnboardingStep2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCCCF5C26DD6C8F002C5C8C /* OnboardingStep2ViewController.swift */; };
@@ -153,6 +166,20 @@
 		AD70214F26F0BA7400B2B0CC /* TierToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TierToString.swift; sourceTree = "<group>"; };
 		AD70215126F0BCCD00B2B0CC /* MyProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileEditViewController.swift; sourceTree = "<group>"; };
 		AD70215326F0F03100B2B0CC /* MyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewModel.swift; sourceTree = "<group>"; };
+		AD70215826F10D6C00B2B0CC /* JointChattingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JointChattingViewController.swift; sourceTree = "<group>"; };
+		AD70215A26F10DC400B2B0CC /* AdministrateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdministrateTableViewCell.swift; sourceTree = "<group>"; };
+		AD70216226F11D5400B2B0CC /* ConnetionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnetionService.swift; sourceTree = "<group>"; };
+		AD70216426F11D5E00B2B0CC /* GameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
+		AD70216626F11D6B00B2B0CC /* RoomService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomService.swift; sourceTree = "<group>"; };
+		AD70216826F11D7500B2B0CC /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		AD70216A26F11D8000B2B0CC /* OnboardingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingService.swift; sourceTree = "<group>"; };
+		AD70216C26F11D8600B2B0CC /* MannerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MannerService.swift; sourceTree = "<group>"; };
+		AD70216E26F129A500B2B0CC /* MyFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendViewController.swift; sourceTree = "<group>"; };
+		AD70217026F12A4F00B2B0CC /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
+		AD70217226F1348B00B2B0CC /* MyBlackListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBlackListViewController.swift; sourceTree = "<group>"; };
+		AD70217426F138C600B2B0CC /* ImageDownLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownLoad.swift; sourceTree = "<group>"; };
+		AD70217626F13A8000B2B0CC /* RoomUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomUserService.swift; sourceTree = "<group>"; };
+		AD70217926F13B9900B2B0CC /* JoinChattingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChattingModel.swift; sourceTree = "<group>"; };
 		AD70A3E326EFC10000BC4841 /* MatchingTypeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingTypeButton.swift; sourceTree = "<group>"; };
 		AD70A3E526EFC79C00BC4841 /* MyMatchingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMatchingModel.swift; sourceTree = "<group>"; };
 		AD70A3E726EFE0DB00BC4841 /* CalculateAboutTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateAboutTime.swift; sourceTree = "<group>"; };
@@ -173,7 +200,6 @@
 		ADB9338E26E138C60016BC7F /* CircleCropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleCropViewController.swift; sourceTree = "<group>"; };
 		ADB9338F26E138C60016BC7F /* CircleCropCutterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleCropCutterView.swift; sourceTree = "<group>"; };
 		ADB9339526E14BF40016BC7F /* MyInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoModel.swift; sourceTree = "<group>"; };
-		ADB9339726E1FC5D0016BC7F /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		ADCCCF5726DD4D2B002C5C8C /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		ADCCCF5A26DD638D002C5C8C /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		ADCCCF5C26DD6C8F002C5C8C /* OnboardingStep2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep2ViewController.swift; sourceTree = "<group>"; };
@@ -335,6 +361,88 @@
 			path = MakeMatchingModel;
 			sourceTree = "<group>";
 		};
+		AD70215526F10CEC00B2B0CC /* JoinChattingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AD70217826F13B8900B2B0CC /* JoinChattingModel */,
+				AD70215726F10D0B00B2B0CC /* JoinChattingViewModel */,
+				AD70215626F10D0200B2B0CC /* JoinChattingView */,
+				AD70215826F10D6C00B2B0CC /* JointChattingViewController.swift */,
+			);
+			path = JoinChattingViewController;
+			sourceTree = "<group>";
+		};
+		AD70215626F10D0200B2B0CC /* JoinChattingView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = JoinChattingView;
+			sourceTree = "<group>";
+		};
+		AD70215726F10D0B00B2B0CC /* JoinChattingViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = JoinChattingViewModel;
+			sourceTree = "<group>";
+		};
+		AD70215C26F11CFE00B2B0CC /* ConnectionService */ = {
+			isa = PBXGroup;
+			children = (
+				AD70216226F11D5400B2B0CC /* ConnetionService.swift */,
+			);
+			path = ConnectionService;
+			sourceTree = "<group>";
+		};
+		AD70215D26F11D0E00B2B0CC /* GameController */ = {
+			isa = PBXGroup;
+			children = (
+				AD70216426F11D5E00B2B0CC /* GameService.swift */,
+			);
+			path = GameController;
+			sourceTree = "<group>";
+		};
+		AD70215E26F11D1900B2B0CC /* RoomController */ = {
+			isa = PBXGroup;
+			children = (
+				AD70216626F11D6B00B2B0CC /* RoomService.swift */,
+				AD70217626F13A8000B2B0CC /* RoomUserService.swift */,
+			);
+			path = RoomController;
+			sourceTree = "<group>";
+		};
+		AD70215F26F11D1F00B2B0CC /* LoingController */ = {
+			isa = PBXGroup;
+			children = (
+				AD70216826F11D7500B2B0CC /* LoginService.swift */,
+			);
+			path = LoingController;
+			sourceTree = "<group>";
+		};
+		AD70216026F11D3200B2B0CC /* OnboardingController */ = {
+			isa = PBXGroup;
+			children = (
+				AD70216A26F11D8000B2B0CC /* OnboardingService.swift */,
+			);
+			path = OnboardingController;
+			sourceTree = "<group>";
+		};
+		AD70216126F11D3E00B2B0CC /* MannerController */ = {
+			isa = PBXGroup;
+			children = (
+				AD70216C26F11D8600B2B0CC /* MannerService.swift */,
+			);
+			path = MannerController;
+			sourceTree = "<group>";
+		};
+		AD70217826F13B8900B2B0CC /* JoinChattingModel */ = {
+			isa = PBXGroup;
+			children = (
+				AD70217926F13B9900B2B0CC /* JoinChattingModel.swift */,
+			);
+			path = JoinChattingModel;
+			sourceTree = "<group>";
+		};
 		AD70A3DF26EFC08B00BC4841 /* MyMatchingView */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,6 +460,8 @@
 				AD70214826F081C100B2B0CC /* MyMannerView.swift */,
 				AD70214C26F084E800B2B0CC /* MannerGuideView.swift */,
 				AD70214A26F0846C00B2B0CC /* MyDetailProfileView.swift */,
+				AD70215A26F10DC400B2B0CC /* AdministrateTableViewCell.swift */,
+				AD70217026F12A4F00B2B0CC /* FriendTableViewCell.swift */,
 			);
 			path = MyInfoVIew;
 			sourceTree = "<group>";
@@ -359,7 +469,12 @@
 		AD74446326CAD2C500F90BF2 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				ADB9339726E1FC5D0016BC7F /* Service.swift */,
+				AD70216126F11D3E00B2B0CC /* MannerController */,
+				AD70216026F11D3200B2B0CC /* OnboardingController */,
+				AD70215F26F11D1F00B2B0CC /* LoingController */,
+				AD70215E26F11D1900B2B0CC /* RoomController */,
+				AD70215D26F11D0E00B2B0CC /* GameController */,
+				AD70215C26F11CFE00B2B0CC /* ConnectionService */,
 				ADFDD0AD26E7BD39007883BE /* Model.swift */,
 			);
 			path = Service;
@@ -368,8 +483,9 @@
 		AD982F8926CAB36F000AEAA2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				AD70215526F10CEC00B2B0CC /* JoinChattingViewController */,
 				AD44B0EF26EC750F0045CBEB /* MakeMatchingViewController */,
-				ADF93D1F26E9110600B8A1E9 /* JoinGameViewController */,
+				ADF93D1F26E9110600B8A1E9 /* SelectJoinGameViewController */,
 				ADB9339326E14BC60016BC7F /* MyInfoViewController */,
 				ADFDD09F26E67CD8007883BE /* MyMatchingViewController */,
 				ADFDD09626E67336007883BE /* HomeListViewController */,
@@ -466,6 +582,8 @@
 				ADB9339426E14BDC0016BC7F /* MyInfoModel */,
 				ADFDD0A126E67D0B007883BE /* MyInfoViewController.swift */,
 				AD70215126F0BCCD00B2B0CC /* MyProfileEditViewController.swift */,
+				AD70216E26F129A500B2B0CC /* MyFriendViewController.swift */,
+				AD70217226F1348B00B2B0CC /* MyBlackListViewController.swift */,
 			);
 			path = MyInfoViewController;
 			sourceTree = "<group>";
@@ -518,6 +636,7 @@
 				ADFDD0B726E7F8FE007883BE /* TimeUnits.swift */,
 				AD70A3E726EFE0DB00BC4841 /* CalculateAboutTime.swift */,
 				AD70214F26F0BA7400B2B0CC /* TierToString.swift */,
+				AD70217426F138C600B2B0CC /* ImageDownLoad.swift */,
 			);
 			path = CommonAttribute;
 			sourceTree = "<group>";
@@ -530,14 +649,14 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		ADF93D1F26E9110600B8A1E9 /* JoinGameViewController */ = {
+		ADF93D1F26E9110600B8A1E9 /* SelectJoinGameViewController */ = {
 			isa = PBXGroup;
 			children = (
 				ADF93D2126E9112100B8A1E9 /* JoinGameView */,
 				ADF93D2026E9111700B8A1E9 /* JoinGameViewModel */,
 				AD44B0EB26EA7F290045CBEB /* SelectJoinGameViewController.swift */,
 			);
-			path = JoinGameViewController;
+			path = SelectJoinGameViewController;
 			sourceTree = "<group>";
 		};
 		ADF93D2026E9111700B8A1E9 /* JoinGameViewModel */ = {
@@ -780,6 +899,7 @@
 				ADFDD09E26E67CAF007883BE /* HomeListModel.swift in Sources */,
 				ADFDD0B026E7E949007883BE /* CustomLeftBarButton.swift in Sources */,
 				AD70214D26F084E800B2B0CC /* MannerGuideView.swift in Sources */,
+				AD70216726F11D6B00B2B0CC /* RoomService.swift in Sources */,
 				ADCF012826CAB13D00F1BCF8 /* ChangeViewController.swift in Sources */,
 				AD6ACFD126ED2604001BE9C5 /* MakeMatchingModel.swift in Sources */,
 				ADCCCF6A26DE9484002C5C8C /* GoogleLoginButton.swift in Sources */,
@@ -803,31 +923,42 @@
 				ADCF012426CAB06600F1BCF8 /* CommonColor.swift in Sources */,
 				ADCCCF6526DE6CEA002C5C8C /* SelectTierButton.swift in Sources */,
 				ADFDD0A726E67D4D007883BE /* MyMatchingViewController.swift in Sources */,
+				AD70217A26F13B9900B2B0CC /* JoinChattingModel.swift in Sources */,
 				ADFDD0AE26E7BD39007883BE /* Model.swift in Sources */,
 				AD6ACFCE26ED15B6001BE9C5 /* RangeTierButton.swift in Sources */,
+				AD70215B26F10DC400B2B0CC /* AdministrateTableViewCell.swift in Sources */,
 				ADFDD0B226E7EAC2007883BE /* CustomRightBarButton.swift in Sources */,
+				AD70217326F1348C00B2B0CC /* MyBlackListViewController.swift in Sources */,
+				AD70215926F10D6C00B2B0CC /* JointChattingViewController.swift in Sources */,
 				AD44B0F726EC9A910045CBEB /* CountJoinPeopleView.swift in Sources */,
 				ADB9339626E14BF40016BC7F /* MyInfoModel.swift in Sources */,
 				AD44B0EC26EA7F290045CBEB /* SelectJoinGameViewController.swift in Sources */,
 				ADCCCF6126DD7D40002C5C8C /* NextButtonStatus.swift in Sources */,
 				AD02EFCA26DFF20A000A7F6B /* ProfilePhotoView.swift in Sources */,
+				AD70216326F11D5400B2B0CC /* ConnetionService.swift in Sources */,
 				AD70A3E426EFC10000BC4841 /* MatchingTypeButton.swift in Sources */,
 				AD70214726F07EE400B2B0CC /* MyGameProfileView.swift in Sources */,
 				AD6ACFC826ED107C001BE9C5 /* SelectTierOfJoinPeopleViewController.swift in Sources */,
+				AD70216D26F11D8600B2B0CC /* MannerService.swift in Sources */,
 				ADF93D2F26EA34C900B8A1E9 /* JoinusButton.swift in Sources */,
+				AD70217126F12A4F00B2B0CC /* FriendTableViewCell.swift in Sources */,
 				AD6ACFD926EE27B6001BE9C5 /* SelectTierOfJoinPeopleViewModel.swift in Sources */,
 				AD9E9B3726CA99D500FCFC51 /* AppDelegate.swift in Sources */,
 				AD6ACFC626ECBDB9001BE9C5 /* GameButtonScrollView.swift in Sources */,
+				AD70216526F11D5E00B2B0CC /* GameService.swift in Sources */,
 				AD70215026F0BA7400B2B0CC /* TierToString.swift in Sources */,
 				ADB9338926E009250016BC7F /* JoinusActionSheetView.swift in Sources */,
 				ADCF012C26CAB19F00F1BCF8 /* CommonFont.swift in Sources */,
 				ADCCCF5B26DD638D002C5C8C /* OnboardingViewModel.swift in Sources */,
 				AD982F8C26CAB5ED000AEAA2 /* LoginViewController.swift in Sources */,
 				AD44B0F326EC755D0045CBEB /* MakeMatchingViewController.swift in Sources */,
+				AD70216F26F129A500B2B0CC /* MyFriendViewController.swift in Sources */,
 				AD70214926F081C100B2B0CC /* MyMannerView.swift in Sources */,
 				AD44B0F926EC9D120045CBEB /* StartDateSetView.swift in Sources */,
+				AD70217726F13A8000B2B0CC /* RoomUserService.swift in Sources */,
 				ADFDD0AC26E7B7E3007883BE /* SetTabbarController.swift in Sources */,
 				AD70A3E826EFE0DB00BC4841 /* CalculateAboutTime.swift in Sources */,
+				AD70216926F11D7500B2B0CC /* LoginService.swift in Sources */,
 				ADB9339126E138C60016BC7F /* CircleCropViewController.swift in Sources */,
 				ADB9339026E138C60016BC7F /* CircleCropScrollView.swift in Sources */,
 				ADCCCF5F26DD70A3002C5C8C /* SelectGameButton.swift in Sources */,
@@ -835,16 +966,17 @@
 				ADFDD0AA26E6840A007883BE /* JoinusListCell.swift in Sources */,
 				ADCCCF7026DFD74E002C5C8C /* ProfileViewControllerViewController.swift in Sources */,
 				AD70215226F0BCCD00B2B0CC /* MyProfileEditViewController.swift in Sources */,
-				ADB9339826E1FC5D0016BC7F /* Service.swift in Sources */,
 				AD4A6E8A26D526460083D9A6 /* OnboardingStep1ViewController.swift in Sources */,
 				ADCCCF5D26DD6C8F002C5C8C /* OnboardingStep2ViewController.swift in Sources */,
 				ADF93D2726EA299000B8A1E9 /* JoinPeopleProfileCollectionView.swift in Sources */,
+				AD70217526F138C600B2B0CC /* ImageDownLoad.swift in Sources */,
 				ADB9338326E007D20016BC7F /* JoinusAlertViewController.swift in Sources */,
 				ADFDD09C26E67CA5007883BE /* HomeListViewModel.swift in Sources */,
 				ADFDD0B626E7F532007883BE /* JoinusListTableView.swift in Sources */,
 				ADCF012626CAB11700F1BCF8 /* ChangeWindow.swift in Sources */,
 				AD70214B26F0846C00B2B0CC /* MyDetailProfileView.swift in Sources */,
 				AD70A3E626EFC79C00BC4841 /* MyMatchingModel.swift in Sources */,
+				AD70216B26F11D8000B2B0CC /* OnboardingService.swift in Sources */,
 				ADCCCF6E26DFCFFF002C5C8C /* OnboardingStep4ViewController.swift in Sources */,
 				ADFDD0A226E67D0B007883BE /* MyInfoViewController.swift in Sources */,
 				ADFDD0B826E7F8FE007883BE /* TimeUnits.swift in Sources */,

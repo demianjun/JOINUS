@@ -18,7 +18,10 @@ class LoginViewController: UIViewController {
   
   private let googleConnction = GIDSignIn.sharedInstance
   
-  private let service = Service.manager
+//  private let service = Service.manager
+  
+  private let login = LoginService.manager,
+              game = GameService.manager
   
   private let myInfoModel = MyInfoModel.shared,
               messagingModel = MessagingModel.shared
@@ -85,14 +88,23 @@ class LoginViewController: UIViewController {
 
         print("-> access token: \(authentication.accessToken)")
         
-        self.service
-          .signUp(accessToken: authentication.accessToken) {
-          
-          let onBoardingVC = OnboardingStep1ViewController(),
-              onBoardingNaviVC = UINavigationController(rootViewController: onBoardingVC)
-          
-            self.changeWindow
-              .change(change: onBoardingNaviVC)
+        self.login.signUp(accessToken: authentication.accessToken) { isLogin in
+            
+            if isLogin {
+              
+              self.game.getGame() {
+              
+                let setTabbarController = SetTabbarController()
+                setTabbarController.settingRootViewController()
+              }
+            } else {
+              
+              let onBoardingVC = OnboardingStep1ViewController(),
+                  onBoardingNaviVC = UINavigationController(rootViewController: onBoardingVC)
+              
+              self.changeWindow
+                .change(change: onBoardingNaviVC)
+            }
         }
       }
     }

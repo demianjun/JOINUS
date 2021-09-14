@@ -9,7 +9,7 @@ import UIKit
 
 class NoCountImageView: UIView {
   enum type {
-    case joined, made
+    case joined, made, friend, black
   }
   
   private var type: type
@@ -54,6 +54,14 @@ class NoCountImageView: UIView {
       case .made:
         
         self.messageLabel.text = "내가 만든 매칭이 없습니다."
+        
+      case .friend:
+        
+        self.messageLabel.text = "추가한 친구가 없습니다."
+        
+      case .black:
+        
+        self.messageLabel.text = "추가한 블랙리스트가 없습니다."
     }
   }
   

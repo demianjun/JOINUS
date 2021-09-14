@@ -11,7 +11,7 @@ import RxSwift
 class MyProfileEditViewController: UIViewController, UITextFieldDelegate {
   private let bag = DisposeBag()
   
-  private let service = Service.manager
+  private let game = GameService.manager
   
   private let tapGesture = UITapGestureRecognizer()
   
@@ -279,7 +279,7 @@ class MyProfileEditViewController: UIViewController, UITextFieldDelegate {
           self.myInfoModel.myGameID = text
         }
         
-        self.service.putUserGameInfo() {
+        self.game.putGame() {
           
           self.navigationController?
             .popViewController(animated: true)

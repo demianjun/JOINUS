@@ -14,7 +14,8 @@ class MyMatchingViewController: UIViewController, UITableViewDataSource, UITable
   private let methods = CalculateAboutTime()
   
   // MARK: Manager
-  private let service = Service.manager
+//  private let service = Service.manager
+  private let room = RoomService.manager
   
   // MARK: Model
   private let myMatchingModel = MyMatchingModel.shared
@@ -59,8 +60,8 @@ class MyMatchingViewController: UIViewController, UITableViewDataSource, UITable
                                     forCellReuseIdentifier: JoinusCustomCell.ID)
     self.joinedMatchingButton.isSelected = true
     
-    self.service
-      .getJoinedMatching {
+    self.room
+      .getJoinRoom {
         
         self.setupView()
       }
@@ -142,8 +143,8 @@ class MyMatchingViewController: UIViewController, UITableViewDataSource, UITable
       .asDriver()
       .drive(onNext: {
         
-        self.service
-          .getJoinedMatching {
+        self.room
+          .getJoinRoom {
             
             if self.myMatchingModel.matchingList.isEmpty {
               
@@ -170,8 +171,8 @@ class MyMatchingViewController: UIViewController, UITableViewDataSource, UITable
       .asDriver()
       .drive(onNext: {
         
-        self.service
-          .getMadeMatching {
+        self.room
+          .getMakeRoom {
             
             if self.myMatchingModel.matchingList.isEmpty {
               
@@ -214,7 +215,7 @@ class MyMatchingViewController: UIViewController, UITableViewDataSource, UITable
     
     self.myMatchingModel.matchingList[indexPath.row].userList.forEach {
           
-          if leaderPk == $0.pk {
+          if leaderPk == $0.joinUserPk {
             joinJangID = $0.nickName
           }
         }
@@ -258,7 +259,8 @@ class MyMatchingViewController: UIViewController, UITableViewDataSource, UITable
     let roomInfo = self.myMatchingModel.matchingList[indexPath.row],
         joinPeopleNum = roomInfo.userList.count
     
-    let selectJoinGameVC = SelectJoinGameViewController(roomInfo: roomInfo)
+    let selectJoinGameVC = SelectJoinGameViewController(roomInfo: roomInfo,
+                                                        joinJangPk: roomInfo.leaderPk)
 
     let joinButton = selectJoinGameVC.useJoinButton(),
         joinGameView = selectJoinGameVC.useJoinGameView(),

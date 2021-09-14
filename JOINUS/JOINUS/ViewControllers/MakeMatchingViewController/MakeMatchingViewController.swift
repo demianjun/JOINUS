@@ -12,7 +12,8 @@ class MakeMatchingViewController: UIViewController, UITextFieldDelegate {
   private let bag = DisposeBag()
   
   // MARK: Manager
-  private let service = Service.manager
+//  private let service = Service.manager
+  private let room = RoomService.manager
   
   // MARK: ViewModel
   private let makeMatchingViewModel = MakeMatchingViewModel()
@@ -187,11 +188,9 @@ class MakeMatchingViewController: UIViewController, UITextFieldDelegate {
           }
         } else {
           
-          self.service
-            .postMakeMatchingRoomInfo {
+          self.room.postRoom {
               
-              self.service
-                .getHomeListInfo() {
+              self.room.getRoom {
                   
                   self.navigationController?
                     .popViewController(animated: true)

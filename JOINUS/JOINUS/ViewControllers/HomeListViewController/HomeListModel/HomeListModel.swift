@@ -60,17 +60,17 @@ class HomeListModel {
       ]
     ]
     
-  func test() {
-    let temp = try? JSONSerialization.data(withJSONObject: dummy, options: .prettyPrinted)
-    let test = try? JSONDecoder().decode([GetRoomInfo].self, from: temp!)
-    
-    self.gameList = test!
-    
-  }
-  
-  init() {
-    self.test()
-  }
+//  func test() {
+//    let temp = try? JSONSerialization.data(withJSONObject: dummy, options: .prettyPrinted)
+//    let test = try? JSONDecoder().decode([GetRoomInfo].self, from: temp!)
+//    
+//    self.gameList = test!
+//    
+//  }
+//  
+//  init() {
+//    self.test()
+//  }
   
 }
 

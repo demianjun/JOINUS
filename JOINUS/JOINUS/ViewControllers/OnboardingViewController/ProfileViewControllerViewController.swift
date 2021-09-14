@@ -19,8 +19,10 @@ class ProfileViewControllerViewController: UIViewController {
   private let tapGesture = UITapGestureRecognizer()
   
   // MARK: Manager
-  private let service = Service.manager
-              
+//  private let service = Service.manager
+  
+  private let onBoarding = OnboardingService.manager
+  private let game = GameService.manager
   
   // MARK: Model
   private let onboardingModel = OnboardingModel.shared
@@ -136,9 +138,12 @@ class ProfileViewControllerViewController: UIViewController {
       
       if self.nextButton.isEnabled {
         
-        self.service.putMyInfo {
+        self.onBoarding.putOnboarding {
           
-          setTabbarController.settingRootViewController()
+          self.game.postGame {
+            
+            setTabbarController.settingRootViewController()
+          }
         }
       }
     }

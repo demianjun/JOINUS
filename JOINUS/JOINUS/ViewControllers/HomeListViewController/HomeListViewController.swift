@@ -14,7 +14,7 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
   private let calculateAboutTime = CalculateAboutTime()
   
   // MARK: Manager
-  private let service = Service.manager
+  private let room = RoomService.manager
   
   // MARK: ViewModel
   private let homeListViewModel = HomeListViewModel()
@@ -67,8 +67,8 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
     super.viewDidLoad()
     self.view.backgroundColor = .white
     self.joinusListTableView.refreshControl = self.refresh
-    self.service
-      .getHomeListInfo() {
+    self.room
+      .getRoom() {
         
         self.setupUI()
         self.setNavigationBar()
@@ -149,8 +149,7 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
       .asDriver()
       .drive(onNext: {
         
-        self.service
-          .getHomeListInfo() {
+        self.room.getRoom {
             
             self.refresh.endRefreshing()
           }
@@ -197,7 +196,7 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
     
         self.homeListModel.gameList[indexPath.row].userList.forEach {
           
-          if leaderPk == $0.pk {
+          if leaderPk == $0.joinUserPk {
             joinJangID = $0.nickName
           }
         }
@@ -241,7 +240,8 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
     let roomInfo = self.homeListModel.gameList[indexPath.row],
         joinPeopleNum = roomInfo.userList.count
     
-    let selectJoinGameVC = SelectJoinGameViewController(roomInfo: roomInfo)
+    let selectJoinGameVC = SelectJoinGameViewController(roomInfo: roomInfo,
+                                                        joinJangPk: roomInfo.leaderPk)
 
     let joinGameView = selectJoinGameVC.useJoinGameView(),
         voiceChatCheck = joinGameView.useVoiceChatCheck(),
@@ -249,10 +249,10 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
    
     joinGameCollectionView.snp.makeConstraints {
       $0.top.equalTo(voiceChatCheck.snp.bottom).offset(CommonLength.shared.height(22))
-      $0.height.equalTo(CommonLength.shared.height(70))
+      $0.height.equalTo(CommonLength.shared.height(80))
       $0.width.equalTo(CommonLength.shared.width(70) * CGFloat(joinPeopleNum) + 10)
       $0.centerX.equalToSuperview()
-      $0.bottom.equalToSuperview().offset(-CommonLength.shared.height(22))
+      $0.bottom.equalToSuperview().offset(-CommonLength.shared.height(17))
     }
     
     self.navigationController?.pushViewController(selectJoinGameVC, animated: true)
