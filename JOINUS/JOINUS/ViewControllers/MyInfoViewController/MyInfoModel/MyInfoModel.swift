@@ -36,7 +36,8 @@ class MyInfoModel {
       subToken = String(),
       myPk = Int(),
       gameInfoPk = Int(),
-      myGameName = String()
+      myGameName = String(),
+      myMannerScore = Int()
   
   let administrateList = ["친구목록", "블랙리스트 관리", "구글계정 관리"]
 }

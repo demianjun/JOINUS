@@ -18,10 +18,9 @@ class LoginViewController: UIViewController {
   
   private let googleConnction = GIDSignIn.sharedInstance
   
-//  private let service = Service.manager
-  
   private let login = LoginService.manager,
-              game = GameService.manager
+              game = GameService.manager,
+              manner = MannerService.manager
   
   private let myInfoModel = MyInfoModel.shared,
               messagingModel = MessagingModel.shared
@@ -93,9 +92,13 @@ class LoginViewController: UIViewController {
             if isLogin {
               
               self.game.getGame() {
-              
+                
+                self.manner.getManner() {
+              print("-> all get")
                 let setTabbarController = SetTabbarController()
                 setTabbarController.settingRootViewController()
+                  
+                }
               }
             } else {
               

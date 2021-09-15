@@ -153,7 +153,7 @@ class MyInfoViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     self.myDetailProfileView
       .useMyMannerView()
-      .setMannerStatus(manner: 12)
+      .setMannerStatus(manner: self.myInfoModel.myMannerScore)
   }
   
   private func didTapEditProfileButton() {

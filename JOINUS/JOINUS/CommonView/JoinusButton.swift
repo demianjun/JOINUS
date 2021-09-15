@@ -8,6 +8,22 @@
 import UIKit
 
 class JoinusButton: UIButton {
+  override var isEnabled: Bool {
+    didSet {
+      if self.isEnabled {
+        
+        self.setTitleColor(.white,
+                           for: .normal)
+        self.backgroundColor = UIColor.joinusColor.joinBlue
+        
+      } else {
+        
+        self.setTitleColor(UIColor.joinusColor.defaultPhotoGray,
+                           for: .normal)
+        self.backgroundColor = UIColor.joinusColor.gameIdTextFieldBgGray
+      }
+    }
+  }
 
   init(title: String, titleColor: UIColor, backGroundColor: UIColor) {
     super.init(frame: .zero)

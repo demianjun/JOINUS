@@ -37,8 +37,10 @@ class LoginService {
             
             do {
               
-              let temp = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted),
-                  data = try JSONDecoder().decode(GetLogin.self, from: temp)
+              let temp = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted)
+              
+              
+                  let data = try JSONDecoder().decode(GetLogin.self, from: temp)
               
               self.myInfoModel.myAge = data.age
               self.myInfoModel.myGameID = data.nickName ?? "noname"

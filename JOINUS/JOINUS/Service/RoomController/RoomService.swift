@@ -17,7 +17,8 @@ class RoomService {
               messagingModel = MessagingModel.shared,
               homeListModel = HomeListModel.shared,
               makeMatchingModel = MakeMatchingModel.shared,
-              myMatchingModel = MyMatchingModel.shared
+              myMatchingModel = MyMatchingModel.shared,
+              joinChattingModel = JoinChattingModel.shared
   
   let roomControllerUrl = "http://ec2-3-128-67-103.us-east-2.compute.amazonaws.com:80/api/room"
   
@@ -147,6 +148,38 @@ class RoomService {
               let data = try JSONDecoder().decode([GetRoomInfo].self, from: temp)
                 
               self.myMatchingModel.matchingList = data
+
+              completion()
+              
+            } catch(let err) {
+              
+              print("get room info err  " + err.localizedDescription)
+            }
+            
+          case .failure(let err):
+            print("get home list err  " + err.localizedDescription)
+        }
+      }
+  }
+  
+  func getSelectedRoom(completion: @escaping (()->())) {
+    
+    AF.request(self.roomControllerUrl
+                .appending("/")
+                .appending("\(self.joinChattingModel.selectedRoomPk)"))
+      .validate(statusCode: 150...500)
+      .responseJSON { response in
+        
+        switch response.result {
+          
+          case .success(let res):
+            
+            do {
+              
+              let temp = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted)
+              let data = try JSONDecoder().decode(GetRoomInfo.self, from: temp)
+                
+              self.joinChattingModel.getSelectedRoom = data
 
               completion()
               

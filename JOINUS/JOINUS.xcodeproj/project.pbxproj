@@ -61,6 +61,11 @@
 		AD70217526F138C600B2B0CC /* ImageDownLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70217426F138C600B2B0CC /* ImageDownLoad.swift */; };
 		AD70217726F13A8000B2B0CC /* RoomUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70217626F13A8000B2B0CC /* RoomUserService.swift */; };
 		AD70217A26F13B9900B2B0CC /* JoinChattingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70217926F13B9900B2B0CC /* JoinChattingModel.swift */; };
+		AD70217C26F2007400B2B0CC /* MannerScoreImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70217B26F2007400B2B0CC /* MannerScoreImageView.swift */; };
+		AD70217E26F204EB00B2B0CC /* CheckMannerAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70217D26F204EB00B2B0CC /* CheckMannerAlertController.swift */; };
+		AD70218026F2369200B2B0CC /* MessageTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70217F26F2369200B2B0CC /* MessageTextView.swift */; };
+		AD70218226F2441900B2B0CC /* ChattingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70218126F2441900B2B0CC /* ChattingTableViewCell.swift */; };
+		AD70218426F2447E00B2B0CC /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70218326F2447E00B2B0CC /* MessageView.swift */; };
 		AD70A3E426EFC10000BC4841 /* MatchingTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70A3E326EFC10000BC4841 /* MatchingTypeButton.swift */; };
 		AD70A3E626EFC79C00BC4841 /* MyMatchingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70A3E526EFC79C00BC4841 /* MyMatchingModel.swift */; };
 		AD70A3E826EFE0DB00BC4841 /* CalculateAboutTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70A3E726EFE0DB00BC4841 /* CalculateAboutTime.swift */; };
@@ -180,6 +185,11 @@
 		AD70217426F138C600B2B0CC /* ImageDownLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownLoad.swift; sourceTree = "<group>"; };
 		AD70217626F13A8000B2B0CC /* RoomUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomUserService.swift; sourceTree = "<group>"; };
 		AD70217926F13B9900B2B0CC /* JoinChattingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChattingModel.swift; sourceTree = "<group>"; };
+		AD70217B26F2007400B2B0CC /* MannerScoreImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MannerScoreImageView.swift; sourceTree = "<group>"; };
+		AD70217D26F204EB00B2B0CC /* CheckMannerAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMannerAlertController.swift; sourceTree = "<group>"; };
+		AD70217F26F2369200B2B0CC /* MessageTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTextView.swift; sourceTree = "<group>"; };
+		AD70218126F2441900B2B0CC /* ChattingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingTableViewCell.swift; sourceTree = "<group>"; };
+		AD70218326F2447E00B2B0CC /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		AD70A3E326EFC10000BC4841 /* MatchingTypeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingTypeButton.swift; sourceTree = "<group>"; };
 		AD70A3E526EFC79C00BC4841 /* MyMatchingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMatchingModel.swift; sourceTree = "<group>"; };
 		AD70A3E726EFE0DB00BC4841 /* CalculateAboutTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateAboutTime.swift; sourceTree = "<group>"; };
@@ -368,6 +378,7 @@
 				AD70215726F10D0B00B2B0CC /* JoinChattingViewModel */,
 				AD70215626F10D0200B2B0CC /* JoinChattingView */,
 				AD70215826F10D6C00B2B0CC /* JointChattingViewController.swift */,
+				AD70217D26F204EB00B2B0CC /* CheckMannerAlertController.swift */,
 			);
 			path = JoinChattingViewController;
 			sourceTree = "<group>";
@@ -375,6 +386,10 @@
 		AD70215626F10D0200B2B0CC /* JoinChattingView */ = {
 			isa = PBXGroup;
 			children = (
+				AD70217B26F2007400B2B0CC /* MannerScoreImageView.swift */,
+				AD70217F26F2369200B2B0CC /* MessageTextView.swift */,
+				AD70218126F2441900B2B0CC /* ChattingTableViewCell.swift */,
+				AD70218326F2447E00B2B0CC /* MessageView.swift */,
 			);
 			path = JoinChattingView;
 			sourceTree = "<group>";
@@ -889,6 +904,7 @@
 				AD6ACFD326ED2613001BE9C5 /* MakeMatchingViewModel.swift in Sources */,
 				AD70215426F0F03100B2B0CC /* MyInfoViewModel.swift in Sources */,
 				AD6ACFDB26EF467C001BE9C5 /* JoinusAlertController.swift in Sources */,
+				AD70217E26F204EB00B2B0CC /* CheckMannerAlertController.swift in Sources */,
 				AD44B0FF26ECA2ED0045CBEB /* SetJoinPeopleTierView.swift in Sources */,
 				ADF93D2526EA236A00B8A1E9 /* JoinGameListLabel.swift in Sources */,
 				AD70A3EA26EFE3CD00BC4841 /* NoCountImageView.swift in Sources */,
@@ -917,6 +933,7 @@
 				ADF93D2926EA2D7600B8A1E9 /* JoinProfileCell.swift in Sources */,
 				AD6ACFCC26ED11AF001BE9C5 /* TierRangeView.swift in Sources */,
 				ADFDD0B426E7EF10007883BE /* JoinusCustomCell.swift in Sources */,
+				AD70218226F2441900B2B0CC /* ChattingTableViewCell.swift in Sources */,
 				AD44B0FB26EC9F2F0045CBEB /* SelectGameView.swift in Sources */,
 				ADCF012A26CAB15900F1BCF8 /* InternetAvailable.swift in Sources */,
 				AD44B0FD26ECA0C30045CBEB /* SelectVoiceChatView.swift in Sources */,
@@ -925,6 +942,7 @@
 				ADFDD0A726E67D4D007883BE /* MyMatchingViewController.swift in Sources */,
 				AD70217A26F13B9900B2B0CC /* JoinChattingModel.swift in Sources */,
 				ADFDD0AE26E7BD39007883BE /* Model.swift in Sources */,
+				AD70217C26F2007400B2B0CC /* MannerScoreImageView.swift in Sources */,
 				AD6ACFCE26ED15B6001BE9C5 /* RangeTierButton.swift in Sources */,
 				AD70215B26F10DC400B2B0CC /* AdministrateTableViewCell.swift in Sources */,
 				ADFDD0B226E7EAC2007883BE /* CustomRightBarButton.swift in Sources */,
@@ -956,10 +974,12 @@
 				AD70214926F081C100B2B0CC /* MyMannerView.swift in Sources */,
 				AD44B0F926EC9D120045CBEB /* StartDateSetView.swift in Sources */,
 				AD70217726F13A8000B2B0CC /* RoomUserService.swift in Sources */,
+				AD70218026F2369200B2B0CC /* MessageTextView.swift in Sources */,
 				ADFDD0AC26E7B7E3007883BE /* SetTabbarController.swift in Sources */,
 				AD70A3E826EFE0DB00BC4841 /* CalculateAboutTime.swift in Sources */,
 				AD70216926F11D7500B2B0CC /* LoginService.swift in Sources */,
 				ADB9339126E138C60016BC7F /* CircleCropViewController.swift in Sources */,
+				AD70218426F2447E00B2B0CC /* MessageView.swift in Sources */,
 				ADB9339026E138C60016BC7F /* CircleCropScrollView.swift in Sources */,
 				ADCCCF5F26DD70A3002C5C8C /* SelectGameButton.swift in Sources */,
 				AD54C51426D7F3930023FA99 /* AgePickerView.swift in Sources */,

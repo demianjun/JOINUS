@@ -67,7 +67,7 @@ class SelectJoinGameViewController: UIViewController, UICollectionViewDelegate, 
     super.viewDidLoad()
     self.view.backgroundColor = #colorLiteral(red: 0.8783445954, green: 0.8784921765, blue: 0.8783251643, alpha: 1)
     self.joinChattingModel.selectedRoomPk = self.roomInfo.roomPk
-    self.joinChattingModel.selectedRoomManner = 7//self.roomInfo.roomManner
+    self.joinChattingModel.selectedRoomManner = Int(self.roomInfo.roomManner / self.roomInfo.userList.count)
     self.setupView()
     self.aboutCollectionView()
     self.setNavigationBar()
@@ -118,6 +118,8 @@ class SelectJoinGameViewController: UIViewController, UICollectionViewDelegate, 
     let joinChattingVC = JoinChattingViewController()
     
     CommonAction.shared.touchActionEffect(self.joinButton) {
+      joinChattingVC.roomInfo = self.roomInfo
+      
       self.navigationController?
         .pushViewController(joinChattingVC,
                             animated: true)

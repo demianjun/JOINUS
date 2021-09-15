@@ -83,28 +83,28 @@ class MyMannerView: UIView {
   }
   
   func setMannerStatus(manner score: Int) {
-    if score <= 5 {
+    if score < -4 {
       
       self.myMannerImageView_1.image = UIImage(named: "manner1_24x24")
       self.myMannerImageView_2.image = UIImage(named: "manner2_24x24@30")
       self.myMannerImageView_3.image = UIImage(named: "manner3_24x24@30")
       self.myMannerImageView_4.image = UIImage(named: "manner4_24x24@30")
       
-    } else if score <= 10 {
+    } else if score < 1 {
       
       self.myMannerImageView_1.image = UIImage(named: "manner1_24x24@30")
       self.myMannerImageView_2.image = UIImage(named: "manner2_24x24")
       self.myMannerImageView_3.image = UIImage(named: "manner3_24x24@30")
       self.myMannerImageView_4.image = UIImage(named: "manner4_24x24@30")
       
-    } else if score <= 15 {
+    } else if score < 6 {
       
       self.myMannerImageView_1.image = UIImage(named: "manner1_24x24@30")
       self.myMannerImageView_2.image = UIImage(named: "manner2_24x24@30")
       self.myMannerImageView_3.image = UIImage(named: "manner3_24x24")
       self.myMannerImageView_4.image = UIImage(named: "manner4_24x24@30")
       
-    } else if score <= 20 {
+    } else if score >= 6 {
       
       self.myMannerImageView_1.image = UIImage(named: "manner1_24x24@30")
       self.myMannerImageView_2.image = UIImage(named: "manner2_24x24@30")

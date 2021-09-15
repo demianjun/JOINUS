@@ -8,11 +8,24 @@
 import UIKit
 
 class JoinChattingModel {
+  enum chat {
+    case my, other
+  }
   
   static let shared = JoinChattingModel()
   
-  var selectedRoomPk = Int(),
+  var joinPeople = Int(),
+      selectedRoomPk = Int(),
       selectedRoomManner = Int()
   
-  var getRoomUsers = [GetRoomUser]()
+  var getSelectedRoom: GetRoomInfo?,
+      getRoomUsers = [GetRoomUser]()
+  
+  var chattingTableView = UITableView()
+  
+  var messages = [[chat: [String]]]() {
+    didSet {
+      self.chattingTableView.reloadData()
+    }
+  }
 }

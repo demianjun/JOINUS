@@ -238,7 +238,9 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
     let roomInfo = self.homeListModel.gameList[indexPath.row],
-        joinPeopleNum = roomInfo.userList.count
+        joinPeopleNum = roomInfo.userList.count,
+        startDate = roomInfo.startDate,
+        startInterval = self.calculateAboutTime.calculateStartTime(start: startDate)
     
     let selectJoinGameVC = SelectJoinGameViewController(roomInfo: roomInfo,
                                                         joinJangPk: roomInfo.leaderPk)
@@ -253,6 +255,12 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
       $0.width.equalTo(CommonLength.shared.width(70) * CGFloat(joinPeopleNum) + 10)
       $0.centerX.equalToSuperview()
       $0.bottom.equalToSuperview().offset(-CommonLength.shared.height(17))
+    }
+    
+    if startInterval == "매칭 완료" {
+      selectJoinGameVC.useJoinButton().isEnabled = false
+    } else {
+      selectJoinGameVC.useJoinButton().isEnabled = true
     }
     
     self.navigationController?.pushViewController(selectJoinGameVC, animated: true)

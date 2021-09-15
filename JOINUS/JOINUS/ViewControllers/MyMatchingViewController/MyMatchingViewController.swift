@@ -14,7 +14,6 @@ class MyMatchingViewController: UIViewController, UITableViewDataSource, UITable
   private let methods = CalculateAboutTime()
   
   // MARK: Manager
-//  private let service = Service.manager
   private let room = RoomService.manager
   
   // MARK: Model
@@ -69,6 +68,16 @@ class MyMatchingViewController: UIViewController, UITableViewDataSource, UITable
     self.buttonsStatus()
     self.didTapJoinedMatchingButton()
     self.didTapMadeMatchingButton()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.tabBarController?.tabBar.isHidden = false
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    
   }
   
   private func setupView() {
@@ -267,9 +276,6 @@ class MyMatchingViewController: UIViewController, UITableViewDataSource, UITable
         voiceChatCheck = joinGameView.useVoiceChatCheck(),
         joinGameCollectionView = joinGameView.useJoinPeopleProfileCollectionView()
     
-    joinButton.setTitle("방 수정하기",
-                        for: .normal)
-   
     joinGameCollectionView.snp.makeConstraints {
       $0.top.equalTo(voiceChatCheck.snp.bottom).offset(CommonLength.shared.height(22))
       $0.height.equalTo(CommonLength.shared.height(70))
@@ -278,8 +284,19 @@ class MyMatchingViewController: UIViewController, UITableViewDataSource, UITable
       $0.bottom.equalToSuperview().offset(-CommonLength.shared.height(22))
     }
     
-    self.navigationController?.pushViewController(selectJoinGameVC, animated: true)
-//    let naviVC = self.tabBarController?.customizableViewControllers?[0] as? UINavigationController
-//    naviVC?.pushViewController(selectJoinGameVC, animated: true)
+    if self.madeMatchingButton.isSelected {
+      
+      joinButton.setTitle("방 수정하기",
+                          for: .normal)
+      
+      self.navigationController?.pushViewController(selectJoinGameVC, animated: true)
+    } else {
+      
+      let joinChattingVC = JoinChattingViewController()
+      joinChattingVC.roomInfo = roomInfo
+      
+      self.tabBarController?.tabBar.isHidden = true
+      self.navigationController?.pushViewController(joinChattingVC, animated: true)
+    }
   }
 }

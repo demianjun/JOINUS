@@ -54,7 +54,7 @@ class GameService {
               print("-> game name: \(self.myInfoModel.myGameName)")
               print("-> myTier: \(self.myInfoModel.myTier)")
               
-              if !self.myInfoModel.myGameName.isEmpty {
+              if !self.myInfoModel.myGameID.isEmpty {
                 
                 completion()
               }

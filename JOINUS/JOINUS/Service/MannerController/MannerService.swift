@@ -37,10 +37,14 @@ class MannerService {
             
             do {
               
-              let temp = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted),
-                  data = try JSONDecoder().decode(GetManner.self, from: temp)
+              let temp = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted)
+              let data = try JSONDecoder().decode(GetManner.self, from: temp)
               
-             
+              if data.count == 1 {
+                
+                self.myInfoModel.myMannerScore = data.mannerScore
+                completion?()
+              }
             } catch(let err) {
               
               print(err.localizedDescription + "-> 1")
