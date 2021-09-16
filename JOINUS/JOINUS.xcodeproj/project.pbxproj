@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		AD02EFC826DFDF67000A7F6B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD02EFC726DFDF67000A7F6B /* GoogleService-Info.plist */; };
 		AD02EFCA26DFF20A000A7F6B /* ProfilePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD02EFC926DFF20A000A7F6B /* ProfilePhotoView.swift */; };
+		AD44B0EC26EA7F290045CBEB /* SelectJoinGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD44B0EB26EA7F290045CBEB /* SelectJoinGameViewController.swift */; };
+		AD44B0EE26EA808B0045CBEB /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD44B0ED26EA808B0045CBEB /* CustomNavigationView.swift */; };
+		AD44B0F326EC755D0045CBEB /* MakeMatchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD44B0F226EC755D0045CBEB /* MakeMatchingViewController.swift */; };
+		AD44B0F526EC93A80045CBEB /* MakeMatchingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD44B0F426EC93A80045CBEB /* MakeMatchingScrollView.swift */; };
+		AD44B0F726EC9A910045CBEB /* CountJoinPeopleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD44B0F626EC9A910045CBEB /* CountJoinPeopleView.swift */; };
+		AD44B0F926EC9D120045CBEB /* StartDateSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD44B0F826EC9D120045CBEB /* StartDateSetView.swift */; };
+		AD44B0FB26EC9F2F0045CBEB /* SelectGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD44B0FA26EC9F2F0045CBEB /* SelectGameView.swift */; };
+		AD44B0FD26ECA0C30045CBEB /* SelectVoiceChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD44B0FC26ECA0C30045CBEB /* SelectVoiceChatView.swift */; };
+		AD44B0FF26ECA2ED0045CBEB /* SetJoinPeopleTierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD44B0FE26ECA2ED0045CBEB /* SetJoinPeopleTierView.swift */; };
+		AD44B10126ECAAD60045CBEB /* InputTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD44B10026ECAAD60045CBEB /* InputTitleView.swift */; };
 		AD4A6E8A26D526460083D9A6 /* OnboardingStep1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4A6E8926D526460083D9A6 /* OnboardingStep1ViewController.swift */; };
 		AD4A6E9226D7E41E0083D9A6 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD4A6E8C26D7E41E0083D9A6 /* NotoSansKR-Bold.otf */; };
 		AD4A6E9326D7E41E0083D9A6 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD4A6E8D26D7E41E0083D9A6 /* NotoSansKR-Medium.otf */; };
@@ -19,6 +29,48 @@
 		AD54C51026D7E8A20023FA99 /* CommonAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD54C50F26D7E8A20023FA99 /* CommonAction.swift */; };
 		AD54C51426D7F3930023FA99 /* AgePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD54C51326D7F3930023FA99 /* AgePickerView.swift */; };
 		AD67E7BE26CABACE006B1FD4 /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD67E7BD26CABACE006B1FD4 /* credentials.plist */; };
+		AD6ACFC626ECBDB9001BE9C5 /* GameButtonScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6ACFC526ECBDB9001BE9C5 /* GameButtonScrollView.swift */; };
+		AD6ACFC826ED107C001BE9C5 /* SelectTierOfJoinPeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6ACFC726ED107C001BE9C5 /* SelectTierOfJoinPeopleViewController.swift */; };
+		AD6ACFCA26ED112E001BE9C5 /* SelectTierOfJoinPeopleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6ACFC926ED112E001BE9C5 /* SelectTierOfJoinPeopleScrollView.swift */; };
+		AD6ACFCC26ED11AF001BE9C5 /* TierRangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6ACFCB26ED11AF001BE9C5 /* TierRangeView.swift */; };
+		AD6ACFCE26ED15B6001BE9C5 /* RangeTierButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6ACFCD26ED15B6001BE9C5 /* RangeTierButton.swift */; };
+		AD6ACFD126ED2604001BE9C5 /* MakeMatchingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6ACFD026ED2604001BE9C5 /* MakeMatchingModel.swift */; };
+		AD6ACFD326ED2613001BE9C5 /* MakeMatchingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6ACFD226ED2613001BE9C5 /* MakeMatchingViewModel.swift */; };
+		AD6ACFD526ED2D8C001BE9C5 /* SelectDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6ACFD426ED2D8C001BE9C5 /* SelectDateView.swift */; };
+		AD6ACFD726ED305C001BE9C5 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6ACFD626ED305C001BE9C5 /* ToggleButton.swift */; };
+		AD6ACFD926EE27B6001BE9C5 /* SelectTierOfJoinPeopleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6ACFD826EE27B6001BE9C5 /* SelectTierOfJoinPeopleViewModel.swift */; };
+		AD6ACFDB26EF467C001BE9C5 /* JoinusAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6ACFDA26EF467C001BE9C5 /* JoinusAlertController.swift */; };
+		AD70214726F07EE400B2B0CC /* MyGameProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70214626F07EE400B2B0CC /* MyGameProfileView.swift */; };
+		AD70214926F081C100B2B0CC /* MyMannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70214826F081C100B2B0CC /* MyMannerView.swift */; };
+		AD70214B26F0846C00B2B0CC /* MyDetailProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70214A26F0846C00B2B0CC /* MyDetailProfileView.swift */; };
+		AD70214D26F084E800B2B0CC /* MannerGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70214C26F084E800B2B0CC /* MannerGuideView.swift */; };
+		AD70215026F0BA7400B2B0CC /* TierToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70214F26F0BA7400B2B0CC /* TierToString.swift */; };
+		AD70215226F0BCCD00B2B0CC /* MyProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70215126F0BCCD00B2B0CC /* MyProfileEditViewController.swift */; };
+		AD70215426F0F03100B2B0CC /* MyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70215326F0F03100B2B0CC /* MyInfoViewModel.swift */; };
+		AD70215926F10D6C00B2B0CC /* JointChattingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70215826F10D6C00B2B0CC /* JointChattingViewController.swift */; };
+		AD70215B26F10DC400B2B0CC /* AdministrateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70215A26F10DC400B2B0CC /* AdministrateTableViewCell.swift */; };
+		AD70216326F11D5400B2B0CC /* ConnetionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70216226F11D5400B2B0CC /* ConnetionService.swift */; };
+		AD70216526F11D5E00B2B0CC /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70216426F11D5E00B2B0CC /* GameService.swift */; };
+		AD70216726F11D6B00B2B0CC /* RoomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70216626F11D6B00B2B0CC /* RoomService.swift */; };
+		AD70216926F11D7500B2B0CC /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70216826F11D7500B2B0CC /* LoginService.swift */; };
+		AD70216B26F11D8000B2B0CC /* OnboardingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70216A26F11D8000B2B0CC /* OnboardingService.swift */; };
+		AD70216D26F11D8600B2B0CC /* MannerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70216C26F11D8600B2B0CC /* MannerService.swift */; };
+		AD70216F26F129A500B2B0CC /* MyFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70216E26F129A500B2B0CC /* MyFriendViewController.swift */; };
+		AD70217126F12A4F00B2B0CC /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70217026F12A4F00B2B0CC /* FriendTableViewCell.swift */; };
+		AD70217326F1348C00B2B0CC /* MyBlackListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70217226F1348B00B2B0CC /* MyBlackListViewController.swift */; };
+		AD70217526F138C600B2B0CC /* ImageDownLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70217426F138C600B2B0CC /* ImageDownLoad.swift */; };
+		AD70217726F13A8000B2B0CC /* RoomUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70217626F13A8000B2B0CC /* RoomUserService.swift */; };
+		AD70217A26F13B9900B2B0CC /* JoinChattingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70217926F13B9900B2B0CC /* JoinChattingModel.swift */; };
+		AD70217C26F2007400B2B0CC /* MannerScoreImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70217B26F2007400B2B0CC /* MannerScoreImageView.swift */; };
+		AD70217E26F204EB00B2B0CC /* CheckMannerAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70217D26F204EB00B2B0CC /* CheckMannerAlertController.swift */; };
+		AD70218026F2369200B2B0CC /* MessageTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70217F26F2369200B2B0CC /* MessageTextView.swift */; };
+		AD70218226F2441900B2B0CC /* ChattingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70218126F2441900B2B0CC /* ChattingTableViewCell.swift */; };
+		AD70218426F2447E00B2B0CC /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70218326F2447E00B2B0CC /* MessageView.swift */; };
+		AD70A3E426EFC10000BC4841 /* MatchingTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70A3E326EFC10000BC4841 /* MatchingTypeButton.swift */; };
+		AD70A3E626EFC79C00BC4841 /* MyMatchingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70A3E526EFC79C00BC4841 /* MyMatchingModel.swift */; };
+		AD70A3E826EFE0DB00BC4841 /* CalculateAboutTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70A3E726EFE0DB00BC4841 /* CalculateAboutTime.swift */; };
+		AD70A3EA26EFE3CD00BC4841 /* NoCountImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70A3E926EFE3CD00BC4841 /* NoCountImageView.swift */; };
+		AD70A3ED26F0702800BC4841 /* MyProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70A3EC26F0702800BC4841 /* MyProfileInfoView.swift */; };
 		AD982F8C26CAB5ED000AEAA2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD982F8B26CAB5ED000AEAA2 /* LoginViewController.swift */; };
 		AD9E9B3726CA99D500FCFC51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9E9B3626CA99D500FCFC51 /* AppDelegate.swift */; };
 		AD9E9B3B26CA99D500FCFC51 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9E9B3A26CA99D500FCFC51 /* LaunchViewController.swift */; };
@@ -32,7 +84,6 @@
 		ADB9339126E138C60016BC7F /* CircleCropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9338E26E138C60016BC7F /* CircleCropViewController.swift */; };
 		ADB9339226E138C60016BC7F /* CircleCropCutterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9338F26E138C60016BC7F /* CircleCropCutterView.swift */; };
 		ADB9339626E14BF40016BC7F /* MyInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9339526E14BF40016BC7F /* MyInfoModel.swift */; };
-		ADB9339826E1FC5D0016BC7F /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB9339726E1FC5D0016BC7F /* Service.swift */; };
 		ADCCCF5826DD4D2B002C5C8C /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCCCF5726DD4D2B002C5C8C /* OnboardingModel.swift */; };
 		ADCCCF5B26DD638D002C5C8C /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCCCF5A26DD638D002C5C8C /* OnboardingViewModel.swift */; };
 		ADCCCF5D26DD6C8F002C5C8C /* OnboardingStep2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCCCF5C26DD6C8F002C5C8C /* OnboardingStep2ViewController.swift */; };
@@ -51,12 +102,27 @@
 		ADCF012826CAB13D00F1BCF8 /* ChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCF012726CAB13D00F1BCF8 /* ChangeViewController.swift */; };
 		ADCF012A26CAB15900F1BCF8 /* InternetAvailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCF012926CAB15900F1BCF8 /* InternetAvailable.swift */; };
 		ADCF012C26CAB19F00F1BCF8 /* CommonFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCF012B26CAB19F00F1BCF8 /* CommonFont.swift */; };
+		ADDE2A7726E80E5C001A86EA /* HomeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADDE2A7626E80E5C001A86EA /* HomeKit.framework */; };
+		ADDE2A7926E80E6B001A86EA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADDE2A7826E80E6B001A86EA /* MapKit.framework */; };
+		ADF93D2326E9113600B8A1E9 /* JoinGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF93D2226E9113600B8A1E9 /* JoinGameView.swift */; };
+		ADF93D2526EA236A00B8A1E9 /* JoinGameListLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF93D2426EA236A00B8A1E9 /* JoinGameListLabel.swift */; };
+		ADF93D2726EA299000B8A1E9 /* JoinPeopleProfileCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF93D2626EA299000B8A1E9 /* JoinPeopleProfileCollectionView.swift */; };
+		ADF93D2926EA2D7600B8A1E9 /* JoinProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF93D2826EA2D7600B8A1E9 /* JoinProfileCell.swift */; };
+		ADF93D2F26EA34C900B8A1E9 /* JoinusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF93D2E26EA34C900B8A1E9 /* JoinusButton.swift */; };
+		ADF93D3126EA370F00B8A1E9 /* JoinGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF93D3026EA370F00B8A1E9 /* JoinGameViewModel.swift */; };
 		ADFDD09A26E67C97007883BE /* HomeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFDD09926E67C97007883BE /* HomeListViewController.swift */; };
 		ADFDD09C26E67CA5007883BE /* HomeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFDD09B26E67CA5007883BE /* HomeListViewModel.swift */; };
 		ADFDD09E26E67CAF007883BE /* HomeListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFDD09D26E67CAF007883BE /* HomeListModel.swift */; };
 		ADFDD0A226E67D0B007883BE /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFDD0A126E67D0B007883BE /* MyInfoViewController.swift */; };
 		ADFDD0A726E67D4D007883BE /* MyMatchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFDD0A626E67D4D007883BE /* MyMatchingViewController.swift */; };
 		ADFDD0AA26E6840A007883BE /* JoinusListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFDD0A926E6840A007883BE /* JoinusListCell.swift */; };
+		ADFDD0AC26E7B7E3007883BE /* SetTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFDD0AB26E7B7E3007883BE /* SetTabbarController.swift */; };
+		ADFDD0AE26E7BD39007883BE /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFDD0AD26E7BD39007883BE /* Model.swift */; };
+		ADFDD0B026E7E949007883BE /* CustomLeftBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFDD0AF26E7E949007883BE /* CustomLeftBarButton.swift */; };
+		ADFDD0B226E7EAC2007883BE /* CustomRightBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFDD0B126E7EAC2007883BE /* CustomRightBarButton.swift */; };
+		ADFDD0B426E7EF10007883BE /* JoinusCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFDD0B326E7EF10007883BE /* JoinusCustomCell.swift */; };
+		ADFDD0B626E7F532007883BE /* JoinusListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFDD0B526E7F532007883BE /* JoinusListTableView.swift */; };
+		ADFDD0B826E7F8FE007883BE /* TimeUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFDD0B726E7F8FE007883BE /* TimeUnits.swift */; };
 		E0B720128F4D38A1DEA38EB7 /* Pods_JOINUS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30BE6E46A8AFB1B50E834BF2 /* Pods_JOINUS.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +132,17 @@
 		8BC6ECE2F9A8A8212F14BC17 /* Pods-JOINUS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JOINUS.release.xcconfig"; path = "Target Support Files/Pods-JOINUS/Pods-JOINUS.release.xcconfig"; sourceTree = "<group>"; };
 		AD02EFC726DFDF67000A7F6B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AD02EFC926DFF20A000A7F6B /* ProfilePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhotoView.swift; sourceTree = "<group>"; };
+		AD2BDA7C26E8136B0055F027 /* JOINUS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = JOINUS.entitlements; path = "../../../../../Downloads/OPGG_모바일D/KeyChain/JOINUS.entitlements"; sourceTree = "<group>"; };
+		AD44B0EB26EA7F290045CBEB /* SelectJoinGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectJoinGameViewController.swift; sourceTree = "<group>"; };
+		AD44B0ED26EA808B0045CBEB /* CustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
+		AD44B0F226EC755D0045CBEB /* MakeMatchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeMatchingViewController.swift; sourceTree = "<group>"; };
+		AD44B0F426EC93A80045CBEB /* MakeMatchingScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeMatchingScrollView.swift; sourceTree = "<group>"; };
+		AD44B0F626EC9A910045CBEB /* CountJoinPeopleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountJoinPeopleView.swift; sourceTree = "<group>"; };
+		AD44B0F826EC9D120045CBEB /* StartDateSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartDateSetView.swift; sourceTree = "<group>"; };
+		AD44B0FA26EC9F2F0045CBEB /* SelectGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGameView.swift; sourceTree = "<group>"; };
+		AD44B0FC26ECA0C30045CBEB /* SelectVoiceChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectVoiceChatView.swift; sourceTree = "<group>"; };
+		AD44B0FE26ECA2ED0045CBEB /* SetJoinPeopleTierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetJoinPeopleTierView.swift; sourceTree = "<group>"; };
+		AD44B10026ECAAD60045CBEB /* InputTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTitleView.swift; sourceTree = "<group>"; };
 		AD4A6E8926D526460083D9A6 /* OnboardingStep1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep1ViewController.swift; sourceTree = "<group>"; };
 		AD4A6E8C26D7E41E0083D9A6 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
 		AD4A6E8D26D7E41E0083D9A6 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
@@ -76,6 +153,49 @@
 		AD54C50F26D7E8A20023FA99 /* CommonAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAction.swift; sourceTree = "<group>"; };
 		AD54C51326D7F3930023FA99 /* AgePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgePickerView.swift; sourceTree = "<group>"; };
 		AD67E7BD26CABACE006B1FD4 /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
+		AD6ACFC526ECBDB9001BE9C5 /* GameButtonScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameButtonScrollView.swift; sourceTree = "<group>"; };
+		AD6ACFC726ED107C001BE9C5 /* SelectTierOfJoinPeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTierOfJoinPeopleViewController.swift; sourceTree = "<group>"; };
+		AD6ACFC926ED112E001BE9C5 /* SelectTierOfJoinPeopleScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTierOfJoinPeopleScrollView.swift; sourceTree = "<group>"; };
+		AD6ACFCB26ED11AF001BE9C5 /* TierRangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TierRangeView.swift; sourceTree = "<group>"; };
+		AD6ACFCD26ED15B6001BE9C5 /* RangeTierButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeTierButton.swift; sourceTree = "<group>"; };
+		AD6ACFD026ED2604001BE9C5 /* MakeMatchingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeMatchingModel.swift; sourceTree = "<group>"; };
+		AD6ACFD226ED2613001BE9C5 /* MakeMatchingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeMatchingViewModel.swift; sourceTree = "<group>"; };
+		AD6ACFD426ED2D8C001BE9C5 /* SelectDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateView.swift; sourceTree = "<group>"; };
+		AD6ACFD626ED305C001BE9C5 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
+		AD6ACFD826EE27B6001BE9C5 /* SelectTierOfJoinPeopleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTierOfJoinPeopleViewModel.swift; sourceTree = "<group>"; };
+		AD6ACFDA26EF467C001BE9C5 /* JoinusAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinusAlertController.swift; sourceTree = "<group>"; };
+		AD70214626F07EE400B2B0CC /* MyGameProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGameProfileView.swift; sourceTree = "<group>"; };
+		AD70214826F081C100B2B0CC /* MyMannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMannerView.swift; sourceTree = "<group>"; };
+		AD70214A26F0846C00B2B0CC /* MyDetailProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDetailProfileView.swift; sourceTree = "<group>"; };
+		AD70214C26F084E800B2B0CC /* MannerGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MannerGuideView.swift; sourceTree = "<group>"; };
+		AD70214F26F0BA7400B2B0CC /* TierToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TierToString.swift; sourceTree = "<group>"; };
+		AD70215126F0BCCD00B2B0CC /* MyProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileEditViewController.swift; sourceTree = "<group>"; };
+		AD70215326F0F03100B2B0CC /* MyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewModel.swift; sourceTree = "<group>"; };
+		AD70215826F10D6C00B2B0CC /* JointChattingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JointChattingViewController.swift; sourceTree = "<group>"; };
+		AD70215A26F10DC400B2B0CC /* AdministrateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdministrateTableViewCell.swift; sourceTree = "<group>"; };
+		AD70216226F11D5400B2B0CC /* ConnetionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnetionService.swift; sourceTree = "<group>"; };
+		AD70216426F11D5E00B2B0CC /* GameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
+		AD70216626F11D6B00B2B0CC /* RoomService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomService.swift; sourceTree = "<group>"; };
+		AD70216826F11D7500B2B0CC /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		AD70216A26F11D8000B2B0CC /* OnboardingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingService.swift; sourceTree = "<group>"; };
+		AD70216C26F11D8600B2B0CC /* MannerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MannerService.swift; sourceTree = "<group>"; };
+		AD70216E26F129A500B2B0CC /* MyFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendViewController.swift; sourceTree = "<group>"; };
+		AD70217026F12A4F00B2B0CC /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
+		AD70217226F1348B00B2B0CC /* MyBlackListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBlackListViewController.swift; sourceTree = "<group>"; };
+		AD70217426F138C600B2B0CC /* ImageDownLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownLoad.swift; sourceTree = "<group>"; };
+		AD70217626F13A8000B2B0CC /* RoomUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomUserService.swift; sourceTree = "<group>"; };
+		AD70217926F13B9900B2B0CC /* JoinChattingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChattingModel.swift; sourceTree = "<group>"; };
+		AD70217B26F2007400B2B0CC /* MannerScoreImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MannerScoreImageView.swift; sourceTree = "<group>"; };
+		AD70217D26F204EB00B2B0CC /* CheckMannerAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMannerAlertController.swift; sourceTree = "<group>"; };
+		AD70217F26F2369200B2B0CC /* MessageTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTextView.swift; sourceTree = "<group>"; };
+		AD70218126F2441900B2B0CC /* ChattingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingTableViewCell.swift; sourceTree = "<group>"; };
+		AD70218326F2447E00B2B0CC /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		AD70218B26F31A9300B2B0CC /* SwiftWebSocket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftWebSocket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD70A3E326EFC10000BC4841 /* MatchingTypeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingTypeButton.swift; sourceTree = "<group>"; };
+		AD70A3E526EFC79C00BC4841 /* MyMatchingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMatchingModel.swift; sourceTree = "<group>"; };
+		AD70A3E726EFE0DB00BC4841 /* CalculateAboutTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateAboutTime.swift; sourceTree = "<group>"; };
+		AD70A3E926EFE3CD00BC4841 /* NoCountImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCountImageView.swift; sourceTree = "<group>"; };
+		AD70A3EC26F0702800BC4841 /* MyProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileInfoView.swift; sourceTree = "<group>"; };
 		AD982F8B26CAB5ED000AEAA2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AD9E9B3326CA99D500FCFC51 /* JOINUS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JOINUS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD9E9B3626CA99D500FCFC51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,7 +211,6 @@
 		ADB9338E26E138C60016BC7F /* CircleCropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleCropViewController.swift; sourceTree = "<group>"; };
 		ADB9338F26E138C60016BC7F /* CircleCropCutterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleCropCutterView.swift; sourceTree = "<group>"; };
 		ADB9339526E14BF40016BC7F /* MyInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoModel.swift; sourceTree = "<group>"; };
-		ADB9339726E1FC5D0016BC7F /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		ADCCCF5726DD4D2B002C5C8C /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		ADCCCF5A26DD638D002C5C8C /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		ADCCCF5C26DD6C8F002C5C8C /* OnboardingStep2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep2ViewController.swift; sourceTree = "<group>"; };
@@ -110,12 +229,27 @@
 		ADCF012726CAB13D00F1BCF8 /* ChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeViewController.swift; sourceTree = "<group>"; };
 		ADCF012926CAB15900F1BCF8 /* InternetAvailable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetAvailable.swift; sourceTree = "<group>"; };
 		ADCF012B26CAB19F00F1BCF8 /* CommonFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFont.swift; sourceTree = "<group>"; };
+		ADDE2A7626E80E5C001A86EA /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
+		ADDE2A7826E80E6B001A86EA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		ADF93D2226E9113600B8A1E9 /* JoinGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameView.swift; sourceTree = "<group>"; };
+		ADF93D2426EA236A00B8A1E9 /* JoinGameListLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameListLabel.swift; sourceTree = "<group>"; };
+		ADF93D2626EA299000B8A1E9 /* JoinPeopleProfileCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinPeopleProfileCollectionView.swift; sourceTree = "<group>"; };
+		ADF93D2826EA2D7600B8A1E9 /* JoinProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinProfileCell.swift; sourceTree = "<group>"; };
+		ADF93D2E26EA34C900B8A1E9 /* JoinusButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinusButton.swift; sourceTree = "<group>"; };
+		ADF93D3026EA370F00B8A1E9 /* JoinGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameViewModel.swift; sourceTree = "<group>"; };
 		ADFDD09926E67C97007883BE /* HomeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListViewController.swift; sourceTree = "<group>"; };
 		ADFDD09B26E67CA5007883BE /* HomeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListViewModel.swift; sourceTree = "<group>"; };
 		ADFDD09D26E67CAF007883BE /* HomeListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListModel.swift; sourceTree = "<group>"; };
 		ADFDD0A126E67D0B007883BE /* MyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewController.swift; sourceTree = "<group>"; };
 		ADFDD0A626E67D4D007883BE /* MyMatchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMatchingViewController.swift; sourceTree = "<group>"; };
 		ADFDD0A926E6840A007883BE /* JoinusListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinusListCell.swift; sourceTree = "<group>"; };
+		ADFDD0AB26E7B7E3007883BE /* SetTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTabbarController.swift; sourceTree = "<group>"; };
+		ADFDD0AD26E7BD39007883BE /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		ADFDD0AF26E7E949007883BE /* CustomLeftBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLeftBarButton.swift; sourceTree = "<group>"; };
+		ADFDD0B126E7EAC2007883BE /* CustomRightBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRightBarButton.swift; sourceTree = "<group>"; };
+		ADFDD0B326E7EF10007883BE /* JoinusCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinusCustomCell.swift; sourceTree = "<group>"; };
+		ADFDD0B526E7F532007883BE /* JoinusListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinusListTableView.swift; sourceTree = "<group>"; };
+		ADFDD0B726E7F8FE007883BE /* TimeUnits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeUnits.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +257,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADDE2A7726E80E5C001A86EA /* HomeKit.framework in Frameworks */,
+				ADDE2A7926E80E6B001A86EA /* MapKit.framework in Frameworks */,
 				E0B720128F4D38A1DEA38EB7 /* Pods_JOINUS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,9 +278,52 @@
 		61CBD4601A975980F37D575C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AD70218B26F31A9300B2B0CC /* SwiftWebSocket.framework */,
+				ADDE2A7826E80E6B001A86EA /* MapKit.framework */,
+				ADDE2A7626E80E5C001A86EA /* HomeKit.framework */,
 				30BE6E46A8AFB1B50E834BF2 /* Pods_JOINUS.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AD44B0EF26EC750F0045CBEB /* MakeMatchingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AD6ACFCF26ED25E7001BE9C5 /* MakeMatchingModel */,
+				AD44B0F126EC75460045CBEB /* MakeMatchingViewModel */,
+				AD44B0F026EC753E0045CBEB /* MakeMatchingView */,
+				AD44B0F226EC755D0045CBEB /* MakeMatchingViewController.swift */,
+				AD6ACFC726ED107C001BE9C5 /* SelectTierOfJoinPeopleViewController.swift */,
+			);
+			path = MakeMatchingViewController;
+			sourceTree = "<group>";
+		};
+		AD44B0F026EC753E0045CBEB /* MakeMatchingView */ = {
+			isa = PBXGroup;
+			children = (
+				AD44B0F426EC93A80045CBEB /* MakeMatchingScrollView.swift */,
+				AD44B0FE26ECA2ED0045CBEB /* SetJoinPeopleTierView.swift */,
+				AD44B0FC26ECA0C30045CBEB /* SelectVoiceChatView.swift */,
+				AD44B0FA26EC9F2F0045CBEB /* SelectGameView.swift */,
+				AD6ACFC526ECBDB9001BE9C5 /* GameButtonScrollView.swift */,
+				AD44B0F826EC9D120045CBEB /* StartDateSetView.swift */,
+				AD6ACFD426ED2D8C001BE9C5 /* SelectDateView.swift */,
+				AD44B0F626EC9A910045CBEB /* CountJoinPeopleView.swift */,
+				AD44B10026ECAAD60045CBEB /* InputTitleView.swift */,
+				AD6ACFC926ED112E001BE9C5 /* SelectTierOfJoinPeopleScrollView.swift */,
+				AD6ACFCB26ED11AF001BE9C5 /* TierRangeView.swift */,
+				AD6ACFCD26ED15B6001BE9C5 /* RangeTierButton.swift */,
+			);
+			path = MakeMatchingView;
+			sourceTree = "<group>";
+		};
+		AD44B0F126EC75460045CBEB /* MakeMatchingViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AD6ACFD226ED2613001BE9C5 /* MakeMatchingViewModel.swift */,
+				AD6ACFD826EE27B6001BE9C5 /* SelectTierOfJoinPeopleViewModel.swift */,
+			);
+			path = MakeMatchingViewModel;
 			sourceTree = "<group>";
 		};
 		AD4A6E8B26D7E4090083D9A6 /* Font */ = {
@@ -186,10 +365,134 @@
 			path = OnboardingView;
 			sourceTree = "<group>";
 		};
+		AD6ACFCF26ED25E7001BE9C5 /* MakeMatchingModel */ = {
+			isa = PBXGroup;
+			children = (
+				AD6ACFD026ED2604001BE9C5 /* MakeMatchingModel.swift */,
+			);
+			path = MakeMatchingModel;
+			sourceTree = "<group>";
+		};
+		AD70215526F10CEC00B2B0CC /* JoinChattingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AD70217826F13B8900B2B0CC /* JoinChattingModel */,
+				AD70215726F10D0B00B2B0CC /* JoinChattingViewModel */,
+				AD70215626F10D0200B2B0CC /* JoinChattingView */,
+				AD70215826F10D6C00B2B0CC /* JointChattingViewController.swift */,
+				AD70217D26F204EB00B2B0CC /* CheckMannerAlertController.swift */,
+			);
+			path = JoinChattingViewController;
+			sourceTree = "<group>";
+		};
+		AD70215626F10D0200B2B0CC /* JoinChattingView */ = {
+			isa = PBXGroup;
+			children = (
+				AD70217B26F2007400B2B0CC /* MannerScoreImageView.swift */,
+				AD70217F26F2369200B2B0CC /* MessageTextView.swift */,
+				AD70218126F2441900B2B0CC /* ChattingTableViewCell.swift */,
+				AD70218326F2447E00B2B0CC /* MessageView.swift */,
+			);
+			path = JoinChattingView;
+			sourceTree = "<group>";
+		};
+		AD70215726F10D0B00B2B0CC /* JoinChattingViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = JoinChattingViewModel;
+			sourceTree = "<group>";
+		};
+		AD70215C26F11CFE00B2B0CC /* ConnectionService */ = {
+			isa = PBXGroup;
+			children = (
+				AD70216226F11D5400B2B0CC /* ConnetionService.swift */,
+			);
+			path = ConnectionService;
+			sourceTree = "<group>";
+		};
+		AD70215D26F11D0E00B2B0CC /* GameController */ = {
+			isa = PBXGroup;
+			children = (
+				AD70216426F11D5E00B2B0CC /* GameService.swift */,
+			);
+			path = GameController;
+			sourceTree = "<group>";
+		};
+		AD70215E26F11D1900B2B0CC /* RoomController */ = {
+			isa = PBXGroup;
+			children = (
+				AD70216626F11D6B00B2B0CC /* RoomService.swift */,
+				AD70217626F13A8000B2B0CC /* RoomUserService.swift */,
+			);
+			path = RoomController;
+			sourceTree = "<group>";
+		};
+		AD70215F26F11D1F00B2B0CC /* LoingController */ = {
+			isa = PBXGroup;
+			children = (
+				AD70216826F11D7500B2B0CC /* LoginService.swift */,
+			);
+			path = LoingController;
+			sourceTree = "<group>";
+		};
+		AD70216026F11D3200B2B0CC /* OnboardingController */ = {
+			isa = PBXGroup;
+			children = (
+				AD70216A26F11D8000B2B0CC /* OnboardingService.swift */,
+			);
+			path = OnboardingController;
+			sourceTree = "<group>";
+		};
+		AD70216126F11D3E00B2B0CC /* MannerController */ = {
+			isa = PBXGroup;
+			children = (
+				AD70216C26F11D8600B2B0CC /* MannerService.swift */,
+			);
+			path = MannerController;
+			sourceTree = "<group>";
+		};
+		AD70217826F13B8900B2B0CC /* JoinChattingModel */ = {
+			isa = PBXGroup;
+			children = (
+				AD70217926F13B9900B2B0CC /* JoinChattingModel.swift */,
+			);
+			path = JoinChattingModel;
+			sourceTree = "<group>";
+		};
+		AD70A3DF26EFC08B00BC4841 /* MyMatchingView */ = {
+			isa = PBXGroup;
+			children = (
+				AD70A3E326EFC10000BC4841 /* MatchingTypeButton.swift */,
+				AD70A3E926EFE3CD00BC4841 /* NoCountImageView.swift */,
+			);
+			path = MyMatchingView;
+			sourceTree = "<group>";
+		};
+		AD70A3EB26F0701B00BC4841 /* MyInfoVIew */ = {
+			isa = PBXGroup;
+			children = (
+				AD70A3EC26F0702800BC4841 /* MyProfileInfoView.swift */,
+				AD70214626F07EE400B2B0CC /* MyGameProfileView.swift */,
+				AD70214826F081C100B2B0CC /* MyMannerView.swift */,
+				AD70214C26F084E800B2B0CC /* MannerGuideView.swift */,
+				AD70214A26F0846C00B2B0CC /* MyDetailProfileView.swift */,
+				AD70215A26F10DC400B2B0CC /* AdministrateTableViewCell.swift */,
+				AD70217026F12A4F00B2B0CC /* FriendTableViewCell.swift */,
+			);
+			path = MyInfoVIew;
+			sourceTree = "<group>";
+		};
 		AD74446326CAD2C500F90BF2 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				ADB9339726E1FC5D0016BC7F /* Service.swift */,
+				AD70216126F11D3E00B2B0CC /* MannerController */,
+				AD70216026F11D3200B2B0CC /* OnboardingController */,
+				AD70215F26F11D1F00B2B0CC /* LoingController */,
+				AD70215E26F11D1900B2B0CC /* RoomController */,
+				AD70215D26F11D0E00B2B0CC /* GameController */,
+				AD70215C26F11CFE00B2B0CC /* ConnectionService */,
+				ADFDD0AD26E7BD39007883BE /* Model.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -197,6 +500,9 @@
 		AD982F8926CAB36F000AEAA2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				AD70215526F10CEC00B2B0CC /* JoinChattingViewController */,
+				AD44B0EF26EC750F0045CBEB /* MakeMatchingViewController */,
+				ADF93D1F26E9110600B8A1E9 /* SelectJoinGameViewController */,
 				ADB9339326E14BC60016BC7F /* MyInfoViewController */,
 				ADFDD09F26E67CD8007883BE /* MyMatchingViewController */,
 				ADFDD09626E67336007883BE /* HomeListViewController */,
@@ -239,13 +545,15 @@
 		AD9E9B3526CA99D500FCFC51 /* JOINUS */ = {
 			isa = PBXGroup;
 			children = (
+				AD2BDA7C26E8136B0055F027 /* JOINUS.entitlements */,
 				AD4A6E8B26D7E4090083D9A6 /* Font */,
 				AD74446326CAD2C500F90BF2 /* Service */,
 				AD982F8926CAB36F000AEAA2 /* ViewControllers */,
 				ADCF012026CAAF5600F1BCF8 /* Extension */,
 				ADCF011E26CAAEF800F1BCF8 /* CommonAttribute */,
-				AD9E9B3626CA99D500FCFC51 /* AppDelegate.swift */,
+				ADF93D2C26EA349400B8A1E9 /* CommonView */,
 				AD9E9B3C26CA99D500FCFC51 /* Main.storyboard */,
+				AD9E9B3626CA99D500FCFC51 /* AppDelegate.swift */,
 				AD9E9B3F26CA99D600FCFC51 /* Assets.xcassets */,
 				AD9E9B4126CA99D600FCFC51 /* LaunchScreen.storyboard */,
 				AD67E7BD26CABACE006B1FD4 /* credentials.plist */,
@@ -286,9 +594,13 @@
 		ADB9339326E14BC60016BC7F /* MyInfoViewController */ = {
 			isa = PBXGroup;
 			children = (
+				AD70A3EB26F0701B00BC4841 /* MyInfoVIew */,
 				ADFDD0A326E67D0F007883BE /* MyInfoViewModel */,
 				ADB9339426E14BDC0016BC7F /* MyInfoModel */,
 				ADFDD0A126E67D0B007883BE /* MyInfoViewController.swift */,
+				AD70215126F0BCCD00B2B0CC /* MyProfileEditViewController.swift */,
+				AD70216E26F129A500B2B0CC /* MyFriendViewController.swift */,
+				AD70217226F1348B00B2B0CC /* MyBlackListViewController.swift */,
 			);
 			path = MyInfoViewController;
 			sourceTree = "<group>";
@@ -337,6 +649,11 @@
 				ADCF012726CAB13D00F1BCF8 /* ChangeViewController.swift */,
 				ADCF012926CAB15900F1BCF8 /* InternetAvailable.swift */,
 				AD54C50F26D7E8A20023FA99 /* CommonAction.swift */,
+				ADFDD0AB26E7B7E3007883BE /* SetTabbarController.swift */,
+				ADFDD0B726E7F8FE007883BE /* TimeUnits.swift */,
+				AD70A3E726EFE0DB00BC4841 /* CalculateAboutTime.swift */,
+				AD70214F26F0BA7400B2B0CC /* TierToString.swift */,
+				AD70217426F138C600B2B0CC /* ImageDownLoad.swift */,
 			);
 			path = CommonAttribute;
 			sourceTree = "<group>";
@@ -347,6 +664,46 @@
 				ADCF011C26CAAEBC00F1BCF8 /* Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		ADF93D1F26E9110600B8A1E9 /* SelectJoinGameViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ADF93D2126E9112100B8A1E9 /* JoinGameView */,
+				ADF93D2026E9111700B8A1E9 /* JoinGameViewModel */,
+				AD44B0EB26EA7F290045CBEB /* SelectJoinGameViewController.swift */,
+			);
+			path = SelectJoinGameViewController;
+			sourceTree = "<group>";
+		};
+		ADF93D2026E9111700B8A1E9 /* JoinGameViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				ADF93D3026EA370F00B8A1E9 /* JoinGameViewModel.swift */,
+			);
+			path = JoinGameViewModel;
+			sourceTree = "<group>";
+		};
+		ADF93D2126E9112100B8A1E9 /* JoinGameView */ = {
+			isa = PBXGroup;
+			children = (
+				ADF93D2226E9113600B8A1E9 /* JoinGameView.swift */,
+				ADF93D2426EA236A00B8A1E9 /* JoinGameListLabel.swift */,
+				ADF93D2626EA299000B8A1E9 /* JoinPeopleProfileCollectionView.swift */,
+				ADF93D2826EA2D7600B8A1E9 /* JoinProfileCell.swift */,
+			);
+			path = JoinGameView;
+			sourceTree = "<group>";
+		};
+		ADF93D2C26EA349400B8A1E9 /* CommonView */ = {
+			isa = PBXGroup;
+			children = (
+				AD6ACFD626ED305C001BE9C5 /* ToggleButton.swift */,
+				AD44B0ED26EA808B0045CBEB /* CustomNavigationView.swift */,
+				ADF93D2E26EA34C900B8A1E9 /* JoinusButton.swift */,
+				AD6ACFDA26EF467C001BE9C5 /* JoinusAlertController.swift */,
+			);
+			path = CommonView;
 			sourceTree = "<group>";
 		};
 		ADFDD09626E67336007883BE /* HomeListViewController */ = {
@@ -379,6 +736,7 @@
 		ADFDD09F26E67CD8007883BE /* MyMatchingViewController */ = {
 			isa = PBXGroup;
 			children = (
+				AD70A3DF26EFC08B00BC4841 /* MyMatchingView */,
 				ADFDD0A526E67D3B007883BE /* MyMatchingModel */,
 				ADFDD0A426E67D18007883BE /* MyMatchingViewModel */,
 				ADFDD0A626E67D4D007883BE /* MyMatchingViewController.swift */,
@@ -389,6 +747,7 @@
 		ADFDD0A326E67D0F007883BE /* MyInfoViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				AD70215326F0F03100B2B0CC /* MyInfoViewModel.swift */,
 			);
 			path = MyInfoViewModel;
 			sourceTree = "<group>";
@@ -403,6 +762,7 @@
 		ADFDD0A526E67D3B007883BE /* MyMatchingModel */ = {
 			isa = PBXGroup;
 			children = (
+				AD70A3E526EFC79C00BC4841 /* MyMatchingModel.swift */,
 			);
 			path = MyMatchingModel;
 			sourceTree = "<group>";
@@ -411,6 +771,10 @@
 			isa = PBXGroup;
 			children = (
 				ADFDD0A926E6840A007883BE /* JoinusListCell.swift */,
+				ADFDD0AF26E7E949007883BE /* CustomLeftBarButton.swift */,
+				ADFDD0B126E7EAC2007883BE /* CustomRightBarButton.swift */,
+				ADFDD0B326E7EF10007883BE /* JoinusCustomCell.swift */,
+				ADFDD0B526E7F532007883BE /* JoinusListTableView.swift */,
 			);
 			path = HomeListView;
 			sourceTree = "<group>";
@@ -538,43 +902,107 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADF93D3126EA370F00B8A1E9 /* JoinGameViewModel.swift in Sources */,
+				AD6ACFD326ED2613001BE9C5 /* MakeMatchingViewModel.swift in Sources */,
+				AD70215426F0F03100B2B0CC /* MyInfoViewModel.swift in Sources */,
+				AD6ACFDB26EF467C001BE9C5 /* JoinusAlertController.swift in Sources */,
+				AD70217E26F204EB00B2B0CC /* CheckMannerAlertController.swift in Sources */,
+				AD44B0FF26ECA2ED0045CBEB /* SetJoinPeopleTierView.swift in Sources */,
+				ADF93D2526EA236A00B8A1E9 /* JoinGameListLabel.swift in Sources */,
+				AD70A3EA26EFE3CD00BC4841 /* NoCountImageView.swift in Sources */,
+				AD6ACFD526ED2D8C001BE9C5 /* SelectDateView.swift in Sources */,
+				AD70A3ED26F0702800BC4841 /* MyProfileInfoView.swift in Sources */,
 				ADCCCF6326DE6525002C5C8C /* OnboardingStep3ViewController.swift in Sources */,
+				AD44B0EE26EA808B0045CBEB /* CustomNavigationView.swift in Sources */,
 				ADFDD09E26E67CAF007883BE /* HomeListModel.swift in Sources */,
+				ADFDD0B026E7E949007883BE /* CustomLeftBarButton.swift in Sources */,
+				AD70214D26F084E800B2B0CC /* MannerGuideView.swift in Sources */,
+				AD70216726F11D6B00B2B0CC /* RoomService.swift in Sources */,
 				ADCF012826CAB13D00F1BCF8 /* ChangeViewController.swift in Sources */,
+				AD6ACFD126ED2604001BE9C5 /* MakeMatchingModel.swift in Sources */,
 				ADCCCF6A26DE9484002C5C8C /* GoogleLoginButton.swift in Sources */,
+				AD6ACFCA26ED112E001BE9C5 /* SelectTierOfJoinPeopleScrollView.swift in Sources */,
 				ADCF012226CAB01100F1BCF8 /* CommonLength.swift in Sources */,
 				ADFDD09A26E67C97007883BE /* HomeListViewController.swift in Sources */,
+				AD44B0F526EC93A80045CBEB /* MakeMatchingScrollView.swift in Sources */,
 				ADCF011D26CAAEBC00F1BCF8 /* Extension.swift in Sources */,
 				ADCCCF6826DE9139002C5C8C /* LoginLogoView.swift in Sources */,
 				AD9E9B3B26CA99D500FCFC51 /* LaunchViewController.swift in Sources */,
+				ADF93D2326E9113600B8A1E9 /* JoinGameView.swift in Sources */,
 				ADCCCF5826DD4D2B002C5C8C /* OnboardingModel.swift in Sources */,
+				AD6ACFD726ED305C001BE9C5 /* ToggleButton.swift in Sources */,
 				AD54C51026D7E8A20023FA99 /* CommonAction.swift in Sources */,
+				ADF93D2926EA2D7600B8A1E9 /* JoinProfileCell.swift in Sources */,
+				AD6ACFCC26ED11AF001BE9C5 /* TierRangeView.swift in Sources */,
+				ADFDD0B426E7EF10007883BE /* JoinusCustomCell.swift in Sources */,
+				AD70218226F2441900B2B0CC /* ChattingTableViewCell.swift in Sources */,
+				AD44B0FB26EC9F2F0045CBEB /* SelectGameView.swift in Sources */,
 				ADCF012A26CAB15900F1BCF8 /* InternetAvailable.swift in Sources */,
+				AD44B0FD26ECA0C30045CBEB /* SelectVoiceChatView.swift in Sources */,
 				ADCF012426CAB06600F1BCF8 /* CommonColor.swift in Sources */,
 				ADCCCF6526DE6CEA002C5C8C /* SelectTierButton.swift in Sources */,
 				ADFDD0A726E67D4D007883BE /* MyMatchingViewController.swift in Sources */,
+				AD70217A26F13B9900B2B0CC /* JoinChattingModel.swift in Sources */,
+				ADFDD0AE26E7BD39007883BE /* Model.swift in Sources */,
+				AD70217C26F2007400B2B0CC /* MannerScoreImageView.swift in Sources */,
+				AD6ACFCE26ED15B6001BE9C5 /* RangeTierButton.swift in Sources */,
+				AD70215B26F10DC400B2B0CC /* AdministrateTableViewCell.swift in Sources */,
+				ADFDD0B226E7EAC2007883BE /* CustomRightBarButton.swift in Sources */,
+				AD70217326F1348C00B2B0CC /* MyBlackListViewController.swift in Sources */,
+				AD70215926F10D6C00B2B0CC /* JointChattingViewController.swift in Sources */,
+				AD44B0F726EC9A910045CBEB /* CountJoinPeopleView.swift in Sources */,
 				ADB9339626E14BF40016BC7F /* MyInfoModel.swift in Sources */,
+				AD44B0EC26EA7F290045CBEB /* SelectJoinGameViewController.swift in Sources */,
 				ADCCCF6126DD7D40002C5C8C /* NextButtonStatus.swift in Sources */,
 				AD02EFCA26DFF20A000A7F6B /* ProfilePhotoView.swift in Sources */,
+				AD70216326F11D5400B2B0CC /* ConnetionService.swift in Sources */,
+				AD70A3E426EFC10000BC4841 /* MatchingTypeButton.swift in Sources */,
+				AD70214726F07EE400B2B0CC /* MyGameProfileView.swift in Sources */,
+				AD6ACFC826ED107C001BE9C5 /* SelectTierOfJoinPeopleViewController.swift in Sources */,
+				AD70216D26F11D8600B2B0CC /* MannerService.swift in Sources */,
+				ADF93D2F26EA34C900B8A1E9 /* JoinusButton.swift in Sources */,
+				AD70217126F12A4F00B2B0CC /* FriendTableViewCell.swift in Sources */,
+				AD6ACFD926EE27B6001BE9C5 /* SelectTierOfJoinPeopleViewModel.swift in Sources */,
 				AD9E9B3726CA99D500FCFC51 /* AppDelegate.swift in Sources */,
+				AD6ACFC626ECBDB9001BE9C5 /* GameButtonScrollView.swift in Sources */,
+				AD70216526F11D5E00B2B0CC /* GameService.swift in Sources */,
+				AD70215026F0BA7400B2B0CC /* TierToString.swift in Sources */,
 				ADB9338926E009250016BC7F /* JoinusActionSheetView.swift in Sources */,
 				ADCF012C26CAB19F00F1BCF8 /* CommonFont.swift in Sources */,
 				ADCCCF5B26DD638D002C5C8C /* OnboardingViewModel.swift in Sources */,
 				AD982F8C26CAB5ED000AEAA2 /* LoginViewController.swift in Sources */,
+				AD44B0F326EC755D0045CBEB /* MakeMatchingViewController.swift in Sources */,
+				AD70216F26F129A500B2B0CC /* MyFriendViewController.swift in Sources */,
+				AD70214926F081C100B2B0CC /* MyMannerView.swift in Sources */,
+				AD44B0F926EC9D120045CBEB /* StartDateSetView.swift in Sources */,
+				AD70217726F13A8000B2B0CC /* RoomUserService.swift in Sources */,
+				AD70218026F2369200B2B0CC /* MessageTextView.swift in Sources */,
+				ADFDD0AC26E7B7E3007883BE /* SetTabbarController.swift in Sources */,
+				AD70A3E826EFE0DB00BC4841 /* CalculateAboutTime.swift in Sources */,
+				AD70216926F11D7500B2B0CC /* LoginService.swift in Sources */,
 				ADB9339126E138C60016BC7F /* CircleCropViewController.swift in Sources */,
+				AD70218426F2447E00B2B0CC /* MessageView.swift in Sources */,
 				ADB9339026E138C60016BC7F /* CircleCropScrollView.swift in Sources */,
 				ADCCCF5F26DD70A3002C5C8C /* SelectGameButton.swift in Sources */,
 				AD54C51426D7F3930023FA99 /* AgePickerView.swift in Sources */,
 				ADFDD0AA26E6840A007883BE /* JoinusListCell.swift in Sources */,
 				ADCCCF7026DFD74E002C5C8C /* ProfileViewControllerViewController.swift in Sources */,
-				ADB9339826E1FC5D0016BC7F /* Service.swift in Sources */,
+				AD70215226F0BCCD00B2B0CC /* MyProfileEditViewController.swift in Sources */,
 				AD4A6E8A26D526460083D9A6 /* OnboardingStep1ViewController.swift in Sources */,
 				ADCCCF5D26DD6C8F002C5C8C /* OnboardingStep2ViewController.swift in Sources */,
+				ADF93D2726EA299000B8A1E9 /* JoinPeopleProfileCollectionView.swift in Sources */,
+				AD70217526F138C600B2B0CC /* ImageDownLoad.swift in Sources */,
 				ADB9338326E007D20016BC7F /* JoinusAlertViewController.swift in Sources */,
 				ADFDD09C26E67CA5007883BE /* HomeListViewModel.swift in Sources */,
+				ADFDD0B626E7F532007883BE /* JoinusListTableView.swift in Sources */,
 				ADCF012626CAB11700F1BCF8 /* ChangeWindow.swift in Sources */,
+				AD70214B26F0846C00B2B0CC /* MyDetailProfileView.swift in Sources */,
+				AD70A3E626EFC79C00BC4841 /* MyMatchingModel.swift in Sources */,
+				AD70216B26F11D8000B2B0CC /* OnboardingService.swift in Sources */,
 				ADCCCF6E26DFCFFF002C5C8C /* OnboardingStep4ViewController.swift in Sources */,
 				ADFDD0A226E67D0B007883BE /* MyInfoViewController.swift in Sources */,
+				ADFDD0B826E7F8FE007883BE /* TimeUnits.swift in Sources */,
+				AD44B10126ECAAD60045CBEB /* InputTitleView.swift in Sources */,
 				ADB9339226E138C60016BC7F /* CircleCropCutterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -723,6 +1151,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = JOINUS/JOINUS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2SAR4Q5FCM;
 				INFOPLIST_FILE = JOINUS/Info.plist;
@@ -730,7 +1159,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "opgg-d-JOINUS";
+				PRODUCT_BUNDLE_IDENTIFIER = "opgg.d-JOINUS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -743,6 +1172,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = JOINUS/JOINUS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2SAR4Q5FCM;
 				INFOPLIST_FILE = JOINUS/Info.plist;
@@ -750,7 +1180,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "opgg-d-JOINUS";
+				PRODUCT_BUNDLE_IDENTIFIER = "opgg.d-JOINUS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

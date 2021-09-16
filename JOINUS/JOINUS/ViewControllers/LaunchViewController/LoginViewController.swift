@@ -18,6 +18,13 @@ class LoginViewController: UIViewController {
   
   private let googleConnction = GIDSignIn.sharedInstance
   
+  private let login = LoginService.manager,
+              game = GameService.manager,
+              manner = MannerService.manager
+  
+  private let myInfoModel = MyInfoModel.shared,
+              messagingModel = MessagingModel.shared
+  
   // MARK: View
   private let symbolImageView = UIImageView().then {
     $0.image = UIImage(named: "invalidName")
@@ -64,164 +71,52 @@ class LoginViewController: UIViewController {
   
   func didTapButtonAction() {
     
-//    guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-//
-//    let config = GIDConfiguration(clientID: clientID)
-//
-//    CommonAction.shared.touchActionEffect(self.googleLoginButton) {
-//
-//      GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { user, error in
-//
-//        if let error = error {
-//
-//          print(error.localizedDescription + "google login error")
-//
-//          return
-//        }
-//
-//        guard let authentication = user?.authentication,
-//              let idToken = authentication.idToken else { return print("token return") }
-//
-//        print("access token: \(authentication.accessToken)")
-//        print("id token: \(idToken)")
-//        self.signUp(token: idToken)
-//        let credential = GoogleAuthProvider.credential(withIDToken: idToken,
-//                                                       accessToken: authentication.accessToken)
-//
-//        Auth.auth().signIn(with: credential) { res, err in
-//
-//          if let err = err {
-//            print(err.localizedDescription + "login err")
-//            return
-//
-//          } else {
-//
-//            let uid = (res?.user.uid) ?? ""
-//            let email = (res?.user.email) ?? ""
-//
-//          }
-//        }
-//      }
-//    }
-    
-    let onBoardingVC = OnboardingStep1ViewController(),
-        onBoardingNaviVC = UINavigationController(rootViewController: onBoardingVC)
+    guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+    let config = GIDConfiguration(clientID: clientID)
 
     CommonAction.shared.touchActionEffect(self.googleLoginButton) {
+      
+//      let onBoardingVC = OnboardingStep1ViewController(),
+//          onBoardingNaviVC = UINavigationController(rootViewController: onBoardingVC)
+//
+//      self.changeWindow
+//        .change(change: onBoardingNaviVC)
 
-      self.signUp(token: "")
+      GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { user, error in
 
-      self.changeWindow
-        .change(change: onBoardingNaviVC)
-    }
-  }
-  
-  func signUp(token: String) {
-    //client_id : 139499651998-5mhlkgtpjgmlfbu4evd6i6a7oarrisdu.apps.googleusercontent.com
-    //    let url = "http://ec2-3-128-67-103.us-east-2.compute.amazonaws.com/notification/data"
-    
-    let url = "http://ec2-3-128-67-103.us-east-2.compute.amazonaws.com:80/api/login?" + "code=" + token
-    
-    AF.request(url,
-               method: .get)
-      .validate(statusCode: 150..<800)
-      .responseJSON {
-        
-        switch $0.result {
-          case .success(let res):
-            do {
-              let temp = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted),
-                  data = try JSONDecoder().decode(Get.self, from: temp)
-              
-              print(data)
-              
-            } catch(let err) {
-              
-              print(err.localizedDescription + "-> 1")
+        if let error = error {
+          print(error.localizedDescription + "google login error")
+          return
+        }
+
+        guard let authentication = user?.authentication else { return print("token return") }
+
+        print("-> access token: \(authentication.accessToken)")
+
+        self.login.signUp(accessToken: authentication.accessToken) { isLogin in
+
+            if isLogin {
+
+              self.game.getGame() {
+
+                self.manner.getManner() {
+              print("-> all get")
+                let setTabbarController = SetTabbarController()
+                setTabbarController.settingRootViewController()
+
+                }
+              }
+            } else {
+
+              let onBoardingVC = OnboardingStep1ViewController(),
+                  onBoardingNaviVC = UINavigationController(rootViewController: onBoardingVC)
+
+              self.changeWindow
+                .change(change: onBoardingNaviVC)
             }
-            
-          case .failure(let err):
-            
-            print(err.localizedDescription + "-> 2")
         }
       }
-  }
-  
-  //  func finishedWithAuth(auth: GTMOAuth2Authentication!, error: NSError!) {
-  //    if error != nil {
-  //      print(error.localizedDescription)
-  //    }
-  //    else {
-  //      let idToken = auth.parameters.objectForKey("id_token")
-  //      credentialsProvider.logins = [AWSCognitoLoginProviderKey.Google.rawValue: idToken!]
-  //    }
-  //  }
-  //}
-}
-  
-extension LoginViewController {
-  
-  struct Get: Codable {
-    
-    var age: Int?,
-        gender: Int?,
-        pk: Int?,
-        firebaseToken: String?,
-        imageAddress: String?,
-        nickName: String?,
-        token: String?,
-        login: Bool?
-    
-    enum CodingKeys: String, CodingKey {
-      case age, gender, pk, token, login
-      case firebaseToken = "firebase_token", imageAddress = "image_address", nickName = "nickname"
     }
   }
 }
-//  struct Get: Decodable {
-//
-//    var age: Int?,
-//        gender: Int?,
-//        pk: Int?,
-//        firebaseToken: String?,
-//        imageAddress: String?,
-//        nickName: String?,
-//        token: String?,
-//        login: Bool?
-//
-//    enum CodingKeys: String, CodingKey {
-//      case age, gender, pk, token, login
-//      case firebaseToken = "firebase_token", imageAddress = "image_address", nickName = "nickname"
-//    }
-//
-//
-//    init(from decoder: Decoder) throws {
-//      let container = try decoder.container(keyedBy: CodingKeys.self)
-//
-//      age = try container.decode(Int.self,
-//                                 forKey: .age)
-//
-//      firebaseToken = try container.decode(String.self,
-//                                           forKey: .firebaseToken)
-//
-//      gender = try container.decode(Int.self,
-//                                    forKey: .gender)
-//
-//      imageAddress = try container.decode(String.self,
-//                                          forKey: .imageAddress)
-//
-//      nickName = try container.decode(String.self,
-//                                      forKey: .nickName)
-//
-//      pk = try container.decode(Int.self,
-//                                forKey: .pk)
-//
-//      token = try container.decode(String.self,
-//                                   forKey: .token)
-//
-//      login = try container.decode(Bool.self,
-//                                   forKey: .login)
-//    }
-//  }
-//}
-
+  

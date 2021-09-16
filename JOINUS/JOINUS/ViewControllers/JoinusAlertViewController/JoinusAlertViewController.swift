@@ -133,7 +133,7 @@ class JoinusAlertViewController: UIViewController, UIImagePickerControllerDelega
       .asDriver()
       .drive(onNext: {
         
-        let defaultImage = UIImage(named: "profile")!
+        let defaultImage = UIImage(named: "defaultProfile_60x60")!
         
         self.onboardingViewModel
           .selectProfileImageInputSubject
@@ -213,10 +213,12 @@ class JoinusAlertViewController: UIViewController, UIImagePickerControllerDelega
   }
   
   private func requestCollection() {
-    self.picker.sourceType = .photoLibrary
-    
-    self.present(self.picker,
-                 animated: true)
+    DispatchQueue.main.async {
+      self.picker.sourceType = .photoLibrary
+      
+      self.present(self.picker,
+                   animated: true)      
+    }
   }
   
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -241,7 +243,7 @@ class JoinusAlertViewController: UIViewController, UIImagePickerControllerDelega
   }
   
   func circleCropDidCropImage(_ image: UIImage) {
-    
+      
     self.onboardingViewModel
       .selectProfileImageInputSubject
       .onNext(image)

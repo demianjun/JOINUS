@@ -17,7 +17,6 @@ class GameSelectButton: UIButton {
   
   // MARK: View
   private let gameImageView = UIImageView().then {
-//    $0.isHidden = true
     $0.contentMode = .scaleAspectFill
   }
   
@@ -49,6 +48,7 @@ class GameSelectButton: UIButton {
     }
     
     greenView.snp.makeConstraints {
+      $0.width.height.equalTo(CommonLength.shared.width(60))
       $0.edges.equalToSuperview()
     }
     

@@ -89,6 +89,7 @@ class OnboardingStep3ViewController: UIViewController {
   private let partitionView = UIView().then {
     $0.backgroundColor = CommonColor.shared.customColor(r: 17, g: 17, b: 17, alpha: 0.6)//gray
   }
+  
   private let customOkBarButtonItem = UIButton().then {
     $0.setTitle("확인",
                 for: .normal)
@@ -128,9 +129,7 @@ class OnboardingStep3ViewController: UIViewController {
   }
   
   private func setupUI() {
-    [gameMarkImageView, topLabel, bottomLabel, gameIdInputtextField, nextButton].forEach { self.view.addSubview($0) }
-    
-    self.view.addSubview(clearButton)
+    [gameMarkImageView, topLabel, bottomLabel, gameIdInputtextField, nextButton, clearButton].forEach { self.view.addSubview($0) }
     
     gameMarkImageView.snp.makeConstraints {
       $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(CommonLength.shared.height(40))

@@ -29,10 +29,11 @@ extension UIColor {
                defaultPhotoGray = CommonColor.shared.customColor(r: 17, g: 17, b: 17, alpha: 0.6),
                defaultPhotoButtonGray = gameIdTextFieldBgGray,
                defaultImagePink = CommonColor.shared.customColor(r: 255, g: 0, b: 140),
-               actionSheetGray = CommonColor.shared.customColor(r: 255, g: 255, b: 255, alpha: 0.6)
+               actionSheetGray = CommonColor.shared.customColor(r: 255, g: 255, b: 255, alpha: 0.6),
+               customBlack = CommonColor.shared.customColor(r: 17, g: 17, b: 17),
+               newPink = CommonColor.shared.customColor(r: 255, g: 0, b: 140)
     
-    let temp = #colorLiteral(red: 0.4391763508, green: 0.4392417669, blue: 0.4391556382, alpha: 1)
+    let temp = #colorLiteral(red: 0.8783445954, green: 0.8784921765, blue: 0.8783251643, alpha: 1)
   }
 }
-
 

@@ -18,9 +18,7 @@ class SelectTierButton: UIButton {
   
   // MARK: View
   private let tierImageView = UIImageView().then {
-//    $0.isHidden = true
     $0.contentMode = .scaleAspectFill
-//    $0.backgroundColor = .blue
   }
   
   private let selectImageView = UIImageView().then {
