@@ -9,7 +9,7 @@ import UIKit
 
 class JoinChattingModel {
   enum chat {
-    case my, other
+    case my, other, join
   }
   
   static let shared = JoinChattingModel()
@@ -28,4 +28,11 @@ class JoinChattingModel {
       self.chattingTableView.reloadData()
     }
   }
+}
+
+
+struct chatModel {
+  let id: String,
+      time: String,
+      message: String
 }

@@ -7,9 +7,11 @@
 
 import UIKit
 import RxSwift
-import SwiftSocket
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
-class JoinChattingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
+class JoinChattingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {//WebSocketDelegate {
   
   private let bag = DisposeBag()
   
@@ -19,9 +21,15 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
   
   private let tapGesture = UITapGestureRecognizer()
   
+  private var joinusDB: Firestore?,
+              joinusChat: CollectionReference?
+  
+  // MARK: Manager
+
+  
   // MARK: Model
-  private let joinChattingModel = JoinChattingModel.shared
-  private let myInfoModel = MyInfoModel.shared
+  private let joinChattingModel = JoinChattingModel.shared,
+              myInfoModel = MyInfoModel.shared
   
   // MARK: View
   private let navigationView = CustomNavigationView()
@@ -60,7 +68,13 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
   
   private let messageTextView = MessageTextView()
   
+  private var listener: ListenerRegistration?
+  
   // MARK: LifeCycle
+  deinit {
+    print("deinit")
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view.backgroundColor = .white
@@ -70,6 +84,13 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
     self.joinChattingModel.chattingTableView = self.chattingTableView
     self.chattingTableView.register(ChattingTableViewCell.self,
                                     forCellReuseIdentifier: ChattingTableViewCell.ID)
+    
+    let settings = FirestoreSettings()
+    
+    Firestore.firestore().settings = settings
+    
+    self.joinusDB = Firestore.firestore()
+    self.joinusChat = self.joinusDB?.collection("JoinusChatting")
     self.setupView()
     self.setRoomMannerImage()
     self.setNavigationBar()
@@ -80,6 +101,18 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
     self.sendMessage()
     self.textViewPlaceHolder()
     self.setTapGestureAction()
+
+    self.addDocumentFromChattingRoom() {
+    
+    self.getMessage()
+    }
+  }
+  
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    print("dddd")
+    self.listener?.remove()
+    self.joinChattingModel.messages.removeAll()
   }
   
   private func setupView() {
@@ -92,7 +125,8 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
     
     chattingTableView.snp.makeConstraints {
       $0.top.equalTo(navigationView.snp.bottom)
-      $0.width.centerX.bottom.equalToSuperview()
+      $0.bottom.greaterThanOrEqualTo(messageTextView.snp.top)
+      $0.width.centerX.equalToSuperview()
     }
     
     messageTextView.snp.makeConstraints {
@@ -149,6 +183,7 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
     let size = CGSize(width: CommonLength.shared.width(375) * 0.9,
                       height: .infinity),
       estimateSize = textView.sizeThatFits(size)
+    
     
     textView.constraints.forEach {
       if $0.firstAttribute == .height {
@@ -238,18 +273,40 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
       .observeOn(MainScheduler.instance)
       .subscribe(onNext: { height in
         
-        UIView.animate(withDuration: 0.5, animations: {
+        if height > 0 {
           
-          if height > 0 {
-            
-            self.messageTextView.transform = .init(translationX: 0, y: -268)
-            
-          } else {
-            
-            self.messageTextView.transform = .identity
+          self.messageTextView.snp.updateConstraints {
+            $0.width.centerX.equalToSuperview()
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-265)
+            $0.height.equalTo(CommonLength.shared.height(58))
           }
-        })
+          
+        } else {
+          
+          self.messageTextView.snp.updateConstraints {
+            $0.width.centerX.equalToSuperview()
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide)
+            $0.height.equalTo(CommonLength.shared.height(58))
+          }
+        }
+        
+        UIView.animate(withDuration: 0, delay: 0, options: .curveLinear, animations: {
+          self.view.layoutIfNeeded()
+        }, completion: nil)
+  
+        self.chattingScroll()
+        
       }).disposed(by: self.bag)
+  }
+  
+  private func chattingScroll() {
+    if self.joinChattingModel.messages.count > 3 {
+
+      self.chattingTableView
+        .scrollToRow(at: [0, self.joinChattingModel.messages.count - 1],
+                     at: .bottom,
+                     animated: true)
+    }
   }
   
   private func textViewPlaceHolder() {
@@ -298,28 +355,106 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
         dateComponents.minute = calendar.component(.minute, from: Date())
 
         let date = calendar.date(from: dateComponents)!,
-            time = calendar.amSymbol.appending(" ").appending(dateformatter.string(from: date))
+            sendTime = calendar.amSymbol.appending(" ").appending(dateformatter.string(from: date))
         
-        if let text = textView.text {
+        if !textView.text.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty {
           
-          self.joinChattingModel.messages.append([.my: [time, text]])
-          print("save message: \(self.joinChattingModel.messages)")
+          if let message = textView.text,
+             message.count != 0 {
+            
+            self.setDBdata(userPk: 2,
+                           sendTime: sendTime,
+                           message: message)
+          }
         }
         
         textView.text.removeAll()
         placeHolder.isHidden = textView.hasText
+        
         textView.snp.remakeConstraints {
           $0.center.equalToSuperview()
           $0.width.equalToSuperview().multipliedBy(0.9)
-          $0.height.equalTo(CommonLength.shared.height(28))
+          $0.height.equalTo(CommonLength.shared.height(30))
         }
-        self.messageTextView.snp.remakeConstraints {
+        self.messageTextView.snp.updateConstraints {
           $0.width.centerX.equalToSuperview()
-          $0.bottom.equalTo(self.view.safeAreaLayoutGuide)
           $0.height.equalTo(CommonLength.shared.height(58))
         }
         
       }).disposed(by: self.bag)      
+  }
+  
+  private func addDocumentFromChattingRoom(com: (()->())? = nil) {
+    self.joinusChat?
+      .document("\(self.roomInfo!.roomPk)")
+      .setData(["join": "채팅방에 참가 하였습니다."])
+      com?()
+  }
+  
+  let testLabel = UILabel().then {
+    $0.font = UIFont.joinuns.font(size: 18)
+    $0.textColor = .black
+  }
+  
+  private func getMessage() {
+    var type: JoinChattingModel.chat?
+    
+    self.listener =
+      self.joinusChat?
+      .document("\(self.roomInfo!.roomPk)")
+      .addSnapshotListener { docuSnapShot, err in
+        
+        if let err = err {
+          
+          print("Error fetching document: \(err)")
+          return
+          
+        } else {
+          
+          guard let snapShot = docuSnapShot else { return print("snapshot return.") }
+          guard let data = snapShot.data() else { return print("Document data was empty.") }
+          
+          data.keys.forEach {
+            
+            guard var sendTime = data["sendTime"] as? String else { return }
+            guard var message = data["message"] as? String else { return }
+            
+            if ($0 != "sendTime"),
+               ($0 != "message") {
+              
+              if $0 == "join" {
+                type = .join
+                
+                message = ""
+                sendTime = ""
+                
+              } else if $0 == "\(self.myInfoModel.myPk)" {
+                type = .my
+                
+              } else {
+                type = .other
+                
+              }
+              
+              guard let userPk = data[$0] as? String else { return }
+              self.joinChattingModel.messages.append([type!: ["\(userPk)", sendTime, message]])
+            }
+          }
+          
+          self.chattingScroll()
+          
+          print("-> saved message: \(self.joinChattingModel.messages)")
+        }
+      }
+  }
+  
+  private func setDBdata(userPk: Int, sendTime: String, message: String) {
+    
+    self.joinusChat?
+      .document("\(self.roomInfo!.roomPk)")
+      .setData(["\(userPk)": "\(userPk)",
+                "sendTime": sendTime,
+                "message": message])
   }
   
   private func popViewController() {
@@ -335,42 +470,6 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
       }).disposed(by: self.bag)
   }
   
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.joinChattingModel.messages.count
-  }
-  
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let chattingCell = tableView.dequeueReusableCell(withIdentifier: ChattingTableViewCell.ID,
-                                                           for: indexPath) as? ChattingTableViewCell else { fatalError("chatting cell error") }
-    
-    chattingCell.useProfileImageView().isHidden = true
-    
-    let messageView = chattingCell.useMessageView().then {
-      $0.roundCorners(cornerRadius: 10,
-                      maskedCorners: [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner])
-      $0.backgroundColor = UIColor.joinusColor.defaultPhotoGray
-    }
-    
-    messageView.snp.makeConstraints {
-      $0.top.equalToSuperview().offset(CommonLength.shared.height(10))
-        $0.bottom.equalToSuperview().offset(-CommonLength.shared.height(10))
-      $0.trailing.equalToSuperview().offset(-CommonLength.shared.width(17))
-    }
-    
-    let userNameLabel = messageView.useUserNameLabel(),
-        messageLabel = messageView.useMessageLabel(),
-        sendTimeLabel = messageView.useSendTimeLabel()
-    
-    userNameLabel.textColor = .white
-    messageLabel.textColor = .white
-    
-    userNameLabel.text = "테스트 아이디"//self.myInfoModel.myGameID
-    sendTimeLabel.text = self.joinChattingModel.messages[indexPath.row][.my]?[0]
-    messageLabel.text = self.joinChattingModel.messages[indexPath.row][.my]?[1]
-    
-    return chattingCell
-  }
-  
   private func setTapGestureAction() {
     self.tapGesture
       .rx
@@ -381,5 +480,119 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
         self.messageTextView.useInputTextView().endEditing(true)
         
       }).disposed(by: self.bag)
+  }
+  
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return self.joinChattingModel.messages.count
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    guard let chattingCell = tableView.dequeueReusableCell(withIdentifier: ChattingTableViewCell.ID,
+                                                           for: indexPath) as? ChattingTableViewCell else { fatalError("chatting cell error") }
+    
+    chattingCell.selectionStyle = .none
+    
+    let down = DownLoad()
+    
+    let messageView = chattingCell.useMessageView(),
+        useProfile = chattingCell.useProfileImageView(),
+        userNameLabel = messageView.useUserNameLabel(),
+        messageLabel = messageView.useMessageLabel(),
+        sendTimeLabel = messageView.useSendTimeLabel(),
+        messageData = self.joinChattingModel.messages[indexPath.row]
+    
+    var nameAndMessageColor = UIColor(),
+        timeColor = UIColor(),
+        profileImage: UIImage?,
+        name = String(),
+        sendTime = String(),
+        message = String(),
+        otherUser = String(),
+        imageAdd = String()
+    
+    messageData.keys.forEach { key in
+
+      switch key {
+        
+        case .join:
+          
+          chattingCell.addSubview(self.testLabel)
+          
+          self.testLabel.snp.makeConstraints {
+            $0.center.equalToSuperview()
+          }
+          
+          self.testLabel.text = messageData[.join]?[2]
+          
+        case .my:
+          
+          useProfile.isHidden = true
+          
+          messageView.roundCorners(cornerRadius: 10,
+                                   maskedCorners: [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner])
+          messageView.backgroundColor = UIColor.joinusColor.defaultPhotoGray
+          
+          messageView.snp.remakeConstraints {
+            $0.top.equalToSuperview().offset(CommonLength.shared.height(10))
+            $0.bottom.equalToSuperview().offset(-CommonLength.shared.height(10))
+            $0.trailing.equalToSuperview().offset(-CommonLength.shared.width(17))
+          }
+          
+          nameAndMessageColor = .white
+          timeColor = .black.withAlphaComponent(0.6)
+          profileImage = UIImage()
+          name = "MyNickName"//self.myInfoModel.myGameID
+          sendTime = messageData[.my]?[1] ?? ""
+          message = messageData[.my]?[2] ?? ""
+          
+        case .other:
+          
+          useProfile.isHidden = false
+          
+          messageView.roundCorners(cornerRadius: 10,
+                                   maskedCorners: [.layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner])
+          messageView.backgroundColor = UIColor.joinusColor.gameIdTextFieldBgGray
+          
+          useProfile.snp.makeConstraints {
+            $0.width.height.equalTo(CommonLength.shared.width(60))
+            $0.top.equalToSuperview().offset(CommonLength.shared.height(10))
+            $0.leading.equalToSuperview().offset(CommonLength.shared.width(17))
+          }
+          
+          messageView.snp.remakeConstraints {
+            $0.top.equalToSuperview().offset(CommonLength.shared.height(10))
+            $0.bottom.equalToSuperview().offset(-CommonLength.shared.height(10))
+            $0.leading.equalTo(useProfile.snp.trailing).offset(CommonLength.shared.width(10))
+          }
+          
+          self.roomInfo?.userList.forEach { info in
+            
+            if info.joinUserPk == Int(messageData[.other]?[0] ?? "0") {
+              otherUser = info.nickName
+              imageAdd = info.imageAddress
+            }
+          }
+          
+          nameAndMessageColor = .black
+          timeColor = UIColor.joinusColor.gameIdTextFieldPlaceholderGray
+          profileImage = down.imageURL(image: imageAdd)//UIImage(named: "defaultProfile_60x60")
+          name = otherUser
+          sendTime = messageData[.other]?[1] ?? ""
+          message = messageData[.other]?[2] ?? ""
+          
+      }
+    }
+    userNameLabel.textColor = nameAndMessageColor
+    messageLabel.textColor = nameAndMessageColor
+    sendTimeLabel.textColor = timeColor
+    useProfile.image = profileImage
+//    useProfile.image = UIImage(named: "defaultProfile_60x60")
+    
+    userNameLabel.text = name
+    sendTimeLabel.text = sendTime
+    messageLabel.text = message
+    
+    return chattingCell
   }
 }

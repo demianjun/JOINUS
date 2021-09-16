@@ -25,7 +25,8 @@ class ProfileViewControllerViewController: UIViewController {
   private let game = GameService.manager
   
   // MARK: Model
-  private let onboardingModel = OnboardingModel.shared
+  private let onboardingModel = OnboardingModel.shared,
+              myInfoModel = MyInfoModel.shared
   
   // MARK: ViewModel
   public let onboardingViewModel = OnboardingViewModel()
@@ -132,6 +133,18 @@ class ProfileViewControllerViewController: UIViewController {
   }
   
   private func didTapNextButton() {
+//    self.myInfoModel.myAge = 25
+//    self.myInfoModel.myGender = 0
+//    self.myInfoModel.myGameID = "GGTest"
+//    self.myInfoModel.subToken = "109112693255361562533"
+//
+//    self.myInfoModel.myGameID = "GGTest"
+//    self.myInfoModel.myGameName = "GGTest"
+//    self.myInfoModel.gameInfoPk = 0
+//    self.myInfoModel.myTier = 3
+//    self.myInfoModel.myPk = 2
+    
+    
     let setTabbarController = SetTabbarController()
 
     CommonAction.shared.touchActionEffect(self.nextButton) {

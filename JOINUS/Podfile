@@ -14,8 +14,15 @@ pod 'RxSwift', '~> 5'
 pod 'RxCocoa', '~> 5'
 pod 'GoogleSignIn'
 pod 'Firebase/Auth'
-pod 'Firebase/Analytics'
-pod 'Firebase/Messaging'
-pod 'SwiftSocket'
+# pod 'Firebase/Analytics'
+# pod 'Firebase/Messaging'
+pod 'Firebase/Firestore'
+
+# Optionally, include the Swift extensions if you're using Swift.
+pod 'FirebaseFirestoreSwift'
+
+
+# pod 'Starscream', '~> 4.0.0'
+# pod 'SwiftWebSocket'
 
 end

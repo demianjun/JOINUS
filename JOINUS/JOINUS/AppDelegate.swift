@@ -12,6 +12,8 @@ import SnapKit
 import Then
 import GoogleSignIn
 import Firebase
+import FirebaseFirestore
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,9 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
     
-    let tempVC = JoinChattingViewController(),
-        launchVC = UINavigationController.init(rootViewController: tempVC)
-//    let launchVC = LaunchViewController()
+//    let tempVC = JoinChattingViewController(),
+//        launchVC = UINavigationController.init(rootViewController: tempVC)
+    
+    let launchVC = LaunchViewController()
     
     self.window = UIWindow(frame: UIScreen.main.bounds)
     

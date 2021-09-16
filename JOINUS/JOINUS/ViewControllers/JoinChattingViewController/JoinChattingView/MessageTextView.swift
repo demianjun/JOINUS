@@ -25,7 +25,7 @@ class MessageTextView: UIView {
     $0.keyboardAppearance = UIKeyboardAppearance.light
     $0.layer.borderWidth = 1
     $0.layer.borderColor = UIColor.joinusColor.gameIdTextFieldPlaceholderGray.cgColor
-    $0.layer.cornerRadius = CommonLength.shared.height(28) / 2
+    $0.layer.cornerRadius = CommonLength.shared.height(30) / 2
   }
   
   private let sendButton = UIButton().then {
@@ -62,7 +62,7 @@ class MessageTextView: UIView {
     inputTextView.snp.makeConstraints {
       $0.center.equalToSuperview()
       $0.width.equalToSuperview().multipliedBy(0.9)
-      $0.height.equalTo(CommonLength.shared.height(28))
+      $0.height.equalTo(CommonLength.shared.height(30))
     }
     
     placeHolderLabel.snp.makeConstraints {
@@ -72,7 +72,7 @@ class MessageTextView: UIView {
     
     sendButton.snp.makeConstraints {
       $0.trailing.equalTo(inputTextView).offset(-CommonLength.shared.width(4))
-      $0.centerY.equalTo(inputTextView)
+      $0.bottom.equalTo(inputTextView).offset(-CommonLength.shared.height(3))
       $0.width.height.equalTo(CommonLength.shared.width(27))
     }
     

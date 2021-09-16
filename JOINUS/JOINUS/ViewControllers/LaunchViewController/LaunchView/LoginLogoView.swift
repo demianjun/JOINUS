@@ -12,6 +12,7 @@ class LoginLogoView: UIView {
   private let topLabel = UILabel().then {
     $0.text = "오늘 퇴근 후"
     $0.font = UIFont.joinuns.font(size: 34)
+    $0.textColor = .white
   }
   
   private let lolImageView = UIImageView().then {
@@ -22,6 +23,7 @@ class LoginLogoView: UIView {
   private let bottomLabel = UILabel().then {
     $0.text = "같이 한판?"
     $0.font = UIFont.joinuns.font(size: 34)
+    $0.textColor = .white
   }
   
   override init(frame: CGRect) {

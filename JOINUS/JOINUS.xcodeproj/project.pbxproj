@@ -190,6 +190,7 @@
 		AD70217F26F2369200B2B0CC /* MessageTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTextView.swift; sourceTree = "<group>"; };
 		AD70218126F2441900B2B0CC /* ChattingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingTableViewCell.swift; sourceTree = "<group>"; };
 		AD70218326F2447E00B2B0CC /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		AD70218B26F31A9300B2B0CC /* SwiftWebSocket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftWebSocket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD70A3E326EFC10000BC4841 /* MatchingTypeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingTypeButton.swift; sourceTree = "<group>"; };
 		AD70A3E526EFC79C00BC4841 /* MyMatchingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMatchingModel.swift; sourceTree = "<group>"; };
 		AD70A3E726EFE0DB00BC4841 /* CalculateAboutTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateAboutTime.swift; sourceTree = "<group>"; };
@@ -277,6 +278,7 @@
 		61CBD4601A975980F37D575C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AD70218B26F31A9300B2B0CC /* SwiftWebSocket.framework */,
 				ADDE2A7826E80E6B001A86EA /* MapKit.framework */,
 				ADDE2A7626E80E5C001A86EA /* HomeKit.framework */,
 				30BE6E46A8AFB1B50E834BF2 /* Pods_JOINUS.framework */,

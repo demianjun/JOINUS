@@ -75,6 +75,12 @@ class LoginViewController: UIViewController {
     let config = GIDConfiguration(clientID: clientID)
 
     CommonAction.shared.touchActionEffect(self.googleLoginButton) {
+      
+//      let onBoardingVC = OnboardingStep1ViewController(),
+//          onBoardingNaviVC = UINavigationController(rootViewController: onBoardingVC)
+//
+//      self.changeWindow
+//        .change(change: onBoardingNaviVC)
 
       GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { user, error in
 
@@ -86,25 +92,25 @@ class LoginViewController: UIViewController {
         guard let authentication = user?.authentication else { return print("token return") }
 
         print("-> access token: \(authentication.accessToken)")
-        
+
         self.login.signUp(accessToken: authentication.accessToken) { isLogin in
-            
+
             if isLogin {
-              
+
               self.game.getGame() {
-                
+
                 self.manner.getManner() {
               print("-> all get")
                 let setTabbarController = SetTabbarController()
                 setTabbarController.settingRootViewController()
-                  
+
                 }
               }
             } else {
-              
+
               let onBoardingVC = OnboardingStep1ViewController(),
                   onBoardingNaviVC = UINavigationController(rootViewController: onBoardingVC)
-              
+
               self.changeWindow
                 .change(change: onBoardingNaviVC)
             }

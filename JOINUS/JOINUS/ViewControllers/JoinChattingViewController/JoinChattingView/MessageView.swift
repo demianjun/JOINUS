@@ -21,7 +21,7 @@ class MessageView: UIView {
   
   private let messgaeLabel = UILabel().then {
     $0.numberOfLines = 0
-    $0.font = UIFont.joinuns.font(size: 16)
+    $0.font = UIFont.joinuns.font(size: 17)
     $0.textColor = .black
   }
   
@@ -39,13 +39,14 @@ class MessageView: UIView {
     
     sendTimeLabel.snp.makeConstraints {
       $0.top.equalTo(userNameLabel)
-      $0.leading.equalTo(userNameLabel.snp.trailing).offset(CommonLength.shared.width(13))
+      $0.leading.greaterThanOrEqualTo(userNameLabel.snp.trailing).offset(CommonLength.shared.width(13))
       $0.trailing.equalToSuperview().offset(-CommonLength.shared.height(13))
     }
     
     messgaeLabel.snp.makeConstraints {
       $0.top.equalTo(userNameLabel.snp.bottom).offset(CommonLength.shared.height(5))
       $0.leading.equalTo(userNameLabel)
+      $0.trailing.greaterThanOrEqualTo(sendTimeLabel)
       $0.bottom.equalToSuperview().offset(-CommonLength.shared.height(13))
     }
   }
