@@ -24,6 +24,12 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
   private var joinusDB: Firestore?,
               joinusChat: CollectionReference?
   
+  var snapShots = [QueryDocumentSnapshot]() {
+    didSet {
+      self.chattingTableView.reloadData()
+    }
+  }
+  
   // MARK: Manager
 
   
@@ -110,7 +116,7 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
   
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
-    print("dddd")
+    
     self.listener?.remove()
     self.joinChattingModel.messages.removeAll()
   }
@@ -300,10 +306,18 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
   }
   
   private func chattingScroll() {
-    if self.joinChattingModel.messages.count > 3 {
+//    if self.joinChattingModel.messages.count > 3 {
+//
+//      self.chattingTableView
+//        .scrollToRow(at: [0, self.joinChattingModel.messages.count - 1],
+//                     at: .bottom,
+//                     animated: true)
+//    }
+    
+    if self.snapShots.count > 3 {
 
       self.chattingTableView
-        .scrollToRow(at: [0, self.joinChattingModel.messages.count - 1],
+        .scrollToRow(at: [0, self.snapShots.count - 1],
                      at: .bottom,
                      animated: true)
     }
@@ -346,23 +360,30 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
       .drive(onNext: {
         
         var dateComponents = DateComponents()
-        let calendar = Calendar.current
-        let dateformatter = DateFormatter().then {
-          $0.dateFormat = "h:mm"
-        }
+        
+        let calendar = Calendar.current,
+            dateformatter = DateFormatter().then {
+              $0.dateFormat = "h:mm"
+            },
+            keyDateformatter = DateFormatter().then {
+              $0.dateFormat = "H:mm:ss"
+            }
 
         dateComponents.hour = calendar.component(.hour, from: Date())
         dateComponents.minute = calendar.component(.minute, from: Date())
+        dateComponents.second = calendar.component(.second, from: Date())
 
         let date = calendar.date(from: dateComponents)!,
-            sendTime = calendar.amSymbol.appending(" ").appending(dateformatter.string(from: date))
+            sendTime = calendar.amSymbol.appending(" ").appending(dateformatter.string(from: date)),
+            keyTime = keyDateformatter.string(from: date)
         
         if !textView.text.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty {
           
           if let message = textView.text,
              message.count != 0 {
             
-            self.setDBdata(userPk: 2,
+            self.setDBdata(keyTime: keyTime,
+                           userPk: self.myInfoModel.myPk,
                            sendTime: sendTime,
                            message: message)
           }
@@ -385,23 +406,24 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
   }
   
   private func addDocumentFromChattingRoom(com: (()->())? = nil) {
-    self.joinusChat?
-      .document("\(self.roomInfo!.roomPk)")
-      .setData(["join": "채팅방에 참가 하였습니다."])
+    
+        self.joinusChat?
+          .document("\(self.roomInfo!.roomPk)")
+          .setData(["join": "채팅방에 참가 하였습니다."])
+         
+//    self.joinusChat?
+//      .document("\(self.roomInfo!.roomPk)")
+//      .setData(["join": "채팅방에 참가 하였습니다."])
       com?()
   }
   
-  let testLabel = UILabel().then {
-    $0.font = UIFont.joinuns.font(size: 18)
-    $0.textColor = .black
-  }
-  
   private func getMessage() {
-    var type: JoinChattingModel.chat?
-    
+//  var type: JoinChattingModel.chat?
+
     self.listener =
       self.joinusChat?
       .document("\(self.roomInfo!.roomPk)")
+      .collection("chat")
       .addSnapshotListener { docuSnapShot, err in
         
         if let err = err {
@@ -412,49 +434,77 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
         } else {
           
           guard let snapShot = docuSnapShot else { return print("snapshot return.") }
-          guard let data = snapShot.data() else { return print("Document data was empty.") }
-          
-          data.keys.forEach {
-            
-            guard var sendTime = data["sendTime"] as? String else { return }
-            guard var message = data["message"] as? String else { return }
-            
-            if ($0 != "sendTime"),
-               ($0 != "message") {
-              
-              if $0 == "join" {
-                type = .join
-                
-                message = ""
-                sendTime = ""
-                
-              } else if $0 == "\(self.myInfoModel.myPk)" {
-                type = .my
-                
-              } else {
-                type = .other
-                
-              }
-              
-              guard let userPk = data[$0] as? String else { return }
-              self.joinChattingModel.messages.append([type!: ["\(userPk)", sendTime, message]])
-            }
-          }
-          
-          self.chattingScroll()
-          
-          print("-> saved message: \(self.joinChattingModel.messages)")
+          self.snapShots = snapShot.documents
+
         }
+        
+        self.chattingScroll()
       }
+//    self.listener =
+//      self.joinusChat?
+//      .document("\(self.roomInfo!.roomPk)")
+//      .addSnapshotListener { docuSnapShot, err in
+//
+//        if let err = err {
+//
+//          print("Error fetching document: \(err)")
+//          return
+//
+//        } else {
+//
+//          guard let snapShot = docuSnapShot else { return print("snapshot return.") }
+//          guard let data = snapShot.data() else { return print("Document data was empty.") }
+//
+//          data.keys.forEach {
+//
+//            guard var sendTime = data["sendTime"] as? String else { return }
+//            guard var message = data["message"] as? String else { return }
+//
+//            if ($0 != "sendTime"),
+//               ($0 != "message") {
+//
+//              if $0 == "join" {
+//                type = .join
+//
+//                message = ""
+//                sendTime = ""
+//
+//              } else if $0 == "\(self.myInfoModel.myPk)" {
+//                type = .my
+//
+//              } else {
+//                type = .other
+//
+//              }
+//
+//              guard let userPk = data[$0] as? String else { return }
+//              self.joinChattingModel.messages.append([type!: ["\(userPk)", sendTime, message]])
+//            }
+//          }
+//
+//          self.chattingScroll()
+//
+//          print("-> saved message: \(self.joinChattingModel.messages)")
+//        }
+//      }
   }
   
-  private func setDBdata(userPk: Int, sendTime: String, message: String) {
+  private func setDBdata(keyTime: String,
+                         userPk: Int, sendTime: String, message: String) {
     
     self.joinusChat?
       .document("\(self.roomInfo!.roomPk)")
-      .setData(["\(userPk)": "\(userPk)",
-                "sendTime": sendTime,
-                "message": message])
+      .collection("chat")
+      .document(keyTime)
+      .setData(["message": message,
+                "time": sendTime,
+                "\(self.myInfoModel.myPk)": self.myInfoModel.myGameID])
+    
+//    self.joinusChat?
+//      .document("\(self.roomInfo!.roomPk)")
+//      .setData(["\(userPk)": "\(userPk)",
+//                "sendTime": sendTime,
+//                "message": message])
   }
   
   private func popViewController() {
@@ -483,25 +533,24 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.joinChattingModel.messages.count
+//    return self.joinChattingModel.messages.count
+    return self.snapShots.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
     guard let chattingCell = tableView.dequeueReusableCell(withIdentifier: ChattingTableViewCell.ID,
                                                            for: indexPath) as? ChattingTableViewCell else { fatalError("chatting cell error") }
-    
+
     chattingCell.selectionStyle = .none
     
     let down = DownLoad()
-    
+
     let messageView = chattingCell.useMessageView(),
         useProfile = chattingCell.useProfileImageView(),
         userNameLabel = messageView.useUserNameLabel(),
         messageLabel = messageView.useMessageLabel(),
-        sendTimeLabel = messageView.useSendTimeLabel(),
-        messageData = self.joinChattingModel.messages[indexPath.row]
-    
+        sendTimeLabel = messageView.useSendTimeLabel()
+
     var nameAndMessageColor = UIColor(),
         timeColor = UIColor(),
         profileImage: UIImage?,
@@ -509,90 +558,187 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
         sendTime = String(),
         message = String(),
         otherUser = String(),
-        imageAdd = String()
+        imageAddress = String()
     
-    messageData.keys.forEach { key in
+//    let dbData = self.snapShots.reversed()[indexPath.row]
+    let dbData = self.snapShots[indexPath.row]
+    
+    if dbData.data().keys.contains("\(self.myInfoModel.myPk)") {
+      
+      useProfile.isHidden = true
 
-      switch key {
-        
-        case .join:
-          
-          chattingCell.addSubview(self.testLabel)
-          
-          self.testLabel.snp.makeConstraints {
-            $0.center.equalToSuperview()
-          }
-          
-          self.testLabel.text = messageData[.join]?[2]
-          
-        case .my:
-          
-          useProfile.isHidden = true
-          
-          messageView.roundCorners(cornerRadius: 10,
-                                   maskedCorners: [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner])
-          messageView.backgroundColor = UIColor.joinusColor.defaultPhotoGray
-          
-          messageView.snp.remakeConstraints {
-            $0.top.equalToSuperview().offset(CommonLength.shared.height(10))
-            $0.bottom.equalToSuperview().offset(-CommonLength.shared.height(10))
-            $0.trailing.equalToSuperview().offset(-CommonLength.shared.width(17))
-          }
-          
-          nameAndMessageColor = .white
-          timeColor = .black.withAlphaComponent(0.6)
-          profileImage = UIImage()
-          name = "MyNickName"//self.myInfoModel.myGameID
-          sendTime = messageData[.my]?[1] ?? ""
-          message = messageData[.my]?[2] ?? ""
-          
-        case .other:
-          
-          useProfile.isHidden = false
-          
-          messageView.roundCorners(cornerRadius: 10,
-                                   maskedCorners: [.layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner])
-          messageView.backgroundColor = UIColor.joinusColor.gameIdTextFieldBgGray
-          
-          useProfile.snp.makeConstraints {
-            $0.width.height.equalTo(CommonLength.shared.width(60))
-            $0.top.equalToSuperview().offset(CommonLength.shared.height(10))
-            $0.leading.equalToSuperview().offset(CommonLength.shared.width(17))
-          }
-          
-          messageView.snp.remakeConstraints {
-            $0.top.equalToSuperview().offset(CommonLength.shared.height(10))
-            $0.bottom.equalToSuperview().offset(-CommonLength.shared.height(10))
-            $0.leading.equalTo(useProfile.snp.trailing).offset(CommonLength.shared.width(10))
-          }
-          
-          self.roomInfo?.userList.forEach { info in
-            
-            if info.joinUserPk == Int(messageData[.other]?[0] ?? "0") {
-              otherUser = info.nickName
-              imageAdd = info.imageAddress
-            }
-          }
-          
-          nameAndMessageColor = .black
-          timeColor = UIColor.joinusColor.gameIdTextFieldPlaceholderGray
-          profileImage = down.imageURL(image: imageAdd)//UIImage(named: "defaultProfile_60x60")
-          name = otherUser
-          sendTime = messageData[.other]?[1] ?? ""
-          message = messageData[.other]?[2] ?? ""
-          
+      messageView.roundCorners(cornerRadius: 10,
+                               maskedCorners: [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner])
+      messageView.backgroundColor = UIColor.joinusColor.defaultPhotoGray
+
+
+      messageView.snp.remakeConstraints {
+        $0.top.equalToSuperview().offset(CommonLength.shared.height(10))
+        $0.bottom.equalToSuperview().offset(-CommonLength.shared.height(10))
+        $0.trailing.equalToSuperview().offset(-CommonLength.shared.width(17))
       }
+
+      nameAndMessageColor = .white
+      timeColor = .black.withAlphaComponent(0.6)
+      profileImage = UIImage()
+      name = dbData.data()["\(self.myInfoModel.myPk)"] as? String ?? "noname"//self.myInfoModel.myGameID
+      sendTime = dbData.data()["time"] as? String ?? "notime"
+      message = dbData.data()["message"] as? String ?? "nomessage"
+      
+    } else {
+      
+      useProfile.isHidden = false
+
+      messageView.roundCorners(cornerRadius: 10,
+                               maskedCorners: [.layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner])
+      messageView.backgroundColor = UIColor.joinusColor.gameIdTextFieldBgGray
+
+      useProfile.snp.makeConstraints {
+        $0.width.height.equalTo(CommonLength.shared.width(60))
+        $0.top.equalToSuperview().offset(CommonLength.shared.height(10))
+        $0.leading.equalToSuperview().offset(CommonLength.shared.width(17))
+      }
+
+      messageView.snp.remakeConstraints {
+        $0.top.equalToSuperview().offset(CommonLength.shared.height(10))
+        $0.bottom.equalToSuperview().offset(-CommonLength.shared.height(10))
+        $0.leading.equalTo(useProfile.snp.trailing).offset(CommonLength.shared.width(10))
+      }
+      
+      self.roomInfo?.userList.forEach { info in
+        if dbData.data()["\(info.joinUserPk)"] != nil {
+
+          imageAddress = info.imageAddress
+          name = dbData.data()["\(info.joinUserPk)"] as? String ?? "noname"//info.nickName
+          sendTime = dbData.data()["time"] as? String ?? "notime"
+          message = dbData.data()["message"] as? String ?? "nomessage"
+        }
+      }
+
+      nameAndMessageColor = .black
+      timeColor = UIColor.joinusColor.gameIdTextFieldPlaceholderGray
+      profileImage = down.imageURL(image: imageAddress)//UIImage(named: "defaultProfile_60x60")
+      
     }
+    
     userNameLabel.textColor = nameAndMessageColor
     messageLabel.textColor = nameAndMessageColor
     sendTimeLabel.textColor = timeColor
     useProfile.image = profileImage
-//    useProfile.image = UIImage(named: "defaultProfile_60x60")
-    
+
     userNameLabel.text = name
     sendTimeLabel.text = sendTime
     messageLabel.text = message
-    
+
     return chattingCell
   }
 }
+
+//    guard let chattingCell = tableView.dequeueReusableCell(withIdentifier: ChattingTableViewCell.ID,
+//                                                           for: indexPath) as? ChattingTableViewCell else { fatalError("chatting cell error") }
+//
+//    chattingCell.selectionStyle = .none
+//
+//    let down = DownLoad()
+//
+//    let messageView = chattingCell.useMessageView(),
+//        useProfile = chattingCell.useProfileImageView(),
+//        userNameLabel = messageView.useUserNameLabel(),
+//        messageLabel = messageView.useMessageLabel(),
+//        sendTimeLabel = messageView.useSendTimeLabel(),
+//        messageData = self.joinChattingModel.messages[indexPath.row]
+//
+//    var nameAndMessageColor = UIColor(),
+//        timeColor = UIColor(),
+//        profileImage: UIImage?,
+//        name = String(),
+//        sendTime = String(),
+//        message = String(),
+//        otherUser = String(),
+//        imageAdd = String()
+//
+//    messageData.keys.forEach { key in
+//
+//      switch key {
+//
+//        case .join:
+//
+//          chattingCell.addSubview(self.testLabel)
+//
+//          self.testLabel.snp.makeConstraints {
+//            $0.center.equalToSuperview()
+//          }
+//
+//          self.testLabel.text = messageData[.join]?[2]
+//
+//        case .my:
+//
+//          useProfile.isHidden = true
+//
+//          messageView.roundCorners(cornerRadius: 10,
+//                                   maskedCorners: [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner])
+//          messageView.backgroundColor = UIColor.joinusColor.defaultPhotoGray
+//
+//          messageView.snp.remakeConstraints {
+//            $0.top.equalToSuperview().offset(CommonLength.shared.height(10))
+//            $0.bottom.equalToSuperview().offset(-CommonLength.shared.height(10))
+//            $0.trailing.equalToSuperview().offset(-CommonLength.shared.width(17))
+//          }
+//
+//          nameAndMessageColor = .white
+//          timeColor = .black.withAlphaComponent(0.6)
+//          profileImage = UIImage()
+//          name = "MyNickName"//self.myInfoModel.myGameID
+//          sendTime = messageData[.my]?[1] ?? ""
+//          message = messageData[.my]?[2] ?? ""
+//
+//        case .other:
+//
+//          useProfile.isHidden = false
+//
+//          messageView.roundCorners(cornerRadius: 10,
+//                                   maskedCorners: [.layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner])
+//          messageView.backgroundColor = UIColor.joinusColor.gameIdTextFieldBgGray
+//
+//          useProfile.snp.makeConstraints {
+//            $0.width.height.equalTo(CommonLength.shared.width(60))
+//            $0.top.equalToSuperview().offset(CommonLength.shared.height(10))
+//            $0.leading.equalToSuperview().offset(CommonLength.shared.width(17))
+//          }
+//
+//          messageView.snp.remakeConstraints {
+//            $0.top.equalToSuperview().offset(CommonLength.shared.height(10))
+//            $0.bottom.equalToSuperview().offset(-CommonLength.shared.height(10))
+//            $0.leading.equalTo(useProfile.snp.trailing).offset(CommonLength.shared.width(10))
+//          }
+//
+//          self.roomInfo?.userList.forEach { info in
+//
+//            if info.joinUserPk == Int(messageData[.other]?[0] ?? "0") {
+//              otherUser = info.nickName
+//              imageAdd = info.imageAddress
+//            }
+//          }
+//
+//          nameAndMessageColor = .black
+//          timeColor = UIColor.joinusColor.gameIdTextFieldPlaceholderGray
+//          profileImage = down.imageURL(image: imageAdd)//UIImage(named: "defaultProfile_60x60")
+//          name = otherUser
+//          sendTime = messageData[.other]?[1] ?? ""
+//          message = messageData[.other]?[2] ?? ""
+//
+//      }
+//    }
+//    userNameLabel.textColor = nameAndMessageColor
+//    messageLabel.textColor = nameAndMessageColor
+//    sendTimeLabel.textColor = timeColor
+//    useProfile.image = profileImage
+// //    useProfile.image = UIImage(named: "defaultProfile_60x60")
+//
+//    userNameLabel.text = name
+//    sendTimeLabel.text = sendTime
+//    messageLabel.text = message
+//
+//    return chattingCell
+//  }
+//}
