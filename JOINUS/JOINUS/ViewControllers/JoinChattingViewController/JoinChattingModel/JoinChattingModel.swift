@@ -21,13 +21,13 @@ class JoinChattingModel {
   var getSelectedRoom: GetRoomInfo?,
       getRoomUsers = [GetRoomUser]()
   
-  var chattingTableView = UITableView()
-  
-  var messages = [[chat: [String]]]() {
-    didSet {
-      self.chattingTableView.reloadData()
-    }
-  }
+//  var chattingTableView = UITableView()
+//  
+//  var messages = [[chat: [String]]]() {
+//    didSet {
+//      self.chattingTableView.reloadData()
+//    }
+//  }
 }
 
 

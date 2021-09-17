@@ -34,7 +34,8 @@ class OnboardingService {
     
     AF.request(self.onboardingUrl,
                method: .put,
-               parameters: param)
+               parameters: param,
+               encoding: JSONEncoding.prettyPrinted)
       .validate(statusCode: 150...500)
       .responseJSON { response in
        
@@ -43,8 +44,9 @@ class OnboardingService {
             
             do {
               
-              let temp = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted),
-                  data = try JSONDecoder().decode(PutOnboarding.self, from: temp)
+              let temp = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted)
+              
+              let data = try JSONDecoder().decode(PutOnboarding.self, from: temp)
               print("put data: \(data)")
               if data.status == 200 {
                 

@@ -66,6 +66,11 @@
 		AD70218026F2369200B2B0CC /* MessageTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70217F26F2369200B2B0CC /* MessageTextView.swift */; };
 		AD70218226F2441900B2B0CC /* ChattingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70218126F2441900B2B0CC /* ChattingTableViewCell.swift */; };
 		AD70218426F2447E00B2B0CC /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70218326F2447E00B2B0CC /* MessageView.swift */; };
+		AD70220D26F4A82200B2B0CC /* JoinChattingMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70220C26F4A82200B2B0CC /* JoinChattingMethods.swift */; };
+		AD70220F26F4ADA800B2B0CC /* ShowMatchingJoinerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70220E26F4ADA800B2B0CC /* ShowMatchingJoinerViewController.swift */; };
+		AD70221126F4AF5800B2B0CC /* MatchingJoinerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70221026F4AF5800B2B0CC /* MatchingJoinerTableViewCell.swift */; };
+		AD70221326F4BC3E00B2B0CC /* StartGameButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70221226F4BC3E00B2B0CC /* StartGameButtonView.swift */; };
+		AD70221526F4C4F500B2B0CC /* EndGameButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70221426F4C4F500B2B0CC /* EndGameButtonView.swift */; };
 		AD70A3E426EFC10000BC4841 /* MatchingTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70A3E326EFC10000BC4841 /* MatchingTypeButton.swift */; };
 		AD70A3E626EFC79C00BC4841 /* MyMatchingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70A3E526EFC79C00BC4841 /* MyMatchingModel.swift */; };
 		AD70A3E826EFE0DB00BC4841 /* CalculateAboutTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70A3E726EFE0DB00BC4841 /* CalculateAboutTime.swift */; };
@@ -191,6 +196,11 @@
 		AD70218126F2441900B2B0CC /* ChattingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingTableViewCell.swift; sourceTree = "<group>"; };
 		AD70218326F2447E00B2B0CC /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		AD70218B26F31A9300B2B0CC /* SwiftWebSocket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftWebSocket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD70220C26F4A82200B2B0CC /* JoinChattingMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChattingMethods.swift; sourceTree = "<group>"; };
+		AD70220E26F4ADA800B2B0CC /* ShowMatchingJoinerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMatchingJoinerViewController.swift; sourceTree = "<group>"; };
+		AD70221026F4AF5800B2B0CC /* MatchingJoinerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingJoinerTableViewCell.swift; sourceTree = "<group>"; };
+		AD70221226F4BC3E00B2B0CC /* StartGameButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameButtonView.swift; sourceTree = "<group>"; };
+		AD70221426F4C4F500B2B0CC /* EndGameButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGameButtonView.swift; sourceTree = "<group>"; };
 		AD70A3E326EFC10000BC4841 /* MatchingTypeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingTypeButton.swift; sourceTree = "<group>"; };
 		AD70A3E526EFC79C00BC4841 /* MyMatchingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMatchingModel.swift; sourceTree = "<group>"; };
 		AD70A3E726EFE0DB00BC4841 /* CalculateAboutTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateAboutTime.swift; sourceTree = "<group>"; };
@@ -376,11 +386,13 @@
 		AD70215526F10CEC00B2B0CC /* JoinChattingViewController */ = {
 			isa = PBXGroup;
 			children = (
+				AD70220B26F4A81100B2B0CC /* Extension */,
 				AD70217826F13B8900B2B0CC /* JoinChattingModel */,
 				AD70215726F10D0B00B2B0CC /* JoinChattingViewModel */,
 				AD70215626F10D0200B2B0CC /* JoinChattingView */,
 				AD70215826F10D6C00B2B0CC /* JointChattingViewController.swift */,
 				AD70217D26F204EB00B2B0CC /* CheckMannerAlertController.swift */,
+				AD70220E26F4ADA800B2B0CC /* ShowMatchingJoinerViewController.swift */,
 			);
 			path = JoinChattingViewController;
 			sourceTree = "<group>";
@@ -391,7 +403,10 @@
 				AD70217B26F2007400B2B0CC /* MannerScoreImageView.swift */,
 				AD70217F26F2369200B2B0CC /* MessageTextView.swift */,
 				AD70218126F2441900B2B0CC /* ChattingTableViewCell.swift */,
+				AD70221026F4AF5800B2B0CC /* MatchingJoinerTableViewCell.swift */,
 				AD70218326F2447E00B2B0CC /* MessageView.swift */,
+				AD70221226F4BC3E00B2B0CC /* StartGameButtonView.swift */,
+				AD70221426F4C4F500B2B0CC /* EndGameButtonView.swift */,
 			);
 			path = JoinChattingView;
 			sourceTree = "<group>";
@@ -458,6 +473,14 @@
 				AD70217926F13B9900B2B0CC /* JoinChattingModel.swift */,
 			);
 			path = JoinChattingModel;
+			sourceTree = "<group>";
+		};
+		AD70220B26F4A81100B2B0CC /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				AD70220C26F4A82200B2B0CC /* JoinChattingMethods.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		AD70A3DF26EFC08B00BC4841 /* MyMatchingView */ = {
@@ -939,6 +962,7 @@
 				AD44B0FB26EC9F2F0045CBEB /* SelectGameView.swift in Sources */,
 				ADCF012A26CAB15900F1BCF8 /* InternetAvailable.swift in Sources */,
 				AD44B0FD26ECA0C30045CBEB /* SelectVoiceChatView.swift in Sources */,
+				AD70220D26F4A82200B2B0CC /* JoinChattingMethods.swift in Sources */,
 				ADCF012426CAB06600F1BCF8 /* CommonColor.swift in Sources */,
 				ADCCCF6526DE6CEA002C5C8C /* SelectTierButton.swift in Sources */,
 				ADFDD0A726E67D4D007883BE /* MyMatchingViewController.swift in Sources */,
@@ -971,10 +995,12 @@
 				ADCF012C26CAB19F00F1BCF8 /* CommonFont.swift in Sources */,
 				ADCCCF5B26DD638D002C5C8C /* OnboardingViewModel.swift in Sources */,
 				AD982F8C26CAB5ED000AEAA2 /* LoginViewController.swift in Sources */,
+				AD70221126F4AF5800B2B0CC /* MatchingJoinerTableViewCell.swift in Sources */,
 				AD44B0F326EC755D0045CBEB /* MakeMatchingViewController.swift in Sources */,
 				AD70216F26F129A500B2B0CC /* MyFriendViewController.swift in Sources */,
 				AD70214926F081C100B2B0CC /* MyMannerView.swift in Sources */,
 				AD44B0F926EC9D120045CBEB /* StartDateSetView.swift in Sources */,
+				AD70221326F4BC3E00B2B0CC /* StartGameButtonView.swift in Sources */,
 				AD70217726F13A8000B2B0CC /* RoomUserService.swift in Sources */,
 				AD70218026F2369200B2B0CC /* MessageTextView.swift in Sources */,
 				ADFDD0AC26E7B7E3007883BE /* SetTabbarController.swift in Sources */,
@@ -984,6 +1010,7 @@
 				AD70218426F2447E00B2B0CC /* MessageView.swift in Sources */,
 				ADB9339026E138C60016BC7F /* CircleCropScrollView.swift in Sources */,
 				ADCCCF5F26DD70A3002C5C8C /* SelectGameButton.swift in Sources */,
+				AD70220F26F4ADA800B2B0CC /* ShowMatchingJoinerViewController.swift in Sources */,
 				AD54C51426D7F3930023FA99 /* AgePickerView.swift in Sources */,
 				ADFDD0AA26E6840A007883BE /* JoinusListCell.swift in Sources */,
 				ADCCCF7026DFD74E002C5C8C /* ProfileViewControllerViewController.swift in Sources */,
@@ -997,6 +1024,7 @@
 				ADFDD0B626E7F532007883BE /* JoinusListTableView.swift in Sources */,
 				ADCF012626CAB11700F1BCF8 /* ChangeWindow.swift in Sources */,
 				AD70214B26F0846C00B2B0CC /* MyDetailProfileView.swift in Sources */,
+				AD70221526F4C4F500B2B0CC /* EndGameButtonView.swift in Sources */,
 				AD70A3E626EFC79C00BC4841 /* MyMatchingModel.swift in Sources */,
 				AD70216B26F11D8000B2B0CC /* OnboardingService.swift in Sources */,
 				ADCCCF6E26DFCFFF002C5C8C /* OnboardingStep4ViewController.swift in Sources */,

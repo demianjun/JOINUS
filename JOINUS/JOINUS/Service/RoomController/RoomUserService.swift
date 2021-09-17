@@ -40,11 +40,11 @@ class RoomUserService {
               
             } catch(let err) {
               
-              print("-> get room info err  " + err.localizedDescription)
+              print("-> get room info err  123" + err.localizedDescription)
             }
             
           case .failure(let err):
-            print("-> get home list err  " + err.localizedDescription)
+            print("-> get home list err 234 " + err.localizedDescription)
         }
       }
   }
@@ -72,11 +72,11 @@ class RoomUserService {
               }
             } catch(let err) {
               
-              print("-> get room info err  " + err.localizedDescription)
+              print("-> get room info err  345" + err.localizedDescription)
             }
             
           case .failure(let err):
-            print("-> get home list err  " + err.localizedDescription)
+            print("-> get home list err 456 " + err.localizedDescription)
         }
       }
   }

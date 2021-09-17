@@ -13,7 +13,7 @@ import FirebaseFirestoreSwift
 
 class JoinChattingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {//WebSocketDelegate {
   
-  private let bag = DisposeBag()
+  let bag = DisposeBag()
   
   public var roomInfo: GetRoomInfo?
   
@@ -21,8 +21,8 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
   
   private let tapGesture = UITapGestureRecognizer()
   
-  private var joinusDB: Firestore?,
-              joinusChat: CollectionReference?
+  var joinusDB: Firestore?,
+      joinusChat: CollectionReference?
   
   var snapShots = [QueryDocumentSnapshot]() {
     didSet {
@@ -30,15 +30,17 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
     }
   }
   
+  var isJoinjang = Bool()
+  
   // MARK: Manager
-
+  
   
   // MARK: Model
-  private let joinChattingModel = JoinChattingModel.shared,
-              myInfoModel = MyInfoModel.shared
+  let joinChattingModel = JoinChattingModel.shared,
+      myInfoModel = MyInfoModel.shared
   
   // MARK: View
-  private let navigationView = CustomNavigationView()
+  let navigationView = CustomNavigationView()
   
   private let triColonRightButtonItem = UIButton().then {
     $0.setImage(UIImage(named: "tricolon"),
@@ -67,41 +69,57 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
     $0.textAlignment = .center
   }
   
-  private let chattingTableView = UITableView().then {
+  private let topToolTipImageView = UIImageView().then {
+    $0.image = UIImage(named: "top_tootip")
+  }
+  
+  private let topToolTipLabel = UILabel().then {
+    $0.numberOfLines = 0
+    $0.text = "이모티콘을 눌러서\n매너도를 확인해보세요."
+    $0.textColor = .white
+    $0.textAlignment = .center
+    $0.font = UIFont.joinuns.font(size: 15)
+  }
+  
+  let gameStartView = StartGameButtonView().then {
+    $0.backgroundColor = .white
+  }
+  
+  let chattingTableView = UITableView().then {
     $0.backgroundColor = .white
     $0.separatorStyle = .none
   }
   
-  private let messageTextView = MessageTextView()
+  let messageTextView = MessageTextView()
   
-  private var listener: ListenerRegistration?
+  var listener: ListenerRegistration?
   
   // MARK: LifeCycle
-  deinit {
-    print("deinit")
-  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view.backgroundColor = .white
+    
     self.messageTextView.useInputTextView().delegate = self
     self.chattingTableView.delegate = self
     self.chattingTableView.dataSource = self
-    self.joinChattingModel.chattingTableView = self.chattingTableView
+    //    self.joinChattingModel.chattingTableView = self.chattingTableView
     self.chattingTableView.register(ChattingTableViewCell.self,
                                     forCellReuseIdentifier: ChattingTableViewCell.ID)
     
     let settings = FirestoreSettings()
-    
     Firestore.firestore().settings = settings
-    
     self.joinusDB = Firestore.firestore()
     self.joinusChat = self.joinusDB?.collection("JoinusChatting")
+    
     self.setupView()
     self.setRoomMannerImage()
     self.setNavigationBar()
     self.popViewController()
     self.didTapCenterButtonItem()
+    self.didTapPeopleRightButton()
+    self.didTapGameStartButton()
+    self.didTapGameEndButton()
     self.keyboardObserv()
     self.shiftTextView()
     self.sendMessage()
@@ -109,8 +127,8 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
     self.setTapGestureAction()
 
     self.addDocumentFromChattingRoom() {
-    
-    self.getMessage()
+
+      self.getMessage()
     }
   }
   
@@ -118,21 +136,38 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
     super.viewDidDisappear(animated)
     
     self.listener?.remove()
-    self.joinChattingModel.messages.removeAll()
   }
   
   private func setupView() {
-    [navigationView, chattingTableView, messageTextView].forEach { self.view.addSubview($0) }
+    [navigationView, gameStartView, chattingTableView, messageTextView, topToolTipImageView].forEach { self.view.addSubview($0) }
+    
+    self.topToolTipImageView.addSubview(topToolTipLabel)
     
     navigationView.snp.makeConstraints {
       $0.top.width.centerX.equalToSuperview()
       $0.height.equalTo(CommonLength.shared.height(100))
     }
     
-    chattingTableView.snp.makeConstraints {
-      $0.top.equalTo(navigationView.snp.bottom)
-      $0.bottom.greaterThanOrEqualTo(messageTextView.snp.top)
-      $0.width.centerX.equalToSuperview()
+    if self.isJoinjang {
+      
+      gameStartView.snp.makeConstraints {
+        $0.top.equalTo(navigationView.snp.bottom)
+        $0.width.centerX.equalToSuperview()
+      }
+      
+      chattingTableView.snp.makeConstraints {
+        $0.top.equalTo(gameStartView.snp.bottom)
+        $0.bottom.greaterThanOrEqualTo(messageTextView.snp.top)
+        $0.width.centerX.equalToSuperview()
+      }
+      
+    } else {
+      
+      chattingTableView.snp.makeConstraints {
+        $0.top.equalTo(navigationView.snp.bottom)
+        $0.bottom.greaterThanOrEqualTo(messageTextView.snp.top)
+        $0.width.centerX.equalToSuperview()
+      }
     }
     
     messageTextView.snp.makeConstraints {
@@ -180,9 +215,85 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
       $0.height.equalTo(CommonLength.shared.height(35))
     }
     
+    topToolTipImageView.snp.makeConstraints {
+      $0.top.equalTo(centerButtonItem.snp.bottom)
+      $0.leading.equalTo(centerButtonItem).offset(-CommonLength.shared.width(22))
+      $0.width.equalTo(CommonLength.shared.width(180))
+      $0.height.equalTo(CommonLength.shared.height(70))
+    }
+    
+    topToolTipLabel.snp.makeConstraints {
+      $0.bottom.equalToSuperview().offset(-CommonLength.shared.height(10))
+      $0.centerX.equalToSuperview()
+    }
+    
     self.naviBarTitleLabel.text = self.roomInfo?.roomName
     
     self.navigationController?.navigationBar.isHidden = true
+    
+    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+      UIView.animate(withDuration: 1.0) {
+        self.topToolTipImageView.alpha = 0.0
+      }
+    }
+  }
+  
+  func didTapPeopleRightButton() {
+    let showMatchingJoinerVC = ShowMatchingJoinerViewController()
+    showMatchingJoinerVC.joinUsersInfo = self.roomInfo!.userList
+    showMatchingJoinerVC.modalPresentationStyle = .overFullScreen
+    
+    self.peopleRightButtonItem
+      .rx
+      .tap
+      .asDriver()
+      .drive(onNext: {
+        
+        self.present(showMatchingJoinerVC,
+                     animated: false)
+        
+      }).disposed(by: self.bag)
+  }
+  
+  let endGameView = EndGameButtonView()
+  
+  func didTapGameStartButton() {
+    self.gameStartView
+      .useStartButton()
+      .rx
+      .tap
+      .asDriver()
+      .drive(onNext: {
+        
+        self.gameStartView.isHidden = true
+        self.messageTextView.isHidden = true
+          
+        self.chattingTableView.snp.remakeConstraints {
+          $0.top.equalTo(self.navigationView.snp.bottom)
+          $0.bottom.greaterThanOrEqualTo(self.messageTextView.snp.top)
+          $0.width.centerX.equalToSuperview()
+        }
+        
+        
+        self.view.addSubview(self.endGameView)
+        
+        self.endGameView.snp.makeConstraints {
+          $0.width.bottom.centerX.equalToSuperview()
+        }
+        
+      }).disposed(by: self.bag)
+  }
+  
+  func didTapGameEndButton() {
+    self.endGameView.useEndButton()
+      .rx
+      .tap
+      .asDriver()
+      .drive(onNext: {
+        
+        
+        
+      }).disposed(by: self.bag)
   }
   
   func textViewDidChange(_ textView: UITextView) {
@@ -299,23 +410,23 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
         UIView.animate(withDuration: 0, delay: 0, options: .curveLinear, animations: {
           self.view.layoutIfNeeded()
         }, completion: nil)
-  
+        
         self.chattingScroll()
         
       }).disposed(by: self.bag)
   }
   
-  private func chattingScroll() {
-//    if self.joinChattingModel.messages.count > 3 {
-//
-//      self.chattingTableView
-//        .scrollToRow(at: [0, self.joinChattingModel.messages.count - 1],
-//                     at: .bottom,
-//                     animated: true)
-//    }
+  func chattingScroll() {
+    //    if self.joinChattingModel.messages.count > 3 {
+    //
+    //      self.chattingTableView
+    //        .scrollToRow(at: [0, self.joinChattingModel.messages.count - 1],
+    //                     at: .bottom,
+    //                     animated: true)
+    //    }
     
     if self.snapShots.count > 3 {
-
+      
       self.chattingTableView
         .scrollToRow(at: [0, self.snapShots.count - 1],
                      at: .bottom,
@@ -337,175 +448,18 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
         
       }).disposed(by: self.bag)
     
-      textView
+    textView
       .rx
       .didEndEditing
       .asDriver()
-        .drive(onNext: {
-          
-          placeHolder.isHidden = textView.hasText
-          
-        }).disposed(by: self.bag)
-  }
-  
-  private func sendMessage() {
-    let textView = self.messageTextView.useInputTextView(),
-        placeHolder = self.messageTextView.usePlaceHolderLabel(),
-        sendButton = self.messageTextView.useSendButton()
-    
-    sendButton
-      .rx
-      .tap
-      .asDriver()
       .drive(onNext: {
         
-        var dateComponents = DateComponents()
-        
-        let calendar = Calendar.current,
-            dateformatter = DateFormatter().then {
-              $0.dateFormat = "h:mm"
-            },
-            keyDateformatter = DateFormatter().then {
-              $0.dateFormat = "H:mm:ss"
-            }
-
-        dateComponents.hour = calendar.component(.hour, from: Date())
-        dateComponents.minute = calendar.component(.minute, from: Date())
-        dateComponents.second = calendar.component(.second, from: Date())
-
-        let date = calendar.date(from: dateComponents)!,
-            sendTime = calendar.amSymbol.appending(" ").appending(dateformatter.string(from: date)),
-            keyTime = keyDateformatter.string(from: date)
-        
-        if !textView.text.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty {
-          
-          if let message = textView.text,
-             message.count != 0 {
-            
-            self.setDBdata(keyTime: keyTime,
-                           userPk: self.myInfoModel.myPk,
-                           sendTime: sendTime,
-                           message: message)
-          }
-        }
-        
-        textView.text.removeAll()
         placeHolder.isHidden = textView.hasText
         
-        textView.snp.remakeConstraints {
-          $0.center.equalToSuperview()
-          $0.width.equalToSuperview().multipliedBy(0.9)
-          $0.height.equalTo(CommonLength.shared.height(30))
-        }
-        self.messageTextView.snp.updateConstraints {
-          $0.width.centerX.equalToSuperview()
-          $0.height.equalTo(CommonLength.shared.height(58))
-        }
-        
-      }).disposed(by: self.bag)      
+      }).disposed(by: self.bag)
   }
   
-  private func addDocumentFromChattingRoom(com: (()->())? = nil) {
-    
-        self.joinusChat?
-          .document("\(self.roomInfo!.roomPk)")
-          .setData(["join": "채팅방에 참가 하였습니다."])
-         
-//    self.joinusChat?
-//      .document("\(self.roomInfo!.roomPk)")
-//      .setData(["join": "채팅방에 참가 하였습니다."])
-      com?()
-  }
   
-  private func getMessage() {
-//  var type: JoinChattingModel.chat?
-
-    self.listener =
-      self.joinusChat?
-      .document("\(self.roomInfo!.roomPk)")
-      .collection("chat")
-      .addSnapshotListener { docuSnapShot, err in
-        
-        if let err = err {
-          
-          print("Error fetching document: \(err)")
-          return
-          
-        } else {
-          
-          guard let snapShot = docuSnapShot else { return print("snapshot return.") }
-          self.snapShots = snapShot.documents
-
-        }
-        
-        self.chattingScroll()
-      }
-//    self.listener =
-//      self.joinusChat?
-//      .document("\(self.roomInfo!.roomPk)")
-//      .addSnapshotListener { docuSnapShot, err in
-//
-//        if let err = err {
-//
-//          print("Error fetching document: \(err)")
-//          return
-//
-//        } else {
-//
-//          guard let snapShot = docuSnapShot else { return print("snapshot return.") }
-//          guard let data = snapShot.data() else { return print("Document data was empty.") }
-//
-//          data.keys.forEach {
-//
-//            guard var sendTime = data["sendTime"] as? String else { return }
-//            guard var message = data["message"] as? String else { return }
-//
-//            if ($0 != "sendTime"),
-//               ($0 != "message") {
-//
-//              if $0 == "join" {
-//                type = .join
-//
-//                message = ""
-//                sendTime = ""
-//
-//              } else if $0 == "\(self.myInfoModel.myPk)" {
-//                type = .my
-//
-//              } else {
-//                type = .other
-//
-//              }
-//
-//              guard let userPk = data[$0] as? String else { return }
-//              self.joinChattingModel.messages.append([type!: ["\(userPk)", sendTime, message]])
-//            }
-//          }
-//
-//          self.chattingScroll()
-//
-//          print("-> saved message: \(self.joinChattingModel.messages)")
-//        }
-//      }
-  }
-  
-  private func setDBdata(keyTime: String,
-                         userPk: Int, sendTime: String, message: String) {
-    
-    self.joinusChat?
-      .document("\(self.roomInfo!.roomPk)")
-      .collection("chat")
-      .document(keyTime)
-      .setData(["message": message,
-                "time": sendTime,
-                "\(self.myInfoModel.myPk)": self.myInfoModel.myGameID])
-    
-//    self.joinusChat?
-//      .document("\(self.roomInfo!.roomPk)")
-//      .setData(["\(userPk)": "\(userPk)",
-//                "sendTime": sendTime,
-//                "message": message])
-  }
   
   private func popViewController() {
     self.leftButtonItem
@@ -513,7 +467,7 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
       .tap
       .asDriver()
       .drive(onNext: {
-      
+        
         self.navigationController?
           .popViewController(animated: true)
         
@@ -533,51 +487,49 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//    return self.joinChattingModel.messages.count
+    //    return self.joinChattingModel.messages.count
     return self.snapShots.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let chattingCell = tableView.dequeueReusableCell(withIdentifier: ChattingTableViewCell.ID,
                                                            for: indexPath) as? ChattingTableViewCell else { fatalError("chatting cell error") }
-
+    
     chattingCell.selectionStyle = .none
     
     let down = DownLoad()
-
+    
     let messageView = chattingCell.useMessageView(),
         useProfile = chattingCell.useProfileImageView(),
         userNameLabel = messageView.useUserNameLabel(),
         messageLabel = messageView.useMessageLabel(),
         sendTimeLabel = messageView.useSendTimeLabel()
-
+    
     var nameAndMessageColor = UIColor(),
         timeColor = UIColor(),
         profileImage: UIImage?,
         name = String(),
         sendTime = String(),
         message = String(),
-        otherUser = String(),
         imageAddress = String()
     
-//    let dbData = self.snapShots.reversed()[indexPath.row]
     let dbData = self.snapShots[indexPath.row]
     
     if dbData.data().keys.contains("\(self.myInfoModel.myPk)") {
       
       useProfile.isHidden = true
-
+      
       messageView.roundCorners(cornerRadius: 10,
                                maskedCorners: [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner])
       messageView.backgroundColor = UIColor.joinusColor.defaultPhotoGray
-
-
+      
+      
       messageView.snp.remakeConstraints {
         $0.top.equalToSuperview().offset(CommonLength.shared.height(10))
         $0.bottom.equalToSuperview().offset(-CommonLength.shared.height(10))
         $0.trailing.equalToSuperview().offset(-CommonLength.shared.width(17))
       }
-
+      
       nameAndMessageColor = .white
       timeColor = .black.withAlphaComponent(0.6)
       profileImage = UIImage()
@@ -588,17 +540,17 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
     } else {
       
       useProfile.isHidden = false
-
+      
       messageView.roundCorners(cornerRadius: 10,
                                maskedCorners: [.layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner])
       messageView.backgroundColor = UIColor.joinusColor.gameIdTextFieldBgGray
-
+      
       useProfile.snp.makeConstraints {
         $0.width.height.equalTo(CommonLength.shared.width(60))
         $0.top.equalToSuperview().offset(CommonLength.shared.height(10))
         $0.leading.equalToSuperview().offset(CommonLength.shared.width(17))
       }
-
+      
       messageView.snp.remakeConstraints {
         $0.top.equalToSuperview().offset(CommonLength.shared.height(10))
         $0.bottom.equalToSuperview().offset(-CommonLength.shared.height(10))
@@ -607,14 +559,14 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
       
       self.roomInfo?.userList.forEach { info in
         if dbData.data()["\(info.joinUserPk)"] != nil {
-
+          
           imageAddress = info.imageAddress
           name = dbData.data()["\(info.joinUserPk)"] as? String ?? "noname"//info.nickName
           sendTime = dbData.data()["time"] as? String ?? "notime"
           message = dbData.data()["message"] as? String ?? "nomessage"
         }
       }
-
+      
       nameAndMessageColor = .black
       timeColor = UIColor.joinusColor.gameIdTextFieldPlaceholderGray
       profileImage = down.imageURL(image: imageAddress)//UIImage(named: "defaultProfile_60x60")
@@ -625,11 +577,11 @@ class JoinChattingViewController: UIViewController, UITableViewDelegate, UITable
     messageLabel.textColor = nameAndMessageColor
     sendTimeLabel.textColor = timeColor
     useProfile.image = profileImage
-
+    
     userNameLabel.text = name
     sendTimeLabel.text = sendTime
     messageLabel.text = message
-
+    
     return chattingCell
   }
 }

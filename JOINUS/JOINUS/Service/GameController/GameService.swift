@@ -60,11 +60,11 @@ class GameService {
               }
             } catch(let err) {
               
-              print("get room info err  " + err.localizedDescription)
+              print("get room info err 678 " + err.localizedDescription)
             }
             
           case .failure(let err):
-            print("get home list err  " + err.localizedDescription)
+            print("get home list err  789" + err.localizedDescription)
         }
       }
   }
@@ -79,7 +79,8 @@ class GameService {
     
     AF.request(self.gameControllerUrl,
                method: .post,
-               parameters: param)
+               parameters: param,
+               encoding: JSONEncoding.prettyPrinted)
       .validate(statusCode: 150...500)
       .responseJSON { response in
         
@@ -90,10 +91,10 @@ class GameService {
               
               if let result = res as? Int {
                 
-                if result == 1 {
+//                if result == 1 {
                   
                   completion?()
-                }
+//                }
               }
             } catch(let err) {
               

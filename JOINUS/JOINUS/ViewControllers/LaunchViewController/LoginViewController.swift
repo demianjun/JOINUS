@@ -101,8 +101,14 @@ class LoginViewController: UIViewController {
 
                 self.manner.getManner() {
               print("-> all get")
-                let setTabbarController = SetTabbarController()
-                setTabbarController.settingRootViewController()
+//                let setTabbarController = SetTabbarController()
+//                setTabbarController.settingRootViewController()
+                  
+                  let onBoardingVC = OnboardingStep1ViewController(),
+                      onBoardingNaviVC = UINavigationController(rootViewController: onBoardingVC)
+
+                  self.changeWindow
+                    .change(change: onBoardingNaviVC)
 
                 }
               }
