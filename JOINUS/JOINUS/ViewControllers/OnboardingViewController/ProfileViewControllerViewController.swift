@@ -133,16 +133,16 @@ class ProfileViewControllerViewController: UIViewController {
   }
   
   private func didTapNextButton() {
-//    self.myInfoModel.myAge = 25
-//    self.myInfoModel.myGender = 0
-//    self.myInfoModel.myGameID = "GGTest"
-//    self.myInfoModel.subToken = "109112693255361562533"
-//
-//    self.myInfoModel.myGameID = "GGTest"
-//    self.myInfoModel.myGameName = "GGTest"
-//    self.myInfoModel.gameInfoPk = 0
-//    self.myInfoModel.myTier = 3
-//    self.myInfoModel.myPk = 2
+    self.myInfoModel.myAge = 25
+    self.myInfoModel.myGender = 0
+    self.myInfoModel.myGameID = "PreyIOS"
+    self.myInfoModel.subToken = "109112693255361562533"
+
+    self.myInfoModel.myGameID = "PreyIOS"
+    self.myInfoModel.myGameName = "PreyIOS"
+    self.myInfoModel.gameInfoPk = 0
+    self.myInfoModel.myTier = 2
+    self.myInfoModel.myPk = 7
     
     
     let setTabbarController = SetTabbarController()
@@ -151,13 +151,13 @@ class ProfileViewControllerViewController: UIViewController {
       
       if self.nextButton.isEnabled {
         
-        self.onBoarding.putOnboarding {
-          
-          self.game.postGame {
+//        self.onBoarding.putOnboarding {
+//
+//          self.game.postGame {
             
             setTabbarController.settingRootViewController()
-          }
-        }
+//          }
+//        }
       }
     }
   }

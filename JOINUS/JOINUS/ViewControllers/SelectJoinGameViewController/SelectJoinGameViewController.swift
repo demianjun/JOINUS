@@ -118,37 +118,37 @@ class SelectJoinGameViewController: UIViewController, UICollectionViewDelegate, 
     let joinChattingVC = JoinChattingViewController()
     
     CommonAction.shared.touchActionEffect(self.joinButton) {
-      joinChattingVC.roomInfo = self.roomInfo
+//      joinChattingVC.roomInfo = self.roomInfo
       
-      self.navigationController?
-        .pushViewController(joinChattingVC,
-                            animated: true)
+//      self.navigationController?
+//        .pushViewController(joinChattingVC,
+//                            animated: true)
 
-//      self.roomUser.postRoomUser { res in
-//
-//        if res == 1 {
-//
-//          self.navigationController?
-//            .pushViewController(joinChattingVC,
-//                                animated: true)
-//
-//        } else {
-//
-//          let joinusAlertVC = JoinusAlertController(title: .top,
-//                                                    title: "참여 할 수 없습니다ㅠ",
-//                                                    explain: "사람이 꽉 찼거나 게임이 시작되었습니다.\n다른 방에 조인해보세요"),
-//            okButton = JoinusButton(title: "확인",
-//                                    titleColor: .white,
-//                                    backGroundColor: UIColor.joinusColor.joinBlue)
-//
-//          joinusAlertVC.addAction(okButton)
-//
-//          self.present(joinusAlertVC,
-//                       animated: false) {
-//            okButton.rx.tap.asDriver().drive { self.dismiss(animated: false) }.disposed(by: self.bag)
-//          }
-//        }
-//      }
+      self.roomUser.postRoomUser { res in
+        joinChattingVC.roomInfo = self.roomInfo
+        if res == 1 {
+
+          self.navigationController?
+            .pushViewController(joinChattingVC,
+                                animated: true)
+
+        } else {
+
+          let joinusAlertVC = JoinusAlertController(title: .top,
+                                                    title: "참여 할 수 없습니다ㅠ",
+                                                    explain: "사람이 꽉 찼거나 게임이 시작되었습니다.\n다른 방에 조인해보세요"),
+            okButton = JoinusButton(title: "확인",
+                                    titleColor: .white,
+                                    backGroundColor: UIColor.joinusColor.joinBlue)
+
+          joinusAlertVC.addAction(okButton)
+
+          self.present(joinusAlertVC,
+                       animated: false) {
+            okButton.rx.tap.asDriver().drive { self.dismiss(animated: false) }.disposed(by: self.bag)
+          }
+        }
+      }
     }
   }
   

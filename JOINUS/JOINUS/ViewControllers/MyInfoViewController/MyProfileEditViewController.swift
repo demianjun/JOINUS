@@ -279,13 +279,13 @@ class MyProfileEditViewController: UIViewController, UITextFieldDelegate {
           self.myInfoModel.myGameID = text
         }
         
-        self.game.putGame() {
+//        self.game.putGame() {
           
           self.navigationController?
             .popViewController(animated: true)
           
           self.tabBarController?.tabBar.isHidden = false
-        }
+//        }
       }).disposed(by: self.bag)
   }
 }

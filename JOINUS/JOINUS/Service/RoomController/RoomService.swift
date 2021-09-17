@@ -42,18 +42,18 @@ class RoomService {
               
             } catch(let err) {
               
-              print("get room info err  " + err.localizedDescription)
+              print("get room info err  11" + err.localizedDescription)
             }
             
           case .failure(let err):
-            print("get home list err  " + err.localizedDescription)
+            print("get home list err  22" + err.localizedDescription)
         }
       }
   }
   
   func postRoom(completion: @escaping (()->())) {
     
-    let parameters: Parameters = ["game_name": self.myInfoModel.myGameName,//self.makeMatchingModel.selectedGame,
+    let parameters: Parameters = ["game_name": "league of legends",//self.myInfoModel.myGameName,//self.makeMatchingModel.selectedGame,
                                   "highest_tier": self.makeMatchingModel.lowestTier,
                                   "lowest_tier": self.makeMatchingModel.highestTier,
                                   "people_number": self.makeMatchingModel.countJoinPeople,
@@ -62,16 +62,10 @@ class RoomService {
                                   "user_pk": self.myInfoModel.myPk,
                                   "voice_chat": self.makeMatchingModel.isVoiceChat]
     
-    let headers: HTTPHeaders = [
-      "connection": "keep-alive ",
-      "Content-Type": "application/json "
-    ]
-    
     AF.request(self.roomControllerUrl,
                method: .post,
                parameters: parameters,
-               encoding: JSONEncoding.prettyPrinted,
-               headers: headers)
+               encoding: JSONEncoding.prettyPrinted)
       .validate(statusCode: 150...500)
       .responseJSON { response in
         
@@ -120,11 +114,11 @@ class RoomService {
               
             } catch(let err) {
               
-              print("get room info err  " + err.localizedDescription)
+              print("get room info err 33 " + err.localizedDescription)
             }
             
           case .failure(let err):
-            print("get home list err  " + err.localizedDescription)
+            print("get home list err  44" + err.localizedDescription)
         }
       }
   }
@@ -153,11 +147,11 @@ class RoomService {
               
             } catch(let err) {
               
-              print("get room info err  " + err.localizedDescription)
+              print("get room info err 55 " + err.localizedDescription)
             }
             
           case .failure(let err):
-            print("get home list err  " + err.localizedDescription)
+            print("get home list err  66" + err.localizedDescription)
         }
       }
   }
@@ -185,11 +179,11 @@ class RoomService {
               
             } catch(let err) {
               
-              print("get room info err  " + err.localizedDescription)
+              print("get room info err 77 " + err.localizedDescription)
             }
             
           case .failure(let err):
-            print("get home list err  " + err.localizedDescription)
+            print("get home list err  88" + err.localizedDescription)
         }
       }
   }

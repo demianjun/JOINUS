@@ -284,19 +284,35 @@ class MyMatchingViewController: UIViewController, UITableViewDataSource, UITable
       $0.bottom.equalToSuperview().offset(-CommonLength.shared.height(22))
     }
     
+    let joinChattingVC = JoinChattingViewController()
+    joinChattingVC.roomInfo = roomInfo
+    
     if self.madeMatchingButton.isSelected {
       
-      joinButton.setTitle("방 수정하기",
-                          for: .normal)
-      
-      self.navigationController?.pushViewController(selectJoinGameVC, animated: true)
+      joinChattingVC.isJoinjang = true
     } else {
+      joinChattingVC.isJoinjang = false
       
-      let joinChattingVC = JoinChattingViewController()
-      joinChattingVC.roomInfo = roomInfo
-      
-      self.tabBarController?.tabBar.isHidden = true
-      self.navigationController?.pushViewController(joinChattingVC, animated: true)
     }
+    
+    self.tabBarController?.tabBar.isHidden = true
+    self.navigationController?.pushViewController(joinChattingVC,
+                                                  animated: true)
+    
+//    if self.madeMatchingButton.isSelected {
+//
+////      joinButton.setTitle("방 수정하기",
+////                          for: .normal)
+//
+//      self.navigationController?.pushViewController(selectJoinGameVC, animated: true)
+//
+//    } else {
+//
+//      let joinChattingVC = JoinChattingViewController()
+//      joinChattingVC.roomInfo = roomInfo
+//
+//      self.tabBarController?.tabBar.isHidden = true
+//      self.navigationController?.pushViewController(joinChattingVC, animated: true)
+//    }
   }
 }

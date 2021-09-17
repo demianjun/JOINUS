@@ -67,8 +67,8 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
     super.viewDidLoad()
     self.view.backgroundColor = .white
     self.joinusListTableView.refreshControl = self.refresh
-    self.room
-      .getRoom() {
+    
+    self.room.getRoom() {
         
         self.setupUI()
         self.setNavigationBar()
